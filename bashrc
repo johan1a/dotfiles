@@ -10,6 +10,17 @@
 #   03. Theme/Colors ............ Colors, prompts, fonts, etc.               #
 ##############################################################################
 
+ Source global definitions
+ if [ -f /etc/bashrc ]; then
+	 	. /etc/bashrc
+	fi
+
+	# Uncomment the following line if you don't like systemctl's auto-paging feature:
+	# export SYSTEMD_PAGER=
+
+	# 
+
+
 ##############################################################################
 # 01. General                                                                #
 ##############################################################################
@@ -34,4 +45,5 @@ alias ls="ls -Glah"
 # CLI Colors
 export CLICOLOR=1
 # Set "ls" colors
-export LSCOLORS=Gxfxcxdxbxegedabagacad
+export LSCOLORS=Gxfxcxdxbxegedabagacadexport VAGRANT_DEFAULT_PROVIDER=virtualbox
+export VAGRANT_HOME=/mnt/data/vagrant/
