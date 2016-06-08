@@ -10,7 +10,7 @@
 #   03. Theme/Colors ............ Colors, prompts, fonts, etc.               #
 ##############################################################################
 
- Source global definitions
+# Source global definitions
  if [ -f /etc/bashrc ]; then
 	 	. /etc/bashrc
 	fi
