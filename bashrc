@@ -37,7 +37,7 @@ fi
 # 02. Aliases                                                                #
 ##############################################################################
 # Enable colors in "ls" command output
-alias ls="ls -Glah"
+alias ls="ls -Glh"
 
 ##############################################################################
 # 03. Theme/Colors                                                           #
@@ -47,3 +47,12 @@ export CLICOLOR=1
 # Set "ls" colors
 export LSCOLORS=Gxfxcxdxbxegedabagacadexport VAGRANT_DEFAULT_PROVIDER=virtualbox
 export VAGRANT_HOME=/mnt/data/vagrant/
+
+
+
+export LD_LIBRARY_PATH=/opt/plexmediaserver
+export PLEX_MEDIA_SERVER_HOME=/opt/plexmediaserver
+export PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=/var/lib/plex
+export PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS=6
+export PLEX_MEDIA_SERVER_TMPDIR=/tmp
+export TMPDIR=/tmp
