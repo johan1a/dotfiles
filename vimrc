@@ -5,7 +5,7 @@ set grepprg=grep\ -nH\ $*
 set number
 
 " insert space characters whenever the tab key is pressed,
-set noexpandtab
+set expandtab
 
 
 " The number of space characters that will be inserted when the tab key is pressed
