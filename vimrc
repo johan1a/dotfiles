@@ -10,7 +10,8 @@ set expandtab
 
 " The number of space characters that will be inserted when the tab key is pressed
 set tabstop=2
-" The number of space characters inserted for indentation
+" The number of space characters inserted for indentation with the reindent
+" operations (<< and >>)
 set shiftwidth=2
 set softtabstop=0
 
