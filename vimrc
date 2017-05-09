@@ -1,5 +1,7 @@
+colo evening
 syntax enable
 filetype plugin indent on
+
 set grepprg=grep\ -nH\ $*
             
 set number
