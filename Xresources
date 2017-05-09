@@ -1,4 +1,7 @@
 
+! To see the current loaded resources: 
+! xrdb -query -all
+
 !----------!
 ! Terminal !
 !----------!
@@ -10,19 +13,8 @@ URxvt.preeditType: OverTheSpot
 !------!
 ! font !
 !------!
-
-
 urxvt*font: xft:inconsolata:size=16
 urxvt*boldfont: xft:inconsolata:style=bold:size=16
-
-
-!*font: xft:consolas:size=16
-!font: xft:terminus:size=14
-!URxvt.letterSpace: -2
-
-
-
-
 
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
@@ -32,25 +24,22 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 
-
-
-URxvt*.transparent: true
-
 ! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
-URxvt*.shading: 20
 
 
 *urxvt*.foreground:		#ffffff
-*urxvt*.background:		#000000
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/d800
 
 URxvt*saveLines:  2048
 
 !-----------------!
 ! scrollbar style ! - rxvt (default), plain (most compact), next, or xterm
 !-----------------!
-
-URxvt.scrollstyle: plain
-URxvt.scrollBar: true
+URxvt.scrollstyle: rxvt
+URxvt.scrollBar: false
+URxvt*scrollBar_right: false
+urxvt*shading: 15
 
 ! do not scroll with output
 !URxvt*scrollTtyOutput: false
@@ -155,8 +144,38 @@ xcalc.ti.button39.background: #555595
 XCalc*Cursor:                 hand2
 XCalc*ShapeStyle:             rectangle
 
-! To see the current loaded resources: 
-! xrdb -query -all
-
 ! Prints all 256 colors across the screen, very quick.
 ! (x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)
+
+
+! black dark/light
+*color0: #073642
+*color8: #002b36
+
+!! red dark/light
+*color1: #dc322f
+*color9: #cb4b16
+
+!! green dark/light
+*color2: #859900
+*color10: #586e75
+
+!! yellow dark/light
+*color3: #b58900
+*color11: #657b83
+
+!! blue dark/light
+*color4: #268bd2
+*color12: #839496
+
+!! magenta dark/light
+*color5: #d33682
+*color13: #6c71c4
+
+!! cyan dark/light
+*color6: #2aa198
+*color14: #93a1a1
+
+!! white dark/light
+*color7: #eee8d5
+*color15: #fdf6e3
