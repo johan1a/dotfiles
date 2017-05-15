@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="gitconfig tmux.conf bashrc inputrc vimrc vim Xresources" #i3 i3status.conf"    # list of files/folders to symlink in homedir
+files="gitconfig tmux.conf bashrc bash_aliases inputrc vimrc vim Xresources" #i3 i3status.conf"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -22,10 +22,21 @@ echo "Changing to the $dir directory"
 cd $dir
 echo "...done"
 
+rm_if_link(){ [ ! -L "$1" ] || rm -v "$1"; }
+
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+echo "Moving any existing dotfiles from ~ to $olddir"
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/
+    rm_if_link ~/.$file
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+echo " "
+
+mkdir -p ~/.config
+mv ~/.config/nvim ~/dotfiles_old/
+mv ~/.vim/init.vim ~/dotfiles_old/
+ln -s ~/.vim ~/.config/nvim
+ln -s $dir/vimrc ~/.vim/init.vim
+

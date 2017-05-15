@@ -1,4 +1,4 @@
-colo evening
+colo default 
 syntax enable
 filetype plugin indent on
 
