@@ -2,6 +2,8 @@ colo default
 syntax enable
 filetype plugin indent on
 
+let g:netrw_liststyle = 3
+
 set grepprg=grep\ -nH\ $*
             
 set number
