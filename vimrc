@@ -2,7 +2,18 @@ colo default
 syntax enable
 filetype plugin indent on
 
+
+" netrw tree view
 let g:netrw_liststyle = 3
+
+" Don't display info on the top of window
+let g:netrw_banner = 0
+
+" " sort is affecting only: directories on the top, files below
+" let g:netrw_sort_sequence = '[\/]$,*'
+
+" use the previous window to open file
+let g:netrw_browse_split = 4
 
 set grepprg=grep\ -nH\ $*
             
