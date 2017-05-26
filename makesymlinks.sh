@@ -13,13 +13,13 @@ files="gitconfig tmux.conf bashrc bash_aliases inputrc vimrc vim Xresources" #i3
 ##########
 
 # create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
+echo "Creating $olddir for backup of any existing dotfiles in ~/"
+mkdir -p "$olddir"
 echo "...done"
 
 # change to the dotfiles directory
 echo "Changing to the $dir directory"
-cd $dir
+cd "$dir"
 echo "...done"
 
 rm_if_link(){ [ ! -L "$1" ] || rm -v "$1"; }
@@ -27,16 +27,17 @@ rm_if_link(){ [ ! -L "$1" ] || rm -v "$1"; }
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 echo "Moving any existing dotfiles from ~ to $olddir"
 for file in $files; do
-    mv ~/.$file ~/dotfiles_old/
-    rm_if_link ~/.$file
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    echo "Updating .$file"
+    rm -rf $olddir/.$file
+    mv -f ~/.$file $olddir/
+    ln -s "$dir/$file" ~/.$file
 done
-echo " "
 
 mkdir -p ~/.config
-mv ~/.config/nvim ~/dotfiles_old/
-mv ~/.vim/init.vim ~/dotfiles_old/
-ln -s ~/.vim ~/.config/nvim
-ln -s $dir/vimrc ~/.vim/init.vim
+mv ~/.config/nvim $olddir/ # "backup nvim config in case it is not a symlink to vimrc."
+mv ~/.vim/init.vim $olddir/
+echo "Linking nvim config to vim config"
+ln -s ~/.vim ~/.config/nvim 
+ln -s "$dir/vimrc" ~/.vim/init.vim
 
+echo "...done!"
