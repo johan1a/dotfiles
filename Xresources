@@ -29,7 +29,7 @@ Xft.rgba: rgb
 
 *urxvt*.foreground:		#ffffff
 urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/e800
+urxvt*background: rgba:0000/0000/0200/b800
 
 URxvt*saveLines:  2048
 
