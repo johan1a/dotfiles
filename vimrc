@@ -1,8 +1,8 @@
+" =========== General settings ===========
 colo default 
 syntax enable
 filetype plugin indent on
 
-" =========== General settings ===========
 " Don't emulate vi
 set nocompatible
 
