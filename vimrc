@@ -36,6 +36,8 @@ set wildmenu
 " Make tags. Requires ctags
 command! MakeTags !ctags -R .
 
+" =========== Splits ===========
+:autocmd VimResized * wincmd =
             
 " =========== Tabs and spaces  ===========
 " insert space characters whenever the tab key is pressed,
@@ -69,6 +71,12 @@ set relativenumber
 " gf            open file under cursor
 
 " "+y           copy to system clipboard
+
+nnoremap <A-j>  <C-W>j
+nnoremap <A-k>  <C-W>k
+nnoremap <A-h>  <C-W>h
+nnoremap <A-l>  <C-W>l
+
 
 " Disable arrow keys 
 noremap <Up> <nop>
