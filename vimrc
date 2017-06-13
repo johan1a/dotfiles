@@ -27,6 +27,7 @@ set grepprg=grep\ -nH\ $*
 
 " Fuzzy finding
 " :b <substring of open buffer> to jump to buffer
+" :find <substring of open buffer> 
 set path+=**
 
 " Display all matches when tab completing
@@ -38,7 +39,7 @@ command! MakeTags !ctags -R .
 
 " =========== Splits ===========
 :autocmd VimResized * wincmd =
-            
+
 " =========== Tabs and spaces  ===========
 " insert space characters whenever the tab key is pressed,
 set expandtab
@@ -51,12 +52,23 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=0
 
+" Display tabs and trailing spaces
+set list
+set listchars=tab:▸–,trail:·
+
 " =========== Numbering  ===========
 set number
 
 set relativenumber
 
+set showcmd
+
 " =========== Key maps  ===========
+
+" Remap leader
+let mapleader =  "\<Space>"
+
+nnoremap <leader>f :find<space>
 
 " ctrl+]        Jump to tag under cursor
 " g+ctrl+]      List ambiguous tags
@@ -77,14 +89,19 @@ nnoremap <A-k>  <C-W>k
 nnoremap <A-h>  <C-W>h
 nnoremap <A-l>  <C-W>l
 
-
 " Disable arrow keys 
 noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
+inoremap § <esc>
+vnoremap § <esc>
+noremap § <esc>
+nnoremap § <esc>
+
 execute pathogen#infect()
+
 
 
 
