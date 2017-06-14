@@ -1,13 +1,44 @@
+" Don't emulate vi
+set nocompatible
+filetype off                  " required by Vundle
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'chriskempson/base16-vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+"  Brief help
+" :PluginList       - lists configuredlugins
+" :PluginInstall    - installslugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unusedlugins; append `!` to auto-approve removal
+
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
 " =========== General settings ===========
-colo default 
 syntax enable
 filetype plugin indent on
 
-" Don't emulate vi
-set nocompatible
 
-
+" Automatically read external changes
 set autoread
+
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 
 " =========== netrw ===========
 " Enable netrw 'plugins'
