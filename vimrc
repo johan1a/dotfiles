@@ -101,6 +101,7 @@ set listchars=tab:▸–,trail:·
 set number
 
 set relativenumber
+set ruler
 
 set showcmd
 
