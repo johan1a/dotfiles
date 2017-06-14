@@ -1,5 +1,5 @@
 
-rxvt-unicode
+rxvt-unicode-256color
 git
 tmux
 nvim
