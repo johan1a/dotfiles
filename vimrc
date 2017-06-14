@@ -13,6 +13,8 @@ Plugin 'tpope/vim-fugitive'
 
 Plugin 'chriskempson/base16-vim'
 
+Plugin 'git://github.com/godlygeek/tabular.git'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "  Brief help
