@@ -6,6 +6,9 @@ filetype plugin indent on
 " Don't emulate vi
 set nocompatible
 
+
+set autoread
+
 " =========== netrw ===========
 " Enable netrw 'plugins'
 filetype plugin on
@@ -22,6 +25,7 @@ let g:netrw_banner = 0
 " use the previous window to open file
 let g:netrw_browse_split = 4
 
+" =========== search ===========
 
 set grepprg=grep\ -nH\ $*
 
@@ -32,6 +36,12 @@ set path+=**
 
 " Display all matches when tab completing
 set wildmenu
+
+" Leave margin when scrolling
+set scrolloff=1
+set sidescrolloff=5
+
+set display+=lastline
 
 " =========== ctags ===========
 " Make tags. Requires ctags
@@ -87,10 +97,17 @@ nnoremap <leader>u <C-]>
 
 " "+y           copy to system clipboard
 
+nnoremap <leader>m :MakeTags<CR>
+
+" Reload config
+nnoremap <leader>r :source ~/.vimrc<CR>
+
 nnoremap <A-j>  <C-W>j
 nnoremap <A-k>  <C-W>k
 nnoremap <A-h>  <C-W>h
 nnoremap <A-l>  <C-W>l
+
+nnoremap Y y$
 
 " Disable arrow keys 
 noremap <Up> <nop>
@@ -103,7 +120,6 @@ vnoremap § <esc>
 noremap § <esc>
 nnoremap § <esc>
 
-execute pathogen#infect()
 
 
 
