@@ -15,6 +15,8 @@ Plugin 'chriskempson/base16-vim'
 
 Plugin 'git://github.com/godlygeek/tabular.git'
 
+Plugin 'https://github.com/ctrlpvim/ctrlp.vim.git'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "  Brief help
