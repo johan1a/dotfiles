@@ -17,6 +17,10 @@ Plugin 'git://github.com/godlygeek/tabular.git'
 
 Plugin 'https://github.com/ctrlpvim/ctrlp.vim.git'
 
+Plugin 'https://github.com/Shougo/deoplete.nvim.git'
+Plugin 'https://github.com/clojure-vim/async-clj-omni.git'
+Plugin 'https://github.com/zchee/deoplete-jedi.git'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "  Brief help
@@ -27,6 +31,72 @@ call vundle#end()            " required
 
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+
+
+" =========== deoplete ===========
+" if :echo has("python3") returns 1, then you're done;
+" Otherwise enable Python3 interface with pip:
+" pip3 install --upgrade neovim
+" :UpdateRemotePlugins and restart neovim
+"
+
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#disable_auto_complete = 1
+
+
+"use <tab> for completion
+function! TabWrap()
+    if pumvisible()
+        return "\<C-N>"
+    elseif strpart( getline('.'), 0, col('.') - 1 ) =~ '^\s*$'
+        return "\<tab>"
+    elseif &omnifunc !~ ''
+        return "\<C-X>\<C-O>"
+    else
+        return "\<C-Space>"
+    endif
+endfunction
+
+" power tab
+imap <silent><expr><tab> TabWrap()
+
+" Enter: complete&close popup if visible (so next Enter works); else: break undo
+inoremap <silent><expr> <Cr> pumvisible() ?
+            \ deoplete#mappings#close_popup() : "<C-g>u<Cr>"
+
+" Ctrl-Space: summon FULL (synced) autocompletion
+inoremap <silent><expr> <C-Space> deoplete#mappings#manual_complete()
+
+" Escape: exit autocompletion, go to Normal mode
+inoremap <silent><expr> <Esc> pumvisible() ? "<C-e><Esc>" : "<Esc>"
+
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
+
+"set omnifunc=syntaxcomplete#Complete
+
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+
+" tern
+if exists('g:plugs["tern_for_vim"]')
+  let g:tern_show_argument_hints = 'on_hold'
+  let g:tern_show_signature_in_pum = 1
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
+endif
 
 
 " =========== General settings ===========
