@@ -20,6 +20,7 @@ Plugin 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plugin 'https://github.com/Shougo/deoplete.nvim.git'
 Plugin 'https://github.com/clojure-vim/async-clj-omni.git'
 Plugin 'https://github.com/zchee/deoplete-jedi.git'
+Plugin 'artur-shaik/vim-javacomplete2'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
