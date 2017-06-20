@@ -4,16 +4,23 @@ apt install rxvt-unicode-256color \
 && tmux \
 && nvim \
 && tree \
-&& ctags \
 && python3-pip \
-&& ruby-dev
+&& ruby-dev \
+&& dh-autoreconf # For universal-ctags
+
+git clone git@github.com:universal-ctags/ctags.git && \
+cd ctags && \
+./autogen.sh && \
+./configure && \
+make && \
+sudo make install
 
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell && \
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 pip3 install --upgrade neovim && \
 sudo pip2 install --upgrade neovim && \
-sudo gem install neovim 
+sudo gem install neovim
 
 sudo ln -s ~/dotfiles/makesymlinks.sh /usr/local/bin/makesymlinks
 
