@@ -167,14 +167,26 @@ nnoremap <leader>u <C-]>
 
 nnoremap <leader>m :MakeTags<CR>
 
+" Reset search
+nnoremap <leader>n /ö666ö<CR>
+
 " Reload config
 nnoremap <leader>r :source ~/.vimrc<CR>
 
+" Split navigation
 nnoremap <A-j>  <C-W>j
 nnoremap <A-k>  <C-W>k
 nnoremap <A-h>  <C-W>h
 nnoremap <A-l>  <C-W>l
 
+nnoremap ö {
+nnoremap ä }
+
+" replace and jump
+nnoremap c* *Ncgn
+
+
+" Yank from cursor to end of line
 nnoremap Y y$
 
 " Disable arrow keys 
