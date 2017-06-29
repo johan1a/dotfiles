@@ -164,6 +164,8 @@ nnoremap <leader>u <C-]>
 " gf            open file under cursor
 
 " "+y           copy to system clipboard
+"
+nnoremap <leader><leader> <C-^>
 
 nnoremap <leader>m :MakeTags<CR>
 
