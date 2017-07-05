@@ -51,6 +51,9 @@ let g:deoplete#disable_auto_complete = 1
 inoremap <silent><expr> <Cr> pumvisible() ?
             \ deoplete#mappings#close_popup() : "<C-g>u<Cr>"
 
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 " Ctrl-Space: summon FULL (synced) autocompletion
 inoremap <silent><expr> <C-Space> deoplete#mappings#manual_complete()
 
