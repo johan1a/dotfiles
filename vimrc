@@ -95,6 +95,9 @@ let g:netrw_banner = 0
 " use the previous window to open file
 let g:netrw_browse_split = 4
 
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
 " =========== search ===========
 
 set grepprg=grep\ -nH\ $*
@@ -177,6 +180,21 @@ nnoremap <leader>n /ö666ö<CR>
 
 " Reload config
 nnoremap <leader>r :source ~/.vimrc<CR>
+
+nnoremap <leader>h <C-W>H
+nnoremap <leader>j <C-W>J
+nnoremap <leader>k <C-W>K
+nnoremap <leader>l <C-W>L
+nnoremap <leader>o <C-W>r
+
+nnoremap <leader>e :Lexplore<CR>
+
+" ctrl+p
+" <C-W><C-v> open in vertical split
+" <C-W><C-x> open in horizontal split
+
+" <C-o> older jump position
+" <C-i> newer jump position
 
 " Split navigation
 nnoremap <A-j>  <C-W>j
