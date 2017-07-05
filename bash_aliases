@@ -1,2 +1,2 @@
 alias vim=nvim
-alias upgrade='sudo apt update && apt upgrade -y'
+alias upgrade='sudo apt update && sudo apt upgrade -y'
