@@ -2,20 +2,23 @@
   - include: debian.yml
     when: ansible_os_family == "Debian"
 
-  - name: Add .bashrc
-    template:
+  - name: Link .bashrc
+    file:
       src: "bashrc"
       dest: "{{ user_home }}/.bashrc"
+      state: link
 
-  - name: Add .bash_aliases
-    template:
+  - name: Link .bash_aliases
+    file:
       src: "bash_aliases"
       dest: "{{ user_home }}/.bash_aliases"
+      state: link
 
-  - name: Add .inputrc
-    template:
+  - name: Link .inputrc
+    file:
       src: "inputrc"
       dest: "{{ user_home }}/.inputrc"
+      state: link
 
   - name: Check if base16 exists
     stat: path="{{ user_home }}/.config/base16-shell"
@@ -28,4 +31,9 @@
       accept_hostkey=yes
     when: not base16_dir.stat.exists
 
+ - name: Link Xresources
+   file:
+     src: templates/Xresources
+     dest: "{{ user_home }}/Xresources"
+     state: link
 

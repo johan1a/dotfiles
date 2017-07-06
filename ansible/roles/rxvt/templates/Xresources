@@ -1,0 +1,181 @@
+
+! To see the current loaded resources: 
+! xrdb -query -all
+
+!----------!
+! Terminal !
+!----------!
+URxvt*loginShell: true
+
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
+
+!------!
+! font !
+!------!
+urxvt*font: xft:inconsolata:size=15
+urxvt*boldfont: xft:inconsolata:style=bold:size=15
+
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+
+! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
+
+
+*urxvt*.foreground:		#ffffff
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/b800
+
+URxvt*saveLines:  2048
+
+!-----------------!
+! scrollbar style ! - rxvt (default), plain (most compact), next, or xterm
+!-----------------!
+URxvt.scrollstyle: rxvt
+URxvt.scrollBar: false
+URxvt*scrollBar_right: false
+urxvt*shading: 15
+
+! do not scroll with output
+!URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+!URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+
+
+! Xcursor --------------------------------------------------------------------
+
+Xcursor.theme: Vanilla-DMZ-AA
+Xcursor.size:  22
+
+!----------------!
+! Clickable URLs !
+!----------------!
+
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/google-chrome-stable
+URxvt.matcher.button: 1
+
+URxvt.colorUL: #4682B4
+
+
+! x11-ssh-askpass ------------------------------------------------------------
+
+x11-ssh-askpass*font:                   -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+x11-ssh-askpass*background:             #000000
+x11-ssh-askpass*foreground:             #ffffff
+x11-ssh-askpass.Button*background:      #000000
+x11-ssh-askpass.Indicator*foreground:   #ff9900
+x11-ssh-askpass.Indicator*background:   #090909
+x11-ssh-askpass*topShadowColor:         #000000
+x11-ssh-askpass*bottomShadowColor:      #000000
+x11-ssh-askpass.*borderWidth:           1sud
+
+
+! xclock ---------------------------------------------------------------------
+
+xclock*update:            1
+xclock*analog:            false
+xclock*Foreground:        white
+xclock*background:        black
+
+
+! xpdf -----------------------------------------------------------------------
+
+xpdf*enableFreetype:    yes
+xpdf*antialias:         yes
+xpdf*foreground:        black
+xpdf*background:        white
+xpdf*urlCommand:        /usr/bin/firefox %s
+
+!xcalc-----------------------------------------------------------------------
+
+xcalc*geometry:                        200x275
+xcalc.ti.bevel.background:             #111111
+xcalc.ti.bevel.screen.background:      #000000
+xcalc.ti.bevel.screen.DEG.background:  #000000
+xcalc.ti.bevel.screen.DEG.foreground:  LightSeaGreen
+xcalc.ti.bevel.screen.GRAD.background: #000000
+xcalc.ti.bevel.screen.GRAD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.RAD.background:  #000000
+xcalc.ti.bevel.screen.RAD.foreground:  LightSeaGreen
+xcalc.ti.bevel.screen.INV.background:  #000000
+xcalc.ti.bevel.screen.INV.foreground:  Red
+xcalc.ti.bevel.screen.LCD.background:  #000000
+xcalc.ti.bevel.screen.LCD.foreground:  LightSeaGreen
+xcalc.ti.bevel.screen.LCD.shadowWidth: 0
+xcalc.ti.bevel.screen.M.background:    #000000
+xcalc.ti.bevel.screen.M.foreground:    LightSeaGreen
+xcalc.ti.bevel.screen.P.background:    #000000
+xcalc.ti.bevel.screen.P.foreground:    Yellow
+xcalc.ti.Command.foreground:  White
+xcalc.ti.Command.background:  #777777
+xcalc.ti.button5.background:  Orange3
+xcalc.ti.button19.background: #611161
+xcalc.ti.button18.background: #611161
+xcalc.ti.button20.background: #611111
+!uncomment to change label on division button
+!xcalc.ti.button20.label:      /
+xcalc.ti.button25.background: #722222
+xcalc.ti.button30.background: #833333
+xcalc.ti.button35.background: #944444
+xcalc.ti.button40.background: #a55555
+xcalc.ti.button22.background: #222262
+xcalc.ti.button23.background: #222262
+xcalc.ti.button24.background: #222272
+xcalc.ti.button27.background: #333373
+xcalc.ti.button28.background: #333373
+xcalc.ti.button29.background: #333373
+xcalc.ti.button32.background: #444484
+xcalc.ti.button33.background: #444484
+xcalc.ti.button34.background: #444484
+xcalc.ti.button37.background: #555595
+xcalc.ti.button38.background: #555595
+xcalc.ti.button39.background: #555595
+XCalc*Cursor:                 hand2
+XCalc*ShapeStyle:             rectangle
+
+! Prints all 256 colors across the screen, very quick.
+! (x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)
+
+
+! black dark/light
+!*color0: #073642
+!*color8: #002b36
+
+!! red dark/light
+!*color1: #dc322f
+!*color9: #cb4b16
+
+!! green dark/light
+!*color2: #859900
+!*color10: #586e75
+
+!! yellow dark/light
+!*color3: #b58900
+!*color11: #657b83
+
+!! blue dark/light
+!*color4: #268bd2
+!*color12: #839496
+
+!! magenta dark/light
+!*color5: #d33682
+!*color13: #6c71c4
+
+!! cyan dark/light
+!*color6: #2aa198
+!*color14: #93a1a1
+
+!! white dark/light
+!*color7: #eee8d5
+!*color15: #fdf6e3

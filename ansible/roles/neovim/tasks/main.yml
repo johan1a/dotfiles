@@ -56,7 +56,10 @@
     when: not vundle_dir.stat.exists
 
   - name: Install plugins
-    command: vim +PlugInstall +qall +UpdateRemotePlugins 
+    command: vim +PlugInstall +qall  
+
+  - name: Update remote plugins
+    command: vim +UpdateRemotePlugins +qall
 
   - name: Setup permissions
     file: 

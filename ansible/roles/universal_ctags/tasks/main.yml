@@ -20,3 +20,13 @@
             && sudo make install
     when: ctags_git.changed
 
+  - name: Stat .ctags 
+    stat: path="{{ user_home }}/.ctags"
+    register: ctags_stat
+      
+  - name: Link .ctags
+    file:
+      src: "templates/ctags"
+      dest: "{{ user_home }}/.ctags"
+      state: link
+    when: ctags_stat.stat.exists

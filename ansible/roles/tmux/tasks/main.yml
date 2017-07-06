@@ -1,0 +1,17 @@
+
+  - include: debian.yml
+    when: ansible_os_family == "Debian"
+
+  - name: Stat .tmux.conf 
+    stat: path="{{ user_home }}/.tmux.conf"
+    register: tmux_conf_stat
+
+  - name: Backup .tmux.conf
+    command: mv "{{ user_home }}/.tmux.conf" "{{ user_home }}/.tmux.conf.bak"
+    when: tmux_conf_stat.stat.exists
+
+  - name: Link .tmux.conf
+    file:
+      src: "tmux.conf"
+      dest: "{{ user_home }}/.tmux.conf"
+      state: link
