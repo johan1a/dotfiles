@@ -6,5 +6,4 @@ install:
   - sudo pip install ansible==2.0.0.2
 
 script:
-  - ansible-playbook --version
   - sh bootstrap.sh
