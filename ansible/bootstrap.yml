@@ -6,7 +6,7 @@
       - misc
       - git
       - rxvt
-      - universal_ctags
+        #      - universal_ctags
       - python
       - ruby
       - neovim
