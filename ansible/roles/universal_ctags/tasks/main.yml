@@ -20,13 +20,30 @@
             && sudo make install
     when: ctags_git.changed
 
+  - name: Compile universal-ctags from source
+    shell: "{{ user_home }}/autogen.sh" 
+    when: ctags_git.changed
+
+  - name: Compile universal-ctags from source
+    shell: "{{ user_home }}/configure" 
+    when: ctags_git.changed
+
+  - name: Compile universal-ctags from source
+    shell: "cd {{ user_home }} && make"
+    when: ctags_git.changed
+
+  - name: Compile universal-ctags from source
+    shell: "cd {{ user_home }} && sudo make install"
+    when: ctags_git.changed
+    become: true
+
   - name: Stat .ctags 
     stat: path="{{ user_home }}/.ctags"
     register: ctags_stat
       
   - name: Link .ctags
     file:
-      src: "templates/ctags"
+      src: "{{ user_home }}/dotfiles/ansible/roles/universal_ctags/files/ctags"
       dest: "{{ user_home }}/.ctags"
       state: link
     when: ctags_stat.stat.exists

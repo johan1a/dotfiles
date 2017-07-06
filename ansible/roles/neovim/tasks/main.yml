@@ -26,6 +26,11 @@
       state: absent
     when: init_vim_stat.stat.islnk is defined and init_vim_stat.stat.islnk
 
+  - name: Make sure .vim exists
+    file:
+      path: "{{ user_home }}/.vim"
+      state: directory
+
   - name: Link neovim to vim config
     file:
       src: "{{ user_home }}/.vim"

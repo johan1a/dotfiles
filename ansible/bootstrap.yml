@@ -3,7 +3,7 @@
     hosts: local
     become: true
     roles:
-      - setup
+      - misc
       - git
       - rxvt
       - universal_ctags

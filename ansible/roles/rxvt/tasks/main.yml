@@ -4,19 +4,19 @@
 
   - name: Link .bashrc
     file:
-      src: "bashrc"
+      src:  "{{ user_home }}/dotfiles/ansible/roles/rxvt/files/bashrc"
       dest: "{{ user_home }}/.bashrc"
       state: link
 
   - name: Link .bash_aliases
     file:
-      src: "bash_aliases"
+      src:  "{{ user_home }}/dotfiles/ansible/roles/rxvt/files/bash_aliases"
       dest: "{{ user_home }}/.bash_aliases"
       state: link
 
   - name: Link .inputrc
     file:
-      src: "inputrc"
+      src:  "{{ user_home }}/dotfiles/ansible/roles/rxvt/files/inputrc"
       dest: "{{ user_home }}/.inputrc"
       state: link
 
@@ -33,7 +33,7 @@
 
   - name: Link Xresources
     file:
-      src: templates/Xresources
+      src:  "{{ user_home }}/dotfiles/ansible/roles/rxvt/files/Xresources"
       dest: "{{ user_home }}/Xresources"
       state: link
 
