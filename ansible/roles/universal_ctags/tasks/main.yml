@@ -20,19 +20,19 @@
             && sudo make install
     when: ctags_git.changed
 
-  - name: Compile universal-ctags from source
-    shell: "{{ user_home }}/autogen.sh" 
+  - name: Run autogen.sh
+    shell: "sh {{ user_home }}/autogen.sh" 
     when: ctags_git.changed
 
-  - name: Compile universal-ctags from source
+  - name: Run configure
     shell: "{{ user_home }}/configure" 
     when: ctags_git.changed
 
-  - name: Compile universal-ctags from source
+  - name: Run make
     shell: "cd {{ user_home }} && make"
     when: ctags_git.changed
 
-  - name: Compile universal-ctags from source
+  - name: Run sudo make install
     shell: "cd {{ user_home }} && sudo make install"
     when: ctags_git.changed
     become: true
