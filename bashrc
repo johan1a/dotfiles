@@ -128,3 +128,5 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
+export ANSIBLE_NOCOWS=1
+

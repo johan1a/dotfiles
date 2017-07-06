@@ -1,0 +1,7 @@
+
+
+
+  - name: install git
+    apt: name=git state=latest
+    become_method: sudo
+

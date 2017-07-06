@@ -1,0 +1,5 @@
+
+- name: Set up local environment
+  hosts: local
+  roles: 
+    - git

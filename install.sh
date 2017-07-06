@@ -14,6 +14,7 @@ python3-pip \
 python-pip \
 ruby-dev \
 wmctrl \
+docker \
 dh-autoreconf # For universal-ctags
 
 # Bind fullscreen to F11: 
@@ -35,6 +36,9 @@ pip3 install --upgrade pip \
  && pip install --upgrade pip \
  && sudo pip2 install --upgrade neovim \
  && sudo gem install neovim
+
+sudo gpasswd -a $USER docker
+newgrp docker
 
 sudo ln -s ~/dotfiles/makesymlinks.sh /usr/local/bin/makesymlinks
 makesymlinks
