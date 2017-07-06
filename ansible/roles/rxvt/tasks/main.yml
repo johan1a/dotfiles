@@ -20,11 +20,11 @@
 
   - name: Backup .bash_aliases
     command: mv "{{ user_home }}/.bash_aliases" "{{ user_home }}/.bash_aliases.bak"
-    when: stat_bashrc.stat.exists
+    when: stat_bash_aliases.stat.exists
 
   - name: Backup .inputrc
     command: mv "{{ user_home }}/.inputrc" "{{ user_home }}/.inputrc.bak"
-    when: stat_bashrc.stat.exists
+    when: stat_inputrc.stat.exists
 
   - name: Link .bashrc
     file:
