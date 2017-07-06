@@ -4,3 +4,4 @@
   roles: 
     - git
     - rxvt
+    - universal_ctags
