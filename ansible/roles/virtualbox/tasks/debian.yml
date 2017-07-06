@@ -1,0 +1,5 @@
+
+  - name: install virtualbox-qt
+    apt: name=virtualbox-qt state=latest
+    become_method: sudo
+
