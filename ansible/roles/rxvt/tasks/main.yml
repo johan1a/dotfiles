@@ -2,6 +2,30 @@
   - include: debian.yml
     when: ansible_os_family == "Debian"
 
+  - name: Stat .bashrc
+    stat: path="{{ user_home }}/.bashrc"
+    register: stat_bashrc
+
+  - name: Stat .bash_aliases
+    stat: path="{{ user_home }}/.bash_aliases"
+    register: stat_bash_aliases
+
+  - name: Stat .inputrc
+    stat: path="{{ user_home }}/.inputrc"
+    register: stat_inputrc
+
+  - name: Backup .bashrc
+    command: mv  "{{ user_home }}/.bashrc" "{{ user_home }}/.bashrc.bak"
+    when: stat_bashrc.stat.exists
+
+  - name: Backup .bash_aliases
+    command: mv "{{ user_home }}/.bash_aliases" "{{ user_home }}/.bash_aliases.bak"
+    when: stat_bashrc.stat.exists
+
+  - name: Backup .inputrc
+    command: mv "{{ user_home }}/.inputrc" "{{ user_home }}/.inputrc.bak"
+    when: stat_bashrc.stat.exists
+
   - name: Link .bashrc
     file:
       src:  "{{ user_home }}/dotfiles/ansible/roles/rxvt/files/bashrc"
