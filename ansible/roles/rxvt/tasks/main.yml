@@ -31,9 +31,9 @@
       accept_hostkey=yes
     when: not base16_dir.stat.exists
 
- - name: Link Xresources
-   file:
-     src: templates/Xresources
-     dest: "{{ user_home }}/Xresources"
-     state: link
+  - name: Link Xresources
+    file:
+      src: templates/Xresources
+      dest: "{{ user_home }}/Xresources"
+      state: link
 
