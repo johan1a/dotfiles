@@ -2,4 +2,4 @@ sudo: enabled
 dist: trusty
 
 script:
-  - cd ansible && sh bootstrap.sh
+  - sh bootstrap.sh

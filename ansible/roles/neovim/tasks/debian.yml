@@ -1,0 +1,19 @@
+
+  - name: Install software-properties-common
+    apt: name=software-properties-common
+    become_method: sudo
+
+  - name: Add apt repository ppa:neovim-ppa/stable
+    apt_repository: repo:ppa:neovim-ppa/stable
+    state: present
+    become_method: sudo
+
+  - name: Update apt
+    become: true
+    apt:
+      update_cache: yes
+
+  - name: install neovim
+    apt: name=neovim state=latest
+    become_method: sudo
+
