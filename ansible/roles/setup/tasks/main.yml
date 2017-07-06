@@ -1,6 +1,6 @@
 
   - name: Make sure {{ user_home }} exists
-  - file: 
+    file: 
       path: "{{ user_home }}"
       state: directory
 
