@@ -1,6 +1,6 @@
 language: python
 sudo: enabled
-dist: trusty
+dist: xenial
 
 install:
   - sudo pip install ansible==2.0.0.2

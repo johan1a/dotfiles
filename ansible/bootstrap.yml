@@ -6,8 +6,9 @@
       - misc
       - git
       - rxvt
+      - tree
         #      - universal_ctags
       - python
       - ruby
       - neovim
-      - tree
+      - vagrant
