@@ -1,13 +1,9 @@
 
-  - name: Make sure {{ user_home }} exists
-    file: 
-      path: "{{ user_home }}"
-      state: directory
-
-  - name: Set up local environment
+  - name: Setup local environment
     hosts: local
     become: true
     roles:
+      - setup
       - git
       - rxvt
       - universal_ctags
