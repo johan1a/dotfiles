@@ -1,12 +1,16 @@
 
-- name: Set up local environment
-  hosts: local
-  become: true
-  roles:
-    - git
-    - rxvt
-    - universal_ctags
-    - python
-    - ruby
-    - neovim
-    - tree
+  - name: Make sure {{ user_home }} exists
+    file: "{{ user_home }}"
+    state: directory
+
+  - name: Set up local environment
+    hosts: local
+    become: true
+    roles:
+      - git
+      - rxvt
+      - universal_ctags
+      - python
+      - ruby
+      - neovim
+      - tree
