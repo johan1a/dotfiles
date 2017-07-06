@@ -1,7 +1,8 @@
 
   - name: Make sure {{ user_home }} exists
-    file: "{{ user_home }}"
-    state: directory
+    file: 
+      path: "{{ user_home }}"
+      state: directory
 
   - name: Set up local environment
     hosts: local
