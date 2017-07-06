@@ -2,7 +2,7 @@
 - name: Set up local environment
   hosts: local
   become: true
-  roles: 
+  roles:
     - git
     - rxvt
     - universal_ctags

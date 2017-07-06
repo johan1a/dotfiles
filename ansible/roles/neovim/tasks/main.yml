@@ -2,20 +2,29 @@
   - include: debian.yml
     when: ansible_os_family == "Debian"
 
-  - name: Remove default neovim and vim config
-    become: true
-    file:
-      path: "{{ user_home }}/{{ item }}"
-      state: absent
-    with_items:
-      - .config/nvim
-      - .vimrc
+  - name: Stat vimrc 
+    stat: path="{{ user_home }}/.vimrc"
+    register: vimrc_stat
 
-#  - name: Copy .vim
-#    become: true
-#    copy:
-#      src: "templates/vim"
-#      dest: "{{ user_home }}/.vim" 
+  - name: Stat .config/nvim 
+    stat: path="{{ user_home }}/.config/nvim"
+    register: nvim_stat
+
+  - name: Stat .vim/init.vim 
+    stat: path="{{ user_home }}/.vim/init.vim"
+    register: init_vim_stat
+
+  - name: Remove .config/nvim if it's a symlink
+    file:
+      path: "{{ user_home }}/.config/nvim"
+      state: absent
+    when: nvim_stat.stat.islnk is defined and nvim_stat.stat.islnk
+
+  - name: Remove .vim/init.vim if it's a symlink
+    file:
+      path: "{{ user_home }}/.vim/init.vim"
+      state: absent
+    when: init_vim_stat.stat.islnk is defined and init_vim_stat.stat.islnk
 
   - name: Link neovim to vim config
     file:
@@ -23,23 +32,36 @@
       dest: "{{ user_home }}/.config/nvim" 
       state: link
 
-  - name: Copy .vimrc
-    template:
-      src: "vimrc"
-      dest: "{{ user_home }}/.vimrc"
+  - name: Backup vimrc
+    command: mv "{{ user_home }}/.vimrc" "{{ user_home }}/.vimrc.bak"
+    when: vimrc_stat.stat.exists
 
-  - name: Link init.vim to .vimrc
+  - name: Symlink .vimrc
     file:
-      src: "{{ user_home }}/.vimrc"
-      dest: "{{ user_home }}/.vim/init.vim" 
+      src: "{{ user_home }}/dotfiles/ansible/roles/neovim/templates/vimrc"
+      dest: "{{ user_home }}/{{ item }}"
       state: link
+    with_items:
+      - .vimrc
+      - .vim/init.vim
 
   - name: Check if Vundle exists
     stat: path="{{ user_home }}/.vim/bundle/Vundle.vim"
     register: vundle_dir
 
-  - name: Install Vundle {{ vundle_dir.stat }}
+  - name: Install Vundle 
     git: repo=https://github.com/VundleVim/Vundle.vim.git
          dest="{{ user_home }}/.vim/bundle/Vundle.vim"
          accept_hostkey=yes
     when: not vundle_dir.stat.exists
+
+  - name: Install plugins
+    command: vim +PlugInstall +qall +UpdateRemotePlugins 
+
+  - name: Setup permissions
+    file: 
+      path: "{{ user_home }}/.vim"
+      owner: "{{ username }}"
+      group: "{{ username }}"
+      recurse: yes
+
