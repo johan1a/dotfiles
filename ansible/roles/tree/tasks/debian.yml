@@ -1,0 +1,6 @@
+
+
+  - name: install tree
+    apt: name=tree state=latest
+    become_method: sudo
+
