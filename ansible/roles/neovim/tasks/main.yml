@@ -3,9 +3,28 @@
     when: ansible_os_family == "Debian"
 
 
+  - name: Remove default neovim config
+    file:
+      path: "{{ user_home }}/{{ item }}"
+      state: absent
+    with_items:
+      - .config/nvim
+      - .vim/init.vim
+
+  - name: Link neovim to vim config
+    file:
+      dest: "{{ user_home }}/.config/nvim" 
+      src: "{{ user_home }}/.vim"
+      state: link
 
   - name: Copy .vimrc
     template:
-      src: "gitconfig"
-      dest: "{{ user_home }}/.gitconfig"
+      src: "vimrc"
+      dest: "{{ user_home }}/.vimrc"
+
+  - name: Link init.vim to .vimrc
+    file:
+      src: "{{ user_home }}/.vimrc"
+      dest: "{{ user_home }}/.config/nvim" 
+      state: link
 
