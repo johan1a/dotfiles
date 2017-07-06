@@ -1,0 +1,13 @@
+
+  - include: debian.yml
+    when: ansible_os_family == "Debian"
+
+  - name: Install neovim pip2 package
+    pip:
+      name: neovim
+      state: latest
+
+  - name: Install neovim pip2 package
+    pip:
+      name: neovim
+      state: latest

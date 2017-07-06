@@ -2,7 +2,6 @@
   - include: debian.yml
     when: ansible_os_family == "Debian"
 
-
   - name: Remove default neovim config
     file:
       path: "{{ user_home }}/{{ item }}"
@@ -28,3 +27,7 @@
       dest: "{{ user_home }}/.config/nvim" 
       state: link
 
+  - name: Install Vundle
+    git: repo=https://github.com/VundleVim/Vundle.vim.git
+         dest="{{ user_home }}/.vim/bundle/Vundle.vim"
+         accept_hostkey=yes

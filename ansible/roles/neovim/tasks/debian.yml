@@ -4,9 +4,10 @@
     become_method: sudo
 
   - name: Add apt repository ppa:neovim-ppa/stable
-    apt_repository: repo:ppa:neovim-ppa/stable
-    state: present
-    become_method: sudo
+    become: true
+    apt_repository: 
+      repo: ppa:neovim-ppa/stable
+      state: present
 
   - name: Update apt
     become: true
