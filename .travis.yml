@@ -3,7 +3,7 @@ sudo: enabled
 dist: trusty
 
 install:
-  - sudo apt install ansible
+  - sudo apt update && sudo apt install ansible
 
 script:
   - ansible-playbook --version
