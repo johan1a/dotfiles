@@ -26,6 +26,6 @@
       repo=https://github.com/chriskempson/base16-shell.git 
       dest="{{ user_home }}/.config/base16-shell"
       accept_hostkey=yes
-    when: base16_dir.stat.exists
+    when: not base16_dir.stat.exists
 
 

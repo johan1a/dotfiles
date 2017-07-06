@@ -2,18 +2,25 @@
   - include: debian.yml
     when: ansible_os_family == "Debian"
 
-  - name: Remove default neovim config
+  - name: Remove default neovim and vim config
+    become: true
     file:
       path: "{{ user_home }}/{{ item }}"
       state: absent
     with_items:
       - .config/nvim
-      - .vim/init.vim
+      - .vimrc
+
+#  - name: Copy .vim
+#    become: true
+#    copy:
+#      src: "templates/vim"
+#      dest: "{{ user_home }}/.vim" 
 
   - name: Link neovim to vim config
     file:
-      dest: "{{ user_home }}/.config/nvim" 
       src: "{{ user_home }}/.vim"
+      dest: "{{ user_home }}/.config/nvim" 
       state: link
 
   - name: Copy .vimrc
@@ -24,10 +31,15 @@
   - name: Link init.vim to .vimrc
     file:
       src: "{{ user_home }}/.vimrc"
-      dest: "{{ user_home }}/.config/nvim" 
+      dest: "{{ user_home }}/.vim/init.vim" 
       state: link
 
-  - name: Install Vundle
+  - name: Check if Vundle exists
+    stat: path="{{ user_home }}/.vim/bundle/Vundle.vim"
+    register: vundle_dir
+
+  - name: Install Vundle {{ vundle_dir.stat }}
     git: repo=https://github.com/VundleVim/Vundle.vim.git
          dest="{{ user_home }}/.vim/bundle/Vundle.vim"
          accept_hostkey=yes
+    when: not vundle_dir.stat.exists

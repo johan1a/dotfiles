@@ -10,7 +10,7 @@
     git: repo=https://github.com/universal-ctags/ctags.git
          dest="{{ user_home }}/ctags_install"
     register: ctags_git
-    when: ctags_dir.stat.exists
+    when: not ctags_dir.stat.exists
 
   - name: Compile universal-ctags from source
     shell: cd {{ user_home }}/ctags \

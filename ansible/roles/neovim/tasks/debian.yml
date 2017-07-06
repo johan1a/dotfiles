@@ -8,11 +8,13 @@
     apt_repository: 
       repo: ppa:neovim-ppa/stable
       state: present
+    register: neovim_repo
 
   - name: Update apt
     become: true
     apt:
       update_cache: yes
+    when: neovim_repo.changed
 
   - name: install neovim
     apt: name=neovim state=latest
