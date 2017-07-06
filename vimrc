@@ -107,6 +107,8 @@ set grepprg=grep\ -nH\ $*
 " :find <substring of open buffer> 
 set path+=**
 
+" Tab completion behavior
+set wildmode=longest,list,full
 " Display all matches when tab completing
 set wildmenu
 
