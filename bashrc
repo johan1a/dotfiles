@@ -109,7 +109,6 @@ if [ -f ~/.env_vars ]; then
     . ~/.env_vars
 fi
 
-# Bind key F11: wmctrl -r ":ACTIVE:" -b toggle,fullscreen
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
