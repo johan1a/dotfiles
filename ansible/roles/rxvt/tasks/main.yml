@@ -1,0 +1,9 @@
+
+  - include: debian.yml
+    when: ansible_os_family == "Debian"
+
+  - name: Update .bashrc
+    template:
+      src: "bashrc"
+      dest: "{{ user_home }}/.bashrc"
+
