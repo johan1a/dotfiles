@@ -2,7 +2,12 @@
   - include: debian.yml
     when: ansible_os_family == "Debian"
 
-  - name: Update gitconfig
+  - name: Backup .gitconfig
+    copy:
+      src: "{{ user_home }}/.gitconfig"
+      dest: "{{ user_home }}/.gitconfig.bak"
+
+  - name: Update .gitconfig
     file:
       src: "{{ user_home }}/dotfiles/ansible/roles/git/files/gitconfig"
       dest: "{{ user_home }}/.gitconfig"
