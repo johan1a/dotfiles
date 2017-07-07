@@ -8,6 +8,7 @@
       dest: "{{ user_home }}/.gitconfig.bak"
 
   - name: Update .gitconfig
+    become: true
     file:
       src: "{{ user_home }}/dotfiles/ansible/roles/git/files/gitconfig"
       dest: "{{ user_home }}/.gitconfig"
