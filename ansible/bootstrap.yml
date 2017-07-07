@@ -8,9 +8,15 @@
       - rxvt
       - tree
       - tmux
-        #      - universal_ctags
       - python
       - ruby
-      - neovim
       - virtualbox
       - vagrant
+
+  - name: Setup local environment cont'd
+    hosts: local
+    become: true
+    roles:
+      - universal_ctags
+      - neovim
+    when: not lookup('env', 'CI')
