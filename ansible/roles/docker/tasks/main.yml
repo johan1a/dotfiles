@@ -8,5 +8,6 @@
 
   - name: Run newgrp docker
     command: newgrp docker
+    become: yes
 
 
