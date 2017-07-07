@@ -1,5 +1,5 @@
 
   - name: install docker
-    apt: name=docker state=latest
+    apt: name=docker.io state=latest
     become_method: sudo
 
