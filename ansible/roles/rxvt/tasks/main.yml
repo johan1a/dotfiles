@@ -58,6 +58,10 @@
   - name: Link Xresources
     file:
       src:  "{{ user_home }}/dotfiles/ansible/roles/rxvt/files/Xresources"
-      dest: "{{ user_home }}/Xresources"
+      dest: "{{ user_home }}/.Xresources"
       state: link
+
+  - name: run xrdb
+    command: xrdb -merge "{{ user_home }}/Xresources"
+
 
