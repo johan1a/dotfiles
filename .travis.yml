@@ -7,8 +7,7 @@ global:
   - CI=True
 
 before_install:
-  - echo $CI
-  - echo $TRAVIS
+  - sed -i -e 's/johan/travis/g' ansible/group_vars/local.yml
   - sudo apt-get update
 
 install:
