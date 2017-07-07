@@ -1,10 +1,10 @@
 
-  - Name: Install neovim gem
+  - name: Install neovim gem
     gem:
       name: neovim
       state: latest
 
-  - Name: Install neovim pip package
+  - name: Install neovim pip package
     pip:
       name: neovim
       state: latest
