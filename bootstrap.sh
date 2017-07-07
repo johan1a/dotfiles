@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt update \
-  && sudo apt install git ansible -y \
+sudo apt-get update \
+  && sudo apt-get install git ansible -y \
   && cd ansible \
   && ansible-playbook bootstrap.yml -i hosts.ini --sudo
