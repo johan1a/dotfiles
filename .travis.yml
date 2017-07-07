@@ -2,6 +2,10 @@ language: python
 sudo: enabled
 dist: xenial
 
+env:
+global:
+  - CI=True
+
 before_install:
   - echo $CI
   - echo $TRAVIS
