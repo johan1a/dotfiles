@@ -1,0 +1,6 @@
+
+
+  - name: install xrdb
+    apt: name=xrdb state=latest
+    become_method: sudo
+

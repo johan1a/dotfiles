@@ -62,6 +62,6 @@
       state: link
 
   - name: run xrdb
-    command: xrdb -merge "{{ user_home }}/Xresources"
+    command: xrdb -merge "{{ user_home }}/.Xresources"
 
 
