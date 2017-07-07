@@ -1,4 +1,14 @@
 
+  - Name: Install neovim gem
+    gem:
+      name: neovim
+      state: latest
+
+  - Name: Install neovim pip package
+    pip:
+      name: neovim
+      state: latest
+
   - name: Stat vimrc 
     stat: path="{{ user_home }}/.vimrc"
     register: vimrc_stat

@@ -9,8 +9,8 @@
       - tree
       - tmux
       - universal_ctags
-      - neovim
       - python
       - ruby
+      - neovim
       - virtualbox
       - vagrant
