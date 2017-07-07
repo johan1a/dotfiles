@@ -1,7 +1,7 @@
 
   - include: debian.yml
-    when: ansible_os_family == "Debian"
-
+    when: not lookup('env', 'CI') and ansible_os_family == "Debian"
+    
   - include: neovim.yml
     when: not lookup('env', 'CI')
 
