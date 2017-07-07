@@ -12,6 +12,6 @@
 
   - name: Link .tmux.conf
     file:
-      src: "tmux.conf"
+      src: "{{ user_home }}/dotfiles/ansible/roles/tmux/files/tmux.conf"
       dest: "{{ user_home }}/.tmux.conf"
       state: link
