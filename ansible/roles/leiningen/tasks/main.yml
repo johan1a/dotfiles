@@ -1,0 +1,22 @@
+
+  - include: debian.yml
+    when: ansible_os_family == "Debian"
+
+  - name: Download Leiningen install script
+    command: wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+
+  - name: Move install script to executable location
+    command: mv lein /usr/local/bin/lein
+    become: true
+
+  - name: Setup permissions
+    command: chmod a+x /usr/local/bin/lein
+    become: true
+
+  - name: Run lein
+    command: /usr/local/bin/lein
+
+  - name: Add lein to path TODO probably won't work
+    command: export PATH=$PATH:/usr/local/bin
+
+
