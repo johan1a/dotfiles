@@ -7,9 +7,7 @@
     register: gitconfig_stat
 
   - name: Backup .gitconfig
-    copy:
-      src: "{{ user_home }}/.gitconfig"
-      dest: "{{ user_home }}/.gitconfig.bak"
+    command: mv "{{ user_home }}/.gitconfig" "{{ user_home }}/.gitconfig.bak"
     when: gitconfig_stat.stat.exists
 
   - name: Update .gitconfig
