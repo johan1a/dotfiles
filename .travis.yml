@@ -9,12 +9,11 @@ global:
 before_install:
   - sed -i -e 's/johan/travis/g' ansible/group_vars/local.yml
   - sudo apt-get update
-  - ansible --version
-  - sudo apt-get remove ansible
   - cat /home/travis/.gitconfig
 
 install:
   - sudo pip install ansible==2.0.0.2
+  - rm /etc/ansible/ansible.cfg
 
 script:
   - sh bootstrap.sh
