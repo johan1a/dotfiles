@@ -9,8 +9,8 @@ global:
 before_install:
   - sed -i -e 's/johan/travis/g' ansible/group_vars/local.yml
   - sudo apt-get update
+  - ansible --version
   - sudo apt-get remove ansible
-  - sudo pip uninstall ansible
   - cat /home/travis/.gitconfig
 
 install:
