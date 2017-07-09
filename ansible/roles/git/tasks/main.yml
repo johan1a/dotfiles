@@ -8,11 +8,11 @@
 
   - name: Backup .gitconfig
     command: mv "{{ user_home }}/.gitconfig" "{{ user_home }}/.gitconfig.bak"
-    when: gitconfig_stat.stat.exists
     become: true
+    when: gitconfig_stat.stat.exists
 
   - name: Update .gitconfig
-    become: true
+    become: yes
     file:
       src: "{{ user_home }}/dotfiles/ansible/roles/git/files/gitconfig"
       dest: "{{ user_home }}/.gitconfig"

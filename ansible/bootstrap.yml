@@ -12,6 +12,7 @@
       - python
       - ruby
       - neovim
+      - leiningen
       - virtualbox
       - vagrant
       - docker
