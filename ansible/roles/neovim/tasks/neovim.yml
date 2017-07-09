@@ -50,7 +50,7 @@
 
   - name: Symlink .vimrc
     file:
-      src: "{{ user_home }}/dotfiles/ansible/roles/neovim/templates/vimrc"
+      src: "{{ dotfiles_dir }}/ansible/roles/neovim/templates/vimrc"
       dest: "{{ user_home }}/{{ item }}"
       state: link
     with_items:

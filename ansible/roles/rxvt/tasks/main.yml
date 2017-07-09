@@ -28,19 +28,19 @@
 
   - name: Link .bashrc
     file:
-      src:  "{{ user_home }}/dotfiles/ansible/roles/rxvt/files/bashrc"
+      src:  "{{ dotfiles_dir }}/ansible/roles/rxvt/files/bashrc"
       dest: "{{ user_home }}/.bashrc"
       state: link
 
   - name: Link .bash_aliases
     file:
-      src:  "{{ user_home }}/dotfiles/ansible/roles/rxvt/files/bash_aliases"
+      src:  "{{ dotfiles_dir }}/ansible/roles/rxvt/files/bash_aliases"
       dest: "{{ user_home }}/.bash_aliases"
       state: link
 
   - name: Link .inputrc
     file:
-      src:  "{{ user_home }}/dotfiles/ansible/roles/rxvt/files/inputrc"
+      src:  "{{ dotfiles_dir }}/ansible/roles/rxvt/files/inputrc"
       dest: "{{ user_home }}/.inputrc"
       state: link
 
@@ -57,7 +57,7 @@
 
   - name: Link Xresources
     file:
-      src:  "{{ user_home }}/dotfiles/ansible/roles/rxvt/files/Xresources"
+      src:  "{{ dotfiles_dir }}//ansible/roles/rxvt/files/Xresources"
       dest: "{{ user_home }}/.Xresources"
       state: link
 

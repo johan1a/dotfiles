@@ -40,7 +40,7 @@
       
   - name: Link .ctags
     file:
-      src: "{{ user_home }}/dotfiles/ansible/roles/universal_ctags/files/ctags"
+      src: "{{ dotfiles_dir }}/ansible/roles/universal_ctags/files/ctags"
       dest: "{{ user_home }}/.ctags"
       state: link
     when: ctags_stat.stat.exists

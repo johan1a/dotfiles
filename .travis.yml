@@ -8,13 +8,13 @@ global:
 
 before_install:
   - ls -l 
-  - sed -i -e 's/\/home\/johan/$TRAVIS_BUILD_DIR/g' ansible/group_vars/local.yml
+  - sed -i -e 's/\/home\/johan\/dotfiles/$TRAVIS_BUILD_DIR/g' ansible/group_vars/local.yml
   - sed -i -e 's/johan/travis/g' ansible/group_vars/local.yml
   - sudo apt-get update
   - cat /home/travis/.gitconfig
 
 script:
   - ls -l 
-  - ls -l /home/travis
-  - ls -l /home/travis/ansible/roles/git/files
+  - ls -l $TRAVIS_BUILD_DIR
+  - ls -l $TRAVIS_BUILD_DIR/dotfiles/ansible/roles/git/files
   - sh bootstrap.sh
