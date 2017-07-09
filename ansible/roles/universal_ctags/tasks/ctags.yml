@@ -5,32 +5,24 @@
 
   - name: Pull universal ctags source
     git: repo=https://github.com/universal-ctags/ctags.git
-         dest="{{ user_home }}/ctags_install"
+         dest="{{ user_home }}/ctags"
     register: ctags_git
     when: not ctags_dir.stat.exists
 
-  - name: Compile universal-ctags from source
-    shell: cd {{ user_home }}/ctags_install \
-            && ./autogen.sh \
-            && ./configure \
-            && make \
-            && sudo make install
-    when: ctags_git.changed
-
   - name: Run autogen.sh
-    shell: "sh {{ user_home }}/autogen.sh" 
+    command: "{{ user_home }}/ctags/autogen.sh" 
     when: ctags_git.changed
 
   - name: Run configure
-    shell: "{{ user_home }}/configure" 
+    command: "cd {{ user_home }}/ctags && configure" 
     when: ctags_git.changed
 
   - name: Run make
-    shell: "cd {{ user_home }} && make"
+    shell: "cd {{ user_home }}/ctags && make"
     when: ctags_git.changed
 
   - name: Run sudo make install
-    shell: "cd {{ user_home }} && sudo make install"
+    shell: "cd {{ user_home }}/ctags && sudo make install"
     when: ctags_git.changed
     become: true
 
