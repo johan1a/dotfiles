@@ -11,9 +11,5 @@ before_install:
   - sudo apt-get update
   - cat /home/travis/.gitconfig
 
-install:
-  - sudo -U travis pip install --user ansible==2.0.0.2
-  - ansible --version
-
 script:
   - sh bootstrap.sh
