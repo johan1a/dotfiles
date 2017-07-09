@@ -6,10 +6,9 @@
     stat: path="{{ user_home }}/.gitconfig"
     register: gitconfig_stat
 
-  - name: Backup .gitconfig {{ user_home }}
-    command: "mv {{ user_home }}/.gitconfig {{ user_home }}/.gitconfig.bak"
+  - name: Backup .gitconfig
+    command: "mv /home/travis/.gitconfig /home/travis/.gitconfig.bak"
     become: true
-    when: gitconfig_stat.stat.exists
 
   - name: Update .gitconfig
     become: true
