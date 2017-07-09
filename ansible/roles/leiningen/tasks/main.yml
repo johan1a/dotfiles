@@ -2,21 +2,30 @@
   - include: debian.yml
     when: ansible_os_family == "Debian"
 
-  - name: Download Leiningen install script
-    command: wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+  - name: Stat lein
+    stat: path=/usr/local/bin/lein
+    register: stat_lein
 
-  - name: Move install script to executable location
-    command: mv lein /usr/local/bin/lein
+  - name: Download Leiningen install script
+    get_url: 
+      url: https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+      dest: /usr/local/bin/lein
     become: true
+    when: not stat_lein.stat.exists
 
   - name: Setup permissions
-    command: chmod a+x /usr/local/bin/lein
+    file: 
+    path: /usr/local/bin/lein
+    mode: a+x
     become: true
+    when: not stat_lein.stat.exists
 
   - name: Run lein
     command: /usr/local/bin/lein
+    when: not stat_lein.stat.exists
 
-  - name: Add lein to path TODO probably won't work
-    command: export PATH=$PATH:/usr/local/bin
+ # - name: Add lein to path TODO probably won't work
+ #   command: export PATH=$PATH:/usr/local/bin
+#    when: not stat_lein.stat.exists
 
 

@@ -5,12 +5,12 @@
 
   - name: Pull universal ctags source
     git: repo=https://github.com/universal-ctags/ctags.git
-         dest="{{ user_home }}/ctags"
+         dest="{{ user_home }}/"
     register: ctags_git
     when: not ctags_dir.stat.exists
 
   - name: Run autogen.sh
-    command: "cd {{ user_home }}/ctags/ && autogen.sh" 
+    command: "cd {{ user_home }}/ctags && autogen.sh" 
     when: ctags_git.changed
 
   - name: Run configure
