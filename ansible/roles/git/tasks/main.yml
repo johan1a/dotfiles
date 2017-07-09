@@ -11,8 +11,6 @@
     become: true
     when: gitconfig_stat.stat.exists
 
-  - command: ls -l "{{ user_home }}/dotfiles/ansible/roles/git/files"
-
   - name: Update .gitconfig
     become: true
     file:
