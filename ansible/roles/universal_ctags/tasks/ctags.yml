@@ -10,7 +10,7 @@
     when: not ctags_dir.stat.exists
 
   - name: Run autogen.sh
-    command: "{{ user_home }}/ctags/autogen.sh" 
+    command: "cd {{ user_home }}/ctags/ && autogen.sh" 
     when: ctags_git.changed
 
   - name: Run configure
