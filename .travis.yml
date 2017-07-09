@@ -12,4 +12,7 @@ before_install:
   - cat /home/travis/.gitconfig
 
 script:
+  - ls -l 
+  - ls -l /home/travis
+  - ls -l /home/travis/ansible/roles/git/files
   - sh bootstrap.sh
