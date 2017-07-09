@@ -9,6 +9,7 @@ global:
 before_install:
   - sed -i -e 's/johan/travis/g' ansible/group_vars/local.yml
   - sudo apt-get update
+  - cat /home/travis/.gitconfig
 
 install:
   - sudo pip install ansible==2.0.0.2
