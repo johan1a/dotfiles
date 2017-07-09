@@ -7,7 +7,7 @@
     register: gitconfig_stat
 
   - name: Backup .gitconfig
-    command: mv "{{ user_home }}/.gitconfig" "{{ user_home }}/.gitconfig.bak"
+    command: "mv {{ user_home }}/.gitconfig {{ user_home }}/.gitconfig.bak"
     become: true
     when: gitconfig_stat.stat.exists
 
