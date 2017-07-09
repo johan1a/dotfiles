@@ -15,8 +15,8 @@
 
   - name: Setup permissions
     file: 
-    path: /usr/local/bin/lein
-    mode: a+x
+      path: /usr/local/bin/lein
+      mode: a+x
     become: true
     when: not stat_lein.stat.exists
 
