@@ -16,5 +16,5 @@ before_install:
 script:
   - ls -l 
   - ls -l $TRAVIS_BUILD_DIR
-  - ls -l $TRAVIS_BUILD_DIR/dotfiles/ansible/roles/git/files
+  - ls -l $TRAVIS_BUILD_DIR/ansible/roles/git/files
   - sh bootstrap.sh

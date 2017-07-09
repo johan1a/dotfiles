@@ -10,7 +10,7 @@
     when: not ctags_dir.stat.exists
 
   - name: Compile universal-ctags from source
-    shell: cd {{ user_home }}/ctags \
+    shell: cd {{ user_home }}/ctags_install \
             && ./autogen.sh \
             && ./configure \
             && make \
