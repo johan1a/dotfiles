@@ -12,7 +12,7 @@ before_install:
   - cat /home/travis/.gitconfig
 
 install:
-  - sudo -u travis && sudo pip install --user ansible==2.0.0.2
+  - sudo -U travis pip install --user ansible==2.0.0.2
   - ansible --version
 
 script:
