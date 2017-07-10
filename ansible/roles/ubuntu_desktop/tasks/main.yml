@@ -1,0 +1,3 @@
+
+  - include: ubuntu_desktop.yml
+    when: ansible_os_family == "Debian" and lookup('env', 'Travis')

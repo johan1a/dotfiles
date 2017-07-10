@@ -1,0 +1,25 @@
+
+  - name: Setup permissions
+    file: 
+      path: "{{ user_home }}"
+      owner: "{{ username }}"
+      recurse: yes
+    become: true
+
+  - name: Install ubuntu-desktop
+    apt: name=ubuntu-desktop state=latest
+    become_method: sudo
+
+  - name: Install Virtualbox guest additions
+    apt: name="{{ item }}" state=latest
+    become_method: sudo
+    with_items:
+      - virtualbox-guest-dkms 
+      - virtualbox-guest-utils 
+      - virtualbox-guest-x11
+
+
+sudo chown -R {{ user_name }}: {{ user_home }}
+sudo apt-get install ubuntu-desktop install virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
+
+

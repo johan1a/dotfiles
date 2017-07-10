@@ -5,6 +5,7 @@
     roles:
       - misc
       - git
+      - ubuntu_desktop
       - rxvt
       - tree
       - tmux

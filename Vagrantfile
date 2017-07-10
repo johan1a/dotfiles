@@ -9,7 +9,8 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/xenial64"
-  config.vm.provision "shell", inline: "cp -r /vagrant /home/ubuntu/dotfiles"
+  config.vm.provision "shell", inline: "sudo apt-get install git"
+  config.vm.provision "shell", inline: "git clone https://github.com/johan1a/dotfiles.git"
   config.vm.provision "shell", 
     inline: "sed -i -e 's/johan/ubuntu/g' /home/ubuntu/dotfiles/ansible/group_vars/local.yml"
   config.vm.provision "shell", inline: "cd /home/ubuntu/dotfiles && sh /home/ubuntu/dotfiles/bootstrap.sh",  env: {"Vagrant" => "True"}
