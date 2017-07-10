@@ -63,7 +63,7 @@
 
   - name: run xrdb
     command: xrdb -merge "{{ user_home }}/.Xresources"
-    when: not lookup('env', 'CI')
+    when: not lookup('env', 'CI') and not lookup('env', 'Vagrant')
 
 
 
