@@ -13,8 +13,8 @@ URxvt.preeditType: OverTheSpot
 !------!
 ! font !
 !------!
-urxvt*font: xft:inconsolata:size=15
-urxvt*boldfont: xft:inconsolata:style=bold:size=15
+urxvt*font: xft:inconsolata:size=14
+urxvt*boldfont: xft:inconsolata:style=bold:size=14
 
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
