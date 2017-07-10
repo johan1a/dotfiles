@@ -13,7 +13,7 @@
     pip:
       name: neovim
       state: latest
-      executable: pip-3
+      executable: pip3
 
   - name: Stat vimrc 
     stat: path="{{ user_home }}/.vimrc"
