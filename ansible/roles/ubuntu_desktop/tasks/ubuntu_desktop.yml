@@ -19,7 +19,3 @@
       - virtualbox-guest-x11
 
 
-sudo chown -R {{ user_name }}: {{ user_home }}
-sudo apt-get install ubuntu-desktop install virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
-
-
