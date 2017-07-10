@@ -9,6 +9,12 @@
       name: neovim
       state: latest
 
+  - name: Install neovim pip3 package
+    pip:
+      name: neovim
+      state: latest
+      executable: pip-3
+
   - name: Stat vimrc 
     stat: path="{{ user_home }}/.vimrc"
     register: vimrc_stat
