@@ -4,7 +4,7 @@
     become_method: sudo
 
   - name: Upgrade pip3
-    command: sudo pip3 install pip --Upgrade
+    command: sudo pip3 install pip --upgrade
     become: true
 
   - name: install Python2
