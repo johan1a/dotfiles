@@ -204,6 +204,10 @@ nnoremap <A-k>  <C-W>k
 nnoremap <A-h>  <C-W>h
 nnoremap <A-l>  <C-W>l
 
+" Increment / Decrement numbers
+nnoremap <A-a> <C-a>
+nnoremap <A-x> <C-x>
+
 nnoremap ö {
 nnoremap ä }
 
