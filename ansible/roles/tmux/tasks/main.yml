@@ -2,7 +2,10 @@
   - include: debian.yml
     when: ansible_os_family == "Debian"
 
-  - name: Stat .tmux.conf 
+  - include: arch.yml
+    when: ansible_os_family == "Archlinux"
+
+  - name: Stat .tmux.conf
     stat: path="{{ user_home }}/.tmux.conf"
     register: tmux_conf_stat
 

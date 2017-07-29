@@ -1,0 +1,24 @@
+
+  - name: Install virtualbox
+    pacman:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - virtualbox-host-modules-arch
+      - virtualbox
+      - net-tools
+      - virtualbox-guest-iso 
+
+  - name: Load virtualbox modules
+    modprobe:
+      name: vboxdrv
+      state: present
+    with_items:
+      - vboxdrv
+      - vboxnetadp
+      - vboxnetflt
+
+  - name: Reload virtualbox
+    command: vboxreload
+    become: true
+

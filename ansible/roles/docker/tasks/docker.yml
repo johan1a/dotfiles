@@ -1,0 +1,22 @@
+
+  - include: debian.yml
+    when: ansible_os_family == "Debian"
+
+  - include: arch.yml
+    when: ansible_os_family == "Archlinux"
+
+  - name: Start dockerd
+    service:
+      name: docker
+      state: started
+      enabled: yes
+
+  - name: Add user to docker group
+    command: gpasswd -a $USER docker
+    become: yes
+
+  - name: Run newgrp docker
+    command: newgrp docker
+    become: yes
+
+

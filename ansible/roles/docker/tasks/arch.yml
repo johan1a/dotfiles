@@ -1,0 +1,6 @@
+
+  - name: install docker
+    pacman:
+      name: docker
+      state: latest
+

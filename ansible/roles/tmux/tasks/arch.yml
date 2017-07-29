@@ -1,0 +1,6 @@
+
+  - name: install tmux
+    pacman:
+      name: tmux
+      state: latest
+

@@ -1,0 +1,6 @@
+
+  - name: install git
+    pacman:
+      name: git 
+      state: latest
+

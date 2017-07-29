@@ -1,0 +1,6 @@
+
+  - name: install vagrant
+    pacman:
+      name: vagrant
+      state: latest
+

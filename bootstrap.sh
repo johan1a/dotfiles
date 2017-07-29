@@ -1,8 +1,17 @@
 #!/bin/bash
 
-sudo apt-get update \
-  && sudo apt-get install libssl-dev python-pip -y \
-  && pip install --upgrade pip \
-  && sudo pip install ansible \
-  && ansible-playbook ansible/bootstrap.yml -i ansible/hosts.ini --sudo
-#  && sudo pip install ansible==2.0.0.2 \
+NAME_STR="$(head -n 1 /etc/os-release)"
+OS="$(echo ${NAME_STR} | sed 's/NAME=//g')"
+OS="${OS//\"}"
+
+if [[ "${OS}" == "Ubuntu" ]] ; then
+  sudo apt-get update
+  sudo apt-get install libssl-dev python-pip -y
+elif [[ "${OS}" == "Arch Linux" ]] ; then
+  sudo pacman -Syu --noconfirm
+  sudo pacman -S python-pip --noconfirm
+fi
+
+pip install --upgrade pip
+sudo pip install ansible
+ansible-playbook ansible/bootstrap.yml -i ansible/hosts.ini --sudo

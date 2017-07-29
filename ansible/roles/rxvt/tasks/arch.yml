@@ -1,0 +1,7 @@
+
+  - name: install rxvt-unicode
+    pacman:
+      name: rxvt-unicode
+      state: latest
+    become_method: sudo
+

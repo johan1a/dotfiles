@@ -1,7 +1,4 @@
 
-  - include: debian.yml
-    when: ansible_os_family == "Debian"
-
   - name: Stat lein
     stat: path=/usr/local/bin/lein
     register: stat_lein

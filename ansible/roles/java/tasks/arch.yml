@@ -1,0 +1,6 @@
+
+  - name: install jdk8-openjdk
+    pacman:
+      name: jdk8-openjdk
+      state: latest
+

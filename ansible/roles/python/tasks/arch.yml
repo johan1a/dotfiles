@@ -1,0 +1,18 @@
+
+  - name: install Python3
+    pacman:
+      name: python-pip
+      state: latest
+
+  - name: install Python2
+    pacman:
+      name: python2-pip
+      state: latest
+
+  - name: Upgrade pip2
+    command: pip2 install pip --upgrade
+    become: true
+
+  - name: Upgrade pip3
+    command: pip install pip --upgrade
+    become: true

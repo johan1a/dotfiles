@@ -1,0 +1,6 @@
+
+  - name: install ruby
+    pacman:
+      name: ruby
+      state: latest
+

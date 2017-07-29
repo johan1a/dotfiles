@@ -10,3 +10,7 @@
   - name: install Python2
     apt: name=python-pip state=latest
     become_method: sudo
+
+  - name: Upgrade pip2
+    command: pip install pip --upgrade
+    become: true
