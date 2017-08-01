@@ -140,6 +140,9 @@ set softtabstop=0
 " Display tabs and trailing spaces
 set list
 set listchars=tab:▸–,trail:·
+" Set color of listchars
+highlight SpecialKey ctermfg=8
+highlight SpecialKey ctermbg=9
 
 " =========== Numbering  ===========
 set number
