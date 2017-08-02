@@ -104,7 +104,7 @@ set grepprg=grep\ -nH\ $*
 
 " Fuzzy finding
 " :b <substring of open buffer> to jump to buffer
-" :find <substring of open buffer> 
+" :find <substring of open buffer>
 set path+=**
 
 " Tab completion behavior
@@ -221,7 +221,7 @@ nnoremap c* *Ncgn
 " Yank from cursor to end of line
 nnoremap Y y$
 
-" Disable arrow keys 
+" Disable arrow keys
 noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
