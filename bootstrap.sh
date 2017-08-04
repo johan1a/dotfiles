@@ -2,6 +2,7 @@
 
 NAME_STR="$(head -n 1 /etc/os-release)"
 OS="$(echo ${NAME_STR} | sed 's/NAME=//g')"
+echo "$OS"
 OS="${OS//\"}"
 
 if [[ "${OS}" == "Ubuntu" ]] ; then
