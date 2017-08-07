@@ -141,8 +141,8 @@ set softtabstop=0
 set list
 set listchars=tab:▸–,trail:·
 " Set color of listchars
-highlight SpecialKey ctermfg=8
-highlight SpecialKey ctermbg=9
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
 
 " =========== Numbering  ===========
 set number
