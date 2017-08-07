@@ -22,6 +22,8 @@ Plugin 'https://github.com/clojure-vim/async-clj-omni.git'
 Plugin 'https://github.com/zchee/deoplete-jedi.git'
 Plugin 'artur-shaik/vim-javacomplete2'
 
+Plugin 'udalov/kotlin-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "  Brief help
@@ -71,6 +73,10 @@ filetype plugin indent on
 
 " Automatically read external changes
 set autoread
+" Magic to make autoread actually work
+" Trigger autoread when changing buffers while inside vim:
+au FocusGained,BufEnter * :checktime
+au CursorHold * checktime
 
 
 if filereadable(expand("~/.vimrc_background"))
