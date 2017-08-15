@@ -63,10 +63,11 @@
       src:  "{{ dotfiles_dir }}//ansible/roles/rxvt/files/Xresources"
       dest: "{{ user_home }}/.Xresources"
       state: link
+    register: xresources
 
   - name: run xrdb
     command: xrdb -merge "{{ user_home }}/.Xresources"
-    when: not lookup('env', 'CI') and not lookup('env', 'Vagrant')
+    when: xresources.changed and not lookup('env', 'CI') and not lookup('env', 'Vagrant')
     ignore_errors: true
 
 
