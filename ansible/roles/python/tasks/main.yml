@@ -5,3 +5,15 @@
   - include: arch.yml
     when: ansible_os_family == "Archlinux"
 
+  - name: Upgrade pip3
+    pip:
+      name: pip
+      executable: pip3
+      state: latest
+
+  - name: Upgrade pip2
+    pip:
+      name: pip
+      executable: pip2
+      state: latest
+

@@ -3,14 +3,7 @@
     apt: name=python3-pip state=latest
     become_method: sudo
 
-  - name: Upgrade pip3
-    command: pip3 install pip --upgrade
-    become: true
-
   - name: install Python2
     apt: name=python-pip state=latest
     become_method: sudo
 
-  - name: Upgrade pip2
-    command: pip install pip --upgrade
-    become: true

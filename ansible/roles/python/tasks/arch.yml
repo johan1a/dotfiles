@@ -9,10 +9,3 @@
       name: python2-pip
       state: latest
 
-  - name: Upgrade pip2
-    command: pip2 install pip --upgrade
-    become: true
-
-  - name: Upgrade pip3
-    command: pip install pip --upgrade
-    become: true
