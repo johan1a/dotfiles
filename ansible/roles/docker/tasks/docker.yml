@@ -15,6 +15,7 @@
     user:
       groups: docker
       name: "{{ username }}"
+      append: yes
     register: adduser
     become: yes
 
