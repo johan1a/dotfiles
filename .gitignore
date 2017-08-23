@@ -8,3 +8,5 @@ i3/.i3/i3log
 ansible/*.retry
 tags
 *.log
+
+.vagrant

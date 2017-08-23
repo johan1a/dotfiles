@@ -166,11 +166,11 @@ let mapleader =  "\<Space>"
 nnoremap <leader>f :find<space>
 
 " ctrl+]        Jump to tag under cursor
-nnoremap <leader>j <C-]>
+nnoremap <leader>i <C-]>
 " g+ctrl+]      List ambiguous tags
-nnoremap <leader>gj <C-]>
+nnoremap <leader>ai g<C-]>
 " ctrl+t        Jump back up the tag stack
-nnoremap <leader>u <C-]>
+nnoremap <leader>u <C-t>
 
 " ctrl+x is bound to tmux TODO
 " ctr+x ctrl+n  just this file
