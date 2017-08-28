@@ -24,6 +24,14 @@ Plugin 'artur-shaik/vim-javacomplete2'
 
 Plugin 'udalov/kotlin-vim'
 
+"Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+
+Plugin 'honza/vim-snippets'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "  Brief help
@@ -34,6 +42,7 @@ call vundle#end()            " required
 
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
 
 
 
@@ -66,6 +75,34 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+
+" =========== neosnippet ===========
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-m>     <Plug>(neosnippet_expand_or_jump)
+smap <C-m>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-m>     <Plug>(neosnippet_expand_target)
+
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+" Tell Neosnippet about the other snippets
+" Does not seem to be working
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+
+" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
 
 " =========== General settings ===========
 syntax enable
