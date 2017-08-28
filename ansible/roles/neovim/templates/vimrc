@@ -80,9 +80,6 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-m>     <Plug>(neosnippet_expand_or_jump)
-smap <C-m>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-m>     <Plug>(neosnippet_expand_target)
 
 imap <expr><TAB>
  \ pumvisible() ? "\<C-n>" :
