@@ -32,6 +32,8 @@ Plugin 'Shougo/neosnippet-snippets'
 
 Plugin 'honza/vim-snippets'
 
+Plugin 'dkprice/vim-easygrep'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "  Brief help
@@ -93,6 +95,9 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
 " Tell Neosnippet about the other snippets
 " Does not seem to be working
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
@@ -100,6 +105,11 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
+
+" =========== EasyGrep ===========
+let g:EasyGrepFilesToExclude='*.log,tags'
+let g:EasyGrepRecursive=1
+let g:EasyGrepCommand=1
 
 " =========== General settings ===========
 syntax enable
