@@ -24,9 +24,8 @@ Plugin 'artur-shaik/vim-javacomplete2'
 
 Plugin 'udalov/kotlin-vim'
 
-"Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
 
+" neosnippet makes the :intro message disappear for some reason
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 
