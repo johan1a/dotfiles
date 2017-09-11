@@ -132,6 +132,9 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
+" =========== filetypes ===========
+au BufNewFile,BufRead *.gson setlocal ft=groovy
+
 
 " =========== netrw ===========
 " Enable netrw 'plugins'
