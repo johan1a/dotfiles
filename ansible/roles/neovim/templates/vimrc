@@ -105,8 +105,13 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
 
+
+" =========== ctrlp ===========
+" Run :CtrlPClearAllCaches after changing this
+let g:ctrlp_custom_ignore = '\v[\/](tags|node_modules|target|build|dist)|(\.(swp|ico|git|class|svn))$'
+
 " =========== EasyGrep ===========
-let g:EasyGrepFilesToExclude='*.log,tags'
+let g:EasyGrepFilesToExclude='*.log,tags,.git,external_documentation,build'
 let g:EasyGrepRecursive=1
 let g:EasyGrepCommand=1
 
