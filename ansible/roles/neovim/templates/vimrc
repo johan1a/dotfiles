@@ -248,6 +248,8 @@ nnoremap <leader>o <C-W>r
 
 nnoremap <leader>e :Lexplore<CR>
 
+nnoremap <leader>q :q<CR>
+
 " ctrl+p
 " <C-W><C-v> open in vertical split
 " <C-W><C-x> open in horizontal split
