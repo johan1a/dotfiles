@@ -24,6 +24,7 @@ Plugin 'artur-shaik/vim-javacomplete2'
 
 Plugin 'udalov/kotlin-vim'
 
+Plugin 'https://github.com/scrooloose/nerdtree.git'
 
 " neosnippet makes the :intro message disappear for some reason
 Plugin 'Shougo/neosnippet'
@@ -249,7 +250,11 @@ nnoremap <leader>k <C-W>K
 nnoremap <leader>l <C-W>L
 nnoremap <leader>o <C-W>r
 
-nnoremap <leader>e :Lexplore<CR>
+" Toggle netrw
+" nnoremap <leader>e :Lexplore<CR>
+
+" Toggle NERDTree
+nnoremap <leader>e :NERDTreeToggle<CR>
 
 nnoremap <leader>q :q<CR>
 
