@@ -108,7 +108,7 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " =========== ctrlp ===========
 " Run :CtrlPClearAllCaches after changing this
-let g:ctrlp_custom_ignore = '\v[\/](tags|node_modules|target|build|dist)|(\.(swp|ico|git|class|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](tags|node_modules|target|build$|dist)|(\.(swp|ico|git|class|svn))$'
 
 " =========== EasyGrep ===========
 let g:EasyGrepFilesToExclude='*.log,tags,.git,external_documentation,build'
