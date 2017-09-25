@@ -109,10 +109,10 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " =========== ctrlp ===========
 " Run :CtrlPClearAllCaches after changing this
-let g:ctrlp_custom_ignore = '\v[\/](tags|node_modules|target|build$|dist)|(\.(swp|ico|git|class|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](tags|node_modules|target|build$|dist|classes)|(\.(swp|ico|git|class|svn))$'
 
 " =========== EasyGrep ===========
-let g:EasyGrepFilesToExclude='*.log,tags,.git,external_documentation,build'
+let g:EasyGrepFilesToExclude='*.log,tags,.git,external_documentation,documentation,build,classes'
 let g:EasyGrepRecursive=1
 let g:EasyGrepCommand=1
 
@@ -254,6 +254,7 @@ nnoremap <leader>o <C-W>r
 " nnoremap <leader>e :Lexplore<CR>
 
 " Toggle NERDTree
+" go previews
 nnoremap <leader>e :NERDTreeToggle<CR>
 
 nnoremap <leader>q :q<CR>
