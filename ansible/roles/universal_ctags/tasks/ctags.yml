@@ -29,7 +29,7 @@
   - name: Stat .ctags 
     stat: path="{{ user_home }}/.ctags"
     register: ctags_stat
-      
+
   - name: Link .ctags
     file:
       src: "{{ dotfiles_dir }}/ansible/roles/universal_ctags/files/ctags"

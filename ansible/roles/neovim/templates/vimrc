@@ -34,6 +34,12 @@ Plugin 'honza/vim-snippets'
 
 Plugin 'dkprice/vim-easygrep'
 
+Plugin 'LucHermitte/lh-vim-lib'
+Plugin 'LucHermitte/lh-tags'
+Plugin 'LucHermitte/lh-dev'
+Plugin 'LucHermitte/lh-brackets'
+Plugin 'LucHermitte/vim-refactor'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "  Brief help
@@ -178,7 +184,7 @@ set display+=lastline
 
 " =========== ctags ===========
 " Make tags. Requires ctags
-command! MakeTags !ctags -R .
+command! MakeTags !ctags --extras=+r --fields=+r -R .
 
 " =========== Splits ===========
 :autocmd VimResized * wincmd =
@@ -297,7 +303,14 @@ vnoremap § <esc>
 noremap § <esc>
 nnoremap § <esc>
 
+" vim-refactor
 
+vnoremap <leader>ef :ExtractFunction<space>
+vnoremap <leader>ev :ExtractVariable<space>
+vnoremap <leader>et :ExtractType<space>
+vnoremap <leader>eg :ExtractGetter<space>
+vnoremap <leader>es :ExtractSetter<space>
+nnoremap <leader>p  i<C-X>p<CR>
 
 
 
