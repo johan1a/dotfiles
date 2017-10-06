@@ -143,6 +143,10 @@ endif
 au BufNewFile,BufRead *.gson setlocal ft=groovy
 
 
+" =========== quickfix ===========
+
+autocmd Filetype groovy setlocal makeprg=./gradlew\ test
+
 " =========== netrw ===========
 " Enable netrw 'plugins'
 filetype plugin on
