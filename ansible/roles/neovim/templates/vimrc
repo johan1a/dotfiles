@@ -249,7 +249,7 @@ nnoremap <leader><leader> <C-^>
 nnoremap <leader>m :MakeTags<CR>
 
 " Reset search
-nnoremap <leader>n /ö666ö<CR>
+nnoremap <leader>n :noh<CR>
 
 " Reload config
 nnoremap <leader>r :source ~/.vimrc<CR>
