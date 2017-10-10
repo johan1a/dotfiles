@@ -40,6 +40,8 @@ Plugin 'LucHermitte/lh-dev'
 Plugin 'LucHermitte/lh-brackets'
 Plugin 'LucHermitte/vim-refactor'
 
+Plugin 'bbchung/gtags.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "  Brief help

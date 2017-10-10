@@ -1,0 +1,8 @@
+
+  - command: wget http://tamacom.com/global/global-6.5.3.tar.gz
+  - command: tar xvf global-6.5.3.tar.gz
+  - command: cd global-6.5.3
+  - command: ./configure --with-exuberant-ctags=/usr/bin/ctags
+  - command: make
+  - command: sudo make install
+  - command: cp gtags.conf ~/.globalrc
