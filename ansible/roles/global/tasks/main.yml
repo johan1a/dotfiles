@@ -1,8 +1,36 @@
 
-  - command: wget http://tamacom.com/global/global-6.5.3.tar.gz
-  - command: tar xvf global-6.5.3.tar.gz
-  - command: cd global-6.5.3
+  - stat:
+      path="{{ user_home }}/.globalrc"
+    register: gnu_global_installed
+    failed_when: false
+
+  - name: "{{ gnu_global_installed }}"
+    get_url:
+      url: http://tamacom.com/global/global-6.5.3.tar.gz
+      dest: "{{ user_home }}/"
+
+  - unarchive:
+      src: global-6.5.3.tar.gz
+      dest: "{{ user_home }}/"
+    when: not gnu_global_installed.stat.exists
+
   - command: ./configure --with-exuberant-ctags=/usr/bin/ctags
+    args:
+      chdir: "{{ user_home }}/global-6.5.3/"
+    when: not gnu_global_installed.stat.exists
+
   - command: make
-  - command: sudo make install
-  - command: cp gtags.conf ~/.globalrc
+    args:
+      chdir: "{{ user_home }}/global-6.5.3/"
+    when: not gnu_global_installed.stat.exists
+
+  - command: make install
+    args:
+      chdir: "{{ user_home }}/global-6.5.3/"
+    become: true
+    when: not gnu_global_installed.stat.exists
+
+  - copy:
+      src: "{{ user_home }}/global-6.5.3/gtags.conf"
+      dest: "{{ user_home }}/.globalrc"
+    when: not gnu_global_installed.stat.exists

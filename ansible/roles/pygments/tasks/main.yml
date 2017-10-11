@@ -1,11 +1,37 @@
 
 
-  - command: git clone git@github.com:yoshizow/global-pygments-plugin.git
+  - name: Check if pygments is installed
+    command: which pygmentize
+    register: pygments_installed
 
-  - command: cd global-pygments-plugin
+  - pip:
+      name: pygments
+      state: latest
+    when: pygments_installed.stdout == ""
 
-  - command: ./reconf.sh
-  - command: ./configure
-  - command: make
-  - command: sudo make install
+  - name: Pull global-pygments-plugin
+    git: repo=https://github.com/yoshizow/global-pygments-plugin.git
+         dest="{{ user_home }}/gpp"
+    when: pygments_installed.stdout == ""
+
+  - command: "./reconf.sh"
+    args:
+      chdir: "{{ user_home }}/gpp/"
+    when: pygments_installed.stdout == ""
+
+  - command: "./configure"
+    args:
+      chdir: "{{ user_home }}/gpp/"
+    when: pygments_installed.stdout == ""
+
+  - command: "make"
+    args:
+      chdir: "{{ user_home }}/gpp/"
+    when: pygments_installed.stdout == ""
+
+  - command: "make install"
+    args:
+      chdir: "{{ user_home }}/gpp/"
+    become: true
+    when: pygments_installed.stdout == ""
 

@@ -1,0 +1,4 @@
+
+  - name: install libtool-bin
+    apt: name=libtool-bin state=latest
+

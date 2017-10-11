@@ -4,6 +4,7 @@
     become: true
     roles:
       - misc
+      - utils
       - git
       - ubuntu_desktop
       - rxvt
@@ -11,8 +12,8 @@
       - tmux
       - universal_ctags
       - python
-      - pygments
       - global
+      - pygments
       - ruby
       - neovim
       - java
