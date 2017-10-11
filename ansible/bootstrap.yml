@@ -11,6 +11,8 @@
       - tmux
       - universal_ctags
       - python
+      - pygments
+      - global
       - ruby
       - neovim
       - java
