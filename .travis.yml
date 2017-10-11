@@ -12,6 +12,8 @@ before_install:
   - sed -i -e 's/johan/travis/g' ansible/group_vars/local.yml
   - sudo apt-get -qq update
   - sudo apt-cache madison libtool-bin
+  - sudo apt search libtool-bin
+  - sudo apt search libtool
   - cat /home/travis/.gitconfig
 
 script:
