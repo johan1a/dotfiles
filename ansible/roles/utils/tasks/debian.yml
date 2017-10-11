@@ -1,4 +1,5 @@
 
   - name: install libtool-bin
     apt: name=libtool-bin state=latest
+    when: not lookup('env', 'CI') and not lookup('env', 'Vagrant') and ansible_os_family == "Debian"
 
