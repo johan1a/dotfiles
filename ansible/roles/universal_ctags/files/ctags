@@ -5,7 +5,7 @@
 --exclude=.git
 
 # Regex for Clojure
---langdef=Clojure
+#--langdef=Clojure
 --langmap=Clojure:.clj
 --regex-clojure=/\([ \t]*create-ns[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/n,namespace/
 --regex-clojure=/\([ \t]*def[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/d,definition/
