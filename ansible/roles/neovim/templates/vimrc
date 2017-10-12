@@ -341,6 +341,9 @@ nnoremap <leader>g  :Gtags<CR><CR>
 nnoremap <leader>f  :Gtags -r<CR><CR>
 nnoremap <leader>s  :Gtags -s<CR><CR>
 
+" ctrlp
+
+nnoremap <leader>. :CtrlPTag<CR>
 
 
 
