@@ -9,6 +9,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'taglist.vim'
+
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 
@@ -42,6 +44,9 @@ Plugin 'LucHermitte/lh-brackets'
 Plugin 'LucHermitte/vim-refactor'
 
 Plugin 'bbchung/gtags.vim'
+
+Plugin 'ludovicchabant/vim-gutentags'
+" :help gutentags
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -124,6 +129,10 @@ let g:ctrlp_custom_ignore = '\v[\/](tags|node_modules|target|build$|dist|classes
 let g:EasyGrepFilesToExclude='*.log,tags,.git,external_documentation,documentation,build,classes'
 let g:EasyGrepRecursive=1
 let g:EasyGrepCommand=1
+
+" =========== Gutentags =========
+
+:set statusline+=%{gutentags#statusline('[Generating...]')}
 
 " =========== General settings ===========
 syntax enable
@@ -235,7 +244,7 @@ set showcmd
 " Remap leader
 let mapleader =  "\<Space>"
 
-nnoremap <leader>f :find<space>
+"nnoremap <leader>f :find<space>
 
 " ctrl+]        Jump to tag under cursor
 nnoremap <leader>i <C-]>zz
@@ -325,6 +334,13 @@ vnoremap <leader>et :ExtractType<space>
 vnoremap <leader>eg :ExtractGetter<space>
 vnoremap <leader>es :ExtractSetter<space>
 nnoremap <leader>p  i<C-X>p<CR>
+
+" gtags
+
+nnoremap <leader>g  :Gtags<CR><CR>
+nnoremap <leader>f  :Gtags -r<CR><CR>
+nnoremap <leader>s  :Gtags -s<CR><CR>
+
 
 
 
