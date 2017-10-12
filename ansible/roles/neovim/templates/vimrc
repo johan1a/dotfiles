@@ -48,6 +48,8 @@ Plugin 'bbchung/gtags.vim'
 Plugin 'ludovicchabant/vim-gutentags'
 " :help gutentags
 
+Plugin 'brookhong/cscope.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "  Brief help
@@ -124,6 +126,17 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 " =========== ctrlp ===========
 " Run :CtrlPClearAllCaches after changing this
 let g:ctrlp_custom_ignore = '\v[\/](tags|node_modules|target|build$|dist|classes)|(\.(swp|ico|git|class|svn))$'
+
+" Ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+
+
+
+nnoremap <c-o> :CtrlPTag<CR>
+
 
 " =========== EasyGrep ===========
 let g:EasyGrepFilesToExclude='*.log,tags,.git,external_documentation,documentation,build,classes'
@@ -337,13 +350,32 @@ nnoremap <leader>p  i<C-X>p<CR>
 
 " gtags
 
-nnoremap <leader>g  :Gtags<CR><CR>
-nnoremap <leader>f  :Gtags -r<CR><CR>
-nnoremap <leader>s  :Gtags -s<CR><CR>
+"nnoremap <leader>g  :Gtags<CR><CR>
+"nnoremap <leader>f  :Gtags -r<CR><CR>
+"nnoremap <leader>s  :Gtags -s<CR><CR>
 
-" ctrlp
+" cscope-vim
+"
+" Below is the minimum key mappings.
 
-nnoremap <leader>. :CtrlPTag<CR>
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+" Some optional key mappings to search directly.
 
-
+" s: Find this C symbol
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>zz
+" g: Find this definition
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>zz
+" d: Find functions called by this function
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>zz
+" c: Find functions calling this function
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>zz
+" t: Find this text string
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>zz
+" e: Find this egrep pattern
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>zz
+" f: Find this file
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>zz
+" i: Find files #including this file
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>zz
 
