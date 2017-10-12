@@ -9,7 +9,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'taglist.vim'
+Plugin 'majutsushi/tagbar'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
@@ -146,6 +146,10 @@ let g:EasyGrepCommand=1
 " =========== Gutentags =========
 
 :set statusline+=%{gutentags#statusline('[Generating...]')}
+
+" =========== tagbar =========
+
+let g:tagbar_left=1
 
 " =========== General settings ===========
 syntax enable
@@ -353,6 +357,9 @@ nnoremap <leader>p  i<C-X>p<CR>
 "nnoremap <leader>g  :Gtags<CR><CR>
 "nnoremap <leader>f  :Gtags -r<CR><CR>
 "nnoremap <leader>s  :Gtags -s<CR><CR>
+
+" tagbar
+nmap <leader>t :TagbarToggle<CR>
 
 " cscope-vim
 "
