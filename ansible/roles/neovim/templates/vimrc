@@ -10,6 +10,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-dispatch'
 
 Plugin 'chriskempson/base16-vim'
 
@@ -148,6 +149,12 @@ au BufNewFile,BufRead *.gson setlocal ft=groovy
 " =========== quickfix ===========
 
 autocmd Filetype groovy setlocal makeprg=./gradlew\ test
+
+" =========== vim-dispatch ===========
+
+autocmd FileType java let b:dispatch = 'javac %'
+
+nnoremap <leader>d :Dispatch<CR>
 
 " =========== netrw ===========
 " Enable netrw 'plugins'
