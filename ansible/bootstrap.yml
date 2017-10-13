@@ -18,6 +18,7 @@
       - neovim
       - java
       - leiningen
+      - herbstluftwm
       - virtualbox
       - vagrant
       - docker
