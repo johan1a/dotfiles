@@ -9,6 +9,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'takac/vim-hardtime'
+
 Plugin 'roxma/vim-tmux-clipboard'
 
 Plugin 'christoomey/vim-tmux-navigator'
@@ -205,6 +207,10 @@ augroup vim_dispatch
 augroup END
 
 nnoremap <leader>m :Dispatch<CR>
+
+" =========== vim-hardtime ===========
+
+let g:hardtime_default_on = 1
 
 " =========== netrw ===========
 " Enable netrw 'plugins'
