@@ -9,6 +9,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'roxma/vim-tmux-clipboard'
+
 Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'tpope/vim-fireplace'
