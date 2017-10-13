@@ -9,6 +9,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'christoomey/vim-tmux-navigator'
+
 Plugin 'tpope/vim-fireplace'
 
 Plugin 'justinmk/vim-sneak'
@@ -335,12 +337,6 @@ nnoremap <leader>q :q<CR>
 
 " <C-o> older jump position
 " <C-i> newer jump position
-
-" Split navigation
-nnoremap <A-j>  <C-W>j
-nnoremap <A-k>  <C-W>k
-nnoremap <A-h>  <C-W>h
-nnoremap <A-l>  <C-W>l
 
 " Increment / Decrement numbers
 nnoremap <A-a> <C-a>
