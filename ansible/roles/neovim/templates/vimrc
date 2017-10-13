@@ -398,40 +398,27 @@ nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>zz
 
 " vim-sneak
 " 2-character Sneak (default)
-nmap s <Plug>Sneak_s
-nmap S <Plug>Sneak_S
+" nmap s <Plug>Sneak_s
+" nmap S <Plug>Sneak_S
 " visual-mode
-xmap s <Plug>Sneak_s
-xmap S <Plug>Sneak_S
+" xmap s <Plug>Sneak_s
+" xmap S <Plug>Sneak_S
 " operator-pending-mode
-omap s <Plug>Sneak_s
-omap S <Plug>Sneak_S
+" omap s <Plug>Sneak_s
+" omap S <Plug>Sneak_S
 
 " repeat motion
 map , <Plug>Sneak_;
 map ; <Plug>Sneak_,
 
 " 1-character enhanced 'f'
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
+nmap f <Plug>SneakLabel_s
+nmap F <Plug>SneakLabel_S
 " visual-mode
-xmap f <Plug>Sneak_f
-xmap F <Plug>Sneak_F
+xmap f <Plug>SneakLabel_s
+xmap F <Plug>SneakLabel_S
 " operator-pending-mode
-omap f <Plug>Sneak_f
-omap F <Plug>Sneak_F
+omap f <Plug>SneakLabel_s
+omap F <Plug>SneakLabel_S
 
-" 1-character enhanced 't'
-nmap t <Plug>Sneak_t
-nmap T <Plug>Sneak_T
-" visual-mode
-xmap t <Plug>Sneak_t
-xmap T <Plug>Sneak_T
-" operator-pending-mode
-omap t <Plug>Sneak_t
-omap T <Plug>Sneak_T
-
-" force label-mode
-nmap s <Plug>SneakLabel_s
-nmap S <Plug>SneakLabel_S
 
