@@ -179,7 +179,7 @@ autocmd Filetype groovy setlocal makeprg=./gradlew\ test
 " =========== vim-dispatch ===========
 
 autocmd FileType java let b:dispatch = 'javac %'
-autocmd FileType groovy let b:dispatch = 'grails test-app'
+autocmd FileType groovy let b:dispatch = 'source ~/.sdkman/bin/sdkman-init.sh && grails test-app'
 
 nnoremap <leader>d :Dispatch<CR>
 
@@ -331,6 +331,12 @@ nnoremap c* *Ncgn
 
 " Yank from cursor to end of line
 nnoremap Y y$
+
+" Search using copy buffer
+
+nnoremap <leader>7 /<C-R>0<CR>
+nnoremap <leader>' ?<C-R>0<CR>
+
 
 " Disable arrow keys
 noremap <Up> <nop>

@@ -1,5 +1,7 @@
 
-  - name: install libtool-bin
-    apt: name=libtool-bin state=latest
-    when: not lookup('env', 'CI') and ansible_os_family == "Debian"
+  - name: install {{ item }}
+    apt: name={{ item }} state=latest
+    with_items:
+      - libtool-bin
+      - cscope
 
