@@ -255,6 +255,11 @@ augroup splits
     autocmd VimResized * wincmd =
 augroup END
 
+" =========== tmux-navigator ===========
+
+" Disable tmux auto zoom out
+let g:tmux_navigator_disable_when_zoomed = 1
+
 " =========== Tabs and spaces  ===========
 " insert space characters whenever the tab key is pressed,
 set expandtab
