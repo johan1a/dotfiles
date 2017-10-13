@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " Don't emulate vi
 set nocompatible
 filetype off                  " required by Vundle
