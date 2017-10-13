@@ -9,6 +9,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'tpope/vim-fireplace'
+
 Plugin 'justinmk/vim-sneak'
 
 Plugin 'majutsushi/tagbar'
@@ -141,7 +143,7 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 
 
 
-nnoremap <c-o> :CtrlPTag<CR>
+nnoremap <c-i> :CtrlPTag<CR>
 
 
 " =========== EasyGrep ===========
@@ -198,7 +200,7 @@ augroup vim_dispatch
     autocmd FileType groovy let b:dispatch = 'source ~/.sdkman/bin/sdkman-init.sh && grails test-app'
 augroup END
 
-nnoremap <leader>d :Dispatch<CR>
+nnoremap <leader>m :Dispatch<CR>
 
 " =========== netrw ===========
 " Enable netrw 'plugins'
@@ -304,7 +306,7 @@ nnoremap <leader>u <C-t>zz
 "
 nnoremap <leader><leader> <C-^>
 
-nnoremap <leader>m :MakeTags<CR>
+"nnoremap <leader>m :MakeTags<CR>
 
 " Reset search
 nnoremap <leader>n :noh<CR>
@@ -394,7 +396,7 @@ nmap <leader>t :TagbarToggle<CR>
 " Below is the minimum key mappings.
 
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
-nnoremap <leader>l :call ToggleLocationList()<CR>
+nnoremap <leader>fl :call ToggleLocationList()<CR>
 " Some optional key mappings to search directly.
 
 " s: Find this C symbol
@@ -430,13 +432,21 @@ map , <Plug>Sneak_;
 map ; <Plug>Sneak_,
 
 " 1-character enhanced 'f'
-nmap f <Plug>SneakLabel_s
-nmap F <Plug>SneakLabel_S
+nmap s <Plug>SneakLabel_s
+nmap S <Plug>SneakLabel_S
 " visual-mode
-xmap f <Plug>SneakLabel_s
-xmap F <Plug>SneakLabel_S
+xmap s <Plug>SneakLabel_s
+xmap S <Plug>SneakLabel_S
 " operator-pending-mode
-omap f <Plug>SneakLabel_s
-omap F <Plug>SneakLabel_S
+omap s <Plug>SneakLabel_s
+omap S <Plug>SneakLabel_S
 
+
+" vim-fireplace
+
+nnoremap <leader>w :Eval<CR>
+vnoremap <leader>w :Eval<CR>
+
+nnoremap <a-r> :Require<CR>
+" vim-fireplace
 
