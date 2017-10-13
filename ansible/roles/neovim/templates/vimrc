@@ -147,7 +147,7 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 
 
 
-nnoremap <c-i> :CtrlPTag<CR>
+nnoremap <leader>å :CtrlPTag<CR>
 
 
 " =========== EasyGrep ===========
