@@ -91,7 +91,11 @@ inoremap <silent><expr> <C-Space> deoplete#mappings#manual_complete()
 " Escape: exit autocompletion, go to Normal mode
 inoremap <silent><expr> <Esc> pumvisible() ? "<C-e><Esc>" : "<Esc>"
 
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup deoplete
+    autocmd!
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup END
+
 
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
@@ -161,11 +165,15 @@ filetype plugin indent on
 set autoread
 " Magic to make autoread actually work
 " Trigger autoread when changing buffers while inside vim:
-au FocusGained,BufEnter * :checktime
-au CursorHold * checktime
+augroup general_settings
+    autocmd!
+    au FocusGained,BufEnter * :checktime
+    au CursorHold * checktime
+augroup END
 
 
-if filereadable(expand("~/.vimrc_background"))
+
+if filereadable(expand('~/.vimrc_background'))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
@@ -176,12 +184,19 @@ au BufNewFile,BufRead *.gson setlocal ft=groovy
 
 " =========== quickfix ===========
 
-autocmd Filetype groovy setlocal makeprg=./gradlew\ test
+augroup quickfix
+    autocmd!
+    autocmd Filetype groovy setlocal makeprg=./gradlew\ test
+augroup END
+
 
 " =========== vim-dispatch ===========
 
-autocmd FileType java let b:dispatch = 'javac %'
-autocmd FileType groovy let b:dispatch = 'source ~/.sdkman/bin/sdkman-init.sh && grails test-app'
+augroup vim_dispatch
+    autocmd!
+    autocmd FileType java let b:dispatch = 'javac %'
+    autocmd FileType groovy let b:dispatch = 'source ~/.sdkman/bin/sdkman-init.sh && grails test-app'
+augroup END
 
 nnoremap <leader>d :Dispatch<CR>
 
@@ -231,7 +246,10 @@ set display+=lastline
 command! MakeTags !ctags --extras=+r --fields=+r -R .
 
 " =========== Splits ===========
-:autocmd VimResized * wincmd =
+augroup splits
+    autocmd!
+    autocmd VimResized * wincmd =
+augroup END
 
 " =========== Tabs and spaces  ===========
 " insert space characters whenever the tab key is pressed,
