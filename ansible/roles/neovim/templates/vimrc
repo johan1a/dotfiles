@@ -214,6 +214,11 @@ nnoremap <leader>m :Dispatch<CR>
 
 let g:hardtime_default_on = 1
 
+let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
+
+" Ignore Quickfix
+let g:hardtime_ignore_quickfix = 1
+
 " =========== netrw ===========
 " Enable netrw 'plugins'
 filetype plugin on
@@ -462,7 +467,7 @@ nnoremap <a-r> :Require<CR>
 
 " neovim term
 
-tnoremap <Esc> <C-\><C-n>
+tnoremap <C-o> <C-\><C-n>
 
 "To simulate |i_CTRL-R| in terminal-mode:
 "    :tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
