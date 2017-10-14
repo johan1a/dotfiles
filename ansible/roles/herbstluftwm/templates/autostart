@@ -12,14 +12,14 @@ hc emit_hook reload
 # xsetroot -solid '#5A8E3A'
 feh --bg-scale ~/wallpaper.png
 
+# remove all existing keybindings
+hc keyunbind --all
+
 # Workaround for weird full screen behaviour
 hc rule instance=google-chrome pseudotile=on
 hc rule instance=Google-Chrome pseudotile=on
 hc keybind $Mod-f fullscreen toggle
 hc keybind $Mod-p pseudotile toggle
-
-# remove all existing keybindings
-hc keyunbind --all
 
 # keybindings
 # if you have a super key you will be much happier with Mod set to Mod4
@@ -123,29 +123,29 @@ hc set frame_border_active_color '#222222'
 hc set frame_border_normal_color '#101010'
 hc set frame_bg_normal_color '#000000'
 hc set frame_bg_active_color '#454545'
-hc set frame_border_width 1
+hc set frame_border_width 0
 hc set always_show_frame 1
 hc set frame_bg_transparent 1
-hc set frame_transparent_width 5
-hc set frame_gap 8
+hc set frame_transparent_width 0
+hc set frame_gap 0
 
-hc attr theme.active.color '#6A8C8C'
-hc attr theme.normal.color '#000000'
+hc attr theme.active.color '#505050'
+hc attr theme.normal.color '#303030'
 hc attr theme.urgent.color '#660000'
-hc attr theme.inner_width 1
+hc attr theme.inner_width 0
 hc attr theme.inner_color black
 hc attr theme.border_width 3
-hc attr theme.floating.border_width 4
-hc attr theme.floating.outer_width 1
+hc attr theme.floating.border_width 0
+hc attr theme.floating.outer_width 0
 hc attr theme.floating.outer_color black
 hc attr theme.active.inner_color '#3E4A00'
 hc attr theme.active.outer_color '#3E4A00'
 hc attr theme.background_color '#141414'
 
-hc set window_gap 8
+hc set window_gap  20
 hc set frame_padding 0
-hc set smart_window_surroundings 0
-hc set smart_frame_surroundings 1
+hc set smart_window_surroundings 1
+hc set smart_frame_surroundings 0
 hc set mouse_recenter_gap 0
 
 # rules
