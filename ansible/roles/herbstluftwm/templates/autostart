@@ -10,7 +10,13 @@ hc emit_hook reload
 
 # background color
 # xsetroot -solid '#5A8E3A'
-feh --bg-scale /home/johan/Pictures/aZcB3op.jpg
+feh --bg-scale ~/wallpaper.png
+
+# Workaround for weird full screen behaviour
+hc rule instance=google-chrome pseudotile=on
+hc rule instance=Google-Chrome pseudotile=on
+hc keybind $Mod-f fullscreen toggle
+hc keybind $Mod-p pseudotile toggle
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -170,3 +176,5 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
     "$panel" $monitor &
 done
+
+hc keybind $Mod-Shift-d spawn dm-tool lock &
