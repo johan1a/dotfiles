@@ -167,3 +167,4 @@ export EDITOR="$VISUAL"
 export ANSIBLE_NOCOWS=1
 export GTAGSLABEL=pygments
 
+setxkbmap us -variant colemak
