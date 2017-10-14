@@ -4,6 +4,7 @@
     become: true
     roles:
       - misc
+      - colemak
       - utils
       - git
       - ubuntu_desktop
