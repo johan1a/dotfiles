@@ -103,6 +103,10 @@ hc keybind $Mod-space                                                           
                      . cycle_layout +1 vertical horizontal max vertical grid    \
                , cycle_layout +1
 
+hc keybind $Mod-Shift-0 shift_to_monitor 0
+hc keybind $Mod-Shift-1 shift_to_monitor 1
+hc keybind $Mod-Shift-2 shift_to_monitor 2
+
 # mouse
 hc mouseunbind --all
 hc mousebind $Mod-Button1 move
