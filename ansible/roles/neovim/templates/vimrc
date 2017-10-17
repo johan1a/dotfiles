@@ -13,6 +13,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 "Plugin 'roxma/vim-tmux-clipboard'
 
+Plugin 'airblade/vim-gitgutter'
+
 Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'tpope/vim-fireplace'
