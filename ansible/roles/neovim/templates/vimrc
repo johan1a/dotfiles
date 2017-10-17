@@ -11,7 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 
-Plugin 'roxma/vim-tmux-clipboard'
+"Plugin 'roxma/vim-tmux-clipboard'
 
 Plugin 'christoomey/vim-tmux-navigator'
 
@@ -47,13 +47,13 @@ Plugin 'https://github.com/scrooloose/nerdtree.git'
 
 Plugin 'dkprice/vim-easygrep'
 
-Plugin 'LucHermitte/lh-vim-lib'
-Plugin 'LucHermitte/lh-tags'
-Plugin 'LucHermitte/lh-dev'
-Plugin 'LucHermitte/lh-brackets'
-Plugin 'LucHermitte/vim-refactor'
+"Plugin 'LucHermitte/lh-vim-lib'
+"Plugin 'LucHermitte/lh-tags'
+"Plugin 'LucHermitte/lh-dev'
+"Plugin 'LucHermitte/lh-brackets'
+"Plugin 'LucHermitte/vim-refactor'
 
-Plugin 'bbchung/gtags.vim'
+"Plugin 'bbchung/gtags.vim'
 
 Plugin 'ludovicchabant/vim-gutentags'
 " :help gutentags
@@ -407,6 +407,8 @@ nmap <a-t> :TagbarToggle<CR>
 " cscope-vim
 "
 " Below is the minimum key mappings.
+
+let g:cscope_silent = 1
 
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
 nnoremap <leader>fl :call ToggleLocationList()<CR>
