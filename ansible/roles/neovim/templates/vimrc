@@ -10,6 +10,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'leafgarland/typescript-vim'
 
 "Plugin 'roxma/vim-tmux-clipboard'
 
@@ -189,8 +190,10 @@ if filereadable(expand('~/.vimrc_background'))
 endif
 
 " =========== filetypes ===========
-au BufNewFile,BufRead *.gson setlocal ft=groovy
-
+augroup filetypes
+  au BufNewFile,BufRead *.gson setlocal ft=groovy
+  au BufNewFile,BufRead *.ts setlocal ft=typescript
+augroup END
 
 " =========== quickfix ===========
 
@@ -495,3 +498,6 @@ nnoremap <leader>b :tabe<cr>
 
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>t :vs<cr>
+
+" Pasting
+vnoremap p "_dP
