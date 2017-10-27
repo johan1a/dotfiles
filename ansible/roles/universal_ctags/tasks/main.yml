@@ -1,6 +1,6 @@
 
   - include: debian.yml
     when: not lookup('env', 'CI') and not lookup('env', 'Vagrant') and ansible_os_family == "Debian"
-    
+
   - include: ctags.yml
     when: not lookup('env', 'CI') and not lookup('env', 'Vagrant') and ansible_os_family == "Debian"

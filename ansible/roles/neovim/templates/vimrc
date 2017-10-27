@@ -1,4 +1,3 @@
-scriptencoding utf-8
 
 " Don't emulate vi
 set nocompatible
@@ -11,9 +10,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'takac/vim-hardtime'
+Plugin 'leafgarland/typescript-vim'
 
-Plugin 'roxma/vim-tmux-clipboard'
+"Plugin 'roxma/vim-tmux-clipboard'
+
+Plugin 'airblade/vim-gitgutter'
 
 Plugin 'christoomey/vim-tmux-navigator'
 
@@ -42,20 +43,20 @@ Plugin 'udalov/kotlin-vim'
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 
 " neosnippet makes the :intro message disappear for some reason
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
+" Plugin 'Shougo/neosnippet'
+" Plugin 'Shougo/neosnippet-snippets'
 
-Plugin 'honza/vim-snippets'
+" Plugin 'honza/vim-snippets'
 
 Plugin 'dkprice/vim-easygrep'
 
-Plugin 'LucHermitte/lh-vim-lib'
-Plugin 'LucHermitte/lh-tags'
-Plugin 'LucHermitte/lh-dev'
-Plugin 'LucHermitte/lh-brackets'
-Plugin 'LucHermitte/vim-refactor'
+"Plugin 'LucHermitte/lh-vim-lib'
+"Plugin 'LucHermitte/lh-tags'
+"Plugin 'LucHermitte/lh-dev'
+"Plugin 'LucHermitte/lh-brackets'
+"Plugin 'LucHermitte/vim-refactor'
 
-Plugin 'bbchung/gtags.vim'
+"Plugin 'bbchung/gtags.vim'
 
 Plugin 'ludovicchabant/vim-gutentags'
 " :help gutentags
@@ -115,12 +116,12 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 
-imap <expr><TAB>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" imap <expr><TAB>
+"  \ pumvisible() ? "\<C-n>" :
+"  \ neosnippet#expandable_or_jumpable() ?
+"  \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For conceal markers.
 if has('conceal')
@@ -128,11 +129,11 @@ if has('conceal')
 endif
 
 " Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
+" let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 " Does not seem to be working
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+" let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 
 " If you want :UltiSnipsEdit to split your window.
@@ -146,7 +147,7 @@ let g:ctrlp_custom_ignore = '\v[\/](tags|node_modules|target|build$|dist|classes
 " Ignore files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
-let g:ctrlp_map = '<c-p>'
+let g:ctrlp_map = '<c-b>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 
 
@@ -189,8 +190,10 @@ if filereadable(expand('~/.vimrc_background'))
 endif
 
 " =========== filetypes ===========
-au BufNewFile,BufRead *.gson setlocal ft=groovy
-
+augroup filetypes
+  au BufNewFile,BufRead *.gson setlocal ft=groovy
+  au BufNewFile,BufRead *.ts setlocal ft=typescript
+augroup END
 
 " =========== quickfix ===========
 
@@ -212,7 +215,7 @@ nnoremap <leader>m :Dispatch<CR>
 
 " =========== vim-hardtime ===========
 
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 
 let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
 
@@ -368,7 +371,6 @@ nnoremap ä }
 " replace and jump
 nnoremap c* *Ncgn
 
-
 " Yank from cursor to end of line
 nnoremap Y y$
 
@@ -405,11 +407,13 @@ nnoremap <leader>p  i<C-X>p<CR>
 "nnoremap <leader>s  :Gtags -s<CR><CR>
 
 " tagbar
-nmap <leader>t :TagbarToggle<CR>
+nmap <a-t> :TagbarToggle<CR>
 
 " cscope-vim
 "
 " Below is the minimum key mappings.
+
+let g:cscope_silent = 1
 
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
 nnoremap <leader>fl :call ToggleLocationList()<CR>
@@ -469,6 +473,8 @@ nnoremap <a-r> :Require<CR>
 
 tnoremap <C-o> <C-\><C-n>
 
+tnoremap <leader><esc> <C-\><esc>
+
 "To simulate |i_CTRL-R| in terminal-mode:
 "    :tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
@@ -482,3 +488,16 @@ inoremap <C-j> <C-\><C-N><C-w>j
 inoremap <C-k> <C-\><C-N><C-w>k
 inoremap <C-l> <C-\><C-N><C-w>l
 
+" Execute a shell command and read in the results
+noremap Q !!$SHELL<CR>
+
+" Tabs and splits
+nnoremap <a-l> :tabn<cr>
+nnoremap <a-h> :tabp<cr>
+nnoremap <leader>b :tabe<cr>
+
+nnoremap <leader>s :sp<cr>
+nnoremap <leader>t :vs<cr>
+
+" Pasting
+vnoremap p "_dP

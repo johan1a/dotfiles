@@ -1,0 +1,11 @@
+
+  - name: Remove .xinitrc
+    file:
+      path: "{{ user_home }}/.xinitrc"
+      state: absent
+
+  - name: Link .xinitrc config
+    file:
+      src: "{{ dotfiles_dir }}/ansible/roles/xinitrc/templates/xinitrc_arch"
+      dest: "{{ user_home }}/.xinitrc"
+      state: link

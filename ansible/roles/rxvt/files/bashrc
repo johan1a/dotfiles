@@ -167,3 +167,6 @@ export EDITOR="$VISUAL"
 export ANSIBLE_NOCOWS=1
 export GTAGSLABEL=pygments
 
+export _JAVA_OPTIONS='Dawt.useSystemAAFontSettings=on'
+
+setxkbmap us -variant colemak

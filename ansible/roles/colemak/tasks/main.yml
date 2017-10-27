@@ -1,0 +1,3 @@
+
+  - name: Switching to colemak, may God have mercy on your soul!
+    command: setxkbmap us -variant colemak

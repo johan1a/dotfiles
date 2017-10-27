@@ -5,7 +5,7 @@
 
   - name: Add apt repository ppa:neovim-ppa/stable
     become: true
-    apt_repository: 
+    apt_repository:
       repo: ppa:neovim-ppa/stable
       state: present
     register: neovim_repo
