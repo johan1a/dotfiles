@@ -1,0 +1,14 @@
+
+  - blockinfile:
+      path: /etc/pacman.conf
+      block: |
+        [archlinuxfr]
+        SigLevel = Never
+        Server = http://repo.archlinux.fr/x86_64
+
+  - name: install {{ item }}
+    pacman: name={{ item }} state=latest
+    with_items:
+      - base-devel
+      - wget
+      - yaourt

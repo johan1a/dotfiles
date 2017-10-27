@@ -85,6 +85,5 @@
     file: 
       path: "{{ user_home }}/.vim"
       owner: "{{ username }}"
-      group: "{{ username }}"
       recurse: yes
 
