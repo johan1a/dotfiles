@@ -3,7 +3,3 @@
     when: not lookup('env', 'CI') and ansible_os_family == "Debian"
     tags: neovim
 
-  - include: neovim.yml
-    when: not lookup('env', 'CI') and ansible_os_family == "Archlinux"
-    tags: neovim
-
