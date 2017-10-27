@@ -31,6 +31,7 @@
       - pulseaudio
       - pavucontrol
       - google-chrome
+      - dmenu
 
   - command: yaourt -S {{ item }} --no-confirm
     with_items:
