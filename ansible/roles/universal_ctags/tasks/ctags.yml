@@ -10,23 +10,31 @@
     when: not ctags_dir.stat.exists
 
   - name: Run autogen.sh
-    command: "cd {{ user_home }}/ctags && ./autogen.sh" 
+    command: "./autogen.sh"
+    args:
+      chdir: "{{ user_home }}/ctags"
     when: ctags_git.changed
 
   - name: Run configure
-    command: "cd {{ user_home }}/ctags && ./configure" 
+    command: "./configure"
+    args:
+      chdir: "{{ user_home }}/ctags"
     when: ctags_git.changed
 
   - name: Run make
-    shell: "cd {{ user_home }}/ctags && make"
+    shell: "make"
+    args:
+      chdir: "{{ user_home }}/ctags"
     when: ctags_git.changed
 
   - name: Run sudo make install
-    shell: "cd {{ user_home }}/ctags && sudo make install"
+    shell: "sudo make install"
+    args:
+      chdir: "{{ user_home }}/ctags"
     when: ctags_git.changed
     become: true
 
-  - name: Stat .ctags 
+  - name: Stat .ctags
     stat: path="{{ user_home }}/.ctags"
     register: ctags_stat
 
@@ -35,4 +43,4 @@
       src: "{{ dotfiles_dir }}/ansible/roles/universal_ctags/files/ctags"
       dest: "{{ user_home }}/.ctags"
       state: link
-    when: ctags_stat.stat.exists
+    when: not ctags_stat.stat.exists
