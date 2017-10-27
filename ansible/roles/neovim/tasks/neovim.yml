@@ -15,15 +15,15 @@
       state: latest
       executable: pip3
 
-  - name: Stat vimrc 
+  - name: Stat vimrc
     stat: path="{{ user_home }}/.vimrc"
     register: vimrc_stat
 
-  - name: Stat .config/nvim 
+  - name: Stat .config/nvim
     stat: path="{{ user_home }}/.config/nvim"
     register: nvim_stat
 
-  - name: Stat .vim/init.vim 
+  - name: Stat .vim/init.vim
     stat: path="{{ user_home }}/.vim/init.vim"
     register: init_vim_stat
 
@@ -47,7 +47,7 @@
   - name: Link neovim to vim config
     file:
       src: "{{ user_home }}/.vim"
-      dest: "{{ user_home }}/.config/nvim" 
+      dest: "{{ user_home }}/.config/nvim"
       state: link
 
   - name: Backup vimrc
@@ -67,7 +67,7 @@
     stat: path="{{ user_home }}/.vim/bundle/Vundle.vim"
     register: vundle_dir
 
-  - name: Install Vundle 
+  - name: Install Vundle
     git: repo=https://github.com/VundleVim/Vundle.vim.git
          dest="{{ user_home }}/.vim/bundle/Vundle.vim"
          accept_hostkey=yes
@@ -75,7 +75,7 @@
 
   - name: Install plugins
     become: true
-    command: vim +PlugInstall +qall  
+    command: vim +PlugInstall +qall
 
   - name: Update remote plugins
     become: true

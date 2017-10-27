@@ -1,6 +1,5 @@
 
   - name: install neovim
-    pacman: 
-      name: neovim 
-      state: latest
+    command: yaourt -S neovim --noconfirm
+  - include: neovim.yml
 

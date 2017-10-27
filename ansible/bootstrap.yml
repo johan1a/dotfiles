@@ -20,6 +20,8 @@
       - java
       - leiningen
       - herbstluftwm
+      - xinitrc
+      - xmonad
       - virtualbox
       - vagrant
       - docker

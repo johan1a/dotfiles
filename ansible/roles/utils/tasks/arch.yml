@@ -12,3 +12,28 @@
       - base-devel
       - wget
       - yaourt
+      - feh
+      - gpicview
+      - htop
+      - iotop
+      - tree
+      - ranger
+      - vlc
+      - lxappearance
+      - arandr
+      - ttf-dejavu
+      - ttf-inconsolata
+      - udevil
+      - alsa-firmware
+      - alsa-utils
+      - alsa-plugins
+      - pulseaudio-alsa
+      - pulseaudio
+      - pavucontrol
+      - google-chrome
+
+  - command: yaourt -S {{ item }} --no-confirm
+    with_items:
+      - xfce-theme-greybird #run lxappearance after
+    when: false
+
