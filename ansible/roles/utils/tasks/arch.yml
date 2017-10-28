@@ -38,5 +38,7 @@
   - command: yaourt -S {{ item }} --no-confirm
     with_items:
       - xfce-theme-greybird #run lxappearance after
+      - groovy
+      - grails
     when: false
 
