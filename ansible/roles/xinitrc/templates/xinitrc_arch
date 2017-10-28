@@ -1,4 +1,2 @@
 #!/bin/bash
-exec --no-startup-id "devmon --no-gui" &
-exec --no-startup-id "pulseaudio --start" &
 exec xmonad

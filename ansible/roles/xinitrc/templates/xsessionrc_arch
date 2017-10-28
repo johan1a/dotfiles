@@ -1,0 +1,4 @@
+#!/bin/bash
+devmon --no-gui &
+pulseaudio --start &
+feh --bg-scale /usr/home/johan/pictures/background.jpg &

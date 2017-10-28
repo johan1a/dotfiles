@@ -1,0 +1,6 @@
+
+  - name: Set correct permissions on ~/.config
+    file:
+      path: "{{ user_home }}/.config"
+      owner: "{{ username }}"
+      recurse: yes

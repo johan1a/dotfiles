@@ -32,6 +32,8 @@
       - pavucontrol
       - google-chrome
       - dmenu
+      - the_silver_searcher
+      - inxi
 
   - command: yaourt -S {{ item }} --no-confirm
     with_items:
