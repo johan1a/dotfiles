@@ -169,4 +169,3 @@ export GTAGSLABEL=pygments
 
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 
-setxkbmap us -variant colemak

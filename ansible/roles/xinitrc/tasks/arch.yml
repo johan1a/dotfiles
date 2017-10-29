@@ -9,14 +9,3 @@
       src: "{{ dotfiles_dir }}/ansible/roles/xinitrc/templates/xinitrc_arch"
       dest: "{{ user_home }}/.xinitrc"
       state: link
-
-  - name: Remove .xsessionrc
-    file:
-      path: "{{ user_home }}/.xsessionrc"
-      state: absent
-
-  - name: Link .xsessionrc config
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/xinitrc/templates/xsessionrc_arch"
-      dest: "{{ user_home }}/.xsessionrc"
-      state: link
