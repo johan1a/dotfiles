@@ -209,6 +209,7 @@ augroup vim_dispatch
     autocmd!
     autocmd FileType java let b:dispatch = 'javac %'
     autocmd FileType groovy let b:dispatch = 'source ~/.sdkman/bin/sdkman-init.sh && grails test-app'
+    autocmd FileType typescript let b:dispatch = 'ng test && ng lint'
 augroup END
 
 nnoremap <leader>m :Dispatch<CR>
