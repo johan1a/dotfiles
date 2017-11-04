@@ -40,5 +40,6 @@
       - xfce-theme-greybird #run lxappearance after
       - groovy
       - grails
+      - gradle
     when: false
 

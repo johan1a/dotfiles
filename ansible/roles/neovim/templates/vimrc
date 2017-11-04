@@ -12,8 +12,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'leafgarland/typescript-vim'
 
-"Plugin 'roxma/vim-tmux-clipboard'
-
 Plugin 'airblade/vim-gitgutter'
 
 Plugin 'christoomey/vim-tmux-navigator'
@@ -45,18 +43,9 @@ Plugin 'https://github.com/scrooloose/nerdtree.git'
 " neosnippet makes the :intro message disappear for some reason
 " Plugin 'Shougo/neosnippet'
 " Plugin 'Shougo/neosnippet-snippets'
-
 " Plugin 'honza/vim-snippets'
 
 Plugin 'dkprice/vim-easygrep'
-
-"Plugin 'LucHermitte/lh-vim-lib'
-"Plugin 'LucHermitte/lh-tags'
-"Plugin 'LucHermitte/lh-dev'
-"Plugin 'LucHermitte/lh-brackets'
-"Plugin 'LucHermitte/vim-refactor'
-
-"Plugin 'bbchung/gtags.vim'
 
 Plugin 'ludovicchabant/vim-gutentags'
 " :help gutentags
@@ -73,9 +62,6 @@ call vundle#end()            " required
 
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-
-
 
 " =========== deoplete ===========
 " if :echo has("python3") returns 1, then you're done;
@@ -150,11 +136,6 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_map = '<c-b>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 
-
-
-nnoremap <leader>å :CtrlPTag<CR>
-
-
 " =========== EasyGrep ===========
 let g:EasyGrepFilesToExclude='*.log,tags,.git,external_documentation,documentation,build,classes'
 let g:EasyGrepRecursive=1
@@ -182,8 +163,6 @@ augroup general_settings
     au CursorHold * checktime
 augroup END
 
-
-
 if filereadable(expand('~/.vimrc_background'))
   let base16colorspace=256
   source ~/.vimrc_background
@@ -202,7 +181,6 @@ augroup quickfix
     autocmd Filetype groovy setlocal makeprg=./gradlew\ test
 augroup END
 
-
 " =========== vim-dispatch ===========
 
 augroup vim_dispatch
@@ -213,34 +191,6 @@ augroup vim_dispatch
 augroup END
 
 nnoremap <leader>m :Dispatch<CR>
-
-" =========== vim-hardtime ===========
-
-let g:hardtime_default_on = 0
-
-let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
-
-" Ignore Quickfix
-let g:hardtime_ignore_quickfix = 1
-
-" =========== netrw ===========
-" Enable netrw 'plugins'
-filetype plugin on
-
-" netrw tree view
-let g:netrw_liststyle = 3
-
-" Don't display info on the top of window
-let g:netrw_banner = 0
-
-" " sort is affecting only: directories on the top, files below
-" let g:netrw_sort_sequence = '[\/]$,*'
-
-" use the previous window to open file
-let g:netrw_browse_split = 4
-
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
 
 " =========== search ===========
 
@@ -255,6 +205,7 @@ set path+=**
 
 " Tab completion behavior
 set wildmode=longest,list,full
+
 " Display all matches when tab completing
 set wildmenu
 
@@ -263,10 +214,6 @@ set scrolloff=1
 set sidescrolloff=5
 
 set display+=lastline
-
-" =========== ctags ===========
-" Make tags. Requires ctags
-command! MakeTags !ctags --extras=+r --fields=+r -R .
 
 " =========== Splits ===========
 augroup splits
@@ -300,10 +247,8 @@ match ExtraWhitespace /\s\+$/
 
 " =========== Numbering  ===========
 set number
-
 set relativenumber
 set ruler
-
 set showcmd
 
 " =========== Key maps  ===========
@@ -346,9 +291,6 @@ nnoremap <a-k> <C-W>K
 nnoremap <a-l> <C-W>L
 nnoremap <a-o> <C-W>r
 
-" Toggle netrw
-" nnoremap <leader>e :Lexplore<CR>
-
 " Toggle NERDTree
 " go previews
 nnoremap <leader>e :NERDTreeToggle<CR>
@@ -380,7 +322,6 @@ nnoremap Y y$
 nnoremap <leader>7 /<C-R>0<CR>
 nnoremap <leader>' ?<C-R>0<CR>
 
-
 " Disable arrow keys
 noremap <Up> <nop>
 noremap <Down> <nop>
@@ -392,26 +333,10 @@ vnoremap § <esc>
 noremap § <esc>
 nnoremap § <esc>
 
-" vim-refactor
-
-vnoremap <leader>ef :ExtractFunction<space>
-vnoremap <leader>ev :ExtractVariable<space>
-vnoremap <leader>et :ExtractType<space>
-vnoremap <leader>eg :ExtractGetter<space>
-vnoremap <leader>es :ExtractSetter<space>
-nnoremap <leader>p  i<C-X>p<CR>
-
-" gtags
-
-"nnoremap <leader>g  :Gtags<CR><CR>
-"nnoremap <leader>f  :Gtags -r<CR><CR>
-"nnoremap <leader>s  :Gtags -s<CR><CR>
-
 " tagbar
 nmap <a-t> :TagbarToggle<CR>
 
 " cscope-vim
-"
 " Below is the minimum key mappings.
 
 let g:cscope_silent = 1
@@ -461,7 +386,6 @@ xmap S <Plug>SneakLabel_S
 " operator-pending-mode
 omap s <Plug>SneakLabel_s
 omap S <Plug>SneakLabel_S
-
 
 " vim-fireplace
 
