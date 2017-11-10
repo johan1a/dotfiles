@@ -314,6 +314,8 @@ nnoremap ä }
 " replace and jump
 nnoremap c* *Ncgn
 
+" Copy / Paste
+
 " Yank from cursor to end of line
 nnoremap Y y$
 
@@ -329,8 +331,10 @@ set clipboard+=unnamedplus
 
 " Use system copy buffer
 
-noremap y "*y
-noremap p "*p
+nnoremap y "*y
+nnoremap p "*p
+vnoremap y "*y
+vnoremap p "*p
 "noremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 
 
@@ -436,6 +440,3 @@ nnoremap <leader>j :tabe<cr>:term<cr>
 
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>t :vs<cr>
-
-" Pasting
-vnoremap p "_dP
