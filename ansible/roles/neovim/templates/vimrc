@@ -333,8 +333,10 @@ set clipboard+=unnamedplus
 
 nnoremap y "*y
 nnoremap p "*p
+nnoremap c "*c
 vnoremap y "*y
 vnoremap p "*p
+vnoremap c "*c
 "noremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 
 
