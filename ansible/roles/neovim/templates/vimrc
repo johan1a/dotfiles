@@ -332,11 +332,13 @@ set clipboard+=unnamedplus
 " Use system copy buffer
 
 nnoremap y "*y
-nnoremap p "*p
-nnoremap c "*c
 vnoremap y "*y
+nnoremap p "*p
 vnoremap p "*p
 vnoremap c "*c
+nnoremap c "*c
+nnoremap d "*d
+vnoremap d "*d
 "noremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 
 
