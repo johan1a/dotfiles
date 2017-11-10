@@ -322,6 +322,18 @@ nnoremap Y y$
 nnoremap <leader>7 /<C-R>0<CR>
 nnoremap <leader>' ?<C-R>0<CR>
 
+" ALWAYS use the clipboard for ALL operations (as opposed
+" to interacting with the '+' and/or '*' registers explicitly):
+
+set clipboard+=unnamedplus
+
+" Use system copy buffer
+
+noremap y "*y
+noremap p "*p
+"noremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
+
+
 " Disable arrow keys
 noremap <Up> <nop>
 noremap <Down> <nop>
