@@ -52,6 +52,8 @@ Plugin 'ludovicchabant/vim-gutentags'
 
 Plugin 'brookhong/cscope.vim'
 
+Plugin 'bkad/CamelCaseMotion'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "  Brief help
@@ -196,7 +198,7 @@ nnoremap <leader>m :Dispatch<CR>
 
 set grepprg=ag\ $*
 
-nnoremap <leader>g :Grep 
+nnoremap <leader>g :Grep
 
 " Fuzzy finding
 " :b <substring of open buffer> to jump to buffer
@@ -415,6 +417,20 @@ nnoremap <leader>w :Eval<CR>
 vnoremap <leader>w :Eval<CR>
 
 nnoremap <a-r> :Require<CR>
+
+" CamelCaseMotion
+
+" Map to w, b and e mappings:
+
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+
 
 " neovim term
 
