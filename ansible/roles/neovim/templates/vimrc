@@ -65,6 +65,11 @@ call vundle#end()            " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+
+" Remap leader
+let mapleader =  "\<Space>"
+
+
 " =========== deoplete ===========
 " if :echo has("python3") returns 1, then you're done;
 " Otherwise enable Python3 interface with pip:
@@ -198,7 +203,7 @@ nnoremap <leader>m :Dispatch<CR>
 
 set grepprg=ag\ $*
 
-nnoremap <leader>g :Grep
+nnoremap <leader>g :Grep 
 
 " Fuzzy finding
 " :b <substring of open buffer> to jump to buffer
@@ -254,9 +259,6 @@ set ruler
 set showcmd
 
 " =========== Key maps  ===========
-
-" Remap leader
-let mapleader =  "\<Space>"
 
 "nnoremap <leader>f :find<space>
 
