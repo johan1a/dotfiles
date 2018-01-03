@@ -3,6 +3,7 @@
   - name: Check if pygments is installed
     command: which pygmentize
     register: pygments_installed
+    failed_when: false
 
   - pip:
       name: pygments

@@ -6,4 +6,12 @@
       - cscope
       - silversearcher-ag
       - suckless-tools
+      - wmctrl
+      - keepass2
+      - xclip
+      - wget
+      - iotop
+      - tree
+      - ranger
+      - inxi
 

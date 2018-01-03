@@ -1,5 +1,4 @@
 
   - name: install neovim
     command: yaourt -S neovim --noconfirm
-  - include: neovim.yml
 
