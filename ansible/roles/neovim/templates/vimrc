@@ -297,7 +297,8 @@ nnoremap <a-o> <C-W>r
 
 " Toggle NERDTree
 " go previews
-nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <leader>e :NERDTreeFind<CR>
+nnoremap <leader>k :NERDTreeToggle<CR>
 
 nnoremap <leader>q :q<CR>
 
