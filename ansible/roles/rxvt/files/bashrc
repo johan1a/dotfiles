@@ -167,3 +167,5 @@ export EDITOR="$VISUAL"
 export ANSIBLE_NOCOWS=1
 export GTAGSLABEL=pygments
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

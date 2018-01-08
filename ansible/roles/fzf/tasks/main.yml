@@ -1,0 +1,4 @@
+
+  - include: debian.yml
+    when: not lookup('env', 'CI') and ansible_os_family == "Debian"
+    tags: fzf

@@ -11,6 +11,7 @@
       - rxvt
       - tree
       - tmux
+      - fzf
       - universal_ctags
       - python
       - pygments
