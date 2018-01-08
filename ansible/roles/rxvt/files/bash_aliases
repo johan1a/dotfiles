@@ -1,4 +1,5 @@
 alias vim=nvim
+alias v=nvim
 alias upgrade='sudo apt update && sudo apt upgrade -y'
 alias g='git'
 alias ga='git add'
@@ -26,4 +27,11 @@ alias td="tmux detach"
 alias tl="tmux list-sessions"
 alias sb="source ~/.bashrc && echo ...sourced ~/.bashrc"
 alias x="xrdb -merge ~/.Xresources && echo xrdb -merge ~/.Xresources "
-
+alias a="ag"
+alias pj="python -m json.tool"
+alias cdtmp='cd $(mktemp -d ~/temp/$USER-cdtmp-XXXXXX)'
+alias serve='python -m SimpleHTTPServer' # optional arg: port (defaults to 8000)
+alias c=cd
+alias dotfiles="cd ~/dotfiles"
+alias dev="cd dev"
+alias e=exit
