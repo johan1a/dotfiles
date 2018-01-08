@@ -1,3 +1,4 @@
 
-  - name: Switching to colemak, may God have mercy on your soul!
+  - name: Switching to colemak
     command: setxkbmap us -variant colemak
+    when: not lookup('env', 'CI')
