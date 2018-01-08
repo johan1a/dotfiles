@@ -1,4 +1,14 @@
 
-  - include: debian.yml
-    when: not lookup('env', 'CI') and ansible_os_family == "Debian"
-    tags: fzf
+  - name: Check for fzf
+    command: which fzf
+    failed_when: false
+    register: which_fzf
+
+  - name: Download fzf source
+    command: git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    when: which_fzf.stdout == ''
+
+  - name: install fzf
+    command: bash -c "yes | ~/.fzf/install"
+    when: which_fzf.stdout == ''
+
