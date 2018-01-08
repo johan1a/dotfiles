@@ -24,3 +24,6 @@ alias f="find . -name "
 alias ta="tmux attach -t "
 alias td="tmux detach"
 alias tl="tmux list-sessions"
+alias sb="source ~/.bashrc && echo ...sourced ~/.bashrc"
+alias x="xrdb -merge ~/.Xresources && echo xrdb -merge ~/.Xresources "
+
