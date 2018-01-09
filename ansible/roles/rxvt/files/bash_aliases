@@ -33,5 +33,5 @@ alias cdtmp='cd $(mktemp -d ~/temp/$USER-cdtmp-XXXXXX)'
 alias serve='python -m SimpleHTTPServer' # optional arg: port (defaults to 8000)
 alias c=cd
 alias dotfiles="cd ~/dotfiles"
-alias dev="cd dev"
+alias dev="cd ~/dev"
 alias e=exit
