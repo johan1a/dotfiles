@@ -1,14 +1,16 @@
 
   - name: Check for fzf
-    command: which fzf
-    failed_when: false
-    register: which_fzf
+    stat: path="~/.fzf"
+    become: false
+    register: fzf_stat
 
   - name: Download fzf source
     command: git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    when: which_fzf.stdout == ''
+    become: false
+    when: not fzf_stat.stat.exists
 
   - name: install fzf
     command: bash -c "yes | ~/.fzf/install"
-    when: which_fzf.stdout == ''
+    become: false
+    when: not fzf_stat.stat.exists
 
