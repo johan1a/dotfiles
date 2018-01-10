@@ -175,6 +175,13 @@ if filereadable(expand('~/.vimrc_background'))
   source ~/.vimrc_background
 endif
 
+" =========== help ===========
+
+augroup helpfiles
+  au!
+  au BufRead,BufEnter */doc/* wincmd L
+augroup END
+
 " =========== filetypes ===========
 augroup filetypes
   au BufNewFile,BufRead *.gson setlocal ft=groovy
