@@ -467,7 +467,8 @@ noremap Q !!$SHELL<CR>
 " Tabs and splits
 nnoremap <a-l> :tabn<cr>
 nnoremap <a-h> :tabp<cr>
-nnoremap <leader>b :tabe<cr>
+nnoremap <leader>b :tabe<cr>:CtrlPMixed<cr>:CtrlPMixed<cr>
+
 nnoremap <leader>j :tabe<cr>:term<cr>
 
 nnoremap <leader>s :sp<cr>

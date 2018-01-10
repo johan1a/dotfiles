@@ -21,7 +21,7 @@ alias v=nvim
 alias upgrade='sudo apt update && sudo apt upgrade -y'
 
 alias g='git'
-complete -o bashdefault -o default -o nospace -F _git g
+#complete -o bashdefault -o default -o nospace -F _git g
 
 alias ga='git add'
 alias gc='git commit -m '
