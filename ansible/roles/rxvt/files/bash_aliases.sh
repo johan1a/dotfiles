@@ -59,6 +59,7 @@ alias youtube-mp3='youtube-dl -t --extract-audio --audio-format mp3 '
 alias p=pwd
 alias d="docker"
 alias dp="docker ps "
+alias rclocal="sudo /etc/rc.local"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
