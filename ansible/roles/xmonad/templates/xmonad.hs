@@ -5,7 +5,7 @@ import XMonad.Util.EZConfig
 main = do
     xmonad $ defaultConfig
         { terminal           = "urxvt"
-        , modMask            = mod4Mask -- Win key
+        , modMask            = mod5Mask -- Alt Gr
         , borderWidth        = 1
         , normalBorderColor  = "#000000"
         , focusedBorderColor = "#FFFFFF"
