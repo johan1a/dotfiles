@@ -1,3 +1,8 @@
+
+# Find auto completion:
+# complete -p git
+
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -14,12 +19,16 @@ fi
 alias vim=nvim
 alias v=nvim
 alias upgrade='sudo apt update && sudo apt upgrade -y'
+
 alias g='git'
+complete -o bashdefault -o default -o nospace -F _git g
+
 alias ga='git add'
 alias gc='git commit -m '
 alias gd='git diff'
 alias gs='git status'
 alias gl='git lg'
+
 alias amend='git commit --amend'
 alias sdkman-init='source ~/.sdkman/bin/sdkman-init.sh'
 alias ..="cd .."
@@ -58,7 +67,12 @@ alias package='dpkg -S /usr/bin/ls'
 alias youtube-mp3='youtube-dl -t --extract-audio --audio-format mp3 '
 alias p=pwd
 alias d="docker"
-alias dp="docker ps "
+complete -F _docker d
+alias dps="docker ps "
+alias dt="docker start "
+alias dp="docker stop "
+alias dr="docker restart "
+
 alias rclocal="sudo /etc/rc.local"
 
 # Add an "alert" alias for long running commands.  Use like so:
