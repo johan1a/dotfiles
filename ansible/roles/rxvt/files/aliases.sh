@@ -60,4 +60,5 @@ alias cl=clear
 alias y=yaourt
 alias ys="yaourt -S "
 alias yss="yaourt -Ss "
+alias less="less -S"
 
