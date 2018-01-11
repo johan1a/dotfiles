@@ -192,6 +192,7 @@ export CDPATH=":~:~/dev"
 NAME_STR="$(head -n 1 /etc/os-release)"
 OS="$(echo ${NAME_STR} | sed 's/NAME=//g')"
 
-if [[ "${OS}" == *"Arch Linux"* ]] ; then
-    exec fish
+
+if [[ "$TERM" == *rxvt* ]]; then
+   exec fish
 fi
