@@ -187,3 +187,11 @@ export CDPATH=":~:~/dev"
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+NAME_STR="$(head -n 1 /etc/os-release)"
+OS="$(echo ${NAME_STR} | sed 's/NAME=//g')"
+
+if [[ "${OS}" == *"Arch Linux"* ]] ; then
+    exec fish
+fi
