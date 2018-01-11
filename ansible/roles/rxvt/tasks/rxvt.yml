@@ -47,28 +47,10 @@
       dest: "{{ user_home }}/.inputrc"
       state: link
 
-  - name: Remove fish config
-    file:
-      path: "{{ user_home }}/.config/fish/config.fish"
-      state: absent
-    failed_when: false
-
-  - name: Remove fish functions dir
-    file:
-      path: "{{ user_home }}/.config/fish/functions/"
-      state: absent
-    failed_when: false
-
   - name: Link fish functions dir
     file:
       src:  "{{ dotfiles_dir }}/ansible/roles/rxvt/files/functions"
       dest: "{{ user_home }}/.config/fish/functions"
-      state: link
-
-  - name: Link config.fish
-    file:
-      src:  "{{ dotfiles_dir }}/ansible/roles/rxvt/files/config.fish"
-      dest: "{{ user_home }}/.config/fish/config.fish"
       state: link
 
   - name: Link config.fish
@@ -83,7 +65,7 @@
 
   - name: Add base16
     git:
-      repo=https://github.com/chriskempson/base16-shell.git 
+      repo=https://github.com/chriskempson/base16-shell.git
       dest="{{ user_home }}/.config/base16-shell"
       accept_hostkey=yes
     when: not base16_dir.stat.exists
