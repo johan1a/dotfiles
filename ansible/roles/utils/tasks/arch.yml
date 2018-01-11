@@ -43,5 +43,6 @@
       - grails
       - gradle
       - youtube-dl
+      - fish
     when: false
 
