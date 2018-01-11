@@ -31,6 +31,7 @@ alias f="find . -name "
 alias ta="tmux attach -t "
 alias td="tmux detach"
 alias tl="tmux list-sessions"
+alias t="tmux"
 alias a="ag"
 alias pj="python -m json.tool"
 alias serve='python -m SimpleHTTPServer' # optional arg: port (defaults to 8000)
