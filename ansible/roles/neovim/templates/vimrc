@@ -191,6 +191,7 @@ augroup END
 augroup filetypes
   au BufNewFile,BufRead *.gson setlocal ft=groovy
   au BufNewFile,BufRead *.ts setlocal ft=typescript
+  au BufRead,BufNewFile Vagrantfile set filetype=ruby
 augroup END
 
 
