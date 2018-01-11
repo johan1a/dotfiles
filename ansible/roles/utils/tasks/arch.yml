@@ -44,5 +44,6 @@
       - gradle
       - youtube-dl
       - fish
+      - fortune-mod
     when: false
 
