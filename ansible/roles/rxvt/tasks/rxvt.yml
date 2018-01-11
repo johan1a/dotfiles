@@ -9,8 +9,8 @@
     stat: path="{{ user_home }}/.bashrc"
     register: stat_bashrc
 
-  - name: Stat .bash_aliases.sh
-    stat: path="{{ user_home }}/.bash_aliases.sh"
+  - name: Stat .aliases.sh
+    stat: path="{{ user_home }}/.aliases.sh"
     register: stat_bash_aliases
 
   - name: Stat .inputrc
@@ -21,8 +21,8 @@
     command: mv  "{{ user_home }}/.bashrc" "{{ user_home }}/.bashrc.bak"
     when: stat_bashrc.stat.exists
 
-  - name: Backup .bash_aliases.sh
-    command: mv "{{ user_home }}/.bash_aliases.sh" "{{ user_home }}/.bash_aliases.sh.bak"
+  - name: Backup .aliases.sh
+    command: mv "{{ user_home }}/.aliases.sh" "{{ user_home }}/.aliases.sh.bak"
     when: stat_bash_aliases.stat.exists
 
   - name: Backup .inputrc
@@ -35,10 +35,10 @@
       dest: "{{ user_home }}/.bashrc"
       state: link
 
-  - name: Link .bash_aliases.sh
+  - name: Link .aliases.sh
     file:
-      src:  "{{ dotfiles_dir }}/ansible/roles/rxvt/files/bash_aliases.sh"
-      dest: "{{ user_home }}/.bash_aliases.sh"
+      src:  "{{ dotfiles_dir }}/ansible/roles/rxvt/files/aliases.sh"
+      dest: "{{ user_home }}/.aliases.sh"
       state: link
 
   - name: Link .inputrc

@@ -131,8 +131,25 @@ c() {
 complete -o nospace -F _fzf_dir_completion c
 
 
-if [ -f ~/.bash_aliases.sh ]; then
-    . ~/.bash_aliases.sh
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+alias upgrade='sudo apt update && sudo apt upgrade -y'
+alias colemak="setxkbmap us -variant colemak && echo Switched to colemak"
+alias swedish="setxkbmap se && echo Switched to Swedish \(QWERTY\)"
+alias danish="setxkbmap dk && echo Switched to Danish \(QWERTY\)"
+
+if [ -f ~/.aliases.sh ]; then
+    . ~/.aliases.sh
 fi
 
 if [ -f ~/.env_vars ]; then
