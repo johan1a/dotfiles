@@ -147,6 +147,12 @@ alias upgrade='sudo apt update && sudo apt upgrade -y'
 alias colemak="setxkbmap us -variant colemak && echo Switched to colemak"
 alias swedish="setxkbmap se && echo Switched to Swedish \(QWERTY\)"
 alias danish="setxkbmap dk && echo Switched to Danish \(QWERTY\)"
+alias sb="source ~/.bashrc && echo ...sourced ~/.bashrc"
+alias x="xrdb -merge ~/.Xresources && echo xrdb -merge ~/.Xresources "
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias cdtmp='cd $(mktemp -d ~/temp/$USER-cdtmp-XXXXXX)'
 
 if [ -f ~/.aliases.sh ]; then
     . ~/.aliases.sh

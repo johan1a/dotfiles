@@ -6,7 +6,6 @@
 
 alias vim=nvim
 alias v=nvim
-alias upgrade='sudo apt update && sudo apt upgrade -y'
 
 alias g='git'
 #complete -o bashdefault -o default -o nospace -F _git g
@@ -28,18 +27,12 @@ alias ..6="cd ../../../../../.."
 alias ..7="cd ../../../../../../.."
 alias ..8="cd ../../../../../../../.."
 alias ..9="cd ../../../../../../../../.."
-alias colemak="setxkbmap us -variant colemak && echo Switched to colemak"
-alias swedish="setxkbmap se && echo Switched to Swedish \(QWERTY\)"
-alias danish="setxkbmap dk && echo Switched to Danish \(QWERTY\)"
 alias f="find . -name "
 alias ta="tmux attach -t "
 alias td="tmux detach"
 alias tl="tmux list-sessions"
-alias sb="source ~/.bashrc && echo ...sourced ~/.bashrc"
-alias x="xrdb -merge ~/.Xresources && echo xrdb -merge ~/.Xresources "
 alias a="ag"
 alias pj="python -m json.tool"
-alias cdtmp='cd $(mktemp -d ~/temp/$USER-cdtmp-XXXXXX)'
 alias serve='python -m SimpleHTTPServer' # optional arg: port (defaults to 8000)
 alias dotfiles="cd ~/dotfiles"
 alias dev="cd ~/dev"
@@ -62,9 +55,6 @@ alias dr="docker restart "
 
 alias rclocal="sudo /etc/rc.local"
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
