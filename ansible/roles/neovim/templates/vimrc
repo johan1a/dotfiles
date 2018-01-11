@@ -1,3 +1,6 @@
+if &shell =~# 'fish$'
+    set shell=bash
+endif
 
 " Don't emulate vi
 set nocompatible
@@ -53,6 +56,8 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'brookhong/cscope.vim'
 
 Plugin 'bkad/CamelCaseMotion'
+
+Plugin 'dag/vim-fish'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -187,6 +192,16 @@ augroup filetypes
   au BufNewFile,BufRead *.gson setlocal ft=groovy
   au BufNewFile,BufRead *.ts setlocal ft=typescript
 augroup END
+
+
+" Set up :make to use fish for syntax checking.
+autocmd FileType fish compiler fish
+
+" Set this to have long lines wrap inside comments.
+autocmd FileType fish setlocal textwidth=79
+
+" Enable folding of block structures in fish.
+"autocmd FileType fish setlocal foldmethod=expr
 
 " =========== quickfix ===========
 
