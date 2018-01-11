@@ -47,15 +47,27 @@
       dest: "{{ user_home }}/.inputrc"
       state: link
 
-  - name: Make sure fish config dir exists
-    file:
-      path: "{{ user_home }}/.config/fish/"
-      state: directory
-
-  - name: Remove config.fish
+  - name: Remove fish config 
     file:
       path: "{{ user_home }}/.config/fish/config.fish"
       state: absent
+
+  - name: Remove fish functions dir
+    file:
+      path: "{{ user_home }}/.config/fish/functions/"
+      state: absent
+
+  - name: Link fish functions dir
+    file:
+      src:  "{{ dotfiles_dir }}/ansible/roles/rxvt/files/functions"
+      dest: "{{ user_home }}/.config/fish/functions"
+      state: link
+
+  - name: Link config.fish
+    file:
+      src:  "{{ dotfiles_dir }}/ansible/roles/rxvt/files/config.fish"
+      dest: "{{ user_home }}/.config/fish/config.fish"
+      state: link
 
   - name: Link config.fish
     file:
