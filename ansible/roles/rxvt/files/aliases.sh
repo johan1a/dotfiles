@@ -56,4 +56,7 @@ alias dr="docker restart "
 alias rclocal="sudo /etc/rc.local"
 alias fconfig="cd ~/.config/fish/"
 alias cl=clear
+alias y=yaourt
+alias ys="yaourt -S "
+alias yss="yaourt -Ss "
 
