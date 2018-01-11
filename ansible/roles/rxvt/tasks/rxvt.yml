@@ -47,15 +47,17 @@
       dest: "{{ user_home }}/.inputrc"
       state: link
 
-  - name: Remove fish config 
+  - name: Remove fish config
     file:
       path: "{{ user_home }}/.config/fish/config.fish"
       state: absent
+    failed_when: false
 
   - name: Remove fish functions dir
     file:
       path: "{{ user_home }}/.config/fish/functions/"
       state: absent
+    failed_when: false
 
   - name: Link fish functions dir
     file:
