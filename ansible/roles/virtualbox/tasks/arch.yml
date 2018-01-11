@@ -7,7 +7,8 @@
       - virtualbox-host-modules-arch
       - virtualbox
       - net-tools
-      - virtualbox-guest-iso 
+      - virtualbox-guest-iso
+    register: virtualbox_install
 
   - name: Load virtualbox modules
     modprobe:
@@ -17,8 +18,10 @@
       - vboxdrv
       - vboxnetadp
       - vboxnetflt
+    when: virtualbox_install.changed
 
   - name: Reload virtualbox
     command: vboxreload
+    when: virtualbox_install.changed
     become: true
 
