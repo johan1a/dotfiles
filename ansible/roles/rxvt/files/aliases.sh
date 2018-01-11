@@ -53,8 +53,7 @@ alias dps="docker ps "
 alias dt="docker start "
 alias dp="docker stop "
 alias dr="docker restart "
-
 alias rclocal="sudo /etc/rc.local"
-
 alias fconfig="cd ~/.config/fish/"
+alias cl=clear
 
