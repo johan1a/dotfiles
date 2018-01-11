@@ -11,18 +11,22 @@ function ml
     cd $argv; and ll
 end
 
-function backup 
+function backup
     cp "$argv"{,.bak};
 end
 
-function google 
+function google
     google-chrome-stable "http://www.google.com/search?q=$argv"
 end
 
-function mostused 
+function mostused
   history | awk '{print $1}' | sort  | uniq --count | sort --numeric-sort --reverse | head -10
 end
 
-function weathercheck
+function wttr
     curl "wttr.in/$argv"
+end
+
+function grab
+    sudo chown $user -R $argv
 end
