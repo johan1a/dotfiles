@@ -47,6 +47,22 @@
       dest: "{{ user_home }}/.inputrc"
       state: link
 
+  - name: Make sure fish config dir exists
+    file:
+      path: "{{ user_home }}/.config/fish/"
+      state: directory
+
+  - name: Remove config.fish
+    file:
+      path: "{{ user_home }}/.config/fish/config.fish"
+      state: absent
+
+  - name: Link config.fish
+    file:
+      src:  "{{ dotfiles_dir }}/ansible/roles/rxvt/files/config.fish"
+      dest: "{{ user_home }}/.config/fish/config.fish"
+      state: link
+
   - name: Check if base16 exists
     stat: path="{{ user_home }}/.config/base16-shell"
     register: base16_dir
