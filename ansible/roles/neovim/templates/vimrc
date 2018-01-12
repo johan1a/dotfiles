@@ -489,3 +489,6 @@ nnoremap <leader>j :tabe<cr>:term<cr>
 
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>t :vs<cr>
+
+" Change to the directory of the current file
+nnoremap <silent> cd :<c-u>cd %:h \| pwd<cr>
