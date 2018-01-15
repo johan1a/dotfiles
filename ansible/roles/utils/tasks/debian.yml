@@ -16,4 +16,7 @@
       - inxi
       - fish
       - pkg-config
+      - feh
+      - redshift
+      - udiskie
 
