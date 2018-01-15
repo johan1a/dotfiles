@@ -47,6 +47,11 @@
       dest: "{{ user_home }}/.inputrc"
       state: link
 
+  - name: Ensure fish config dir exists
+    file: 
+      path: "{{ user_home }}/.config/fish"
+      state: directory
+
   - name: Link fish functions dir
     file:
       src:  "{{ dotfiles_dir }}/ansible/roles/rxvt/files/functions"
