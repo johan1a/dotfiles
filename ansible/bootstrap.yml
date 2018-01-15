@@ -22,6 +22,7 @@
       - herbstluftwm
       - xinitrc
       - xmonad
+      - i3-gaps
       - virtualbox
       - vagrant
       - docker

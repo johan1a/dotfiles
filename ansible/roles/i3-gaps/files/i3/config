@@ -12,18 +12,28 @@
 
 exec /usr/bin/pa-applet
 exec --no-startup-id i3-msg workspace $wp1
+exec --no-startup-id redshift &> /dev/null &
+exec --no-startup-id exec bash $HOME/.fehbg
+
+
+
+# This disables all borders, which is mentioned to prevent issues with gaps in i3-gaps.
+for_window [class=".*"] border pixel 5
+#> for_window [class="^.*"] border pixel 5
+hide_edge_borders both
+
+gaps inner 10
+gaps outer 5
+smart_borders on
 
 
 set $mod Mod4
-
-
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 
 
 font xft:inconsolata:size=14:antialias=true
-
 
 
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -34,8 +44,9 @@ font xft:inconsolata:size=14:antialias=true
 # font pango:DejaVu Sans Mono 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod 
-new_window 1pixel 
+floating_modifier $mod
+#new_window 1pixel
+ #new_window 1pixel
 #ybindsym $mod+d exec dmenu_run
 
 # start a terminal
@@ -45,17 +56,17 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+p exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -64,10 +75,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -76,10 +87,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+u split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+n split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -101,17 +112,20 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+shift+a focus child
 
+# Move to left monitor
+bindsym $mod+m move workspace to output left
+
 # Workspace variables
-set $wp1 "一"
-set $wp2 "二"
-set $wp3 "三"
-set $wp4 "四"
-set $wp5 "五"
-set $wp6 "六"
-set $wp7 "七"
-set $wp8 "八"
-set $wp9 "九"
-set $wp10 "十"
+set $wp1 "1"
+set $wp2 "2"
+set $wp3 "3"
+set $wp4 "4"
+set $wp5 "5"
+set $wp6 "6"
+set $wp7 "7"
+set $wp8 "8"
+set $wp9 "9"
+set $wp10 "10"
 
 # workspace names
 workspace $wp1 output DVI-I-1
@@ -139,7 +153,7 @@ bindsym $mod+0 workspace $wp10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $wp1
-bindsym $mod+Shift+2 move container to workspace $wp2 
+bindsym $mod+Shift+2 move container to workspace $wp2
 bindsym $mod+Shift+3 move container to workspace $wp3
 bindsym $mod+Shift+4 move container to workspace $wp4
 bindsym $mod+Shift+5 move container to workspace $wp5
@@ -185,17 +199,17 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	position top
-        status_command i3status -c ~/.i3/i3status.conf
-  	colors {
-		statusline	#999999
-		background	COLOR5	
-	
-		# class            border 		backgrd 	text
-        	focused_workspace  #292929 		COLOR3	 	#cccccc
-        	active_workspace   #252525 		#252525 	#696f89
-        	inactive_workspace #252525 		#252525		#6b6b6b 
-        	urgent_workspace   #252525 		#252525 	#c7a551
+    position top
+    status_command i3status -c ~/.config/i3/i3status.conf
+    colors {
+          statusline  #CCCCCC
+          background  #000000
+
+          # class            border     backgrd   text
+          focused_workspace  #292929    #777777   #111111
+          active_workspace   #252525    #252525   #696f89
+          inactive_workspace #252525    #252525   #6b6b6b
+          urgent_workspace   #252525    #252525   #c7a551
    }
 }
 
