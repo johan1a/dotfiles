@@ -21,3 +21,6 @@
       - libxcb-xrm-dev
       - automake
       - i3status
+      - scrot
+      - imagemagick
+      - i3lock

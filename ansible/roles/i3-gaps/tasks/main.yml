@@ -8,3 +8,8 @@
     when: ansible_os_family == "Debian"
     tags:
       - i3-gaps
+
+  - include: i3lock-fancy-multimonitor.yml
+    when: ansible_os_family == "Debian"
+    tags:
+      - i3-gaps
