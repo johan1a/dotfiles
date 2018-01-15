@@ -15,4 +15,5 @@
       - ranger
       - inxi
       - fish
+      - pkg-config
 
