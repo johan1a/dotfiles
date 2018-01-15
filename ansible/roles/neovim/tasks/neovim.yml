@@ -82,8 +82,16 @@
     command: vim +UpdateRemotePlugins +qall
 
   - name: Setup permissions
-    file: 
+    file:
       path: "{{ user_home }}/.vim"
       owner: "{{ username }}"
       recurse: yes
+
+  - name: install neovim gem
+    command: gem install neovim
+    become: true
+
+  - name: install neovim npm package
+    command: npm install -g neovim
+    become: true
 
