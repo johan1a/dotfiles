@@ -13,6 +13,7 @@
 exec /usr/bin/pa-applet
 exec --no-startup-id i3-msg workspace $wp1
 exec --no-startup-id redshift &> /dev/null &
+exec --no-startup-id udiskie &> /dev/null &
 exec --no-startup-id exec bash $HOME/.fehbg
 
 
