@@ -16,6 +16,7 @@ alias gd='git diff'
 alias gs='git status -s'
 alias gl='git lg'
 alias gb='git branch -v'
+alias gp='git pull --rebase'
 
 alias amend='git commit --amend'
 alias sdkman-init='source ~/.sdkman/bin/sdkman-init.sh'
