@@ -484,7 +484,7 @@ function! Meeting_notes()
     " ` is not working
     let file_name = 'meeting_notes_' . strftime('%Y%m%d_%H%M') . '.txt'
     !touch ~/documents/notes/`=file_name`
-    let full_path = '/home/johan/documents/notes/' . file_name
+    let full_path = $HOME . '/documents/notes/' . file_name
     tabe `=full_path`
 endfunction
 
