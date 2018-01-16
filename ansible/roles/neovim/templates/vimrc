@@ -43,15 +43,9 @@ Plugin 'udalov/kotlin-vim'
 
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 
-" neosnippet makes the :intro message disappear for some reason
-" Plugin 'Shougo/neosnippet'
-" Plugin 'Shougo/neosnippet-snippets'
-" Plugin 'honza/vim-snippets'
-
 Plugin 'dkprice/vim-easygrep'
 
 Plugin 'ludovicchabant/vim-gutentags'
-" :help gutentags
 
 Plugin 'brookhong/cscope.vim'
 
@@ -108,35 +102,6 @@ augroup END
 
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
-
-" =========== neosnippet ===========
-
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-
-" imap <expr><TAB>
-"  \ pumvisible() ? "\<C-n>" :
-"  \ neosnippet#expandable_or_jumpable() ?
-"  \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-" \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-" Enable snipMate compatibility feature.
-" let g:neosnippet#enable_snipmate_compatibility = 1
-
-" Tell Neosnippet about the other snippets
-" Does not seem to be working
-" let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
-
-" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
-
 
 " =========== ctrlp ===========
 " Run :CtrlPClearAllCaches after changing this
