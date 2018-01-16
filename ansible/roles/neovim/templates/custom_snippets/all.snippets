@@ -1,0 +1,20 @@
+################################
+#    Meeting notes generator   #
+################################
+
+snippet meeting "Lorem Ipsum - 50 Words" b
+
+Meeting regarding ${1:${VISUAL:Meeting title}}
+
+Date: `!v strftime("%Y-%m-%d %H:%M")`
+
+Attendees
+${2:${VISUAL:Meeting Attendees}}
+
+Agenda
+${3:${VISUAL:"Agenda \/ Background"}}
+
+Notes
+${4:${VISUAL:Notes}}
+endsnippet
+
