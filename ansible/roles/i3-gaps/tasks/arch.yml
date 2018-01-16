@@ -1,0 +1,6 @@
+
+  - name: install i3-gaps
+    pacman: name=i3-gaps state=latest
+
+  - name: install i3status
+    pacman: name=i3-gaps state=latest

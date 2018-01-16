@@ -8,8 +8,6 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 devmon --no-gui &
-pulseaudio --start &
-feh --bg-scale /home/johan/pictures/background.jpg &
+#pulseaudio --start &
 setxkbmap us -variant colemak &
-redshift &> /dev/null &
-exec xmonad
+exec i3

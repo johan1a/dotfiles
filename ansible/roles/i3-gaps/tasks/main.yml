@@ -4,12 +4,15 @@
     tags:
       - i3-gaps
 
+  - include: arch.yml
+    when: ansible_os_family == "Archlinux"
+    tags:
+      - i3-gaps
+
   - include: i3-gaps.yml
-    when: ansible_os_family == "Debian"
     tags:
       - i3-gaps
 
   - include: i3lock-fancy-multimonitor.yml
-    when: ansible_os_family == "Debian"
     tags:
       - i3-gaps

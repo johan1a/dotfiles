@@ -35,6 +35,7 @@
       - the_silver_searcher
       - inxi
       - strace
+      - udiskie
 
   - command: yaourt -S {{ item }} --no-confirm
     with_items:
