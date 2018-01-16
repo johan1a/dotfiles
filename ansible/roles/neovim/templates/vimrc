@@ -52,9 +52,13 @@ Plugin 'brookhong/cscope.vim'
 Plugin 'bkad/CamelCaseMotion'
 
 Plugin 'dag/vim-fish'
+"
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+filetype plugin indent on
 "  Brief help
 " :PluginList       - lists configuredlugins
 " :PluginInstall    - installslugins; append `!` to update or just :PluginUpdate
@@ -102,6 +106,22 @@ augroup END
 
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+
+" =========== ultisnips ===========
+set rtp^=$HOME/.vim/bundle/ultisnips
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<leader><tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" Custom snips dir
+let g:UltiSnipsSnippetsDir="~/.vim/custom_snippets"
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+
 
 " =========== ctrlp ===========
 " Run :CtrlPClearAllCaches after changing this

@@ -95,3 +95,8 @@
     command: npm install -g neovim
     become: true
 
+  - name: Symlink custom_snippets
+    file:
+      src: "{{ dotfiles_dir }}/ansible/roles/neovim/templates/custom_snippets"
+      dest: "{{ user_home }}/.vim/custom_snippets"
+      state: link

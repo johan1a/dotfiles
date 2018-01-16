@@ -1,6 +1,6 @@
 
   - name: install i3-gaps
-    pacman: name=item state=latest
+    pacman: name={{ item }} state=latest
     with_items:
       - i3-gaps
       - i3status
