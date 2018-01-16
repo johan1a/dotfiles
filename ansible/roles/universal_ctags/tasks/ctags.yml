@@ -9,6 +9,15 @@
     register: ctags_git
     when: not ctags_dir.stat.exists
 
+  - name: Set ctags dir permissions
+    file:
+      path: "{{ user_home }}/ctags"
+      owner: "{{ username }}"
+      recurse: yes
+    args:
+      chdir: "{{ user_home }}/ctags"
+    when: ctags_git.changed
+
   - name: Run autogen.sh
     command: "./autogen.sh"
     args:
