@@ -275,7 +275,7 @@ set showcmd
 " ctrl+]        Jump to tag under cursor
 nnoremap <leader>i <C-]>zz
 " g+ctrl+]      List ambiguous tags
-nnoremap <leader>a g<C-]>
+" nnoremap <leader>a g<C-]>
 " ctrl+t        Jump back up the tag stack
 nnoremap <leader>u <C-t>zz
 
@@ -479,3 +479,12 @@ nnoremap <leader>t :vs<cr>
 
 " Change to the directory of the current file
 nnoremap <silent> cd :<c-u>cd %:h \| pwd<cr>
+
+function! Meeting_notes()
+    " ` is not working
+    let file_name = 'meeting_notes_' . strftime('%Y%m%d_%H%m') . '.txt'
+    !touch ~/documents/notes/`=file_name`
+    tabe `=file_name`
+endfunction
+
+nnoremap <leader>am :call Meeting_notes()<cr>imeeting <esc>:call UltiSnips#ExpandSnippet()<cr>

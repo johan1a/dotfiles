@@ -1,6 +1,13 @@
 
-  - name: Make sure {{ user_home }} exists
+  - name: Make sure standard directories exists
     file:
-      path: "{{ user_home }}"
+      path: "{{ item }}"
       state: directory
+    with_items:
+      - "{{ user_home }}"
+      - "{{ user_home }}/documents"
+      - "{{ user_home }}/documents/notes"
+      - "{{ user_home }}/dev"
+      - "{{ user_home }}/misc"
+      - "{{ user_home }}/bin"
 
