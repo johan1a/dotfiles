@@ -19,9 +19,7 @@
       - neovim
       - java
       - leiningen
-      - herbstluftwm
       - xinitrc
-      - xmonad
       - i3-gaps
       - virtualbox
       - vagrant
