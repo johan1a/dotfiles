@@ -44,5 +44,10 @@ function usblogout
 end
 
 function kingston
-  cd /media/johan/KINGSTON
+    cd /media/johan/KINGSTON
 end
+
+function fixaltgr
+    xmodmap -e 'keycode 108 = Hyper_R'; and xmodmap -e 'add mod3 = Hyper_R'
+end
+
