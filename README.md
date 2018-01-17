@@ -10,8 +10,10 @@ Supported operating systems:
 
 ## How to run
 
-  chmod +x bootstrap.sh
+```
+chmod +x bootstrap.sh
 
-  ./bootstrap.sh
+./bootstrap.sh
+```
 
 
