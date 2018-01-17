@@ -51,3 +51,9 @@ function fixaltgr
     xmodmap -e 'keycode 108 = Hyper_R'; and xmodmap -e 'add mod3 = Hyper_R'
 end
 
+function bootstrap
+    set prev_dir (pwd)
+    cd ~/dotfiles
+    ./bootstrap.sh
+    cd $prev_dir
+end
