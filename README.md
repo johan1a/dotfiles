@@ -1,6 +1,8 @@
 
 # dotfiles
 
+[![Build Status](https://travis-ci.org/johan1a/dotfiles.svg?branch=master)](https://travis-ci.org/johan1a/dotfiles)
+
 Automated system configuration.
 
 Supported operating systems:
