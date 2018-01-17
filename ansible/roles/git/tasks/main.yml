@@ -10,11 +10,11 @@
     register: gitconfig_stat
 
   - name: Backup .gitconfig
-    command: "mv {{ user_home }}/.gitconfig {{ user_home }}/.gitconfig.bak"
+    command: "mv {{ user_home }}/.gitconfig {{ user_home }}/.dotfiles_backup/.gitconfig"
     become: true
-    when: gitconfig_stat.stat.exists
+    when: gitconfig_stat.stat.exists and gitconfig_stat.stat.islnk is not defined
 
-  - name: Update .gitconfig
+  - name: Link .gitconfig
     become: true
     file:
       src: "{{ dotfiles_dir }}/ansible/roles/git/files/gitconfig"

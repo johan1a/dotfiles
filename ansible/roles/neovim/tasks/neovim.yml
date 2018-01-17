@@ -15,44 +15,41 @@
       state: latest
       executable: pip3
 
-  - name: Stat vimrc
-    stat: path="{{ user_home }}/.vimrc"
-    register: vimrc_stat
-
-  - name: Stat .config/nvim
-    stat: path="{{ user_home }}/.config/nvim"
-    register: nvim_stat
-
-  - name: Stat .vim/init.vim
-    stat: path="{{ user_home }}/.vim/init.vim"
-    register: init_vim_stat
-
-  - name: Remove .config/nvim if it's a symlink
-    file:
-      path: "{{ user_home }}/.config/nvim"
-      state: absent
-    when: nvim_stat.stat.islnk is defined and nvim_stat.stat.islnk
-
-  - name: Remove .vim/init.vim if it's a symlink
-    file:
-      path: "{{ user_home }}/.vim/init.vim"
-      state: absent
-    when: init_vim_stat.stat.islnk is defined and init_vim_stat.stat.islnk
-
   - name: Make sure .vim exists
     file:
       path: "{{ user_home }}/.vim"
       state: directory
+
+  - name: Stat vimrc
+    stat: path="{{ user_home }}/.vimrc"
+    register: vimrc_stat
+
+  - name: Backup vimrc
+    command: mv "{{ user_home }}/.vimrc" "{{ user_home }}/.dotfiles_backup/"
+    when: vimrc_stat.stat.exists and vimrc_stat.stat.islnk is not defined
+
+  - name: Stat .config/nvim
+    stat: path="{{ user_home }}/.config/nvim"
+    register: config_nvim_stat
+
+  - name: Backup ~/.config/nvim
+    command: mv  "{{ user_home }}/.config/nvim" "{{ user_home }}/.dotfiles_backup/"
+    when: config_nvim_stat.stat.exists and config_nvim_stat.stat.islnk is not defined
+
+  - name: Stat ~/.vim/init.vim
+    stat: path="{{ user_home }}/.vim/init.vim"
+    register: init_vim_stat
+
+  - name: Backup ~/.vim/init.vim
+    command: mv  "{{ user_home }}/.vim/init.vim" "{{ user_home }}/.dotfiles_backup/"
+    when: init_vim_stat.stat.exists and init_vim_stat.stat.islnk is not defined
 
   - name: Link neovim to vim config
     file:
       src: "{{ user_home }}/.vim"
       dest: "{{ user_home }}/.config/nvim"
       state: link
-
-  - name: Backup vimrc
-    command: mv "{{ user_home }}/.vimrc" "{{ user_home }}/.vimrc.bak"
-    when: vimrc_stat.stat.exists
+    changed_when: config_nvim_stat.stat.exists and config_nvim_stat.stat.islnk is not defined
 
   - name: Symlink .vimrc
     file:
@@ -62,6 +59,7 @@
     with_items:
       - .vimrc
       - .vim/init.vim
+    changed_when: vimrc_stat.stat.exists and vimrc_stat.stat.islnk is not defined
 
   - name: Check if Vundle exists
     stat: path="{{ user_home }}/.vim/bundle/Vundle.vim"

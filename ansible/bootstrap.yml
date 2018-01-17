@@ -8,7 +8,7 @@
       - utils
       - git
       - ubuntu_desktop
-      - rxvt
+      - terminal
       - tree
       - tmux
       - fzf

@@ -51,9 +51,13 @@
     when: i3gaps_git.changed
     become: true
 
-  - name: Stat .config/i3
+  - name: Stat ~/.config/i3
     stat: path="{{ user_home }}/.config/i3"
     register: i3confdir_stat
+
+  - name: Backup ~/.config/i3
+    command: mv "{{ user_home }}/.config/i3" "{{ user_home }}/.dotfiles_backup/.config/i3"
+    when: i3confdir_stat.stat.exists and i3confdir_stat.stat.islnk is not defined
 
   - name: Link i3 config dir
     file:

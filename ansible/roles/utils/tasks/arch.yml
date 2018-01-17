@@ -6,7 +6,7 @@
         SigLevel = Never
         Server = http://repo.archlinux.fr/x86_64
 
-  - name: install {{ item }}
+  - name: Install misc pacman packages...
     pacman: name={{ item }} state=latest
     with_items:
       - base-devel
@@ -36,7 +36,8 @@
       - inxi
       - strace
 
-  - command: yaourt -S {{ item }} --no-confirm
+  - name: Install misc yaourt packages...
+    command: yaourt -S {{ item }} --no-confirm
     with_items:
       - xfce-theme-greybird #run lxappearance after
       - groovy

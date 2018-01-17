@@ -1,0 +1,16 @@
+
+  - include: termite_debian.yml
+    when: ansible_os_family == "Debian"
+
+  - include: termite_arch.yml
+    when: ansible_os_family == "Archlinux"
+
+  - include: bash.yml
+
+  - include: aliases.yml
+
+  - include: fish.yml
+
+  - include: base16.yml
+
+  - include: xresources.yml

@@ -1,5 +1,5 @@
 
-! To see the current loaded resources: 
+! To see the current loaded resources:
 ! xrdb -query -all
 
 !----------!
@@ -13,10 +13,9 @@ URxvt.preeditType: OverTheSpot
 !------!
 ! font !
 !------!
-urxvt*font: xft:inconsolata:size=12
-urxvt*boldfont: xft:inconsolata:style=bold:size=12
-*rxvt*font: xft:inconsolata:size=12
-*rxvt*boldfont: xft:inconsolata:style=bold:size=12
+*rxvt*font: xft:inconsolata:size=14
+*rxvt*boldfont: xft:inconsolata:style=bold:size=14
+URxvt*fading:  0
 
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault

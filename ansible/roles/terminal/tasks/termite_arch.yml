@@ -1,7 +1,7 @@
 
-  - name: install rxvt-unicode
+  - name: install termite
     pacman:
-      name: rxvt-unicode
+      name: termite
       state: latest
     become_method: sudo
 

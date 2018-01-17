@@ -1,11 +1,15 @@
 
-  - name: Remove .xinitrc
-    file:
-      path: "{{ user_home }}/.xinitrc"
-      state: absent
+  - name: Stat .xinitrc
+    stat: path="{{ user_home }}/.xinitrc"
+    register: xinitrc_stat
+
+  - name: Backup .xinitrc
+    command: mv "{{ user_home }}/.xinitrc" "{{ user_home }}/.dotfiles_backup/.xinitrc"
+    when: xinitrc_stat.stat.exists and xinitrc_stat.stat.islnk is not defined
 
   - name: Link .xinitrc config
     file:
       src: "{{ dotfiles_dir }}/ansible/roles/xinitrc/templates/xinitrc_arch"
       dest: "{{ user_home }}/.xinitrc"
       state: link
+    changed_when: xinitrc_stat.stat.exists and xinitrc_stat.stat.islnk is not defined

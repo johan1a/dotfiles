@@ -1,5 +1,0 @@
-
-  - name: install rxvt-unicode-256color
-    apt: name=rxvt-unicode-256color state=latest
-    become_method: sudo
-

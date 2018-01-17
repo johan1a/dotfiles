@@ -1,0 +1,7 @@
+
+  - name: install termite
+    apt:
+      name=termite
+      state=latest
+    become_method: sudo
+

@@ -1,0 +1,28 @@
+
+  - name: Stat ~/.config/fish
+    stat: path="{{ user_home }}/.config/fish"
+    register: fishconfig_stat
+
+  - name: Backup ~/.config/fish
+    command: mv  "{{ user_home }}/.config/fish " "{{ user_home }}/.dotfiles_backup/.config/fish"
+    when: fishconfig_stat.stat.exists and fishconfig_stat.stat.islnk is not defined
+
+  - name: Ensure fish config dir exists
+    file:
+      path: "{{ user_home }}/.config/fish"
+      state: directory
+
+  - name: Link fish functions dir
+    file:
+      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/functions"
+      dest: "{{ user_home }}/.config/fish/functions"
+      state: link
+    changed_when: fishconfig_stat.stat.exists and fishconfig_stat.stat.islnk is not defined
+
+  - name: Link config.fish
+    file:
+      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/config.fish"
+      dest: "{{ user_home }}/.config/fish/config.fish"
+      state: link
+    changed_when: fishconfig_stat.stat.exists and fishconfig_stat.stat.islnk is not defined
+

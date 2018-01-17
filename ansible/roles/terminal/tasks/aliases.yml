@@ -1,0 +1,16 @@
+
+  - name: Stat .aliases.sh
+    stat: path="{{ user_home }}/.aliases.sh"
+    register: stat_bash_aliases
+
+  - name: Backup .aliases.sh
+    command: mv "{{ user_home }}/.aliases.sh" "{{ user_home }}/.aliases.sh.bak"
+    when: stat_bash_aliases.stat.exists and stat_bash_aliases.stat.islnk is not defined
+
+  - name: Link .aliases.sh
+    file:
+      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/aliases.sh"
+      dest: "{{ user_home }}/.aliases.sh"
+      state: link
+    changed_when: stat_bash_aliases.stat.exists and stat_bash_aliases.stat.islnk is not defined
+
