@@ -47,5 +47,6 @@
       - fish
       - fortune-mod
       - udiskie
+      - msr-tools
     when: false
 

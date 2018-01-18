@@ -57,3 +57,13 @@ function bootstrap
     ./bootstrap.sh
     cd $prev_dir
 end
+
+# Mysterious black magic spell.
+# Some say these ancient words have the power to fix
+# even the worst cases of Dell latitude CPU throttling.
+# But who knows at what cost? Use at your own risk...
+function black-magic-spell
+  sudo modprobe msr
+  sudo rdmsr 0x1fc
+  sudo wrmsr 0x1fc f84
+end
