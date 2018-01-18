@@ -24,4 +24,5 @@
       - npm
       - arandr
       - libreoffice
+      - libemail-outlook-message-perl
 
