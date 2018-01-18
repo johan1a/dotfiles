@@ -34,7 +34,7 @@ alias ta="tmux attach -t "
 alias td="tmux detach"
 alias tl="tmux list-sessions"
 #alias t="tmux"
-#alias tr='tmux rename-session'
+alias trs='tmux rename-session'
 alias a="ag"
 alias pj="python -m json.tool"
 alias serve='python -m SimpleHTTPServer' # optional arg: port (defaults to 8000)
@@ -64,4 +64,7 @@ alias ys="yaourt -S "
 alias yss="yaourt -Ss "
 alias less="less -S"
 alias vv="vim ~/.vimrc"
+alias executable="chmod +x "
+alias list-jks="keytool -list -v -keystore "
+alias printcert="keytool -printcert -v -file "
 
