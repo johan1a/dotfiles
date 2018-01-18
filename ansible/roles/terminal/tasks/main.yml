@@ -5,6 +5,8 @@
   - include: termite_arch.yml
     when: ansible_os_family == "Archlinux"
 
+  - include: termite_common.yml
+
   - include: bash.yml
 
   - include: aliases.yml

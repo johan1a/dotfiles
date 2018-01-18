@@ -9,7 +9,7 @@
 
   - name: Link Xresources
     file:
-      src:  "{{ dotfiles_dir }}//ansible/roles/terminal/files/Xresources"
+      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/Xresources"
       dest: "{{ user_home }}/.Xresources"
       state: link
     register: xresources

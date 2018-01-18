@@ -1,0 +1,22 @@
+
+  - name: Ensure termite config dir exists
+    file:
+      path: "{{ user_home }}/.config/termite"
+      state: directory
+
+  - name: Stat ~/.config/termite/config
+    stat: path="{{ user_home }}/.config/termite/config"
+    register: stat_termite
+
+  - name: Backup ~/.config/termite/config
+    command: mv  "{{ user_home }}/.config/termite/config" "{{ user_home }}/.dotfiles_backup/"
+    when: stat_termite.stat.exists and stat_termite.stat.islnk is not defined
+
+  - name: Link ~/.config/termite/config
+    file:
+      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/config_termite"
+      dest: "{{ user_home }}/.config/termite/config"
+      state: link
+    register: termite
+    changed_when: stat_termite.stat.exists and stat_termite.stat.islnk is not defined
+
