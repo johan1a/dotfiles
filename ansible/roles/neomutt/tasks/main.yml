@@ -1,0 +1,7 @@
+
+  - include: arch.yml
+    when: ansible_os_family == "Archlinux"
+    tags: neomutt
+
+  - include: neomutt.yml
+    tags: neomutt

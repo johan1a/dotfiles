@@ -1,0 +1,5 @@
+
+  - name: Install neomutt
+    pacman:
+      name: neomutt
+      state: latest

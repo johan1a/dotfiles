@@ -1,0 +1,21 @@
+
+  - name: Make sure .mutt exists
+    file:
+      path: "{{ user_home }}/.mutt"
+      state: directory
+
+  - name: Stat muttrc
+    stat: path="{{ user_home }}/.mutt/muttrc"
+    register: muttrc_stat
+
+  - name: Backup muttrc
+    command: mv "{{ user_home }}/.mutt/muttrc" "{{ user_home }}/.dotfiles_backup/"
+    when: muttrc_stat.stat.exists and muttrc_stat.stat.islnk is not defined
+
+  - name: Link muttrc config
+    file:
+      src: "{{ dotfiles_dir }}/ansible/roles/neomutt/files/muttrc"
+      dest: "{{ user_home }}/.mutt/muttrc"
+      state: link
+    changed_when: muttrc_stat.stat.exists and muttrc_stat.stat.islnk is not defined
+
