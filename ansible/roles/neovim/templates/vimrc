@@ -362,10 +362,11 @@ vnoremap d "*d
 
 
 " Disable arrow keys
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
+noremap <Up> /
+noremap <Down> :nohl<cr>
+noremap <Left> :%s/
 noremap <Right> <nop>
+vnoremap <Right> :s/\%V
 
 inoremap § <esc>
 vnoremap § <esc>
