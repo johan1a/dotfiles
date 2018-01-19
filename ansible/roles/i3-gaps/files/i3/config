@@ -239,3 +239,17 @@ bar {
 }
 
 
+###################################
+#  Application specific settings  #
+###################################
+
+# Tip: To find out what the class might be, run:
+#       xprop | grep -i 'class'
+# And click on the application.
+
+# Make Citrix windows always float.
+# We all float down here!
+for_window [class="Wfica_Seamless"] floating enable #, border normal
+
+# Assign Citrix windows to workspace 10
+assign [class="Wfica_Seamless"] 10
