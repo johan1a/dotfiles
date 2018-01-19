@@ -1,15 +1,22 @@
 
-  - name: Stat .xinitrc
-    stat: path="{{ user_home }}/.xinitrc"
-    register: xinitrc_stat
+  - command: test -L "{{ user_home }}/.xinitrc"
+    register: isLink
+    changed_when: false
+    failed_when: false
+
+  - command: test -f "{{ user_home }}/.xinitrc"
+    register: isFile
+    changed_when: false
+    failed_when: false
 
   - name: Backup .xinitrc
     command: mv "{{ user_home }}/.xinitrc" "{{ user_home }}/.dotfiles_backup/.xinitrc"
-    when: xinitrc_stat.stat.exists and xinitrc_stat.stat.islnk is not defined
+    when: isFile
 
   - name: Link .xinitrc config
     file:
       src: "{{ dotfiles_dir }}/ansible/roles/xinitrc/templates/xinitrc_arch"
       dest: "{{ user_home }}/.xinitrc"
       state: link
-    changed_when: xinitrc_stat.stat.exists and xinitrc_stat.stat.islnk is not defined
+    changed_when: not (isFile and isLink)
+
