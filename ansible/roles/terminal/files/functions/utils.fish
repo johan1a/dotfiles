@@ -51,7 +51,7 @@ function fixaltgr
     xmodmap -e 'keycode 108 = Hyper_R'; and xmodmap -e 'add mod3 = Hyper_R'
 end
 
-function bootstrap
+function sync-config
     set prev_dir (pwd)
     cd ~/dotfiles
     ./bootstrap.sh
@@ -63,7 +63,21 @@ end
 # even the worst cases of Dell latitude CPU throttling.
 # But who knows at what cost? Use at your own risk...
 function black-magic-spell
-  sudo modprobe msr
-  sudo rdmsr 0x1fc
-  sudo wrmsr 0x1fc f84
+    sudo modprobe msr
+    sudo rdmsr 0x1fc
+    sudo wrmsr 0x1fc f84
+end
+
+function reload-i3
+    i3-msg reload
+end
+
+function ssh
+    set TERM xterm
+    /usr/bin/ssh $argv
+end
+
+function scp
+    set TERM xterm
+    /usr/bin/scp $argv
 end
