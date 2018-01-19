@@ -8,9 +8,19 @@
     stat: path="{{ user_home }}/.config/termite/config"
     register: stat_termite
 
+  - command: test -L "{{ user_home }}/.config/termite/config"
+    register: isLink
+    changed_when: false
+    failed_when: false
+
+  - command: test -f "{{ user_home }}/.config/termite/config"
+    register: isFile
+    changed_when: false
+    failed_when: false
+
   - name: Backup ~/.config/termite/config
     command: mv  "{{ user_home }}/.config/termite/config" "{{ user_home }}/.dotfiles_backup/"
-    when: stat_termite.stat.exists and stat_termite.stat.islnk is not defined
+    when: isFile
 
   - name: Link ~/.config/termite/config
     file:
@@ -18,5 +28,5 @@
       dest: "{{ user_home }}/.config/termite/config"
       state: link
     register: termite
-    changed_when: stat_termite.stat.exists and stat_termite.stat.islnk is not defined
+    changed_when: not (isFile and isLink)
 
