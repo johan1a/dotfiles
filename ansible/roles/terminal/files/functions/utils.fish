@@ -81,3 +81,8 @@ function scp
     set TERM xterm
     /usr/bin/scp $argv
 end
+
+function colemak
+    setxkbmap us -variant colemak
+    fixaltgr
+end
