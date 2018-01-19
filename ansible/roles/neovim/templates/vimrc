@@ -491,11 +491,20 @@ function! Meeting_notes()
     tabe `=full_path`
 endfunction
 
+function! Notes()
+    " ` is not working
+    let file_name = 'notes_' . strftime('%Y%m%d_%H%M') . '.txt'
+    !touch ~/documents/notes/`=file_name`
+    let full_path = $HOME . '/documents/notes/' . file_name
+    tabe `=full_path`
+endfunction
+
 nnoremap <leader>am :call Meeting_notes()<cr>imeeting <esc>:call UltiSnips#ExpandSnippet()<cr>
+nnoremap <leader>an :call Notes()<cr>
 nnoremap <leader>aa :tabe ~/.vimrc<cr>
 nnoremap <leader>ai :tabe ~/.config/i3/config<cr>
 
 
-nnoremap <leader>ar :Rename 
-nnoremap <leader>am :Move 
-nnoremap <leader>as :SudoWrite<cr>
+nnoremap <leader>mr :Rename 
+nnoremap <leader>mm :Move 
+nnoremap <leader>ms :SudoWrite<cr>
