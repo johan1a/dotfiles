@@ -36,6 +36,7 @@
       - inxi
       - strace
       - fish
+      - npm
 
   - name: Install misc yaourt packages...
     command: yaourt -S {{ item }} --no-confirm
