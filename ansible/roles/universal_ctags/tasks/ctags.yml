@@ -1,45 +1,45 @@
 
-  - name: Check if ctags dir exists
-    stat: path="{{ user_home }}/ctags"
-    register: ctags_dir
+  - name: Check if ctags is installed
+    command: type ctags
+    failed_when: false
+    changed_when: false
+    register: ctags_installed
 
   - name: Pull universal ctags source
     git: repo=https://github.com/universal-ctags/ctags.git
-         dest="{{ user_home }}/ctags"
+         dest="{{ user_home }}/source/ctags"
     register: ctags_git
-    when: not ctags_dir.stat.exists
+    when: ctags_installed.rc != 0
 
   - name: Set ctags dir permissions
     file:
-      path: "{{ user_home }}/ctags"
+      path: "{{ user_home }}/source/ctags"
       owner: "{{ username }}"
       recurse: yes
-    args:
-      chdir: "{{ user_home }}/ctags"
     when: ctags_git.changed
 
   - name: Run autogen.sh
     command: "./autogen.sh"
     args:
-      chdir: "{{ user_home }}/ctags"
+      chdir: "{{ user_home }}/source/ctags"
     when: ctags_git.changed
 
   - name: Run configure
     command: "./configure"
     args:
-      chdir: "{{ user_home }}/ctags"
+      chdir: "{{ user_home }}/source/ctags"
     when: ctags_git.changed
 
   - name: Run make
     shell: "make"
     args:
-      chdir: "{{ user_home }}/ctags"
+      chdir: "{{ user_home }}/source/ctags"
     when: ctags_git.changed
 
   - name: Run sudo make install
     shell: "sudo make install"
     args:
-      chdir: "{{ user_home }}/ctags"
+      chdir: "{{ user_home }}/source/ctags"
     when: ctags_git.changed
     become: true
 
