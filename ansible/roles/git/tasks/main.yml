@@ -5,14 +5,19 @@
   - include: arch.yml
     when: ansible_os_family == "Archlinux"
 
-  - name: Stat .gitconfig
-    stat: path="{{ user_home }}/.gitconfig"
-    register: gitconfig_stat
+  - command: test -L "{{ user_home }}/.gitconfig"
+    register: isLink
+    changed_when: false
+    failed_when: false
+
+  - command: test -f "{{ user_home }}/.gitconfig"
+    register: isFile
+    changed_when: false
+    failed_when: false
 
   - name: Backup .gitconfig
-    command: "mv {{ user_home }}/.gitconfig {{ user_home }}/.dotfiles_backup/.gitconfig"
-    become: true
-    when: gitconfig_stat.stat.exists and gitconfig_stat.stat.islnk is not defined
+    command: mv "{{ user_home }}/.gitconfig" "{{ user_home }}/.dotfiles_backup/"
+    when: isFile
 
   - name: Link .gitconfig
     become: true
@@ -20,4 +25,5 @@
       src: "{{ dotfiles_dir }}/ansible/roles/git/files/gitconfig"
       dest: "{{ user_home }}/.gitconfig"
       state: link
+    changed_when: not (isFile and isLink)
 
