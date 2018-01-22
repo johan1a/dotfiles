@@ -441,7 +441,7 @@ inoremap <C-k> <C-\><C-N><C-w>k
 inoremap <C-l> <C-\><C-N><C-w>l
 
 " Execute a shell command and read in the results
-noremap Q !!$SHELL<CR>
+noremap Q yyp!!$SHELL<CR>
 
 " Tabs and splits
 nnoremap <s-l> :tabn<cr>
