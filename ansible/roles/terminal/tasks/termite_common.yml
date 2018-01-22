@@ -20,7 +20,7 @@
 
   - name: Backup ~/.config/termite/config
     command: mv  "{{ user_home }}/.config/termite/config" "{{ user_home }}/.dotfiles_backup/"
-    when: isFile
+    when: isFile.rc == 0
 
   - name: Link ~/.config/termite/config
     file:
@@ -28,5 +28,5 @@
       dest: "{{ user_home }}/.config/termite/config"
       state: link
     register: termite
-    changed_when: not (isFile and isLink)
+    changed_when: isFile.rc != 0 or isLink.rc != 0
 
