@@ -444,8 +444,8 @@ inoremap <C-l> <C-\><C-N><C-w>l
 noremap Q !!$SHELL<CR>
 
 " Tabs and splits
-nnoremap <a-l> :tabn<cr>
-nnoremap <a-h> :tabp<cr>
+nnoremap <s-l> :tabn<cr>
+nnoremap <s-h> :tabp<cr>
 nnoremap <leader>b :tabe<cr>:CtrlPMixed<cr>:CtrlPMixed<cr>
 
 " Holy shell, Batman!!!
