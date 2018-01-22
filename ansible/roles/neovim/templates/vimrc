@@ -37,6 +37,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -229,6 +230,9 @@ set softtabstop=0
 " Display tabs and trailing spaces
 set list
 set listchars=tab:▸–,trail:·
+set listchars+=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+set nojoinspaces                      " don't autoinsert two spaces after '.', '?', '!' for join command
+
 " Set color of listchars
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
