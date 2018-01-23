@@ -49,5 +49,6 @@
       - fortune-mod
       - udiskie
       - msr-tools
+      - translate-shell
     when: false
 

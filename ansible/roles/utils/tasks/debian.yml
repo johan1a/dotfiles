@@ -25,4 +25,5 @@
       - arandr
       - libreoffice
       - libemail-outlook-message-perl
+      - translate-shell
 
