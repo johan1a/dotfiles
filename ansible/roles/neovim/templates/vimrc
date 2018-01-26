@@ -45,6 +45,9 @@ filetype plugin indent on
 
 let mapleader =  "\<Space>"
 
+" gitgutter
+let g:gitgutter_max_signs = 1000
+
 " =========== deoplete ===========
 " if :echo has("python3") returns 1, then you're done;
 " Otherwise enable Python3 interface with pip:
