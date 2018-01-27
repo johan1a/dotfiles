@@ -37,6 +37,8 @@
       - strace
       - fish
       - npm
+      - w3m
+      - isync
 
   - name: Install misc yaourt packages...
     command: yaourt -S {{ item }} --no-confirm
