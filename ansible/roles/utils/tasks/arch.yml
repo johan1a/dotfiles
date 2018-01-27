@@ -30,7 +30,6 @@
       - pulseaudio-alsa
       - pulseaudio
       - pavucontrol
-      - google-chrome
       - dmenu
       - the_silver_searcher
       - inxi
@@ -52,5 +51,6 @@
       - udiskie
       - msr-tools
       - translate-shell
+      - google-chrome
     when: false
 
