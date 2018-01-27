@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "archlinux/archlinux"
   config.vm.provision "shell", inline: "sudo pacman -Syu --noconfirm"
   config.vm.provision "shell", inline: "sudo pacman -S git --noconfirm"
-  config.vm.provision "shell", inline: "if [ -d "dotfiles" ]; then rm -rf dotfiles fi"
+  config.vm.provision "shell", inline: "if [ -d 'dotfiles' ]; then rm -rf dotfiles; fi"
   config.vm.provision "shell", inline: "git clone https://github.com/johan1a/dotfiles.git"
   config.vm.provision "shell", inline: "sed -i -e 's/johan/vagrant/g' /home/vagrant/dotfiles/ansible/group_vars/local.yml"
   config.vm.provision "shell", inline: "cd /home/vagrant/dotfiles && /home/vagrant/dotfiles/bootstrap.sh",  env: {"Vagrant" => "True"}
