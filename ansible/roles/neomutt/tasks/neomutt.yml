@@ -11,7 +11,7 @@
 
   - name: Backup isync config
     command: mv "{{ user_home }}/.mbsyncrc" "{{ user_home }}/.dotfiles_backup/"
-    when: isFile
+    when: isFile.rc == 0
 
   - name: Link isync config
     become: true
@@ -19,7 +19,7 @@
       src: "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mbsyncrc"
       dest: "{{ user_home }}/.mbsyncrc"
       state: link
-    changed_when: not (isFile and isLink)
+    changed_when: not (isFile.rc == 0 and isLink.rc == 0)
 
   - name: Make sure .mutt exists
     file:
