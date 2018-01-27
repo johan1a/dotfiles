@@ -1,5 +1,0 @@
-
-  - name: install tree
-    pacman:
-      name: tree 
-      state: latest
