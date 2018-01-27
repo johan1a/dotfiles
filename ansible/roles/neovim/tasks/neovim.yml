@@ -73,11 +73,11 @@
 
   - name: Install plugins
     become: true
-    command: vim +PlugInstall +qall
+    command: nvim +PlugInstall +qall
 
   - name: Update remote plugins
     become: true
-    command: vim +UpdateRemotePlugins +qall
+    command: nvim +UpdateRemotePlugins +qall
 
   - name: Setup permissions
     file:
