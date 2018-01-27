@@ -8,12 +8,13 @@
 Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/xenial64"
-  config.vm.provision "shell", inline: "sudo apt-get install git"
+  config.vm.box = "archlinux/archlinux"
+  config.vm.provision "shell", inline: "sudo pacman -Syu --noconfirm"
+  config.vm.provision "shell", inline: "sudo pacman -S git --noconfirm"
+  config.vm.provision "shell", inline: "if [ -d "dotfiles" ]; then rm -rf dotfiles fi"
   config.vm.provision "shell", inline: "git clone https://github.com/johan1a/dotfiles.git"
-  config.vm.provision "shell",
-    inline: "sed -i -e 's/johan/ubuntu/g' /home/ubuntu/dotfiles/ansible/group_vars/local.yml"
-  config.vm.provision "shell", inline: "cd /home/ubuntu/dotfiles && /home/ubuntu/dotfiles/bootstrap.sh",  env: {"Vagrant" => "True"}
-  config.vm.provision "shell", inline: "echo 'ubuntu:ubuntu' | chpasswd"
-  config.vm.provision "shell", inline: "reboot"
+  config.vm.provision "shell", inline: "sed -i -e 's/johan/vagrant/g' /home/vagrant/dotfiles/ansible/group_vars/local.yml"
+  config.vm.provision "shell", inline: "cd /home/vagrant/dotfiles && /home/vagrant/dotfiles/bootstrap.sh",  env: {"Vagrant" => "True"}
+  config.vm.provision "shell", inline: "echo 'vagrant:vagrant' | chpasswd"
+  #config.vm.provision "shell", inline: "reboot"
 end
