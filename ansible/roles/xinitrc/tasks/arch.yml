@@ -11,12 +11,12 @@
 
   - name: Backup .xinitrc
     command: mv "{{ user_home }}/.xinitrc" "{{ user_home }}/.dotfiles_backup/.xinitrc"
-    when: isFile
+    when: isFile.rc == 0
 
   - name: Link .xinitrc config
     file:
       src: "{{ dotfiles_dir }}/ansible/roles/xinitrc/templates/xinitrc_arch"
       dest: "{{ user_home }}/.xinitrc"
       state: link
-    changed_when: not (isFile and isLink)
+    changed_when: not (isFile.rc == 0 and isLink.rc == 0)
 
