@@ -25,7 +25,7 @@
       src: "{{ dotfiles_dir }}/ansible/roles/tmux/files/tmux.conf"
       dest: "{{ user_home }}/.tmux.conf"
       state: link
-    changed_when: not and isLink.rc == 0
+    changed_when: not isLink.rc == 0
 
   - name: Remove old .tmux.reset.conf
     file:
