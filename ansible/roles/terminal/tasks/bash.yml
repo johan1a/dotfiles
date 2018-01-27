@@ -1,29 +1,45 @@
 
-  - name: Stat .bashrc
-    stat: path="{{ user_home }}/.bashrc"
-    register: stat_bashrc
+  - command: test -L "{{ user_home }}/.bashrc"
+    register: bashrc_isLink
+    changed_when: false
+    failed_when: false
 
-  - name: Stat .inputrc
-    stat: path="{{ user_home }}/.inputrc"
-    register: stat_inputrc
+  - command: test -f "{{ user_home }}/.bashrc"
+    register: bashrc_isFile
+    changed_when: false
+    failed_when: false
 
   - name: Backup .bashrc
-    command: mv  "{{ user_home }}/.bashrc" "{{ user_home }}/.dotfiles_backup/.bashrc"
-    when: stat_bashrc.stat.exists and stat_bashrc.stat.islnk is not defined
-
-  - name: Backup .inputrc
-    command: mv "{{ user_home }}/.inputrc" "{{ user_home }}/.inputrc.bak"
-    when: stat_inputrc.stat.exists and stat_inputrc.stat.islnk is not defined
+    command: mv "{{ user_home }}/.bashrc" "{{ user_home }}/.dotfiles_backup/"
+    when: bashrc_isFile.rc == 0
 
   - name: Link .bashrc
+    become: true
     file:
-      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/bashrc"
+      src: "{{ dotfiles_dir }}/ansible/roles/terminal/files/bashrc"
       dest: "{{ user_home }}/.bashrc"
       state: link
+    changed_when: not (bashrc_isFile.rc == 0 and bashrc_isLink.rc == 0 )
+
+  - command: test -L "{{ user_home }}/.inputrc"
+    register: inputrc_isLink
+    changed_when: false
+    failed_when: false
+
+  - command: test -f "{{ user_home }}/.inputrc"
+    register: inputrc_isFile
+    changed_when: false
+    failed_when: false
+
+  - name: Backup .inputrc
+    command: mv "{{ user_home }}/.inputrc" "{{ user_home }}/.dotfiles_backup/"
+    when: inputrc_isFile.rc == 0
 
   - name: Link .inputrc
+    become: true
     file:
-      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/inputrc"
+      src: "{{ dotfiles_dir }}/ansible/roles/terminal/files/inputrc"
       dest: "{{ user_home }}/.inputrc"
       state: link
+    changed_when: not (inputrc_isFile.rc == 0 and inputrc_isLink.rc == 0 )
 
