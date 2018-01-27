@@ -1,0 +1,7 @@
+
+  - pacman:
+      name: ranger
+      state: latest
+
+  - command: yaourt -S w3m --noconfirm
+
