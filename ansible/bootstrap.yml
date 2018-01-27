@@ -9,6 +9,7 @@
       - git
       - ubuntu_desktop
       - terminal
+      - neomutt
       - tree
       - tmux
       - fzf
