@@ -38,6 +38,8 @@
       - npm
       - w3m
       - isync
+      - cabal-install
+      - dnsutils
 
   - name: Install misc yaourt packages...
     command: yaourt -S {{ item }} --no-confirm

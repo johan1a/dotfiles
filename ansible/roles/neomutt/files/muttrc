@@ -1,6 +1,6 @@
 
 # Sets imap_pass and smtp_pass
-source "gpg -dq $HOME/.mutt_pass.gpg |"
+source "gpg --use-agent -dq $HOME/.mutt_pass.gpg |"
 
 set imap_user=johan.peter.andersson@gmail.com
 
