@@ -38,7 +38,6 @@
       - npm
       - w3m
       - isync
-      - cabal-install
       - dnsutils
 
   - name: Install misc yaourt packages...
@@ -54,5 +53,6 @@
       - msr-tools
       - translate-shell
       - google-chrome
+      - stack-bin
     when: false
 
