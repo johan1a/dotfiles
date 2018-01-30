@@ -41,7 +41,7 @@
       - npm
       - w3m
       - isync
-      - dnsutils
+#     - dnsutils
 
   - name: Install misc yaourt packages...
     command: yaourt -S {{ item }} --noconfirm
@@ -51,10 +51,11 @@
       - gradle
       - youtube-dl
       - fortune-mod
-      - udiskie
+        #      - udiskie
       - msr-tools
       - translate-shell
       - google-chrome
       - stack-bin
-      - httpie
+        #      - httpie
+    become_user: "{{ username }}"
 

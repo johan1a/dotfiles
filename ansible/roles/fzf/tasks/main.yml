@@ -7,15 +7,15 @@
     command: git clone --depth 1 https://github.com/junegunn/fzf.git {{ user_home }}/.fzf
     when: not fzf_stat.stat.exists
 
+  - name: install fzf
+    command: bash -c "yes | {{ user_home }}/.fzf/install"
+    become_user: "{{ username }}"
+    when: not fzf_stat.stat.exists
+
   - name: Set dir permissions
     file:
       path: "{{ user_home }}/.fzf"
       owner: "{{ username }}"
       recurse: yes
-    when: not fzf_stat.stat.exists
-
-  - name: install fzf
-    command: bash -c "yes | {{ user_home }}/.fzf/install"
-    become_user: "{{ username }}"
     when: not fzf_stat.stat.exists
 
