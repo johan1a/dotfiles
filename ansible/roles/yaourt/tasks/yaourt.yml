@@ -1,0 +1,40 @@
+
+  - name: Check if package-query is installed
+    stat:
+      path: "{{ user_home }}/source/package_query"
+    failed_when: false
+    changed_when: false
+    register: package_query_installed
+
+  - name: Pull package-query source
+    git: repo=https://aur.archlinux.org/package-query.git
+         dest="{{ user_home }}/source/package_query"
+    register: package_query_git
+    when: not package_query_installed.stat.exists
+
+  - name: Run makepkg
+    command: "makepkg -si"
+    args:
+      chdir: "{{ user_home }}/source/package_query"
+    when: package_query_git.changed
+
+  - name: Check if yaourt is installed
+    stat:
+      path: "{{ user_home }}/source/yaourt"
+    failed_when: false
+    changed_when: false
+    register: yaourt_installed
+
+  - name: Pull yaourt source
+    git:
+      repo: https://aur.archlinux.org/yaourt.git
+      dest: "{{ user_home }}/source/yaourt"
+    register: yaourt_git
+    when: not yaourt_installed.stat.exists
+
+  - name: Run makepkg
+    command: "makepkg -si"
+    args:
+      chdir: "{{ user_home }}/source/yaourt"
+    when: yaourt_git.changed
+

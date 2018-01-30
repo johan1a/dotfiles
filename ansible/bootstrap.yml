@@ -5,6 +5,7 @@
     roles:
       - misc
       - colemak
+      - yaourt
       - utils
       - git
       - ubuntu_desktop
