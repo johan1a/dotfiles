@@ -1,8 +1,11 @@
 
-  - name: Install neovim gem
+  - name: Install neovim gems
     gem:
-      name: neovim
+      name: "{{ item }}"
       state: latest
+    with_items:
+      - rdoc
+      - neovim
 
   - name: Install neovim pip package
     pip:
@@ -19,6 +22,7 @@
     file:
       path: "{{ user_home }}/.vim"
       state: directory
+      owner: "{{ username }}"
 
   - name: Stat vimrc
     stat: path="{{ user_home }}/.vimrc"
