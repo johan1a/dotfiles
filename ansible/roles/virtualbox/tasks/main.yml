@@ -1,8 +1,10 @@
 
   - include: debian.yml
-    when: ansible_os_family == "Debian"
+    when: ansible_os_family == "Debian" and not lookup('env', 'Vagrant')
+
 
   - include: arch.yml
-    when: ansible_os_family == "Archlinux"
+    when: ansible_os_family == "Archlinux" and not lookup('env', 'Vagrant')
+
 
 
