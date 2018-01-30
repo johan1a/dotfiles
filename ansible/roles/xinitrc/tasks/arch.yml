@@ -1,4 +1,13 @@
 
+  - name: Install xorg
+    pacman:
+      name: "{{ item }}"
+      state: latest
+    when: lookup('env', 'Vagrant')
+    with_items:
+      - xorg
+      - xorg-xinit
+
   - command: test -L "{{ user_home }}/.xinitrc"
     register: isLink
     changed_when: false
