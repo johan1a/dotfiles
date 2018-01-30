@@ -4,5 +4,4 @@
     when: ansible_os_family == "Archlinux"
 
   - include: ranger.yml
-    when: ansible_os_family == "Archlinux"
 
