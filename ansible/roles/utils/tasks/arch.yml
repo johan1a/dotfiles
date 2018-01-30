@@ -6,8 +6,12 @@
         SigLevel = Never
         Server = http://repo.archlinux.fr/x86_64
 
+  - command: pacman -Syu
+
   - name: Install misc pacman packages...
-    pacman: name={{ item }} state=latest
+    pacman:
+      name: "{{ item }}"
+      state: latest
     with_items:
       - base-devel
       - wget
@@ -19,7 +23,6 @@
       - tree
       - ranger
       - vlc
-      - lxappearance
       - arandr
       - ttf-dejavu
       - ttf-inconsolata
@@ -41,9 +44,8 @@
       - dnsutils
 
   - name: Install misc yaourt packages...
-    command: yaourt -S {{ item }} --no-confirm
+    command: yaourt -S {{ item }} --noconfirm
     with_items:
-      - xfce-theme-greybird #run lxappearance after
       - groovy
       - grails
       - gradle
@@ -55,5 +57,4 @@
       - google-chrome
       - stack-bin
       - httpie
-    when: false
 
