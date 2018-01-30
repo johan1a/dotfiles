@@ -7,7 +7,6 @@
       - yaourt
       - utils
       - git
-      - ubuntu_desktop
       - terminal
       - neomutt
       - tmux
