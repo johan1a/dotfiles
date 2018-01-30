@@ -54,5 +54,6 @@
       - translate-shell
       - google-chrome
       - stack-bin
+      - httpie
     when: false
 
