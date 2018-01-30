@@ -1,16 +1,16 @@
 
   - name: Check for fzf
-    stat: path="~/.fzf"
+    stat: path="{{ user_home }}/.fzf"
     become: false
     register: fzf_stat
 
   - name: Download fzf source
-    command: git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    command: git clone --depth 1 https://github.com/junegunn/fzf.git {{ user_home }}/.fzf
     become: false
     when: not fzf_stat.stat.exists
 
   - name: install fzf
-    command: bash -c "yes | ~/.fzf/install"
+    command: bash -c "yes | {{ user_home }}/.fzf/install"
     become: false
     when: not fzf_stat.stat.exists
 
