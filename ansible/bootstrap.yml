@@ -4,7 +4,6 @@
     become: true
     roles:
       - misc
-      - colemak
       - yaourt
       - utils
       - git
