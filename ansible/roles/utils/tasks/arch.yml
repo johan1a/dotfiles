@@ -55,7 +55,7 @@
       - msr-tools
       - translate-shell
       - google-chrome
-      - stack-bin
+        #      - stack-bin
         #      - httpie
     become_user: "{{ username }}"
 
