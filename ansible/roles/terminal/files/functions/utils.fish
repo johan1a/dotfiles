@@ -86,3 +86,7 @@ function colemak
     setxkbmap us -variant colemak
     fixaltgr
 end
+
+function todo
+    vim ~/documents/todo.txt
+end
