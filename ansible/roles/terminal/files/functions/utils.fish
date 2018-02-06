@@ -83,10 +83,21 @@ function scp
 end
 
 function colemak
+    echo "Switched to Colemak."
     setxkbmap us -variant colemak
     fixaltgr
 end
 
 function todo
     vim ~/documents/todo.txt
+end
+
+function danish
+    setxkbmap dk
+    echo "Switched to Danish (QWERTY)."
+end
+
+function swedish
+    echo "Switched to Swedish (QWERTY)."
+    setxkbmap se
 end
