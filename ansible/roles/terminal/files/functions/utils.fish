@@ -11,6 +11,12 @@ function ml
     cd $argv; and ll
 end
 
+# cd to newest
+function cn
+  set newest (ls -tr | tail -n 1)
+  cd $newest
+end
+
 function backup
     cp "$argv"{,.bak};
 end
@@ -101,3 +107,4 @@ function swedish
     echo "Switched to Swedish (QWERTY)."
     setxkbmap se
 end
+
