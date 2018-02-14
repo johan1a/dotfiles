@@ -6,15 +6,23 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-  # Every Vagrant development environment requires a box. You can search for
-  # boxes at https://atlas.hashicorp.com/search.
+  # replace Windows line endings with Unix line endings
   config.vm.box = "archlinux/archlinux"
-  config.vm.provision "shell", inline: "sudo pacman -Syu --noconfirm"
-  config.vm.provision "shell", inline: "sudo pacman -S git --noconfirm"
-  config.vm.provision "shell", inline: "if [ -d 'dotfiles' ]; then rm -rf dotfiles; fi"
-  config.vm.provision "shell", inline: "cp -r /vagrant dotfiles"
-  config.vm.provision "shell", inline: "sed -i -e 's/johan/vagrant/g' /home/vagrant/dotfiles/ansible/group_vars/local.yml"
-  config.vm.provision "shell", inline: "cd /home/vagrant/dotfiles && /home/vagrant/dotfiles/bootstrap.sh",  env: {"Vagrant" => "True"}
-  config.vm.provision "shell", inline: "echo 'vagrant:vagrant' | chpasswd"
+
+
+  config.vm.provision "shell" do |s|
+    s.binary = true
+    s.inline = "
+      sudo pacman -Syu --noconfirm;
+      sudo pacman -S git dos2unix --noconfirm;
+      if [ -d 'dotfiles' ]; then rm -rf dotfiles; fi;
+      cp -r /vagrant dotfiles;
+      sed -i -e 's/johan/vagrant/g' /home/vagrant/dotfiles/ansible/group_vars/local.yml;
+      sudo find . -type f -print0 | xargs -0 dos2unix;
+      VAGRANT=True cd /home/vagrant/dotfiles && /home/vagrant/dotfiles/bootstrap.sh;
+      echo 'vagrant:vagrant' | chpasswd;"
+  end
+  
+
   #config.vm.provision "shell", inline: "reboot"
 end
