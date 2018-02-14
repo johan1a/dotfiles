@@ -58,6 +58,7 @@ alias dp="docker stop "
 alias dr="docker restart "
 alias rclocal="sudo /etc/rc.local"
 alias fconfig="cd ~/.config/fish/"
+alias futils="vim ~/.config/fish/functions/utils.fish"
 alias cl=clear
 alias y=yaourt
 alias ys="yaourt -S "
