@@ -9,6 +9,11 @@ Vagrant.configure("2") do |config|
   # replace Windows line endings with Unix line endings
   config.vm.box = "archlinux/archlinux"
 
+  config.vm.provider "virtualbox" do |v|
+       v.customize ["modifyvm", :id, "--vram", "256"]
+  end
+
+  config.vm.synced_folder "dev", "/home/vagrant/dev"
 
   config.vm.provision "shell" do |s|
     s.binary = true
@@ -20,7 +25,8 @@ Vagrant.configure("2") do |config|
       sed -i -e 's/johan/vagrant/g' /home/vagrant/dotfiles/ansible/group_vars/local.yml;
       sudo find . -type f -print0 | xargs -0 dos2unix;
       VAGRANT=True cd /home/vagrant/dotfiles && /home/vagrant/dotfiles/bootstrap.sh;
-      echo 'vagrant:vagrant' | chpasswd;"
+      echo 'vagrant:vagrant' | chpasswd;
+      xrandr -s 1920x1080;"
   end
   
 
