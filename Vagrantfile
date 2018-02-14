@@ -11,6 +11,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |v|
        v.customize ["modifyvm", :id, "--vram", "256"]
+       v.memory = 4096
+       v.gui = true
   end
 
   config.vm.synced_folder "dev", "/home/vagrant/dev"

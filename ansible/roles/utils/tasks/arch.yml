@@ -46,6 +46,7 @@
       - jdk8-openjdk 
       - openjdk8-doc 
       - openjdk8-src
+      - dialog
 #     - dnsutils
 
   - name: Set default jdk

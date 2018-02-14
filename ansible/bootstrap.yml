@@ -10,7 +10,7 @@
       - terminal
       - neomutt
       - tmux
-      - fzf
+#      - fzf
       - ranger
       - universal_ctags
       - python
