@@ -26,11 +26,12 @@ Vagrant.configure("2") do |config|
       cp -r /vagrant dotfiles;
       sed -i -e 's/johan/vagrant/g' /home/vagrant/dotfiles/ansible/group_vars/local.yml;
       sudo find . -type f -print0 | xargs -0 dos2unix;
-      VAGRANT=True cd /home/vagrant/dotfiles && /home/vagrant/dotfiles/bootstrap.sh;
+      export VAGRANT=True;
+      cd /home/vagrant/dotfiles && /home/vagrant/dotfiles/bootstrap.sh;
       echo 'vagrant:vagrant' | chpasswd;
       xrandr -s 1920x1080;"
   end
-  
+
 
   #config.vm.provision "shell", inline: "reboot"
 end
