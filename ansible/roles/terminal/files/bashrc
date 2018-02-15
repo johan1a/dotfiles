@@ -192,7 +192,7 @@ export CDPATH=":~:~/dev"
 NAME_STR="$(head -n 1 /etc/os-release)"
 OS="$(echo ${NAME_STR} | sed 's/NAME=//g')"
 
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; tnen
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     exec startx
 fi
 

@@ -18,7 +18,7 @@ function cn
 end
 
 function backup
-    cp "$argv"{,.bak};
+    cp -r "$argv"{,.bak};
 end
 
 function google
@@ -108,3 +108,6 @@ function swedish
     setxkbmap se
 end
 
+function compress
+    tar -zcvf $argv.tar.gz $argv
+end
