@@ -69,3 +69,4 @@ alias executable="chmod +x "
 alias list-jks="keytool -list -v -keystore "
 alias printcert="keytool -printcert -v -file "
 alias xc="xclip -selection clipboard "
+alias t=cat
