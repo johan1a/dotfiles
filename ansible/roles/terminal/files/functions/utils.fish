@@ -120,3 +120,20 @@ function upgrade
     pip3 list | awk  ' {print $1}' | xargs sudo pip3 install -U
 end
 
+function usb-backup
+    echo backing up files to usb drive...
+    usblogin
+    set backup_dir /media/johan/KINGSTON/backup/
+    rsync -r --progress ~/documents $backup_dir
+    rsync --progress johan.kdbx $backup_dir
+    echo backup done.
+end
+
+function usb-restore
+    echo restoring files to usb drive...
+    usblogin
+    set backup_dir /media/johan/KINGSTON/
+    set dest_dir ~/KINGSTON/
+    rsync -r --progress $backup_dir $dest_dir
+    echo restore done.
+end
