@@ -13,8 +13,8 @@ end
 
 # cd to newest
 function cn
-  set newest (ls -tr | tail -n 1)
-  cd $newest
+    set newest (ls -tr | tail -n 1)
+    cd $newest
 end
 
 function backup
@@ -26,7 +26,7 @@ function google
 end
 
 function mostused
-  history | awk '{print $1}' | sort  | uniq --count | sort --numeric-sort --reverse | head -10
+    history | awk '{print $1}' | sort  | uniq --count | sort --numeric-sort --reverse | head -10
 end
 
 function wttr
@@ -111,3 +111,12 @@ end
 function compress
     tar -zcvf $argv.tar.gz $argv
 end
+
+function upgrade
+    sudo apt update
+    sudo apt upgrade
+    sudo apt autoremove -y
+    pip2 list | awk  ' {print $1}' | xargs sudo pip2 install -U
+    pip3 list | awk  ' {print $1}' | xargs sudo pip3 install -U
+end
+
