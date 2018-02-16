@@ -8,6 +8,10 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 devmon --no-gui &
-#pulseaudio --start &
 setxkbmap us -variant colemak &
+
+if [[ "$USER" -e "vagrant" ]] ; then
+  xrandr -s 1920x1080
+fi
+
 exec i3
