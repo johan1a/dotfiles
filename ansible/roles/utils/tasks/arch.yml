@@ -58,6 +58,7 @@
       - gradle
       - youtube-dl
       - fortune-mod
+      - xclip
         #      - udiskie
       - msr-tools
       - translate-shell
