@@ -10,7 +10,7 @@ fi
 devmon --no-gui &
 setxkbmap us -variant colemak &
 
-if [[ "$USER" -e "vagrant" ]] ; then
+if [[ "$USER" -eq "vagrant" ]] ; then
   xrandr -s 1920x1080
 fi
 
