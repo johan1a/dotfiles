@@ -137,3 +137,8 @@ function usb-restore
     rsync -r --progress $backup_dir $dest_dir
     echo restore done.
 end
+
+function current-theme
+    readlink ~/.base16_theme
+end
+
