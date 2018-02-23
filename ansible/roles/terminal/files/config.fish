@@ -16,4 +16,4 @@ source ~/.config/fish/functions/utils.fish
 alias sf="source ~/.config/fish/config.fish"
 alias c=cd
 
-set --universal fish_user_paths $fish_user_paths ~/.local/bin/
+set --universal fish_user_paths $fish_user_paths ~/.local/bin/ ~/programs/minishift/

@@ -37,10 +37,6 @@ function grab
     sudo chown $user -R $argv
 end
 
-function ci3
-    cd ~/.config/i3
-end
-
 function usblogin
     /media/johan/DTVP30/linux/linux64/dtvp_login
 end
