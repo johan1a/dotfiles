@@ -452,11 +452,18 @@ nnoremap <s-l> :tabn<cr>
 nnoremap <s-h> :tabp<cr>
 nnoremap <leader>b :tabe<cr>:CtrlPMixed<cr>:CtrlPMixed<cr>
 
-" Holy shell, Batman!!!
-nnoremap <leader>j :tabe<cr>:term<cr>a exec fish<cr>clear<cr>
-
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>t :vs<cr>
+
+" Holy shell, Batman!!!
+function! Fish_open()
+  set shell=fish
+  tabe
+  term
+endfunction
+
+nnoremap <leader>j :call Fish_open()<cr>a
+
 
 " Change to the directory of the current file
 nnoremap <silent> cd :<c-u>cd %:h \| pwd<cr>
@@ -488,4 +495,3 @@ nnoremap <leader>mm :Move
 nnoremap <leader>ms :SudoWrite<cr>
 
 nnoremap <leader>1 :!
-
