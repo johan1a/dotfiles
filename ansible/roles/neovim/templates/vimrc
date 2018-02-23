@@ -486,3 +486,6 @@ nnoremap <leader>ai :tabe ~/.config/i3/config<cr>
 nnoremap <leader>mr :Rename 
 nnoremap <leader>mm :Move 
 nnoremap <leader>ms :SudoWrite<cr>
+
+nnoremap <leader>1 :!
+
