@@ -73,3 +73,5 @@ alias t=cat
 alias ci3="vim ~/.config/.i3/config"
 alias cf="vim ~/.config/fish"
 alias cv="vim ~/.vimrc"
+alias sd="trans sv:da "
+alias ds="trans da:sv "
