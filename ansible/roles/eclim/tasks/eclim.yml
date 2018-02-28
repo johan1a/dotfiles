@@ -1,0 +1,35 @@
+  - name: Check if Eclipse is installed
+    stat: path="{{ user_home }}/programs/eclipse"
+    register: eclipse_stat
+
+  - name: Download Eclipse
+    get_url:
+      url: http://ftp.fau.de/eclipse/technology/epp/downloads/release/oxygen/2/eclipse-jee-oxygen-2-linux-gtk-x86_64.tar.gz
+      dest: "{{ user_home }}/source/eclipse.tar.gz"
+    when: not eclipse_stat.stat.exists
+
+  - name: Unarchive Eclipse
+    unarchive:
+      src: "{{ user_home }}/source/eclipse.tar.gz"
+      dest: "{{ user_home }}/programs/"
+    when: not eclipse_stat.stat.exists
+
+  - name: Check if Eclim is installed
+    stat: path="{{ user_home }}/programs/eclipse/eclimd"
+    register: eclimd_stat
+
+  - name: Download Eclim installer
+    get_url:
+      url:  https://github.com/ervandew/eclim/releases/download/2.7.2/eclim_2.7.2.bin
+      dest: "{{ user_home }}/source/eclim_2.7.2.bin"
+
+  - name: Install eclim
+    command: ./eclim_2.7.2.bin \
+              --yes \
+              --eclipse=$HOME/programs/eclipse \
+              --vimfiles=$HOME/.vim \
+              --plugins=jdt,pydev,sdt,groovy
+    args:
+      chdir: "{{ user_home }}/source/"
+    when: not eclimd_stat.stat.exists
+
