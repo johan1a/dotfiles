@@ -9,15 +9,19 @@
 
   - name: Ensure fish config dir exists
     file:
-      path: "{{ user_home }}/.config/fish"
+      path: "{{ user_home }}/.config/fish/functions"
       state: directory
 
-  - name: Link fish functions dir
+  - name: Link fish functions
     file:
-      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/functions"
-      dest: "{{ user_home }}/.config/fish/functions"
+      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/functions/{{item}}"
+      dest: "{{ user_home }}/.config/fish/functions/{{item}}"
       state: link
     changed_when: fishconfig_stat.stat.exists and fishconfig_stat.stat.islnk is not defined
+    with_items:
+      - fish_mode_prompt.fish
+      - fish_prompt.fish
+      - utils.fish
 
   - name: Link config.fish
     file:
@@ -26,10 +30,10 @@
       state: link
     changed_when: fishconfig_stat.stat.exists and fishconfig_stat.stat.islnk is not defined
 
-  - name: Link fish fzf bindings
-    file:
-      src:  "{{ user_home }}/.fzf/shell/key-bindings.fish"
-      dest: "{{ user_home }}/.config/fish/functions/fzf_key_bindings.fish"
-      state: link
-    changed_when: fishconfig_stat.stat.exists and fishconfig_stat.stat.islnk is not defined
+# - name: Link fish fzf bindings
+#   file:
+#     src:  "{{ user_home }}/.fzf/shell/key-bindings.fish"
+#     dest: "{{ user_home }}/.config/fish/functions/fzf_key_bindings.fish"
+#     state: link
+#   changed_when: fishconfig_stat.stat.exists and fishconfig_stat.stat.islnk is not defined
 

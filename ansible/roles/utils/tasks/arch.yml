@@ -61,7 +61,7 @@
       - xclip
         #      - udiskie
       - msr-tools
-      - translate-shell
+        #      - translate-shell
       - google-chrome
         #      - stack-bin
         #      - httpie

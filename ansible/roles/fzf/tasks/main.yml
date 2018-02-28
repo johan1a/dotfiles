@@ -13,6 +13,11 @@
       recurse: yes
       owner: "{{ username }}"
 
+  - name: Make sure symlinks are absent
+    file:
+      path: "{{ user_home }}/.config/fish/functions/fzf_key_bindings.fish"
+      state: absent
+
   - name: install fzf
     command: bash -c "yes | {{ user_home }}/.fzf/install"
     become_user: "{{ username }}"
