@@ -3,9 +3,7 @@
     register: eclipse_stat
 
   - name: Download Eclipse
-    get_url:
-      url: http://ftp.fau.de/eclipse/technology/epp/downloads/release/oxygen/2/eclipse-jee-oxygen-2-linux-gtk-x86_64.tar.gz
-      dest: "{{ user_home }}/source/eclipse.tar.gz"
+    command: wget http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/2/eclipse-jee-oxygen-2-linux-gtk-x86_64.tar.gz&r=1 -O {{ user_home }}/source/eclipse.tar.gz
     when: not eclipse_stat.stat.exists
 
   - name: Unarchive Eclipse
