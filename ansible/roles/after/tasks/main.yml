@@ -4,3 +4,9 @@
       path: "{{ user_home }}/.config"
       owner: "{{ username }}"
       recurse: yes
+
+  - name: Set correct permissions on ~/.programs
+    file:
+      path: "{{ user_home }}/programs"
+      owner: "{{ username }}"
+      recurse: yes

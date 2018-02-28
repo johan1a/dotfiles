@@ -21,11 +21,16 @@
       url:  https://github.com/ervandew/eclim/releases/download/2.7.2/eclim_2.7.2.bin
       dest: "{{ user_home }}/source/eclim_2.7.2.bin"
 
+  - name: Set eclim installer permissions
+    file:
+      path: "{{ user_home }}/source/eclim_2.7.2.bin"
+      mode: a+x
+
   - name: Install eclim
     command: ./eclim_2.7.2.bin \
               --yes \
-              --eclipse=$HOME/programs/eclipse \
-              --vimfiles=$HOME/.vim \
+              --eclipse={{ user_home }}/programs/eclipse \
+              --vimfiles={{ user_home }}/.vim \
               --plugins=jdt,pydev,sdt,groovy
     args:
       chdir: "{{ user_home }}/source/"
