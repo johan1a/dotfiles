@@ -1,0 +1,32 @@
+
+  - name: Check for fzf
+    stat: path="{{ user_home }}/.fzf"
+    register: fzf_stat
+
+  - name: Download fzf source
+    command: git clone --depth 1 https://github.com/junegunn/fzf.git {{ user_home }}/.fzf
+    when: not fzf_stat.stat.exists
+
+  - name: Set permissions
+    file:
+      path: "{{ user_home }}/.fzf"
+      recurse: yes
+      owner: "{{ username }}"
+
+  - name: Make sure symlinks are absent
+    file:
+      path: "{{ user_home }}/.config/fish/functions/fzf_key_bindings.fish"
+      state: absent
+
+  - name: install fzf
+    command: bash -c "yes | {{ user_home }}/.fzf/install"
+    become_user: "{{ username }}"
+    when: not fzf_stat.stat.exists
+
+  - name: Set dir permissions
+    file:
+      path: "{{ user_home }}/.fzf"
+      owner: "{{ username }}"
+      recurse: yes
+    when: not fzf_stat.stat.exists
+
