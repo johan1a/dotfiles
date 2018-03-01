@@ -3,7 +3,7 @@
     pacman:
       name: "{{ item }}"
       state: latest
-    when: lookup('env', 'Vagrant')
+    when: username != "vagrant"
     with_items:
       - xorg
       - xorg-xinit
