@@ -11,4 +11,6 @@
       - "{{ user_home }}/misc"
       - "{{ user_home }}/bin"
       - "{{ user_home }}/.dotfiles_backup"
+      - "{{ user_home }}/source"
+      - "{{ user_home }}/programs"
 
