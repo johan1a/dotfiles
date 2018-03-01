@@ -21,7 +21,6 @@
   - name: install fzf
     command: bash -c "yes | {{ user_home }}/.fzf/install"
     become_user: "{{ username }}"
-    when: not fzf_stat.stat.exists
 
   - name: Set dir permissions
     file:
