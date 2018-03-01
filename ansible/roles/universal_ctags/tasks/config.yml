@@ -1,0 +1,17 @@
+
+  - name: Make sure ~/.ctags.d/ exists
+    file:
+      path: "{{ user_home }}/.ctags.d/"
+      state: directory
+
+  - name: Stat .ctags
+    stat:
+      path: "{{ user_home }}/.ctags.d/main.ctags"
+    register: ctags_stat
+
+  - name: Link .ctags
+    file:
+      src: "{{ dotfiles_dir }}/ansible/roles/universal_ctags/files/main.ctags"
+      dest: "{{ user_home }}/.ctags.d/main.ctags"
+      state: link
+    when: not ctags_stat.stat.exists

@@ -43,14 +43,3 @@
       chdir: "{{ user_home }}/source/ctags"
     when: ctags_git.changed
     become: true
-
-  - name: Stat .ctags
-    stat: path="{{ user_home }}/.ctags"
-    register: ctags_stat
-
-  - name: Link .ctags
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/universal_ctags/files/ctags"
-      dest: "{{ user_home }}/.ctags"
-      state: link
-    when: not ctags_stat.stat.exists

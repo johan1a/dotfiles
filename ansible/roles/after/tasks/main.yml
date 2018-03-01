@@ -1,12 +1,10 @@
 
-  - name: Set correct permissions on ~/.config
+  - name: Set correct permissions on dirs
     file:
-      path: "{{ user_home }}/.config"
+      path: "{{ user_home }}/{{item}}"
       owner: "{{ username }}"
       recurse: yes
-
-  - name: Set correct permissions on ~/.programs
-    file:
-      path: "{{ user_home }}/programs"
-      owner: "{{ username }}"
-      recurse: yes
+    with_items:
+      - .config
+      - programs
+      - .ctags.d

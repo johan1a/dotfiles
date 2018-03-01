@@ -6,3 +6,7 @@
   - include: ctags.yml
     when: not lookup('env', 'CI')
     tags: ctags
+
+  - include: config.yml
+    when: not lookup('env', 'CI')
+    tags: ctags
