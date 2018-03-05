@@ -54,11 +54,13 @@ let g:gitgutter_max_signs = 1000
 " pip3 install --upgrade neovim
 " :UpdateRemotePlugins and restart neovim
 
+let g:EclimCompletionMethod = "omnifunc"
+
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
-let g:deoplete#disable_auto_complete = 1
+let g:deoplete#disable_auto_complete = 0
 
 " Enter: complete&close popup if visible (so next Enter works); else: break undo
 inoremap <silent><expr> <Cr> pumvisible() ?
@@ -90,7 +92,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<leader><tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
+let g:UltiSnipsListSnippets="<c-p>"
 
 
 " If you want :UltiSnipsEdit to split your window.
@@ -187,7 +189,7 @@ nnoremap <leader>m :Dispatch<CR>
 
 " =========== search ===========
 
-set grepprg=ag\ $*
+set grepprg=rg\ $*
 
 nnoremap <leader>g :Grep 
 
