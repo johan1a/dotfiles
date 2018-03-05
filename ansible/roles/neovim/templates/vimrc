@@ -310,6 +310,9 @@ nnoremap ä }
 " replace and jump
 nnoremap c* *Ncgn
 
+" Live preview of :%s/
+set inccommand=split
+
 " Copy / Paste
 
 " Yank from cursor to end of line
