@@ -2,15 +2,19 @@
     stat: path="{{ user_home }}/programs/eclipse"
     register: eclipse_stat
 
+  - name: Check if Eclipse is downloaded
+    stat: path="{{ user_home }}/source/eclipse.tar.gz"
+    register: eclipse_tar_stat
+
   - name: Download Eclipse
     command: wget http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/2/eclipse-jee-oxygen-2-linux-gtk-x86_64.tar.gz&r=1 -O {{ user_home }}/source/eclipse.tar.gz
-    when: not eclipse_stat.stat.exists
+    when: not eclipse_tar_stat.stat.exists
 
   - name: Unarchive Eclipse
     unarchive:
       src: "{{ user_home }}/source/eclipse.tar.gz"
       dest: "{{ user_home }}/programs/"
-    when: not eclipse_stat.stat.exists
+    when: not eclipse_tar_stat.stat.exists
 
   - name: Check if Eclim is installed
     stat: path="{{ user_home }}/programs/eclipse/eclimd"
