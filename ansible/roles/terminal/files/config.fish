@@ -8,7 +8,7 @@ end
 
 # Base16 Shell
 if status --is-interactive
-   source $HOME/.config/base16-shell/profile_helper.fish
+  source $HOME/.config/base16-shell/profile_helper.fish
 end
 
 source ~/.config/fish/functions/utils.fish
@@ -16,4 +16,3 @@ source ~/.config/fish/functions/utils.fish
 alias sf="source ~/.config/fish/config.fish"
 alias c=cd
 
-set --universal fish_user_paths $fish_user_paths ~/.local/bin/
