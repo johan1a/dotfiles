@@ -15,4 +15,3 @@ source ~/.config/fish/functions/utils.fish
 
 alias sf="source ~/.config/fish/config.fish"
 alias c=cd
-
