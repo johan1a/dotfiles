@@ -51,3 +51,13 @@ set use_from = yes
 #set smtp_url=smtps://$imap_user:$imap_pass@smtp.gmail.com:465/
 set smtp_url=smtps://$imap_user@smtp.gmail.com:465/
 set ssl_force_tls = yes
+
+
+bind pager j next-line
+bind pager k previous-line
+bind attach,index,pager \CD next-page
+bind attach,index,pager \CU previous-page
+bind pager g top
+bind pager G bottom
+bind attach,index g first-entry
+bind attach,index G last-entry
