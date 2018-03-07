@@ -65,6 +65,6 @@
         #      - translate-shell
       - google-chrome
         #      - stack-bin
-        #      - httpie
+      - httpie
     become_user: "{{ username }}"
 
