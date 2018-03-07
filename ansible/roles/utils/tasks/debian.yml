@@ -27,4 +27,5 @@
       - libemail-outlook-message-perl
       - translate-shell
       - httpie
+      - network-manager-openconnect-gnome
 

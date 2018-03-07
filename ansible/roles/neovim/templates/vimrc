@@ -456,6 +456,7 @@ noremap Q yyp!!$SHELL<CR>
 nnoremap <s-l> :tabn<cr>
 nnoremap <s-h> :tabp<cr>
 nnoremap <leader>b :tabe<cr>:CtrlPMixed<cr>:CtrlPMixed<cr>
+nnoremap <leader><tab> :tabe<cr>
 
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>t :vs<cr>
