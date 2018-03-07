@@ -1,0 +1,8 @@
+
+  - name: Install packages
+    pacman:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - cups
+      - cups-pdf

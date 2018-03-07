@@ -21,6 +21,7 @@
       - leiningen
       - xinitrc
       - i3-gaps
+      - cups
       - eclim
       - virtualbox
       - vagrant

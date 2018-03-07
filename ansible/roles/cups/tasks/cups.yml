@@ -1,0 +1,12 @@
+
+  - name: Adding user to sys group
+    user:
+      name: "{{ username }}"
+      group: sys
+      append: yes
+
+  - name: Enable cups service
+    systemd:
+      name: org.cups.cupsd.service
+      enabled: yes
+      state: started
