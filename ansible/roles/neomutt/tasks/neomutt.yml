@@ -41,3 +41,22 @@
       state: link
     changed_when: muttrc_stat.stat.exists and muttrc_stat.stat.islnk is not defined
 
+  - name: Link mbsync service
+    file:
+      src: "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mbsync@.service"
+      dest: "/etc/systemd/system/mbsync@.service"
+      state: link
+    changed_when: muttrc_stat.stat.exists and muttrc_stat.stat.islnk is not defined
+
+  - name: Link mbsync timer
+    file:
+      src: "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mbsync@.timer"
+      dest: "/etc/systemd/system/mbsync@.timer"
+      state: link
+    changed_when: muttrc_stat.stat.exists and muttrc_stat.stat.islnk is not defined
+
+  - name: Enable mbsync timer
+    systemd:
+      name: mbsync@johan.timer
+      enabled: yes
+      state: started
