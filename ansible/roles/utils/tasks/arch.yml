@@ -61,9 +61,9 @@
       - fortune-mod
       - xclip
         #      - udiskie
-        #      - msr-tools
+      - msr-tools
         #      - translate-shell
-        #      - google-chrome
+      - google-chrome
         #      - stack-bin
         #- httpie
     become_user: "{{ username }}"
