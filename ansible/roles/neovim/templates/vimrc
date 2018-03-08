@@ -291,7 +291,7 @@ nnoremap <a-o> <C-W>r
 nnoremap <leader>e :NERDTreeFind<CR>
 nnoremap <leader>k :NERDTreeToggle<CR>
 
-nnoremap <leader>q :q<CR>
+nnoremap <leader>q :NERDTreeClose<CR>:q<CR>
 
 " ctrl+p
 " <C-W><C-v> open in vertical split
