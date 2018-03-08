@@ -60,6 +60,7 @@
       - youtube-dl
       - fortune-mod
       - xclip
+      - neofetch
         #      - udiskie
       - msr-tools
         #      - translate-shell
