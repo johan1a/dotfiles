@@ -28,4 +28,5 @@
       - translate-shell
       - httpie
       - network-manager-openconnect-gnome
+      - cloc
 
