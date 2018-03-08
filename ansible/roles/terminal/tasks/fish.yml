@@ -31,13 +31,5 @@
     changed_when: fishconfig_stat.stat.exists and fishconfig_stat.stat.islnk is not defined
 
   - name: Add ~/.local/bin to path
-    command: "set --universal fish_user_paths $fish_user_paths ~/.local/bin/"
+    shell: "fish -c 'set --universal fish_user_paths $fish_user_paths ~/.local/bin/'"
     when: not fishconfig_stat.stat.exists
-
-  - name: Link fish fzf bindings
-    file:
-      src:  "{{ user_home }}/.fzf/shell/key-bindings.fish"
-      dest: "{{ user_home }}/.config/fish/functions/fzf_key_bindings.fish"
-      state: link
-    changed_when: fishconfig_stat.stat.exists and fishconfig_stat.stat.islnk is not defined
-
