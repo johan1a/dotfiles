@@ -47,6 +47,7 @@
       - dialog
       - ripgrep
       - wol
+      - ethtool
 #     - dnsutils
 
   - name: Set default jdk
