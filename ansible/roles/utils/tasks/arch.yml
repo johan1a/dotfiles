@@ -46,6 +46,7 @@
       - openjdk8-src
       - dialog
       - ripgrep
+      - wol
 #     - dnsutils
 
   - name: Set default jdk
