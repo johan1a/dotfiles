@@ -56,7 +56,7 @@
     changed_when: muttrc_stat.stat.exists and muttrc_stat.stat.islnk is not defined
 
   - name: Enable mbsync timer
-    systemd:
-      name: mbsync@johan.timer
-      enabled: yes
-      state: started
+    command: systemctl enable mbsync@johan.timer
+
+  - name: Start mbsync timer
+    command: systemctl start mbsync@johan.timer
