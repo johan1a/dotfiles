@@ -48,6 +48,7 @@
       - ripgrep
       - wol
       - ethtool
+      - ttf-inconsolata
 #     - dnsutils
 
   - name: Set default jdk
