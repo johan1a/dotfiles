@@ -16,3 +16,7 @@
   - include: base16.yml
 
   - include: xresources.yml
+
+  - include: gtk3.yml
+    tags:
+      - gtk

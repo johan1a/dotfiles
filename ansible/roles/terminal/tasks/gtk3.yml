@@ -1,0 +1,9 @@
+
+  - name: Backup ~/.config/gtk-3.0/gtk.css
+    command: mv  "{{ user_home }}/.config/gtk-3.0/gtk.css" "{{ user_home }}/.dotfiles_backup/"
+
+  - name: Link ~/.config/gtk-3.0/gtk.css
+    file:
+      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/gtk.css"
+      dest: "{{ user_home }}/.config/gtk-3.0/gtk.css"
+      state: link
