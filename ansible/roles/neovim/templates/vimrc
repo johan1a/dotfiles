@@ -210,6 +210,8 @@ set sidescrolloff=5
 
 set display+=lastline
 
+set hidden
+
 " =========== Splits ===========
 augroup splits
     autocmd!
