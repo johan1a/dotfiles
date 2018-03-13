@@ -26,8 +26,8 @@ for_window [class=".*"] border pixel 5
 #> for_window [class="^.*"] border pixel 5
 hide_edge_borders both
 
-gaps inner 10
-gaps outer 5
+gaps inner 20
+gaps outer 10
 smart_borders on
 
 
