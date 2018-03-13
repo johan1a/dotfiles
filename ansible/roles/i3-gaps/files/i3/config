@@ -22,7 +22,7 @@ exec --no-startup-id exec bash $HOME/.fehbg
 
 
 # This disables all borders, which is mentioned to prevent issues with gaps in i3-gaps.
-for_window [class=".*"] border pixel 5
+for_window [class=".*"] border pixel 0
 #> for_window [class="^.*"] border pixel 5
 hide_edge_borders both
 
