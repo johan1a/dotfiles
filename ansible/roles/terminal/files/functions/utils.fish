@@ -145,3 +145,7 @@ function sdk
         set -gx PATH $PATH $ITEM/current/bin
     end
 end
+
+function clone
+  git clone git@github.com:$argv.git
+end
