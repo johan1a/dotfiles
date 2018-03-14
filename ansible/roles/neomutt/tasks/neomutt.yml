@@ -30,6 +30,7 @@
     file:
       path: "{{ user_home }}/.mail/gmail"
       state: directory
+      owner: "{{ username }}"
 
   - name: Stat muttrc
     stat: path="{{ user_home }}/.mutt/muttrc"
