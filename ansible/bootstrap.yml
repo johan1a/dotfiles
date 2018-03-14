@@ -18,6 +18,7 @@
       - pygments
       - ruby
       - neovim
+      - ncmpcpp
       - java
       - leiningen
       - xinitrc

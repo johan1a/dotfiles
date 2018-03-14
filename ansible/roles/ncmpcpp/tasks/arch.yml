@@ -1,0 +1,12 @@
+
+  - name: Install dependencies
+    pacman:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - ncmpcpp
+      - mpd
+
+  - command: yaourt -S mopidy mopidy-spotify --noconfirm
+    become: false
+

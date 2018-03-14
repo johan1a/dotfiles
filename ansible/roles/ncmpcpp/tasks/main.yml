@@ -1,0 +1,13 @@
+
+  - include: arch.yml
+    when: ansible_os_family == "Archlinux"
+    tags: ncmpcpp
+
+  - include: mpd.yml
+    tags: ncmpcpp
+
+  - include: ncmpcpp.yml
+    tags: ncmpcpp
+
+  - include: mopidy.yml
+    tags: ncmpcpp

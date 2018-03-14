@@ -1,0 +1,7 @@
+
+  - name: Link ncmpcpp.conf
+    file:
+      src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/ncmpcpp.conf"
+      dest: "{{ user_home }}/.ncmpcpp/config"
+      state: link
+      owner: "{{ username }}"

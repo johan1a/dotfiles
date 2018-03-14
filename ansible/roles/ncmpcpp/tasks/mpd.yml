@@ -1,0 +1,23 @@
+
+  - file:
+      path: "{{ user_home }}/music"
+      state: directory
+      owner: "{{ username }}"
+
+  - file:
+      path: "{{ user_home }}/.config/mpd/playlists"
+      state: directory
+      owner: "{{ username }}"
+
+  - name: Link mpd.conf
+    file:
+      src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mpd.conf"
+      dest: "{{ user_home }}/.config/mpd/mpd.conf"
+      state: link
+
+  - command: systemctl --user enable mpd
+    become: false
+
+  - command: systemctl --user start mpd
+    become: false
+
