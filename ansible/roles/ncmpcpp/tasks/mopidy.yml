@@ -27,9 +27,14 @@
       state: directory
       owner: "{{ username }}"
 
+  - file:
+      path: "{{ user_home }}/.secrets"
+      state: directory
+      owner: "{{ username }}"
+
   - name: Link mopidy startup script
     file:
-      src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.sh"
+      src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.fish"
       dest: "{{ user_home }}/.local/bin/mopidy"
       state: link
       mode: "a+x"
@@ -43,5 +48,7 @@
       owner: "{{ username }}"
 
   - command: systemctl --user enable mopidy
+    owner: "{{ username }}"
 
   - command: systemctl --user start mopidy
+    owner: "{{ username }}"

@@ -3,7 +3,7 @@ Description=mopidy
 After=network.target
 
 [Service]
-Type=simple
+Type=oneshot
 ExecStart=/home/johan/.local/bin/mopidy
 
 [Install]
