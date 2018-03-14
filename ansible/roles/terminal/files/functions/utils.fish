@@ -3,6 +3,11 @@ function get_git_branch
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 end
 
+function git_is_dirty
+    git diff-index --quiet HEAD --; and echo False; or echo True
+end
+
+
 function mc
     mkdir -p $argv; and cd $argv
 end
@@ -148,4 +153,29 @@ end
 
 function clone
   git clone git@github.com:$argv.git
+end
+
+function pull-all
+  echo Pulling non-dirty git-projects...
+  echo ""
+
+  set dirs (ls)
+  for dir in $dirs
+    cd $dir
+
+    if not test -d .git
+      continue
+    end
+
+    set branch (get_git_branch)
+    set dirty (git_is_dirty)
+    if [ "$branch" = "master" -a "$dirty" = "False" ]
+      echo pulling $dir
+      git pull --rebase
+    end
+    cd ..
+  end
+
+  echo ""
+  echo Done!
 end
