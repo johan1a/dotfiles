@@ -26,6 +26,11 @@
       path: "{{ user_home }}/.mutt"
       state: directory
 
+  - name: Make sure ~/.mail/gmail exists
+    file:
+      path: "{{ user_home }}/.mail/gmail"
+      state: directory
+
   - name: Stat muttrc
     stat: path="{{ user_home }}/.mutt/muttrc"
     register: muttrc_stat
