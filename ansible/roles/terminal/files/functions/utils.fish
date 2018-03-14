@@ -65,12 +65,22 @@ function sync-config
     cd $prev_dir
 end
 
+function sync-with-tags
+    set prev_dir (pwd)
+    cd ~/dotfiles/ansible
+    ./run_with_tags.sh $argv
+    cd $prev_dir
+end
+
+function swt
+    sync-with-tags $argv
+end
+
 # Mysterious black magic spell.
 # Some say these ancient words have the power to fix
 # even the worst cases of Dell latitude CPU throttling.
 # But who knows at what cost? Use at your own risk...
 function black-magic-spell
-    sudo modprobe msr
     sudo rdmsr 0x1fc
     sudo wrmsr 0x1fc f84
 end
