@@ -8,6 +8,7 @@
       - utils
       - git
       - terminal
+      - gpg
       - neomutt
       - tmux
       - fzf
