@@ -1,28 +1,24 @@
 
-  - command: test -L /etc/mopidy/mopidy.conf
+  - command: test -L {{ user_home }}/.config/mopidy/mopidy.conf
     register: isLink
     changed_when: false
     failed_when: false
 
-  - command: test -f /etc/mopidy/mopidy.conf
+  - command: test -f {{ user_home }}/.config/mopidy/mopidy.conf
     register: isFile
     changed_when: false
     failed_when: false
 
   - name: Backup mopidy.conf
-    command: mv /etc/mopidy/mopidy.conf {{ user_home }}/.dotfiles_backup
+    command: mv {{ user_home }}/.config/mopidy/mopidy.conf {{ user_home }}/.dotfiles_backup
     when: isFile.rc == 0 and isLink.rc != 0
 
   - name: Link mopidy.conf
     file:
       src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.conf"
-      dest: "/etc/mopidy/mopidy.conf"
+      dest: "{{ user_home }}/.config/mopidy/mopidy.conf"
       state: link
 
   - command: mkfifo /tmp/mpd.fifo
     failed_when: false
-
-  - command: systemctl enable mopidy
-
-  - command: systemctl start mopidy
 

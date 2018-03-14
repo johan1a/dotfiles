@@ -15,9 +15,3 @@
       dest: "{{ user_home }}/.config/mpd/mpd.conf"
       state: link
 
-  - command: systemctl --user enable mpd
-    become: false
-
-  - command: systemctl --user start mpd
-    become: false
-
