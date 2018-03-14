@@ -1,0 +1,10 @@
+[Unit]
+Description=mopidy
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/johan/.local/bin/mopidy
+
+[Install]
+WantedBy=default.target

@@ -22,3 +22,26 @@
   - command: mkfifo /tmp/mpd.fifo
     failed_when: false
 
+  - file:
+      path: "{{ user_home }}/.config/systemd/user/"
+      state: directory
+      owner: "{{ username }}"
+
+  - name: Link mopidy startup script
+    file:
+      src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.sh"
+      dest: "{{ user_home }}/.local/bin/mopidy"
+      state: link
+      mode: "a+x"
+      owner: "{{ username }}"
+
+  - name: Link mopidy.conf
+    file:
+      src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.service"
+      dest: "{{ user_home }}/.config/systemd/user/mopidy.service"
+      state: link
+      owner: "{{ username }}"
+
+  - command: systemctl --user enable mopidy
+
+  - command: systemctl --user start mopidy
