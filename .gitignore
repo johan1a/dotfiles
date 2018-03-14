@@ -12,3 +12,5 @@ tags
 .vagrant
 
 ansible/roles/terminal/files/functions/fzf_key_bindings.fish
+
+secret.txt
