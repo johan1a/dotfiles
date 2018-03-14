@@ -189,3 +189,26 @@ function pull-all
   echo ""
   echo Done!
 end
+
+function preset-password
+
+  set keygrip 4F84C5677466E4DF3CCDFB177F15CE6C3F299895
+
+  set cached (echo "GET_PASSPHRASE --no-ask $keygrip Err Pmt Des" | gpg-connect-agent)
+
+  switch "$cached"
+    case "ERR*"
+    echo Enter gpg-agent password:
+    read password --silent
+    echo "$password" | /usr/lib/gnupg/gpg-preset-passphrase --preset $keygrip
+  end
+end
+
+function neomutt
+  preset-password
+  command neomutt
+end
+
+function reload-gpg
+  gpg-connect-agent reloadagent /bye
+end
