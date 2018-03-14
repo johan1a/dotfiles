@@ -18,11 +18,13 @@
   - include: xresources.yml
 
   - stat:
-      path: "{{ user_home }}/.config/gtk-3.0"
+      path: "{{ user_home }}/.config/gtk-3.0/gtk.css"
     register: has_gtk3
     changed_when: false
+    tags:
+      - gtk
 
   - include: gtk3.yml
-    when: has_gtk3.stat.exists
+    when: not has_gtk3.stat.exists
     tags:
       - gtk
