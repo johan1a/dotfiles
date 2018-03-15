@@ -3,6 +3,10 @@
     when: ansible_os_family == "Archlinux"
     tags: ncmpcpp
 
+  - include: debian.yml
+    when: ansible_os_family == "Debian"
+    tags: ncmpcpp
+
   - include: mpd.yml
     tags: ncmpcpp
 

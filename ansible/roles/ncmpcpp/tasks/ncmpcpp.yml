@@ -1,4 +1,10 @@
 
+  - name: Create dir
+    file:
+      path: "{{ user_home }}/.ncmpcpp/"
+      state: directory
+      owner: "{{ username }}"
+
   - name: Link ncmpcpp.conf
     file:
       src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/ncmpcpp.conf"

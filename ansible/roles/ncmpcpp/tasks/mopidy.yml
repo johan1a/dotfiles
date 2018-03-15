@@ -1,4 +1,10 @@
 
+  - name: Create directory
+    file:
+      path: "{{ user_home }}/.config/mopidy/"
+      state: directory
+      owner: "{{ username }}"
+
   - command: test -L {{ user_home }}/.config/mopidy/mopidy.conf
     register: isLink
     changed_when: false
@@ -47,8 +53,11 @@
       state: link
       owner: "{{ username }}"
 
-  - command: systemctl --user enable mopidy
-    owner: "{{ username }}"
+  - name: Enable mopidy service
+    command: systemctl --user enable mopidy
+    become_user: "{{ username }}"
 
-  - command: systemctl --user start mopidy
-    owner: "{{ username }}"
+  - name: Start mopidy service
+    command: sudo systemctl --user start mopidy
+    become_user: "{{ username }}"
+    when: false

@@ -1,0 +1,26 @@
+
+  - name: Check for mopidy source
+    stat:
+      path: /etc/apt/sources.list.d/mopidy.list
+    register: mopidy
+
+  - name: Add Mopidy gpg key
+    shell: wget -q -O - https://apt.mopidy.com/mopidy.gpg | sudo apt-key add -
+    when: not mopidy.stat.exists
+
+  - name: Add Mopidy APT repo to package sources
+    command: wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/jessie.list
+    when: not mopidy.stat.exists
+    register: apt_repo
+
+  - command: apt update
+    when: apt_repo.changed
+
+  - name: Install dependencies
+    apt:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - ncmpcpp
+      - mopidy
+      - mopidy-spotify

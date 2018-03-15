@@ -29,4 +29,5 @@
       - httpie
       - network-manager-openconnect-gnome
       - cloc
+      - gnupg-agent
 
