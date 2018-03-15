@@ -45,6 +45,7 @@ alias e=exit
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -alF'
+alias lt='ls -ltr'
 alias s=sudo
 alias readram="sudo dd if=/dev/mem | cat | strings"
 alias intercept="strace -ff -e trace=write -e write=1,2 -p "
