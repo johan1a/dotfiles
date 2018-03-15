@@ -174,6 +174,7 @@ function pull-all
     cd $dir
 
     if not test -d .git
+      cd ..
       continue
     end
 
