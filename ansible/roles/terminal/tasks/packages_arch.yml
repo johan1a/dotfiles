@@ -1,0 +1,15 @@
+
+  - name: install termite
+    pacman:
+      name: termite
+      state: latest
+
+  - name: install fish
+    pacman:
+      name: fish
+      state: latest
+    register: fish
+
+  - name: Set fish as default shell
+    command: chsh -s /usr/bin/fish
+    when: fish.changed

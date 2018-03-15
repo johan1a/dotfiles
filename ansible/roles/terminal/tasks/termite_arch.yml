@@ -1,7 +1,0 @@
-
-  - name: install termite
-    pacman:
-      name: termite
-      state: latest
-    become_method: sudo
-

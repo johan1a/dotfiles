@@ -1,8 +1,8 @@
 
-  - include: termite_debian.yml
+  - include: packages_debian.yml
     when: ansible_os_family == "Debian"
 
-  - include: termite_arch.yml
+  - include: packages_arch.yml
     when: ansible_os_family == "Archlinux"
 
   - include: termite_common.yml
