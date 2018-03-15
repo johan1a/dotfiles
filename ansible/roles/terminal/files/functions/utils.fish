@@ -179,7 +179,7 @@ function pull-all
 
     set branch (get_git_branch)
     set dirty (git_is_dirty)
-    if [ "$branch" = "master" -a "$dirty" = "False" ]
+    if [ "$dirty" = "False" ]
       echo pulling $dir
       git pull --rebase
     end
