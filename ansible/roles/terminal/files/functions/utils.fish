@@ -212,3 +212,11 @@ end
 function reload-gpg
   gpg-connect-agent reloadagent /bye
 end
+
+function keyboard-current
+  setxkbmap -print -verbose 10
+end
+
+function keyboard-available
+  less /usr/share/X11/xkb/rules/base.lst
+end
