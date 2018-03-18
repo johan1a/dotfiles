@@ -30,7 +30,6 @@ Plugin 'udalov/kotlin-vim'
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'brookhong/cscope.vim'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'dag/vim-fish'
 Plugin 'SirVer/ultisnips'
@@ -38,6 +37,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
+Plugin 'autozimu/LanguageClient-neovim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -111,6 +111,23 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 
 let g:ctrlp_map = '<c-b>'
 let g:ctrlp_cmd = 'CtrlPMixed'
+
+
+" =========== LanguageClient-neovim ===========
+
+let g:LanguageClient_serverCommands = {
+    \ 'haskell': ['hie', '--lsp'],
+    \ 'groovy': ['java', '-jar', '/home/johan/dev/language-servers/groovy-language-server/build/libs/groovy-language-server-0.5.4.dirty-all.jar'],
+    \ 'python': ['pyls'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ }
+
+nnoremap <silent> gk :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <leader>fd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> gr :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <leader>fr :call LanguageClient_textDocument_references()<CR>
 
 " =========== EasyGrep ===========
 let g:EasyGrepFilesToExclude='*.log,tags,.git,external_documentation,documentation,build,classes'
@@ -360,43 +377,6 @@ nnoremap § <esc>
 " tagbar
 nmap <a-t> :TagbarToggle<CR>
 
-" cscope-vim
-" Below is the minimum key mappings.
-
-let g:cscope_silent = 1
-
-nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
-nnoremap <leader>fl :call ToggleLocationList()<CR>
-" Some optional key mappings to search directly.
-
-" s: Find this C symbol
-nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>zz
-" g: Find this definition
-nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>zz
-" d: Find functions called by this function
-nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>zz
-" c: Find functions calling this function
-nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>zz
-" t: Find this text string
-nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>zz
-" e: Find this egrep pattern
-nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>zz
-" f: Find this file
-nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>zz
-" i: Find files #including this file
-nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>zz
-
-" vim-sneak
-" 2-character Sneak (default)
-" nmap s <Plug>Sneak_s
-" nmap S <Plug>Sneak_S
-" visual-mode
-" xmap s <Plug>Sneak_s
-" xmap S <Plug>Sneak_S
-" operator-pending-mode
-" omap s <Plug>Sneak_s
-" omap S <Plug>Sneak_S
-
 " repeat motion
 map , <Plug>Sneak_;
 map ; <Plug>Sneak_,
@@ -440,16 +420,6 @@ tnoremap <leader><esc> <C-\><esc>
 
 "To simulate |i_CTRL-R| in terminal-mode:
 "    :tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
-
-"To use `ALT+{h,j,k,l}` to navigate windows from any mode:
-tnoremap <C-h> <C-\><C-N><C-w>h
-tnoremap <C-j> <C-\><C-N><C-w>j
-tnoremap <C-k> <C-\><C-N><C-w>k
-tnoremap <C-l> <C-\><C-N><C-w>l
-inoremap <C-h> <C-\><C-N><C-w>h
-inoremap <C-j> <C-\><C-N><C-w>j
-inoremap <C-k> <C-\><C-N><C-w>k
-inoremap <C-l> <C-\><C-N><C-w>l
 
 " Execute a shell command and read in the results
 noremap Q yyp!!$SHELL<CR>
