@@ -43,6 +43,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'tommcdo/vim-lion'
 Plugin 'vimwiki/vimwiki'
+Plugin 'jreybert/vimagit'
 
 call vundle#end()
 filetype plugin indent on
