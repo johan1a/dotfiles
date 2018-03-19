@@ -122,6 +122,11 @@ nnoremap <silent> <leader>fd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> gr :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <leader>fr :call LanguageClient_textDocument_references()<CR>
 
+" =========== Vimwiki ===========
+
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                     \ 'syntax': 'markdown', 'ext': '.md'}]
+
 " =========== EasyGrep ===========
 let g:EasyGrepFilesToExclude='*.log,tags,.git,external_documentation,documentation,build,classes'
 let g:EasyGrepRecursive=1
