@@ -1,0 +1,11 @@
+
+  - include: python.yml
+
+  - include: java.yml
+    when: ansible_os_family == "Archlinux"
+
+  - include: typescript.yml
+    when: ansible_os_family == "Archlinux"
+
+  - include: java.yml
+    when: ansible_os_family == "Archlinux"

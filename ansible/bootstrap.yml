@@ -24,6 +24,7 @@
       - xinitrc
       - i3-gaps
       - cups
+      - language_servers
       - eclim
       - virtualbox
       - vagrant

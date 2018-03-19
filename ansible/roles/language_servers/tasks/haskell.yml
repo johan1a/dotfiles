@@ -1,0 +1,2 @@
+  - name: Install Haskell language server
+    command: yaourt -S haskell-ide-engine --noconfirm
