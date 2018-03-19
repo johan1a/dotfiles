@@ -425,10 +425,9 @@ tnoremap <leader><esc> <C-\><esc>
 noremap Q yyp!!$SHELL<CR>
 
 " Tabs and splits
-nnoremap <s-l> :tabn<cr>
-nnoremap <s-h> :tabp<cr>
-nnoremap <leader>b :tabe<cr>:CtrlPMixed<cr>:CtrlPMixed<cr>
-nnoremap <leader><tab> :tabe<cr>
+nnoremap <s-l> :bnext<cr>
+nnoremap <s-h> :bprevious<cr>
+nnoremap <leader><tab> :bufe<cr>
 
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>t :vs<cr>
