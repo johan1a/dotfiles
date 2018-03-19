@@ -1,4 +1,9 @@
 
+  - name: Create directory
+    file:
+      path: "{{ user_home }}/.gnupg"
+      state: directory
+
   - name: Link gpg-agent.conf
     file:
       src:  "{{ user_home }}/dotfiles/ansible/roles/gpg/files/gpg-agent.conf"
