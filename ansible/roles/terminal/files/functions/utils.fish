@@ -4,7 +4,12 @@ function get_git_branch
 end
 
 function git_is_dirty
-    git diff-index --quiet HEAD --; and echo False; or echo True
+    git diff-index --quiet HEAD --;
+    if [ $status = 0 ]
+      echo False
+    else
+      echo True
+    end
 end
 
 
@@ -178,10 +183,12 @@ function pull-all
       continue
     end
 
-    set branch (get_git_branch)
-    set dirty (git_is_dirty)
-    if [ "$dirty" = "False" ]
-      echo pulling $dir
+    set gitstatus (git status)
+    set cleanstatus "On branch master Your branch is up-to-date with 'origin/master'.  nothing to commit, working tree clean"
+
+    if [ "$gitstatus" = "$cleanstatus" ]
+      echo ""
+      echo pulling (pwd)
       git pull --rebase
     end
     cd ..
