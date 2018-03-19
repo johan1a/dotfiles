@@ -41,9 +41,11 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'autozimu/LanguageClient-neovim'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tommcdo/vim-lion'
 Plugin 'vimwiki/vimwiki'
 Plugin 'jreybert/vimagit'
+Plugin 'junegunn/vim-slash'
 
 call vundle#end()
 filetype plugin indent on
@@ -198,6 +200,15 @@ sunmap w
 sunmap b
 sunmap e
 sunmap ge
+"
+" =========== unimpaired-vim ===========
+
+" Bubble single lines
+nmap <Up> [e
+nmap <Down> ]e
+" Bubble multiple lines
+vmap <Up> [egv
+vmap <Down> ]egv
 
 " =========== vim-sneak ===========
 
