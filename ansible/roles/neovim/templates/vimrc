@@ -9,7 +9,7 @@ if &shell =~# 'fish$'
     set shell=bash
 endif
 
-set nocompatible " Don't emulate vi
+set nocompatible              " Don't emulate vi
 filetype off                  " required by Vundle
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -70,11 +70,11 @@ inoremap <silent><expr> <Cr> pumvisible() ?
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" Ctrl-Space: summon FULL (synced) autocompletion
-inoremap <silent><expr> <C-Space> deoplete#mappings#manual_complete()
-
 " Escape: exit autocompletion, go to Normal mode
 inoremap <silent><expr> <Esc> pumvisible() ? "<C-e><Esc>" : "<Esc>"
+
+" Ctrl-Space: summon FULL (synced) autocompletion
+inoremap <silent><expr> <C-Space> deoplete#mappings#manual_complete()
 
 augroup deoplete
     autocmd!
@@ -201,7 +201,14 @@ omap S <Plug>SneakLabel_S
 
 syntax enable
 
-set autoread " Automatically read external changes
+set autoread    " Automatically read external changes
+
+set scrolloff=1 " Leave margin when scrolling
+set sidescrolloff=5
+
+set display+=lastline
+
+set hidden
 
 " Magic to make autoread actually work
 " Trigger autoread when changing buffers while inside vim:
@@ -260,14 +267,6 @@ set wildmode=longest,list,full
 " Display all matches when tab completing
 set wildmenu
 
-" Leave margin when scrolling
-set scrolloff=1
-set sidescrolloff=5
-
-set display+=lastline
-
-set hidden
-
 " =========== Splits ===========
 augroup splits
     autocmd!
@@ -275,22 +274,23 @@ augroup splits
 augroup END
 
 " =========== Tabs and spaces  ===========
-set expandtab " insert space characters whenever the tab key is pressed,
+set expandtab                          " insert space characters whenever the tab key is pressed,
 
-set tabstop=2 " The number of space characters that will be inserted when the tab key is pressed
+set tabstop=2                          " The number of space characters that will be inserted when the tab key is pressed
 
-set shiftwidth=2 " The number of space characters inserted for indentation with the reindent operations (<< and >>)
+set shiftwidth=2                       " The number of space characters inserted for indentation with the reindent operations (<< and >>)
 set softtabstop=0
 
-set list " Display tabs and trailing spaces
+set list                               " Display tabs and trailing spaces
 set listchars=tab:▸–,trail:·
 set listchars+=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
-set nojoinspaces                      " don't autoinsert two spaces after '.', '?', '!' for join command
+set nojoinspaces                       " don't autoinsert two spaces after '.', '?', '!' for join command
 
 highlight ExtraWhitespace ctermbg=red guibg=red " Set color of listchars
 match ExtraWhitespace /\s\+$/
 
 " =========== Numbering  ===========
+
 set number
 set relativenumber
 set ruler
@@ -303,10 +303,10 @@ set showcmd
 " |_|\_\___|\__, | |_| |_| |_|\__,_| .__/|___/
  "          |___/                  |_|
 
-"               Jump to tag under cursor
+" Jump to tag under cursor
 nnoremap <leader>i <C-]>zz
 
-"               Jump back up the tag stack
+" Jump back up the tag stack
 nnoremap <leader>u <C-t>zz
 
 " Go to alternate file
@@ -357,20 +357,7 @@ nnoremap C "*C
 nnoremap d "*d
 vnoremap d "*d
 
-" Disable arrow keys
-noremap <Up> /
-noremap <Down> :nohl<cr>
-noremap <Left> :%s/
-noremap <Right> <nop>
-vnoremap <Right> :s/\%V
-
-inoremap § <esc>
-vnoremap § <esc>
-noremap § <esc>
-nnoremap § <esc>
-
 " neovim term
-
 tnoremap <C-o> <C-\><C-n>
 tnoremap <leader><esc> <C-\><esc>
 
