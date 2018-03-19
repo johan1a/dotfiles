@@ -115,13 +115,13 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 
 " =========== LanguageClient-neovim ===========
 
+let g:lsp_async_completion = 1
+" setlocal omnifunc=lsp#complete “ in after/ftplugin/ft.vim
+
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie', '--lsp'],
     \ 'groovy': ['java', '-jar', '/home/johan/dev/language-servers/groovy-language-server/build/libs/groovy-language-server-0.5.4.dirty-all.jar'],
-    \ 'python': ['pyls'],
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'python': ['pyls']
     \ }
 
 nnoremap <silent> gk :call LanguageClient_textDocument_hover()<CR>
