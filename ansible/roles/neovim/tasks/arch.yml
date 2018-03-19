@@ -1,4 +1,4 @@
 
   - name: install neovim
-    command: yaourt -S neovim --noconfirm
+    command: yaourt -S neovim --noconfirm --needed
 

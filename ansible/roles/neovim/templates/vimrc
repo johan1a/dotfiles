@@ -37,6 +37,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'tommcdo/vim-lion'
+Plugin 'vimwiki/vimwiki'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -419,7 +420,6 @@ noremap Q yyp!!$SHELL<CR>
 " Tabs and splits
 nnoremap <s-l> :bnext<cr>
 nnoremap <s-h> :bprevious<cr>
-nnoremap <leader><tab> :bufe<cr>
 
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>t :vs<cr>
@@ -427,8 +427,9 @@ nnoremap <leader>t :vs<cr>
 " Holy shell, Batman!!!
 function! Fish_open()
   set shell=fish
-  tabe
+  :tabe fish
   term
+  set shell=xterm
 endfunction
 
 nnoremap <leader>j :call Fish_open()<cr>a
@@ -455,8 +456,8 @@ endfunction
 
 nnoremap <leader>am :call Meeting_notes()<cr>imeeting <esc>:call UltiSnips#ExpandSnippet()<cr>
 nnoremap <leader>an :call Notes()<cr>
-nnoremap <leader>aa :tabe ~/.vimrc<cr>
-nnoremap <leader>ai :tabe ~/.config/i3/config<cr>
+nnoremap <leader>aa :e ~/.vimrc<cr>
+nnoremap <leader>ai :e ~/.config/i3/config<cr>
 
 
 nnoremap <leader>mr :Rename 

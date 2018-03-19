@@ -55,7 +55,7 @@
     command: archlinux-java set java-8-openjdk
 
   - name: Install misc yaourt packages...
-    command: yaourt -S {{ item }} --noconfirm
+    command: yaourt -S {{ item }} --noconfirm --needed
     with_items:
       - groovy
       - grails

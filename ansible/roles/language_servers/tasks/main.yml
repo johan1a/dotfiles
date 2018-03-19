@@ -9,3 +9,5 @@
 
   - include: java.yml
     when: ansible_os_family == "Archlinux"
+
+  - include: groovy.yml
