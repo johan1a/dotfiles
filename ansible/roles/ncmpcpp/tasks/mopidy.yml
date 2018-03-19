@@ -46,18 +46,18 @@
       mode: "a+x"
       owner: "{{ username }}"
 
-  - name: Link mopidy.conf
-    file:
-      src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.service"
-      dest: "{{ user_home }}/.config/systemd/user/mopidy.service"
-      state: link
-      owner: "{{ username }}"
+# - name: Link mopidy.conf
+#   file:
+#     src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.service"
+#     dest: "{{ user_home }}/.config/systemd/user/mopidy.service"
+#     state: link
+#     owner: "{{ username }}"
 
-  - name: Enable mopidy service
-    command: systemctl --user enable mopidy
-    become_user: "{{ username }}"
+# - name: Enable mopidy service
+#   command: systemctl --user enable mopidy
+#   become_user: "{{ username }}"
 
-  - name: Start mopidy service
-    command: sudo systemctl --user start mopidy
-    become_user: "{{ username }}"
-    when: false
+# - name: Start mopidy service
+#   command: sudo systemctl --user start mopidy
+#   become_user: "{{ username }}"
+#   when: false
