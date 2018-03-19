@@ -210,14 +210,10 @@ let g:sneak#label = 1
   "                                                             |___/
 
 syntax enable
-
 set autoread    " Automatically read external changes
-
 set scrolloff=1 " Leave margin when scrolling
 set sidescrolloff=5
-
 set display+=lastline
-
 set hidden
 
 " Magic to make autoread actually work
