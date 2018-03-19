@@ -20,7 +20,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'chriskempson/base16-vim'
-Plugin 'git://github.com/godlygeek/tabular.git'
 Plugin 'https://github.com/Shougo/deoplete.nvim.git'
 Plugin 'https://github.com/clojure-vim/async-clj-omni.git'
 Plugin 'https://github.com/zchee/deoplete-jedi.git'
@@ -37,6 +36,7 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'autozimu/LanguageClient-neovim'
+Plugin 'tommcdo/vim-lion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
