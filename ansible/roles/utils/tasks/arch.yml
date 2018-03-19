@@ -64,6 +64,7 @@
       - fortune-mod
       - xclip
       - neofetch
+      - figlet
         #      - udiskie
       - msr-tools
         #      - translate-shell
