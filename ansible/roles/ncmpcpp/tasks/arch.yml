@@ -8,5 +8,5 @@
       - mpd
 
   - command: yaourt -S mopidy mopidy-spotify --noconfirm
-    become: false
+    become_user: "{{ username }}"
 
