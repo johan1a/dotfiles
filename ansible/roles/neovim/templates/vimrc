@@ -70,7 +70,7 @@ inoremap <silent><expr> <Cr> pumvisible() ?
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" Escape: exit autocompletion, go to Normal mode
+" Escape: exit autocompletion, go to Normal mo
 inoremap <silent><expr> <Esc> pumvisible() ? "<C-e><Esc>" : "<Esc>"
 
 " Ctrl-Space: summon FULL (synced) autocompletion
@@ -89,11 +89,12 @@ set rtp^=$HOME/.vim/bundle/ultisnips
 set rtp+=~/.fzf
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<leader><tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-e>"
+let g:UltiSnipsJumpBackwardTrigger="<c-i>"
 let g:UltiSnipsListSnippets="<c-p>"
+
+inoremap <silent> <c-e> <C-R>=UltiSnips#ExpandSnippetOrJump()<cr>
 
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="~/.vim/custom_snippets" " Custom snips dir
@@ -178,19 +179,7 @@ sunmap ge
 
 " =========== vim-sneak ===========
 
-" repeat motion
-map , <Plug>Sneak_;
-map ; <Plug>Sneak_,
-
-" 1-character enhanced 'f'
-nmap s <Plug>SneakLabel_s
-nmap S <Plug>SneakLabel_S
-" visual-mode
-xmap s <Plug>SneakLabel_s
-xmap S <Plug>SneakLabel_S
-" operator-pending-mode
-omap s <Plug>SneakLabel_s
-omap S <Plug>SneakLabel_S
+let g:sneak#label = 1
 
   " ____                           _            _   _   _
  " / ___| ___ _ __   ___ _ __ __ _| |  ___  ___| |_| |_(_)_ __   __ _ ___
