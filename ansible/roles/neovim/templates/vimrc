@@ -2,11 +2,9 @@ if &shell =~# 'fish$'
     set shell=bash
 endif
 
-
 set nocompatible " Don't emulate vi
 filetype off                  " required by Vundle
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -17,12 +15,12 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'justinmk/vim-sneak'
 Plugin 'majutsushi/tagbar'
 Plugin 'chriskempson/base16-vim'
-Plugin 'Shougo/deoplete.nvim.git'
-Plugin 'clojure-vim/async-clj-omni.git'
-Plugin 'zchee/deoplete-jedi.git'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'clojure-vim/async-clj-omni'
+Plugin 'zchee/deoplete-jedi'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'udalov/kotlin-vim'
-Plugin 'scrooloose/nerdtree.git'
+Plugin 'scrooloose/nerdtree'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'bkad/CamelCaseMotion'
@@ -39,22 +37,12 @@ Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'tommcdo/vim-lion'
 Plugin 'vimwiki/vimwiki'
 
-" All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
 
 let mapleader =  "\<Space>"
 
-" gitgutter
-let g:gitgutter_max_signs = 1000
-
 " =========== deoplete ===========
-" if :echo has("python3") returns 1, then you're done;
-" Otherwise enable Python3 interface with pip:
-" pip3 install --upgrade neovim
-" :UpdateRemotePlugins and restart neovim
-
-let g:EclimCompletionMethod = "omnifunc"
 
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
@@ -80,7 +68,6 @@ augroup deoplete
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 augroup END
 
-
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
@@ -95,13 +82,12 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-p>"
 
-
-" If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-" Custom snips dir
-let g:UltiSnipsSnippetsDir="~/.vim/custom_snippets"
+let g:UltiSnipsSnippetsDir="~/.vim/custom_snippets" " Custom snips dir
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
 
+" =========== gitgutter ===========
+let g:gitgutter_max_signs = 1000
 
 " =========== fzf ===========
 nnoremap <c-b> :FZF<cr>
@@ -140,12 +126,64 @@ let g:EasyGrepCommand=1
 
 let g:tagbar_left=1
 
+" =========== vim-dispatch ===========
+
+augroup vim_dispatch
+    autocmd!
+    autocmd FileType java let b:dispatch = 'javac %'
+    autocmd FileType groovy let b:dispatch = 'source ~/.sdkman/bin/sdkman-init.sh && grails test-app'
+    autocmd FileType typescript let b:dispatch = 'ng test && ng lint'
+    autocmd FileType python let b:dispatch = 'python -m unittest discover'
+augroup END
+
+nnoremap <leader>m :Dispatch<CR>
+
+" =========== tmux-navigator ===========
+
+let g:tmux_navigator_disable_when_zoomed = 1 " Disable tmux auto zoom out
+
+" =========== tagbar ===========
+nmap <a-t> :TagbarToggle<CR>
+
+" =========== vim-fireplace ===========
+
+nnoremap <leader>w :Eval<CR>
+vnoremap <leader>w :Eval<CR>
+
+nnoremap <a-r> :Require<CR>
+
+" =========== CamelCaseMotion ===========
+
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+
+" =========== vim-sneak ===========
+
+" repeat motion
+map , <Plug>Sneak_;
+map ; <Plug>Sneak_,
+
+" 1-character enhanced 'f'
+nmap s <Plug>SneakLabel_s
+nmap S <Plug>SneakLabel_S
+" visual-mode
+xmap s <Plug>SneakLabel_s
+xmap S <Plug>SneakLabel_S
+" operator-pending-mode
+omap s <Plug>SneakLabel_s
+omap S <Plug>SneakLabel_S
+
 " =========== General settings ===========
 syntax enable
-filetype plugin indent on
 
-" Automatically read external changes
-set autoread
+set autoread " Automatically read external changes
+
 " Magic to make autoread actually work
 " Trigger autoread when changing buffers while inside vim:
 augroup general_settings
@@ -173,15 +211,11 @@ augroup filetypes
   au BufRead,BufNewFile Vagrantfile set filetype=ruby
 augroup END
 
-
 " Set up :make to use fish for syntax checking.
 autocmd FileType fish compiler fish
 
 " Set this to have long lines wrap inside comments.
 autocmd FileType fish setlocal textwidth=79
-
-" Enable folding of block structures in fish.
-"autocmd FileType fish setlocal foldmethod=expr
 
 " =========== quickfix ===========
 
@@ -189,18 +223,6 @@ augroup quickfix
     autocmd!
     autocmd Filetype groovy setlocal makeprg=./gradlew\ test
 augroup END
-
-" =========== vim-dispatch ===========
-
-augroup vim_dispatch
-    autocmd!
-    autocmd FileType java let b:dispatch = 'javac %'
-    autocmd FileType groovy let b:dispatch = 'source ~/.sdkman/bin/sdkman-init.sh && grails test-app'
-    autocmd FileType typescript let b:dispatch = 'ng test && ng lint'
-    autocmd FileType python let b:dispatch = 'python -m unittest discover'
-augroup END
-
-nnoremap <leader>m :Dispatch<CR>
 
 " =========== search ===========
 
@@ -233,31 +255,20 @@ augroup splits
     autocmd VimResized * wincmd =
 augroup END
 
-" =========== tmux-navigator ===========
-
-" Disable tmux auto zoom out
-let g:tmux_navigator_disable_when_zoomed = 1
-
 " =========== Tabs and spaces  ===========
-" insert space characters whenever the tab key is pressed,
-set expandtab
+set expandtab " insert space characters whenever the tab key is pressed,
 
-" The number of space characters that will be inserted when the tab key is pressed
-set tabstop=2
+set tabstop=2 " The number of space characters that will be inserted when the tab key is pressed
 
-" The number of space characters inserted for indentation with the reindent
-" operations (<< and >>)
-set shiftwidth=2
+set shiftwidth=2 " The number of space characters inserted for indentation with the reindent operations (<< and >>)
 set softtabstop=0
 
-" Display tabs and trailing spaces
-set list
+set list " Display tabs and trailing spaces
 set listchars=tab:▸–,trail:·
 set listchars+=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
 set nojoinspaces                      " don't autoinsert two spaces after '.', '?', '!' for join command
 
-" Set color of listchars
-highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=red guibg=red " Set color of listchars
 match ExtraWhitespace /\s\+$/
 
 " =========== Numbering  ===========
@@ -268,40 +279,20 @@ set showcmd
 
 " =========== Key maps  ===========
 
-"nnoremap <leader>f :find<space>
-
-" ctrl+]        Jump to tag under cursor
+"               Jump to tag under cursor
 nnoremap <leader>i <C-]>zz
-" g+ctrl+]      List ambiguous tags
-" nnoremap <leader>a g<C-]>
-" ctrl+t        Jump back up the tag stack
+
+"               Jump back up the tag stack
 nnoremap <leader>u <C-t>zz
 
-" ctrl+x is bound to tmux TODO
-" ctr+x ctrl+n  just this file
-" ctr+x ctrl+f  filenames
-" ctr+x ctrl+]  tags only
-" ctrl+n        autocomplete
-
-" gf            open file under cursor
-
-" "+y           copy to system clipboard
-"
+" Go to alternate file
 nnoremap <leader><leader> <C-^>
-
-"nnoremap <leader>m :MakeTags<CR>
 
 " Reset search
 nnoremap <leader>n :noh<CR>
 
 " Reload config
 nnoremap <leader>r :source ~/.vimrc<CR>
-
-nnoremap <a-h> <C-W>H
-nnoremap <a-j> <C-W>J
-nnoremap <a-k> <C-W>K
-nnoremap <a-l> <C-W>L
-nnoremap <a-o> <C-W>r
 
 " Toggle NERDTree
 " go previews
@@ -310,19 +301,9 @@ nnoremap <leader>k :NERDTreeToggle<CR>
 
 nnoremap <leader>q :NERDTreeClose<CR>:q<CR>
 
-" ctrl+p
-" <C-W><C-v> open in vertical split
-" <C-W><C-x> open in horizontal split
-
-" <C-o> older jump position
-" <C-i> newer jump position
-
 " Increment / Decrement numbers
 nnoremap <A-a> <C-a>
 nnoremap <A-x> <C-x>
-
-nnoremap ö {
-nnoremap ä }
 
 " replace and jump
 nnoremap c* *Ncgn
@@ -336,17 +317,14 @@ set inccommand=split
 nnoremap Y y$
 
 " Search using copy buffer
-
 nnoremap <leader>7 /<C-R>0<CR>
 nnoremap <leader>' ?<C-R>0<CR>
 
 " ALWAYS use the clipboard for ALL operations (as opposed
 " to interacting with the '+' and/or '*' registers explicitly):
-
 set clipboard+=unnamedplus
 
 " Use system copy buffer
-
 nnoremap y "*y
 vnoremap y "*y
 nnoremap p "*p
@@ -357,8 +335,6 @@ vnoremap C "*C
 nnoremap C "*C
 nnoremap d "*d
 vnoremap d "*d
-"noremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
-
 
 " Disable arrow keys
 noremap <Up> /
@@ -372,52 +348,11 @@ vnoremap § <esc>
 noremap § <esc>
 nnoremap § <esc>
 
-" tagbar
-nmap <a-t> :TagbarToggle<CR>
-
-" repeat motion
-map , <Plug>Sneak_;
-map ; <Plug>Sneak_,
-
-" 1-character enhanced 'f'
-nmap s <Plug>SneakLabel_s
-nmap S <Plug>SneakLabel_S
-" visual-mode
-xmap s <Plug>SneakLabel_s
-xmap S <Plug>SneakLabel_S
-" operator-pending-mode
-omap s <Plug>SneakLabel_s
-omap S <Plug>SneakLabel_S
-
-" vim-fireplace
-
-nnoremap <leader>w :Eval<CR>
-vnoremap <leader>w :Eval<CR>
-
-nnoremap <a-r> :Require<CR>
-
-" CamelCaseMotion
-
-" Map to w, b and e mappings:
-
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
-
-
 " neovim term
 
 tnoremap <C-o> <C-\><C-n>
 
 tnoremap <leader><esc> <C-\><esc>
-
-"To simulate |i_CTRL-R| in terminal-mode:
-"    :tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 " Execute a shell command and read in the results
 noremap Q yyp!!$SHELL<CR>
@@ -438,7 +373,6 @@ function! Fish_open()
 endfunction
 
 nnoremap <leader>j :call Fish_open()<cr>a
-
 
 " Change to the directory of the current file
 nnoremap <silent> cd :<c-u>cd %:h \| pwd<cr>
@@ -463,7 +397,6 @@ nnoremap <leader>am :call Meeting_notes()<cr>imeeting <esc>:call UltiSnips#Expan
 nnoremap <leader>an :call Notes()<cr>
 nnoremap <leader>aa :e ~/.vimrc<cr>
 nnoremap <leader>ai :e ~/.config/i3/config<cr>
-
 
 nnoremap <leader>mr :Rename 
 nnoremap <leader>mm :Move 
