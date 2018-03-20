@@ -188,8 +188,12 @@ function pull-all
 
     if [ "$gitstatus" = "$cleanstatus" ]
       echo ""
-      echo pulling (pwd)
+      echo Pulling (pwd)
       git pull --rebase
+    else
+      echo ""
+      echo (pwd) is dirty, not pulling.
+
     end
     cd ..
   end
