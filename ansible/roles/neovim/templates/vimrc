@@ -393,6 +393,8 @@ nnoremap <leader>l :ls<cr>
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>t :vs<cr>
 nnoremap <tab> :tabn<cr>
+" the tab mapping avove ruins <c-i>, why?
+nnoremap <c-i> <c-i>
 nnoremap <s-tab> :tabp<cr>
 
 " Holy shell, Batman!!!
