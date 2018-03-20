@@ -408,24 +408,6 @@ nnoremap <leader>j :call Fish_open()<cr>a
 " Change to the directory of the current file
 nnoremap <silent> cd :<c-u>cd %:h \| pwd<cr>
 
-function! Meeting_notes()
-    " ` is not working
-    let file_name = 'meeting_notes_' . strftime('%Y%m%d_%H%M') . '.txt'
-    !touch ~/documents/notes/`=file_name`
-    let full_path = $HOME . '/documents/notes/' . file_name
-    tabe `=full_path`
-endfunction
-
-function! Notes()
-    " ` is not working
-    let file_name = 'notes_' . strftime('%Y%m%d_%H%M') . '.txt'
-    !touch ~/documents/notes/`=file_name`
-    let full_path = $HOME . '/documents/notes/' . file_name
-    tabe `=full_path`
-endfunction
-
-nnoremap <leader>am :call Meeting_notes()<cr>imeeting <esc>:call UltiSnips#ExpandSnippet()<cr>
-nnoremap <leader>an :call Notes()<cr>
 nnoremap <leader>aa :e ~/.vimrc<cr>
 nnoremap <leader>ai :e ~/.config/i3/config<cr>
 
@@ -435,6 +417,6 @@ nnoremap <leader>ms :SudoWrite<cr>
 
 nnoremap <leader>1 :!
 
-if filereadable(glob("~/.vimrc.local")) 
+if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
