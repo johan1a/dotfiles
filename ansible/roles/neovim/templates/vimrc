@@ -358,7 +358,7 @@ set inccommand=split
 " Copy / Paste
 
 " Yank from cursor to end of line
-nnoremap Y y$
+map Y y$
 
 " Search using copy buffer
 nnoremap <leader>7 /<C-R>0<CR>
