@@ -201,13 +201,13 @@ sunmap w
 sunmap b
 sunmap e
 sunmap ge
-"
+
 " =========== unimpaired-vim ===========
 
-nmap <c-K> [e
-nmap <c-J> ]e
-vmap <c-K> [egv
-vmap <c-J> ]egv
+nmap <c-up> [e
+nmap <c-down> ]e
+vmap <c-up> [egv
+vmap <c-down> ]egv
 
 " =========== vim-sneak ===========
 
@@ -352,7 +352,7 @@ nnoremap <A-x> <C-x>
 
 " replace and jump
 nnoremap c* *Ncgn
-nnoremap gs :%s//<Left>
+nnoremap gs :%s/q<Left>
 
 " Live preview of :%s/
 set inccommand=split
@@ -396,8 +396,8 @@ tnoremap <leader><esc> <C-\><esc>
 
 " Execute a shell command and read in the results
 noremap Q yyp!!$SHELL<CR>
-
 " Tabs and splits
+
 nnoremap <s-l> :bnext<cr>
 nnoremap <s-h> :bprevious<cr>
 nnoremap <leader>l :ls<cr>
@@ -411,7 +411,7 @@ function! Fish_open()
   set shell=fish
   :tabe fish
   term
-  set shell=xterm
+  set shell=bash
 endfunction
 
 nnoremap <leader>j :call Fish_open()<cr>a
