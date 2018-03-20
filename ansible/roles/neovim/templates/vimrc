@@ -204,12 +204,10 @@ sunmap ge
 "
 " =========== unimpaired-vim ===========
 
-" Bubble single lines
-nmap <Up> [e
-nmap <Down> ]e
-" Bubble multiple lines
-vmap <Up> [egv
-vmap <Down> ]egv
+nmap <c-K> [e
+nmap <c-J> ]e
+vmap <c-K> [egv
+vmap <c-J> ]egv
 
 " =========== vim-sneak ===========
 
