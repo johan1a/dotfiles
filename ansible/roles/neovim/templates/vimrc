@@ -388,9 +388,6 @@ noremap <up>     <c-w>-
 noremap <left>  5<c-w><
 noremap <right> 5<c-w>>
 
-vnoremap < <gv
-vnoremap > >gv
-
 " neovim term
 tnoremap <C-o> <C-\><C-n>
 tnoremap <leader><esc> <C-\><esc>
