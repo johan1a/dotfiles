@@ -269,6 +269,7 @@ autocmd FileType fish compiler fish
 autocmd FileType fish setlocal textwidth=79
 
 nnoremap <leader>fx :%!xmllint --format -<cr>
+nnoremap <leader>fj :%!python -m json.tool<cr>
 
 " =========== quickfix ===========
 
