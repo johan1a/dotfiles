@@ -141,9 +141,9 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls']
     \ }
 
-nnoremap <silent> gk :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gk         :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <leader>fd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> gr :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> gr         :call LanguageClient_textDocument_rename()<CR>i
 nnoremap <silent> <leader>fr :call LanguageClient_textDocument_references()<CR>
 
 " =========== Vimwiki ===========
@@ -204,9 +204,9 @@ sunmap ge
 
 " =========== unimpaired-vim ===========
 
-nmap <c-up> [e
+nmap <c-up>   [e
 nmap <c-down> ]e
-vmap <c-up> [egv
+vmap <c-up>   [egv
 vmap <c-down> ]egv
 
 " =========== vim-sneak ===========
