@@ -387,6 +387,8 @@ nnoremap <s-h> :bprevious<cr>
 nnoremap <leader>l :ls<cr>
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>t :vs<cr>
+nnoremap <tab> :tabn<cr>
+nnoremap <s-tab> :tabp<cr>
 
 " Holy shell, Batman!!!
 function! Fish_open()
