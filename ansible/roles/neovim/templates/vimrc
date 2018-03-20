@@ -445,3 +445,7 @@ nnoremap <leader>mm :Move
 nnoremap <leader>ms :SudoWrite<cr>
 
 nnoremap <leader>1 :!
+
+if filereadable(glob("~/.vimrc.local")) 
+    source ~/.vimrc.local
+endif
