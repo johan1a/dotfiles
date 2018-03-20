@@ -266,6 +266,8 @@ autocmd FileType fish compiler fish
 " Set this to have long lines wrap inside comments.
 autocmd FileType fish setlocal textwidth=79
 
+nnoremap <leader>fx :%!xmllint --format -<cr>
+
 " =========== quickfix ===========
 
 augroup quickfix
