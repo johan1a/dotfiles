@@ -112,6 +112,7 @@ let g:gitgutter_max_signs = 1000
 
 set rtp+=~/.fzf
 nnoremap <leader>n :FZF<cr>
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -375,6 +376,11 @@ vnoremap C "*C
 nnoremap C "*C
 nnoremap d "*d
 vnoremap d "*d
+
+noremap <down>   <c-w>+
+noremap <up>     <c-w>-
+noremap <left>  5<c-w><
+noremap <right> 5<c-w>>
 
 " neovim term
 tnoremap <C-o> <C-\><C-n>
