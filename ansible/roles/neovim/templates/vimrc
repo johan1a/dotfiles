@@ -232,6 +232,7 @@ set scrolloff=1 " Leave margin when scrolling
 set sidescrolloff=5
 set display+=lastline
 set hidden
+set gdefault
 
 " Magic to make autoread actually work
 " Trigger autoread when changing buffers while inside vim:
@@ -351,6 +352,7 @@ nnoremap <A-x> <C-x>
 
 " replace and jump
 nnoremap c* *Ncgn
+nnoremap gs :%s//<Left>
 
 " Live preview of :%s/
 set inccommand=split
