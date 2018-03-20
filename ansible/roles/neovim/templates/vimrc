@@ -227,6 +227,8 @@ nnoremap <leader>ma :Magit<cr>
   "                                                             |___/
 
 syntax enable
+set autoindent
+set smartindent
 set autoread    " Automatically read external changes
 set scrolloff=1 " Leave margin when scrolling
 set sidescrolloff=5
