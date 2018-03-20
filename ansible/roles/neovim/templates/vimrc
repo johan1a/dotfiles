@@ -169,10 +169,10 @@ let g:tagbar_left=1
 
 augroup vim_dispatch
     autocmd!
-    autocmd FileType java let b:dispatch = 'javac %'
-    autocmd FileType groovy let b:dispatch = 'source ~/.sdkman/bin/sdkman-init.sh && grails test-app'
+    autocmd FileType java       let b:dispatch = 'javac %'
+    autocmd FileType groovy     let b:dispatch = 'source ~/.sdkman/bin/sdkman-init.sh && grails test-app'
     autocmd FileType typescript let b:dispatch = 'ng test && ng lint'
-    autocmd FileType python let b:dispatch = 'python -m unittest discover'
+    autocmd FileType python     let b:dispatch = 'python -m unittest discover'
 augroup END
 
 nnoremap <leader>d Dispatch<CR>
@@ -257,26 +257,17 @@ augroup END
 " =========== filetypes ===========
 
 augroup filetypes
-  au BufNewFile,BufRead *.gson setlocal ft=groovy
-  au BufNewFile,BufRead *.ts setlocal ft=typescript
-  au BufRead,BufNewFile Vagrantfile set filetype=ruby
+  autocmd BufNewFile,BufRead *.gson      setlocal ft=groovy
+  autocmd BufNewFile,BufRead *.ts        setlocal ft=typescript
+  autocmd Filetype groovy                setlocal makeprg=./gradlew\ test
+  autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+  autocmd FileType json nnoremap <buffer> <leader>ff :%!python -m json.tool<cr>
+  autocmd FileType xml  noremap  <buffer> <leader>ff :%!xmllint --format -<cr>
+  autocmd FileType fish compiler fish
+  " Set this to have long lines wrap inside comments.
+  autocmd FileType fish setlocal textwidth=79
 augroup END
 
-" Set up :make to use fish for syntax checking.
-autocmd FileType fish compiler fish
-
-" Set this to have long lines wrap inside comments.
-autocmd FileType fish setlocal textwidth=79
-
-nnoremap <leader>fx :%!xmllint --format -<cr>
-nnoremap <leader>fj :%!python -m json.tool<cr>
-
-" =========== quickfix ===========
-
-augroup quickfix
-    autocmd!
-    autocmd Filetype groovy setlocal makeprg=./gradlew\ test
-augroup END
 
 " =========== search ===========
 
