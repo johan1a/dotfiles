@@ -299,6 +299,9 @@ augroup splits
     autocmd VimResized * wincmd =
 augroup END
 
+set splitbelow
+set splitright
+
 " =========== Tabs and spaces  ===========
 set expandtab                          " insert space characters whenever the tab key is pressed,
 set tabstop=2                          " The number of space characters that will be inserted when the tab key is pressed
