@@ -174,7 +174,7 @@ augroup vim_dispatch
     autocmd FileType python let b:dispatch = 'python -m unittest discover'
 augroup END
 
-nnoremap <leader>m :Dispatch<CR>
+nnoremap <leader>d Dispatch<CR>
 
 " =========== tmux-navigator ===========
 
@@ -188,7 +188,6 @@ nmap <a-t> :TagbarToggle<CR>
 
 nnoremap <leader>w :Eval<CR>
 vnoremap <leader>w :Eval<CR>
-
 nnoremap <a-r> :Require<CR>
 
 " =========== CamelCaseMotion ===========
@@ -214,6 +213,10 @@ vmap <Down> ]egv
 " =========== vim-sneak ===========
 
 let g:sneak#label = 1
+
+" =========== Magit ===========
+
+nnoremap <leader>ma :Magit<cr>
 
   " ____                           _            _   _   _
  " / ___| ___ _ __   ___ _ __ __ _| |  ___  ___| |_| |_(_)_ __   __ _ ___
@@ -295,12 +298,9 @@ augroup END
 
 " =========== Tabs and spaces  ===========
 set expandtab                          " insert space characters whenever the tab key is pressed,
-
 set tabstop=2                          " The number of space characters that will be inserted when the tab key is pressed
-
 set shiftwidth=2                       " The number of space characters inserted for indentation with the reindent operations (<< and >>)
 set softtabstop=0
-
 set list                               " Display tabs and trailing spaces
 set listchars=tab:▸–,trail:·
 set listchars+=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
@@ -333,12 +333,8 @@ nnoremap <leader>u <C-t>zz
 " Go to alternate file
 nnoremap <leader><leader> <C-^>
 
-" Reset search
-nnoremap <leader>n :noh<CR>
-
 " Reload config
 nnoremap <leader>r :source ~/.vimrc<CR>
-
 nnoremap <leader>e :NERDTreeFind<CR>
 nnoremap <leader>k :NERDTreeToggle<CR>
 nnoremap <leader>q :NERDTreeClose<CR>:q<CR>
@@ -389,7 +385,6 @@ noremap Q yyp!!$SHELL<CR>
 nnoremap <s-l> :bnext<cr>
 nnoremap <s-h> :bprevious<cr>
 nnoremap <leader>l :ls<cr>
-
 nnoremap <leader>s :sp<cr>
 nnoremap <leader>t :vs<cr>
 
