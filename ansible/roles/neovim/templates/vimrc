@@ -27,6 +27,7 @@ Plugin 'dkprice/vim-easygrep'
 Plugin 'honza/vim-snippets'
 Plugin 'jreybert/vimagit'
 Plugin 'junegunn/vim-slash'
+Plugin 'junegunn/fzf.vim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ludovicchabant/vim-gutentags'
@@ -146,6 +147,10 @@ nnoremap <silent> gk         :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <leader>fd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> gr         :call LanguageClient_textDocument_rename()<CR>i
 nnoremap <silent> <leader>fr :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <leader>fq :call LanguageClient_exit()<CR>:call LanguageClient_startServer()<CR>
+
+let g:LanguageClient_loggingLevel = 'DEBUG'
+
 
 " =========== Vimwiki ===========
 
