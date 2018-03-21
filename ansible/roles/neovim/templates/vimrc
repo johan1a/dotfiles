@@ -138,7 +138,8 @@ let g:lsp_async_completion = 1
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie', '--lsp'],
     \ 'groovy': ['java', '-jar', '/home/johan/programs/groovy-language-server.jar'],
-    \ 'python': ['pyls']
+    \ 'python': ['pyls'],
+    \ 'java': ['java-lang-server']
     \ }
 
 nnoremap <silent> gk         :call LanguageClient_textDocument_hover()<CR>
@@ -170,12 +171,12 @@ let g:tagbar_left=1
 augroup vim_dispatch
     autocmd!
     autocmd FileType java       let b:dispatch = 'javac %'
-    autocmd FileType groovy     let b:dispatch = 'source ~/.sdkman/bin/sdkman-init.sh; grails test-app'
+    autocmd FileType groovy     let b:dispatch = './gradlew build'
     autocmd FileType typescript let b:dispatch = 'ng test && ng lint'
     autocmd FileType python     let b:dispatch = 'python -m unittest discover'
 augroup END
 
-nnoremap <leader>d Dispatch<CR>
+nnoremap <leader>d :Dispatch<CR>
 
 " =========== tmux-navigator ===========
 
@@ -260,6 +261,8 @@ augroup filetypes
   autocmd BufNewFile,BufRead *.gson      setlocal ft=groovy
   autocmd BufNewFile,BufRead *.ts        setlocal ft=typescript
   autocmd Filetype groovy                setlocal makeprg=./gradlew\ test
+  autocmd Filetype groovy                setlocal tabstop=4
+  autocmd Filetype groovy                setlocal shiftwidth=4
   autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
   autocmd FileType json nnoremap <buffer> <leader>ff :%!python -m json.tool<cr>
   autocmd FileType xml  noremap  <buffer> <leader>ff :%!xmllint --format -<cr>
@@ -297,8 +300,8 @@ set splitright
 
 " =========== Tabs and spaces  ===========
 set expandtab                          " insert space characters whenever the tab key is pressed,
-set tabstop=2                          " The number of space characters that will be inserted when the tab key is pressed
-set shiftwidth=2                       " The number of space characters inserted for indentation with the reindent operations (<< and >>)
+set tabstop=2                          " the number of space characters that will be inserted when the tab key is pressed
+set shiftwidth=2                       " the number of space characters inserted for indentation with the reindent operations (<< and >>)
 set softtabstop=0
 set list                               " Display tabs and trailing spaces
 set listchars=tab:▸–,trail:·
