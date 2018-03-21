@@ -137,7 +137,7 @@ let g:lsp_async_completion = 1
 
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie', '--lsp'],
-    \ 'groovy': ['java', '-jar', '/home/johan/programs/groovy-language-server.jar'],
+    \ 'groovy': ['java', '-jar', '~/dev/groovy-langserver/build/libs/groovy-langserver-all.jar'],
     \ 'python': ['pyls'],
     \ 'java': ['java-lang-server']
     \ }
