@@ -274,7 +274,7 @@ augroup END
 
 " =========== search ===========
 
-set grepprg=ag\ $*
+set grepprg=rg\ $*
 
 nnoremap <leader>g :Grep 
 
