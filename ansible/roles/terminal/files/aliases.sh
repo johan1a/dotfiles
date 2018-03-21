@@ -70,6 +70,7 @@ alias trw='tmux rename-window'
 alias ts='tmux switch -t'
 alias v=nvim
 alias vim=nvim
+alias vim-debug='nvim -V9vim-debug.log'
 alias xc="xclip -selection clipboard "
 alias y=yaourt
 alias youtube-mp3='youtube-dl -t --extract-audio --audio-format mp3 '
