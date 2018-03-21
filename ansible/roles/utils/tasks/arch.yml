@@ -35,7 +35,6 @@
       - pavucontrol
       - dmenu
       - the_silver_searcher
-      - inxi
       - strace
       - fish
       - npm
@@ -69,6 +68,7 @@
       - xclip
       - neofetch
       - figlet
+      - inxi
         #      - udiskie
       - msr-tools
         #      - translate-shell
