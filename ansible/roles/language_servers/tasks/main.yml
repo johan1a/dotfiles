@@ -11,3 +11,5 @@
     when: ansible_os_family == "Archlinux"
 
   - include: groovy.yml
+    tags:
+      - groovy-lang-server
