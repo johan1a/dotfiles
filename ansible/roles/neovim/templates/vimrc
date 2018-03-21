@@ -261,8 +261,6 @@ augroup filetypes
   autocmd BufNewFile,BufRead *.gson      setlocal ft=groovy
   autocmd BufNewFile,BufRead *.ts        setlocal ft=typescript
   autocmd Filetype groovy                setlocal makeprg=./gradlew\ test
-  autocmd Filetype groovy                setlocal tabstop=4
-  autocmd Filetype groovy                setlocal shiftwidth=4
   autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
   autocmd FileType json nnoremap <buffer> <leader>ff :%!python -m json.tool<cr>
   autocmd FileType xml  noremap  <buffer> <leader>ff :%!xmllint --format -<cr>
@@ -271,6 +269,7 @@ augroup filetypes
   autocmd FileType fish setlocal textwidth=79
 augroup END
 
+autocmd Filetype groovy setlocal tabstop=4 shiftwidth=4
 
 " =========== search ===========
 
