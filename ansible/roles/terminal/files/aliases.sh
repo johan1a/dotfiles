@@ -77,3 +77,4 @@ alias cv="vim ~/.vimrc"
 alias sd="trans sv:da "
 alias ds="trans da:sv "
 alias print-keymap="xkbcomp -xkb $DISPLAY my_xkb_keymap"
+alias r=rg
