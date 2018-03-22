@@ -32,3 +32,6 @@
       - gnupg-agent
       - figlet
 
+  - include: ripgrep.yml
+    tags: ripgrep
+
