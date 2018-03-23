@@ -238,3 +238,11 @@ function sgp
   git pull --rebase
   git stash pop
 end
+
+function grails
+  command which grails > /dev/null
+  if test $status -ne 0
+    sdk > /dev/null
+  end
+  command grails $argv
+end
