@@ -232,3 +232,9 @@ end
 function keyboard-available
   less /usr/share/X11/xkb/rules/base.lst
 end
+
+function sgp
+  git stash
+  git pull --rebase
+  git stash pop
+end
