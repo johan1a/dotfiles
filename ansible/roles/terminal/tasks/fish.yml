@@ -31,5 +31,5 @@
     changed_when: fishconfig_stat.stat.exists and fishconfig_stat.stat.islnk is not defined
 
   - name: Add ~/.local/bin to path
-    shell: "fish -c 'set --universal fish_user_paths $fish_user_paths ~/.local/bin/'"
+    shell: "/usr/bin/fish -c 'set --universal fish_user_paths $fish_user_paths ~/.local/bin/'"
     when: not fishconfig_stat.stat.exists

@@ -1,3 +1,0 @@
-/etc/systemd/system/mbsync@.service
-/etc/systemd/system/mbsync@.timer
-Once those two files are created, reload systemd, then enable and start mbsync@user.timer, replacing user with your username..
