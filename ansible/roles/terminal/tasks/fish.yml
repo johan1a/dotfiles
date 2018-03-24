@@ -33,3 +33,7 @@
   - name: Add ~/.local/bin to path
     shell: "/usr/bin/fish -c 'set --universal fish_user_paths $fish_user_paths ~/.local/bin/'"
     when: not fishconfig_stat.stat.exists
+
+  - name: Add /home/johan/.gem/ruby/2.5.0/bin
+    shell: "fish -c 'set --universal fish_user_paths $fish_user_paths ~/.gem/ruby/2.5.0/bin'"
+    when: not fishconfig_stat.stat.exists
