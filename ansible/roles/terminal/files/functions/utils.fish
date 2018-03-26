@@ -183,22 +183,16 @@ function pull-all
       continue
     end
 
-    set gitstatus (git status)
-    set cleanstatus "On branch master Your branch is up-to-date with 'origin/master'.  nothing to commit, working tree clean"
-
-    if [ "$gitstatus" = "$cleanstatus" ]
-      echo ""
+    echo ""
+    if [ (git_is_dirty) = "False" ]
       echo Pulling (pwd)
       git pull --rebase
     else
-      echo ""
       echo (pwd) is dirty, not pulling.
-
     end
     cd ..
   end
 
-  echo ""
   echo Done!
 end
 
