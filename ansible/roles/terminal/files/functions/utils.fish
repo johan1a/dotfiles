@@ -196,6 +196,32 @@ function pull-all
   echo Done!
 end
 
+function mass-checkout
+  echo Checking out master for all non-dirty git-projects...
+  echo ""
+
+  set dirs (ls)
+  for dir in $dirs
+    cd $dir
+
+    if not test -d .git
+      cd ..
+      continue
+    end
+
+    echo ""
+    if [ (git_is_dirty) = "False" ]
+      echo Pulling (pwd)
+      git checkout $argv
+    else
+      echo (pwd) is dirty, leaving as it is.
+    end
+    cd ..
+  end
+
+  echo Done!
+end
+
 function preset-password
 
   set keygrip 4F84C5677466E4DF3CCDFB177F15CE6C3F299895
