@@ -278,7 +278,7 @@ autocmd Filetype groovy setlocal tabstop=4 shiftwidth=4
 
 " =========== search ===========
 
-set grepprg=rg\ $*
+set grepprg=ag\ $*
 
 nnoremap <leader>g :Grep 
 
@@ -430,3 +430,4 @@ nnoremap <leader>1 :!
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
+
