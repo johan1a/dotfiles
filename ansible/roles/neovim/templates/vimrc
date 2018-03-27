@@ -148,7 +148,6 @@ nnoremap <silent> <leader>fd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> gr         :call LanguageClient_textDocument_rename()<CR>i
 nnoremap <silent> <leader>fr :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <leader>fq :call LanguageClient_exit()<CR>:call LanguageClient_startServer()<CR>
-nnoremap <leader>p           ilog.info("<esc>pa: ${<esc>pa}")
 
 let g:LanguageClient_loggingLevel = 'DEBUG'
 
@@ -381,6 +380,7 @@ vnoremap C "*C
 nnoremap C "*C
 nnoremap d "*d
 vnoremap d "*d
+nnoremap <leader>p           ilog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
 
 noremap <down>   <c-w>+
 noremap <up>     <c-w>-
