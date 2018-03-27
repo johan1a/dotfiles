@@ -393,6 +393,8 @@ tnoremap <leader><esc> <C-\><esc>
 
 " Execute a shell command and read in the results
 noremap Q yyp!!$SHELL<CR>
+nnoremap <leader>y :!./%<CR>
+
 " Tabs and splits
 
 nnoremap <s-l> :bnext<cr>
