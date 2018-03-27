@@ -351,7 +351,7 @@ nnoremap <A-x> <C-x>
 
 " replace and jump
 nnoremap c* *Ncgn
-nnoremap gs :%s/<Left>
+nnoremap gs :%s//<Left>
 
 " Live preview of :%s/
 set inccommand=split
