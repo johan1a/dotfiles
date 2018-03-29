@@ -112,7 +112,7 @@ let g:gitgutter_max_signs = 1000
 " =========== fzf ===========
 
 set rtp+=~/.fzf
-nnoremap <leader>n :FZF<cr>
+nnoremap <leader>e :FZF<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Customize fzf colors to match your color scheme
@@ -132,6 +132,8 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " =========== LanguageClient-neovim ===========
+
+let g:LanguageClient_selectionUI = "location-list"
 
 let g:lsp_async_completion = 1
 " setlocal omnifunc=lsp#complete “ in after/ftplugin/ft.vim
@@ -335,14 +337,14 @@ nnoremap <leader>i <C-]>zz
 
 " Jump back up the tag stack
 nnoremap <leader>u <C-t>zz
+nnoremap <leader>p :lprev<cr>
+nnoremap <leader>n :lnext<cr>
 
 " Go to alternate file
 nnoremap <leader><leader> <C-^>
 
-" Reload config
 nnoremap <leader>r :source ~/.vimrc<CR>
-nnoremap <leader>e :NERDTreeFind<CR>
-nnoremap <leader>k :NERDTreeToggle<CR>
+nnoremap <leader>k :NERDTreeFind<CR>
 nnoremap <leader>q :NERDTreeClose<CR>:q<CR>
 
 " Increment / Decrement numbers
@@ -380,7 +382,7 @@ vnoremap C "*C
 nnoremap C "*C
 nnoremap d "*d
 vnoremap d "*d
-nnoremap <leader>p           ilog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
+nnoremap <leader>fp           ilog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
 
 noremap <down>   <c-w>+
 noremap <up>     <c-w>-
