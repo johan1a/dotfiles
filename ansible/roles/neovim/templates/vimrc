@@ -112,7 +112,7 @@ let g:gitgutter_max_signs = 1000
 " =========== fzf ===========
 
 set rtp+=~/.fzf
-nnoremap <leader>e :FZF<cr>
+nnoremap <leader>n :FZF<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Customize fzf colors to match your color scheme
