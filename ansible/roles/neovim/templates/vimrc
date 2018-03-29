@@ -337,8 +337,8 @@ nnoremap <leader>i <C-]>zz
 
 " Jump back up the tag stack
 nnoremap <leader>u <C-t>zz
-nnoremap <leader>p :lprev<cr>
-nnoremap <leader>n :lnext<cr>
+nnoremap <c-p> :lprev<cr>
+nnoremap <c-n> :lnext<cr>
 
 " Go to alternate file
 nnoremap <leader><leader> <C-^>
