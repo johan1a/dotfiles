@@ -270,6 +270,7 @@ augroup filetypes
   autocmd BufNewFile,BufRead *.ts        setlocal ft=typescript
   autocmd Filetype groovy                setlocal makeprg=./gradlew\ test
   autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+  autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
   autocmd FileType json nnoremap <buffer> <leader>ff :%!python -m json.tool<cr>
   autocmd FileType xml  noremap  <buffer> <leader>ff :%!xmllint --format -<cr>
   autocmd FileType fish compiler fish
