@@ -5,7 +5,7 @@
     when: ansible_os_family == "Archlinux"
 
   - include: typescript.yml
-    when: ansible_os_family == "Archlinux"
+    tags: typescript
 
   - include: java.yml
     when: ansible_os_family == "Archlinux"

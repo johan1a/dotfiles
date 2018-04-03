@@ -1,3 +1,2 @@
   - name: Install Typescript language server
-    command: yaourt -S javascript-typescript-langserver --noconfirm --needed
-    become_user: "{{ username }}"
+    command: npm install -g typescript-language-server
