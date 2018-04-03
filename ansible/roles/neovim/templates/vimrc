@@ -142,7 +142,8 @@ let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie', '--lsp'],
     \ 'groovy': ['java', '-jar', '~/dev/groovy-langserver/build/libs/groovy-langserver-all.jar'],
     \ 'python': ['pyls'],
-    \ 'java': ['java-lang-server']
+    \ 'java': ['java-lang-server'],
+    \ 'typescript': ['typescript-language-server', '--stdio']
     \ }
 
 nnoremap <silent> gk         :call LanguageClient_textDocument_hover()<CR>
