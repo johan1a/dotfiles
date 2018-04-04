@@ -267,6 +267,7 @@ function grails
   command grails $argv
 end
 
+<<<<<<< HEAD
 function edit-xclip
   xclip -o | vipe | xclip
 end
@@ -292,4 +293,10 @@ end
 
 function i3-current-workspace
   i3-msg -t get_workspaces | python -c "import sys, json; print(next(x for x in json.load(sys.stdin) if x['focused'])['num'])"
+end
+
+function nuke-docker
+  echo Stopping and removing all containers...
+  docker stop (docker ps -aq)
+  docker rm (docker ps -aq)
 end
