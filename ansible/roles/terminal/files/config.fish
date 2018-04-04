@@ -1,6 +1,6 @@
 
 set fish_greeting
-set -x VISUAL vim
+set -x VISUAL nvim
 set -x ANSIBLE_NOCOWS 1
 
 if status --is-interactive;
