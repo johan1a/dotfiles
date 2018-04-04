@@ -65,3 +65,4 @@
       dest: "{{ user_home }}/.config/i3"
       state: link
     when: not i3confdir_stat.stat.exists
+

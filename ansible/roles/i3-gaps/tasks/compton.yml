@@ -1,0 +1,16 @@
+
+  - name: Stat ~/.config/compton.conf
+    stat: path="{{ user_home }}/.config/compton.conf"
+    register: compton_conf
+
+  - name: Backup ~/.config/compton.conf
+    command: mv "{{ user_home }}/.config/compton.conf" "{{ user_home }}/.dotfiles_backup/.config/"
+    when: compton_conf.stat.exists
+
+  - name: Link compton config
+    file:
+      src: "{{ dotfiles_dir }}/ansible/roles/i3-gaps/files/compton.conf"
+      dest: "{{ user_home }}/.config/compton.conf"
+      state: link
+    when: not compton_conf.stat.exists
+

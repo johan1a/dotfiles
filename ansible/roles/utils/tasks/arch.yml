@@ -52,6 +52,7 @@
       - ethtool
       - ttf-inconsolata
       - lm_sensors
+      - ntp
 #     - dnsutils
 
   - name: Set default jdk

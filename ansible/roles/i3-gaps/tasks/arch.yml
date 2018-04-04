@@ -6,4 +6,5 @@
       - i3status
       - i3lock
       - imagemagick
+      - compton
 
