@@ -266,3 +266,30 @@ function grails
   end
   command grails $argv
 end
+
+function edit-xclip
+  xclip -o | vipe | xclip
+end
+
+function edit-xclip-file
+  set initial_workspace (i3-current-workspace)
+  i3-msg workspace clipboard
+  i3-msg focus parent
+  i3-msg kill
+
+  i3-msg workspace $initial_workspace
+  i3-msg move container to workspace clipboard
+  i3-msg workspace clipboard
+  echo $initial_workspace
+  set temp_file /tmp/clipboard.txt
+  touch $temp_file
+  xclip -o > $temp_file
+  nvim $temp_file
+  cat $temp_file | xclip -selection clipboard
+  cat $temp_file | xclip -selection primary
+  i3-msg workspace $initial_workspace
+end
+
+function i3-current-workspace
+  i3-msg -t get_workspaces | python -c "import sys, json; print(next(x for x in json.load(sys.stdin) if x['focused'])['num'])"
+end

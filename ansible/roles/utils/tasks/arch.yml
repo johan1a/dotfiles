@@ -53,6 +53,7 @@
       - ttf-inconsolata
       - lm_sensors
       - ntp
+      - moreutils
 #     - dnsutils
 
   - name: Set default jdk
