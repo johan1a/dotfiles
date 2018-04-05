@@ -48,7 +48,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = memory cpu filesystem xbacklight volume wlan eth battery temperature powermenu  xkeyboard date
+modules-right = cpu memory filesystem xbacklight volume wlan eth battery temperature powermenu  xkeyboard date
 
 tray-position = right
 tray-padding = 2
@@ -224,27 +224,13 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${module/bspwm.label-focused-underline}
 
-; Available tags:
-;   <label> (default)
-;   <bar-load>
-;   <ramp-load>
-;   <ramp-coreload>
-format = <label> <ramp-coreload>
+format = <label>
 
 ; Available tokens:
 ;   %percentage% (default) - total cpu load
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
-label = CPU %percentage%%
-
-ramp-coreload-0 = ▁
-ramp-coreload-1 = ▂
-ramp-coreload-2 = ▃
-ramp-coreload-3 = ▄
-ramp-coreload-4 = ▅
-ramp-coreload-5 = ▆
-ramp-coreload-6 = ▇
-ramp-coreload-7 = █
+label = CPU %percentage-cores%%
 
 [module/memory]
 type = internal/memory
@@ -340,7 +326,7 @@ bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator = o
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
 bar-volume-fill-font = 2
