@@ -28,3 +28,10 @@
       dest: "{{ user_home }}/.config/polybar/config"
       state: link
     when: isFile.rc != 0 or isLink.rc != 0
+
+  - name: Copy polybar startup script
+    copy:
+      src: "{{ dotfiles_dir }}/ansible/roles/polybar/files/polybar.sh"
+      dest: "{{ user_home }}/.local/bin/polybar.sh"
+      mode: "+x"
+
