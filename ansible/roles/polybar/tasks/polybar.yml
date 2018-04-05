@@ -1,0 +1,30 @@
+
+  - name: Install polybar
+    command: yaourt -S polybar --noconfirm --needed
+    become_user: "{{ username }}"
+
+  - command: test -L "{{ user_home }}/.config/polybar/config"
+    register: isLink
+    changed_when: false
+    failed_when: false
+
+  - command: test -f "{{ user_home }}/.config/polybar/config"
+    register: isFile
+    changed_when: false
+    failed_when: false
+
+  - name: Backup ~/.config/polybar/config
+    command: mv  "{{ user_home }}/.config/polybar/config" "{{ user_home }}/.dotfiles_backup/"
+    when: isFile.rc == 0
+
+  - name: Create directory
+    file:
+      path: "{{ user_home }}/.config/polybar"
+      state: directory
+
+  - name: Link polybar config
+    file:
+      src:  "{{ dotfiles_dir }}/ansible/roles/polybar/files/config"
+      dest: "{{ user_home }}/.config/polybar/config"
+      state: link
+    when: isFile.rc != 0 or isLink.rc != 0
