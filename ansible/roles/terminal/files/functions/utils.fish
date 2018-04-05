@@ -267,7 +267,6 @@ function grails
   command grails $argv
 end
 
-<<<<<<< HEAD
 function edit-xclip
   xclip -o | vipe | xclip
 end
