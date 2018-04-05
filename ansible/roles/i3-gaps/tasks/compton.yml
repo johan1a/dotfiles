@@ -4,7 +4,7 @@
     register: compton_conf
 
   - name: Backup ~/.config/compton.conf
-    command: mv "{{ user_home }}/.config/compton.conf" "{{ user_home }}/.dotfiles_backup/.config/"
+    command: mv "{{ user_home }}/.config/compton.conf" "{{ user_home }}/.dotfiles_backup/"
     when: compton_conf.stat.exists
 
   - name: Link compton config
@@ -13,4 +13,10 @@
       dest: "{{ user_home }}/.config/compton.conf"
       state: link
     when: not compton_conf.stat.exists
+
+  - name: Link compton startup script
+    copy:
+      src: "{{ dotfiles_dir }}/ansible/roles/i3-gaps/files/compton.sh"
+      dest: "{{ user_home }}/.local/bin/compton.sh"
+      mode: "+x"
 
