@@ -384,7 +384,7 @@ vnoremap C "*C
 nnoremap C "*C
 nnoremap d "*d
 vnoremap d "*d
-nnoremap <leader>fp           ilog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
+nnoremap <leader>fp           olog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
 
 noremap <down>   <c-w>+
 noremap <up>     <c-w>-
