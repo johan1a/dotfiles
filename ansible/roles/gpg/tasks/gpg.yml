@@ -3,6 +3,7 @@
     file:
       path: "{{ user_home }}/.gnupg"
       state: directory
+    register: create_dir
 
   - name: Link gpg-agent.conf
     script: >
@@ -12,3 +13,4 @@
 
   - name: Reload gpg-agent
     command: gpg-connect-agent reloadagent /bye
+    when: create_dir.changed
