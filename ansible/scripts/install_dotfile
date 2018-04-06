@@ -2,6 +2,7 @@
 
 set src  $argv[1]
 set dest $argv[2]
+set executable $argv[3]
 
 set backup_dir ~/.dotfiles_backup
 mkdir -p $backup_dir
@@ -15,3 +16,8 @@ if test -L $dest
 end
 
 ln -s $src $dest
+
+if $executable -eq "--executable"
+  chmod +x $dest
+end
+
