@@ -104,10 +104,11 @@
     become_method: sudo
     when: termite_git.changed
 
-  - file:
-      src: /usr/local/share/terminfo/x/xterm-termite
-      dest: /lib/terminfo/x/xterm-termite
-      state: link
+  - name: link xterm-termite
+    script: >
+          scripts/install_dotfile
+          /usr/local/share/terminfo/x/xterm-termite
+          /lib/terminfo/x/xterm-termite
     become_method: sudo
     when: termite_git.changed
 

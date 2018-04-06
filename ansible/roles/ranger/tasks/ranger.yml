@@ -3,25 +3,8 @@
       path: "{{ user_home }}/.config/ranger"
       state: directory
 
-  - command: test -L "{{ user_home }}/.config/ranger/rc.conf"
-    register: isLink
-    changed_when: false
-    failed_when: false
-
-  - command: test -f "{{ user_home }}/.config/ranger/rc.conf"
-    register: isFile
-    changed_when: false
-    failed_when: false
-
-  - name: Backup ranger config
-    command: mv "{{ user_home }}/.config/ranger/rc.conf" "{{ user_home }}/.dotfiles_backup/"
-    when: isFile.rc == 0
-
   - name: Link ranger config
-    become: true
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/ranger/files/rc.conf"
-      dest: "{{ user_home }}/.config/ranger/rc.conf"
-      state: link
-    changed_when: not (isFile.rc == 0 and isLink.rc == 0 )
-
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/ranger/files/rc.conf"
+          "{{ user_home }}/.config/ranger/rc.conf"

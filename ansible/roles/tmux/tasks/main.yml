@@ -5,37 +5,14 @@
   - include: arch.yml
     when: ansible_os_family == "Archlinux"
 
-  - command: test -L "{{ user_home }}/.tmux.conf"
-    register: isLink
-    changed_when: false
-    failed_when: false
-
-  - command: test -f "{{ user_home }}/.tmux.conf"
-    register: isFile
-    changed_when: false
-    failed_when: false
-
-  - name: Backup tmux config
-    command: mv "{{ user_home }}/.tmux.conf" "{{ user_home }}/.dotfiles_backup/"
-    when: isFile.rc == 0
-
   - name: Link tmux config
-    become: true
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/tmux/files/tmux.conf"
-      dest: "{{ user_home }}/.tmux.conf"
-      state: link
-    changed_when: not isLink.rc == 0
-
-  - name: Remove old .tmux.reset.conf
-    file:
-      path: "{{ user_home }}/.tmux.reset.conf"
-      state: absent
-    changed_when: false
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/tmux/files/tmux.conf"
+          "{{ user_home }}/.tmux.conf"
 
   - name: Link .tmux.reset.conf
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/tmux/files/tmux.reset.conf"
-      dest: "{{ user_home }}/.tmux.reset.conf"
-      state: link
-    changed_when: false
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/tmux/files/tmux.reset.conf"
+          "{{ user_home }}/.tmux.reset.conf"

@@ -1,0 +1,17 @@
+#!/usr/bin/env fish
+
+set src  $argv[1]
+set dest $argv[2]
+
+set backup_dir ~/.dotfiles_backup
+mkdir -p $backup_dir
+
+if test -f $dest; or test -d $dest
+  mv $dest "$backup_dir/"
+end
+
+if test -L $dest
+  rm $dest
+end
+
+ln -s $src $dest

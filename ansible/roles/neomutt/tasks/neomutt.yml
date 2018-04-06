@@ -1,25 +1,10 @@
 
-  - command: test -L "{{ user_home }}/.mbsyncrc"
-    register: isLink
-    changed_when: false
-    failed_when: false
-
-  - command: test -f "{{ user_home }}/.mbsyncrc"
-    register: isFile
-    changed_when: false
-    failed_when: false
-
-  - name: Backup isync config
-    command: mv "{{ user_home }}/.mbsyncrc" "{{ user_home }}/.dotfiles_backup/"
-    when: isFile.rc == 0
-
   - name: Link isync config
     become: true
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mbsyncrc"
-      dest: "{{ user_home }}/.mbsyncrc"
-      state: link
-    changed_when: not (isFile.rc == 0 and isLink.rc == 0)
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mbsyncrc"
+          "{{ user_home }}/.mbsyncrc"
 
   - name: Make sure .mutt exists
     file:
@@ -32,34 +17,23 @@
       state: directory
       owner: "{{ username }}"
 
-  - name: Stat muttrc
-    stat: path="{{ user_home }}/.mutt/muttrc"
-    register: muttrc_stat
-
-  - name: Backup muttrc
-    command: mv "{{ user_home }}/.mutt/muttrc" "{{ user_home }}/.dotfiles_backup/"
-    when: muttrc_stat.stat.exists and muttrc_stat.stat.islnk is not defined
-
   - name: Link muttrc config
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/neomutt/files/muttrc"
-      dest: "{{ user_home }}/.mutt/muttrc"
-      state: link
-    changed_when: muttrc_stat.stat.exists and muttrc_stat.stat.islnk is not defined
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/muttrc"
+          "{{ user_home }}/.mutt/muttrc"
 
   - name: Link mbsync service
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mbsync@.service"
-      dest: "/etc/systemd/system/mbsync@.service"
-      state: link
-    changed_when: muttrc_stat.stat.exists and muttrc_stat.stat.islnk is not defined
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mbsync@.service"
+          "/etc/systemd/system/mbsync@.service"
 
   - name: Link mbsync timer
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mbsync@.timer"
-      dest: "/etc/systemd/system/mbsync@.timer"
-      state: link
-    changed_when: muttrc_stat.stat.exists and muttrc_stat.stat.islnk is not defined
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mbsync@.timer"
+          "/etc/systemd/system/mbsync@.timer"
 
   - name: Enable mbsync timer
     command: systemctl enable mbsync@johan.timer

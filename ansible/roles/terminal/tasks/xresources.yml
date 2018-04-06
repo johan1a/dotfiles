@@ -1,22 +1,13 @@
 
-  - name: Stat .Xresources
-    stat: path="{{ user_home }}/.Xresources"
-    register: stat_xresources
-
-  - name: Backup .Xresources
-    command: mv  "{{ user_home }}/.Xresources" "{{ user_home }}/.dotfiles_backup/.Xresources"
-    when: stat_xresources.stat.exists and stat_xresources.stat.islnk is not defined
-
   - name: Link Xresources
-    file:
-      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/Xresources"
-      dest: "{{ user_home }}/.Xresources"
-      state: link
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/terminal/files/Xresources"
+          "{{ user_home }}/.Xresources"
     register: xresources
-    changed_when: stat_xresources.stat.exists and stat_xresources.stat.islnk is not defined
 
   - name: run xrdb
     command: xrdb -merge "{{ user_home }}/.Xresources"
-    when: xresources.changed and not lookup('env', 'CI') and not lookup('env', 'Vagrant')
+    when: not lookup('env', 'CI') and not lookup('env', 'Vagrant')
     ignore_errors: true
 

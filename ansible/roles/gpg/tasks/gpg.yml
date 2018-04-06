@@ -5,12 +5,10 @@
       state: directory
 
   - name: Link gpg-agent.conf
-    file:
-      src:  "{{ user_home }}/dotfiles/ansible/roles/gpg/files/gpg-agent.conf"
-      dest: "{{ user_home }}/.gnupg/gpg-agent.conf"
-      state: link
-    register: gpg_conf
+    script: >
+          scripts/install_dotfile
+          "{{ user_home }}/dotfiles/ansible/roles/gpg/files/gpg-agent.conf"
+          "{{ user_home }}/.gnupg/gpg-agent.conf"
 
   - name: Reload gpg-agent
     command: gpg-connect-agent reloadagent /bye
-    when: gpg_conf.changed

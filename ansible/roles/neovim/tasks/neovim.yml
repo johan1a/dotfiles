@@ -24,46 +24,20 @@
       state: directory
       owner: "{{ username }}"
 
-  - name: Stat vimrc
-    stat: path="{{ user_home }}/.vimrc"
-    register: vimrc_stat
-
-  - name: Backup vimrc
-    command: mv "{{ user_home }}/.vimrc" "{{ user_home }}/.dotfiles_backup/"
-    when: vimrc_stat.stat.exists and vimrc_stat.stat.islnk is not defined
-
-  - name: Stat .config/nvim
-    stat: path="{{ user_home }}/.config/nvim"
-    register: config_nvim_stat
-
-  - name: Backup ~/.config/nvim
-    command: mv  "{{ user_home }}/.config/nvim" "{{ user_home }}/.dotfiles_backup/"
-    when: config_nvim_stat.stat.exists and config_nvim_stat.stat.islnk is not defined
-
-  - name: Stat ~/.vim/init.vim
-    stat: path="{{ user_home }}/.vim/init.vim"
-    register: init_vim_stat
-
-  - name: Backup ~/.vim/init.vim
-    command: mv  "{{ user_home }}/.vim/init.vim" "{{ user_home }}/.dotfiles_backup/"
-    when: init_vim_stat.stat.exists and init_vim_stat.stat.islnk is not defined
-
   - name: Link neovim to vim config
-    file:
-      src: "{{ user_home }}/.vim"
-      dest: "{{ user_home }}/.config/nvim"
-      state: link
-    changed_when: config_nvim_stat.stat.exists and config_nvim_stat.stat.islnk is not defined
+    script: >
+          scripts/install_dotfile
+          "{{ user_home }}/.vim"
+          "{{ user_home }}/.config/nvim"
 
   - name: Symlink .vimrc
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/neovim/templates/vimrc"
-      dest: "{{ user_home }}/{{ item }}"
-      state: link
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/neovim/templates/vimrc"
+          "{{ user_home }}/{{ item }}"
     with_items:
       - .vimrc
       - .vim/init.vim
-    changed_when: vimrc_stat.stat.exists and vimrc_stat.stat.islnk is not defined
 
   - name: Check if Vundle exists
     stat: path="{{ user_home }}/.vim/bundle/Vundle.vim"
@@ -98,7 +72,7 @@
     become: true
 
   - name: Symlink custom_snippets
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/neovim/templates/custom_snippets"
-      dest: "{{ user_home }}/.vim/custom_snippets"
-      state: link
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/neovim/templates/custom_snippets"
+          "{{ user_home }}/.vim/custom_snippets"

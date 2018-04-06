@@ -4,29 +4,8 @@
       path: "{{ user_home }}/.config/termite"
       state: directory
 
-  - name: Stat ~/.config/termite/config
-    stat: path="{{ user_home }}/.config/termite/config"
-    register: stat_termite
-
-  - command: test -L "{{ user_home }}/.config/termite/config"
-    register: isLink
-    changed_when: false
-    failed_when: false
-
-  - command: test -f "{{ user_home }}/.config/termite/config"
-    register: isFile
-    changed_when: false
-    failed_when: false
-
-  - name: Backup ~/.config/termite/config
-    command: mv  "{{ user_home }}/.config/termite/config" "{{ user_home }}/.dotfiles_backup/"
-    when: isFile.rc == 0
-
   - name: Link ~/.config/termite/config
-    file:
-      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/config_termite"
-      dest: "{{ user_home }}/.config/termite/config"
-      state: link
-    register: termite
-    changed_when: isFile.rc != 0 or isLink.rc != 0
-
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/terminal/files/config_termite"
+          "{{ user_home }}/.config/termite/config"

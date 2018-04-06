@@ -5,25 +5,11 @@
       state: directory
       owner: "{{ username }}"
 
-  - command: test -L {{ user_home }}/.config/mopidy/mopidy.conf
-    register: isLink
-    changed_when: false
-    failed_when: false
-
-  - command: test -f {{ user_home }}/.config/mopidy/mopidy.conf
-    register: isFile
-    changed_when: false
-    failed_when: false
-
-  - name: Backup mopidy.conf
-    command: mv {{ user_home }}/.config/mopidy/mopidy.conf {{ user_home }}/.dotfiles_backup
-    when: isFile.rc == 0 and isLink.rc != 0
-
   - name: Link mopidy.conf
-    file:
-      src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.conf"
-      dest: "{{ user_home }}/.config/mopidy/mopidy.conf"
-      state: link
+    script: >
+          scripts/install_dotfile
+          "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.conf"
+          "{{ user_home }}/.config/mopidy/mopidy.conf"
 
   - command: mkfifo /tmp/mpd.fifo
     failed_when: false
@@ -39,8 +25,14 @@
       owner: "{{ username }}"
 
   - name: Link mopidy startup script
+    script: >
+          scripts/install_dotfile
+          "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.fish"
+          "{{ user_home }}/.local/bin/mopidy"
+
+  - name: Make mopidy startup script executable
     file:
-      src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.fish"
+      src: "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.fish"
       dest: "{{ user_home }}/.local/bin/mopidy"
       state: link
       mode: "a+x"

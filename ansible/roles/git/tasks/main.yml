@@ -5,25 +5,8 @@
   - include: arch.yml
     when: ansible_os_family == "Archlinux"
 
-  - command: test -L "{{ user_home }}/.gitconfig"
-    register: isLink
-    changed_when: false
-    failed_when: false
-
-  - command: test -f "{{ user_home }}/.gitconfig"
-    register: isFile
-    changed_when: false
-    failed_when: false
-
-  - name: Backup .gitconfig
-    command: mv "{{ user_home }}/.gitconfig" "{{ user_home }}/.dotfiles_backup/"
-    when: isFile.rc == 0
-
   - name: Link .gitconfig
-    become: true
-    file:
-      src: "{{ dotfiles_dir }}/ansible/roles/git/files/gitconfig"
-      dest: "{{ user_home }}/.gitconfig"
-      state: link
-    changed_when: not (isFile.rc == 0 and isLink.rc == 0)
-
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/git/files/gitconfig"
+          "{{ user_home }}/.gitconfig"

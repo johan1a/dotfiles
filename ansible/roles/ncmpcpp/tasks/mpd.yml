@@ -10,8 +10,7 @@
       owner: "{{ username }}"
 
   - name: Link mpd.conf
-    file:
-      src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mpd.conf"
-      dest: "{{ user_home }}/.config/mpd/mpd.conf"
-      state: link
-
+    script: >
+      scripts/install_dotfile
+      "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mpd.conf"
+      "{{ user_home }}/.config/mpd/mpd.conf"

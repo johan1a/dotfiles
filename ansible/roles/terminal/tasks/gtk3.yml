@@ -1,26 +1,11 @@
 
-  - command: test -L "{{ user_home }}/.config/gtk-3.0/gtk.css"
-    register: isLink
-    changed_when: false
-    failed_when: false
-
-  - command: test -f "{{ user_home }}/.config/gtk-3.0/gtk.css"
-    register: isFile
-    changed_when: false
-    failed_when: false
-
-  - name: Backup ~/.config/gtk-3.0/gtk.css
-    command: mv  "{{ user_home }}/.config/gtk-3.0/gtk.css" "{{ user_home }}/.dotfiles_backup/"
-    when: isFile.rc == 0
-
   - name: Create directory
     file:
       path: "{{ user_home }}/.config/gtk-3.0"
       state: directory
 
   - name: Link ~/.config/gtk-3.0/gtk.css
-    file:
-      src:  "{{ dotfiles_dir }}/ansible/roles/terminal/files/gtk.css"
-      dest: "{{ user_home }}/.config/gtk-3.0/gtk.css"
-      state: link
-    when: isFile.rc != 0 or isLink.rc != 0
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/terminal/files/gtk.css"
+          "{{ user_home }}/.config/gtk-3.0/gtk.css"
