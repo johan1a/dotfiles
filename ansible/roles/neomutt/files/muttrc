@@ -53,6 +53,12 @@ set smtp_url=smtps://$imap_user@smtp.gmail.com:465/
 set ssl_force_tls = yes
 
 
+# Automatically feed HTML emails through elinks, but only if there is no
+# alternative.
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+bind attach <Esc>e noop # Normally <resend-message>.
 bind pager j next-line
 bind pager k previous-line
 bind attach,index,pager \CD next-page
@@ -61,3 +67,9 @@ bind pager g top
 bind pager G bottom
 bind attach,index g first-entry
 bind attach,index G last-entry
+bind index <tab> collapse-thread
+bind index,pager <Esc>d noop # Normally <delete-subthread>.
+bind index,pager <down> sidebar-next
+bind index,pager <right> sidebar-open
+bind index,pager <up> sidebar-prev
+bind index,pager c mail # Compose.

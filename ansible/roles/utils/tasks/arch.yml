@@ -54,6 +54,7 @@
       - lm_sensors
       - ntp
       - moreutils
+      - elinks
 #     - dnsutils
 
   - name: Set default jdk
