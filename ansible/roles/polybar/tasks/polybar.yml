@@ -15,8 +15,9 @@
           "{{ user_home }}/.config/polybar/config"
 
   - name: Copy polybar startup script
-    copy:
-      src: "{{ dotfiles_dir }}/ansible/roles/polybar/files/polybar.sh"
-      dest: "{{ user_home }}/.local/bin/polybar.sh"
-      mode: "+x"
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/polybar/files/polybar.sh"
+          "{{ user_home }}/.local/bin/polybar.sh"
+          --executable
 

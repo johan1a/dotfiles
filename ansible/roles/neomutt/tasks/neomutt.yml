@@ -34,8 +34,8 @@
   - name: Link open script
     script: >
           scripts/install_dotfile
-          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/open.fish"
-          "{{ user_home }}/scripts/open"
+          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/open"
+          "{{ user_home }}/.local/bin/open"
           --executable
     become_user: "{{ username }}"
 

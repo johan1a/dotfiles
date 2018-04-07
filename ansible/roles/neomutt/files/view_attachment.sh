@@ -63,8 +63,8 @@ tmpdir="$HOME/.mutt/tmp/attachments"
 debug_file=$tmpdir/debug
 
 # debug.  yes or no.
-#debug="no"
-debug="yes"
+debug="no"
+#debug="yes"
 
 type=$2
 open_with=$3

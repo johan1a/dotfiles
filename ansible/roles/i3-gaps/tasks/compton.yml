@@ -6,7 +6,8 @@
           "{{ user_home }}/.config/compton.conf"
 
   - name: Link compton startup script
-    copy:
-      src: "{{ dotfiles_dir }}/ansible/roles/i3-gaps/files/compton.sh"
-      dest: "{{ user_home }}/.local/bin/compton.sh"
-      mode: "+x"
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/i3-gaps/files/compton.sh"
+          "{{ user_home }}/.local/bin/compton.sh"
+          -- executable
