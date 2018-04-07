@@ -31,13 +31,17 @@
           --executable
     become_user: "{{ username }}"
 
-  - name: Link open script
+  - name: Link scripts
     script: >
           scripts/install_dotfile
-          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/open"
-          "{{ user_home }}/.local/bin/open"
+          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/{{ item }}"
+          "{{ user_home }}/.local/bin/{{ item }}"
           --executable
     become_user: "{{ username }}"
+    with_items:
+      - open
+      - notmuch-hook
+      - mbsync-launcher
 
   - name: Link ~/.mailcap
     script: >
@@ -46,20 +50,17 @@
           "{{ user_home }}/.mailcap"
     become_user: "{{ username }}"
 
-  - name: Link mbsync service
+  - name: Link ~/.notmuch-config
     script: >
           scripts/install_dotfile
-          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mbsync@.service"
-          "/etc/systemd/system/mbsync@.service"
+          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/notmuch-config"
+          "{{ user_home }}/.notmuch-config"
+    become_user: "{{ username }}"
 
-  - name: Link mbsync timer
-    script: >
-          scripts/install_dotfile
-          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mbsync@.timer"
-          "/etc/systemd/system/mbsync@.timer"
+  - name: Setup mbsync cron job
+    cron:
+      name: "Sync mails"
+      minute: "*/3"
+      job: "~/.local/bin/mbsync-launcher >> ~/.local/log/mbsync.log 2>&1"
+    become_user: "{{ username }}"
 
-  - name: Enable mbsync timer
-    command: systemctl enable mbsync@johan.timer
-
-  - name: Start mbsync timer
-    command: systemctl start mbsync@johan.timer

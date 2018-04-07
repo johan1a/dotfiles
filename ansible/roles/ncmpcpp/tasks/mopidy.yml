@@ -28,15 +28,8 @@
     script: >
           scripts/install_dotfile
           "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.fish"
-          "{{ user_home }}/.local/bin/mopidy"
-
-  - name: Make mopidy startup script executable
-    file:
-      src: "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.fish"
-      dest: "{{ user_home }}/.local/bin/mopidy"
-      state: link
-      mode: "a+x"
-      owner: "{{ username }}"
+          "{{ user_home }}/.local/bin/mopidy-launcher"
+          --executable
 
 # - name: Link mopidy.conf
 #   file:

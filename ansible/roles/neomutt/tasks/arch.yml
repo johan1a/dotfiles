@@ -1,5 +1,8 @@
 
   - name: Install neomutt
     pacman:
-      name: neomutt
+      name: "{{ item }}"
       state: latest
+    with_items:
+      - neomutt
+      - notmuch

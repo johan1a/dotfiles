@@ -55,6 +55,7 @@
       - ntp
       - moreutils
       - elinks
+      - cronie
 #     - dnsutils
 
   - name: Set default jdk
@@ -80,3 +81,8 @@
         #- httpie
     become_user: "{{ username }}"
 
+  - name: Start cron service
+    service:
+      name: cronie
+      state: started
+      enabled: yes

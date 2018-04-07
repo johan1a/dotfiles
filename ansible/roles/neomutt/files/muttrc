@@ -4,20 +4,12 @@ source "gpg --use-agent -dq $HOME/.mutt_pass.gpg |"
 
 set imap_user=johan.peter.andersson@gmail.com
 
-set folder=imaps://imap.gmail.com/
-
-# The spoolfile is the folder where your (unfiltered) e-mail arrives.
-set spoolfile=+INBOX
-
-# Any IMAP folders that should be checked regularly for new mail should be listed here:
-#mailboxes imaps://imap.gmail.com/INBOX
-mailboxes =INBOX
-
 # Maildir
 set mbox_type=Maildir
-set mbox=~/.mail/inbox
-set folder=~/.mail
-set spoolfile=+/gmail/Inbox
+
+set virtual_spoolfile=yes
+set folder=~/.mail/
+source ~/.mutt/mailboxes
 
 # Store message headers locally to speed things up.
 # If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more.
@@ -73,3 +65,8 @@ bind index,pager <down> sidebar-next
 bind index,pager <right> sidebar-open
 bind index,pager <up> sidebar-prev
 bind index,pager c mail # Compose.
+
+
+macro index A "<modify-labels>+archive -unread -inbox -new\\n" "Archive message"
+macro index c "<change-vfolder>?" "Change to vfolder overview"
+macro index \\\\ "<vfolder-from-query>" "Search mailbox"
