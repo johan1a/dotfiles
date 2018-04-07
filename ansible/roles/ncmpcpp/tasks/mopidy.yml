@@ -31,18 +31,10 @@
           "{{ user_home }}/.local/bin/mopidy-launcher"
           --executable
 
-# - name: Link mopidy.conf
-#   file:
-#     src:  "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.service"
-#     dest: "{{ user_home }}/.config/systemd/user/mopidy.service"
-#     state: link
-#     owner: "{{ username }}"
-
-# - name: Enable mopidy service
-#   command: systemctl --user enable mopidy
-#   become_user: "{{ username }}"
-
-# - name: Start mopidy service
-#   command: sudo systemctl --user start mopidy
-#   become_user: "{{ username }}"
-#   when: false
+  - name: Link mopidy visualizer
+    script: >
+          scripts/install_dotfile
+          "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy-visualizer"
+          "{{ user_home }}/.local/bin/"
+          --executable
+    become_user: "{{ username }}"
