@@ -50,6 +50,13 @@
           "{{ user_home }}/.mailcap"
     become_user: "{{ username }}"
 
+  - name: Link mailboxes
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mailboxes"
+          "{{ user_home }}/.mutt/mailboxes"
+    become_user: "{{ username }}"
+
   - name: Link ~/.notmuch-config
     script: >
           scripts/install_dotfile
