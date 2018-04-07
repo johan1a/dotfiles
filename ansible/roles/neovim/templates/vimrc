@@ -146,11 +146,39 @@ let g:LanguageClient_serverCommands = {
     \ 'typescript': ['typescript-language-server', '--stdio']
     \ }
 
+
+let g:LanguageClient_diagnosticsDisplay = {
+      \        1: {
+      \            "name": "Error",
+      \            "texthl": "ALEError",
+      \            "signText": "❌",
+      \            "signTexthl": "ALEErrorSign",
+      \        },
+      \        2: {
+      \            "name": "Warning",
+      \            "texthl": "ALEWarning",
+      \            "signText": "⚠",
+      \            "signTexthl": "ALEWarningSign",
+      \        },
+      \        3: {
+      \            "name": "Information",
+      \            "texthl": "ALEInfo",
+      \            "signText": "ℹ",
+      \            "signTexthl": "ALEInfoSign",
+      \        },
+      \        4: {
+      \            "name": "Hint",
+      \            "texthl": "ALEInfo",
+      \            "signText": "➤",
+      \            "signTexthl": "ALEInfoSign",
+      \        },
+      \    }
+
 nnoremap <silent> gk         :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <leader>fd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> gr         :call LanguageClient_textDocument_rename()<CR>i
-nnoremap <silent> <leader>fr :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> <leader>fq :call LanguageClient_exit()<CR>:call LanguageClient_startServer()<CR>
+nnoremap <silent> <leader>fr :call LanguageClient_textDocument_references()<CR>:ll<CR>
+nnoremap <silent> <leader>fq :call LanguageClient#exit()<CR>:call LanguageClient#startServer()<CR>
 
 let g:LanguageClient_loggingLevel = 'DEBUG'
 
