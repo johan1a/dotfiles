@@ -57,6 +57,9 @@
       - elinks
       - cronie
       - gnu-netcat
+      - ttf-freefont
+      - ttf-liberation
+      - ttf-droid
 #     - dnsutils
 
   - name: Set default jdk
