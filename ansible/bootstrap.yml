@@ -6,8 +6,8 @@
       - misc
       - yaourt
       - utils
-      - git
       - terminal
+      - git
       - polybar
       - gpg
       - neomutt
