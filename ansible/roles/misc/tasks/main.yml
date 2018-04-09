@@ -15,4 +15,6 @@
       - "{{ user_home }}/programs"
       - "{{ user_home }}/.local/bin"
       - "{{ user_home }}/.local/log"
+    become_user: "{{ username }}"
+    tags: misc
 
