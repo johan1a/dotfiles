@@ -1,0 +1,45 @@
+
+  - name: Install dependencies
+    apt:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - xcb-proto
+      - python-xcbgen
+      - libxcb-ewmh-dev
+      - libcurl4-openssl-dev
+      - libmpdclient-dev
+      - libiw-dev
+      - libalsa-ocaml
+      - libalsa-ocaml-dev
+
+  - name: Check if polybar is installed
+    stat:
+      path: "{{ user_home }}/source/polybar"
+    failed_when: false
+    changed_when: false
+    register: polybar_installed
+
+  - name: Pull source
+    command: git clone --branch 3.1.0 --recursive https://github.com/jaagr/polybar {{ user_home }}/source/polybar
+    register: git_source
+    when: not polybar_installed.stat.exists
+    become_user: "{{ username }}"
+
+  - name: create dir
+    file:
+      path: "{{ user_home }}/source/polybar/build"
+      state: directory
+
+  - name: Run autogen.sh
+    command: "cmake .."
+    args:
+      chdir: "{{ user_home }}/source/polybar/build"
+    when: git_source.changed
+
+  - name: Run sudo make install
+    shell: "make install"
+    args:
+      chdir: "{{ user_home }}/source/polybar/build"
+    when: git_source.changed
+    become: true

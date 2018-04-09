@@ -1,0 +1,6 @@
+
+  - name: Install polybar
+    command: yaourt -S polybar --noconfirm --needed
+    become_user: "{{ username }}"
+    when: ansible_os_family == "Archlinux"
+

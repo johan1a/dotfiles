@@ -1,3 +1,11 @@
 
+ - include: debian.yml
+   when: ansible_os_family == "Debian"
+   tags: polybar
+
+ - include: arch.yml
+   when: ansible_os_family == "Archlinux"
+   tags: polybar
+
  - include: polybar.yml
    tags: polybar
