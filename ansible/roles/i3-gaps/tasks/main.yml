@@ -20,5 +20,4 @@
       - i3-gaps
 
   - include: compton.yml
-    when: ansible_os_family == "Archlinux"
     tags: compton
