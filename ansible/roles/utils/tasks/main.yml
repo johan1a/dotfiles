@@ -1,6 +1,6 @@
 
   - include: debian.yml
-    when: not lookup('env', 'CI') and ansible_os_family == "Debian"
+    when: ansible_os_family == "Debian"
     tags: utils
 
   - include: arch.yml
