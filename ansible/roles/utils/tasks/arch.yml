@@ -78,7 +78,6 @@
       - figlet
       - inxi
       - clojurescript-git
-      - planck-git
         #      - udiskie
       - msr-tools
         #      - translate-shell
