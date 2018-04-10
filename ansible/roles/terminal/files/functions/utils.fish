@@ -299,3 +299,10 @@ function nuke-docker
   docker stop (docker ps -aq)
   docker rm (docker ps -aq)
 end
+
+function os-name
+  set NAME_STR (head -n 1 /etc/os-release)
+  set OS (echo $NAME_STR | sed 's/NAME=//g')
+  echo $OS
+end
+
