@@ -36,3 +36,20 @@
   - include: ripgrep.yml
     tags: ripgrep
 
+  - name: Add apt repository ppa:mfikes/planck
+    become: true
+    apt_repository:
+      repo: ppa:mfikes/planck
+      state: present
+    register: planck_repo
+
+  - name: Update apt
+    become: true
+    apt:
+      update_cache: yes
+    when: planck_repo.changed
+
+  - name: Install planck
+    apt:
+      name: planck
+      state: latest
