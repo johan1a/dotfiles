@@ -306,3 +306,6 @@ function os-name
   echo $OS
 end
 
+function to-txt
+  cp $argv $argv.txt
+end
