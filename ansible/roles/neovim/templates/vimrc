@@ -179,7 +179,7 @@ nnoremap <silent> <leader>fd :call LanguageClient_textDocument_definition()<CR>:
 nnoremap <silent> gr         :call LanguageClient_textDocument_rename()<CR>i
 nnoremap <silent> <leader>fr :call LanguageClient_textDocument_references()<CR>:sleep 30m<CR>:lr 1<CR>zz
 nnoremap <silent> <leader>fq :call LanguageClient#exit()<CR>:call LanguageClient#startServer()<CR>
-nnoremap <silent> <leader>fe :call LanguageClient_textDocument_rename()<CR>:edit!<CR>
+nnoremap <silent> <leader>fe :call LanguageClient_textDocument_rename()<CR>:sleep 30m<CR>:edit! %<CR>
 
 let g:LanguageClient_loggingLevel = 'DEBUG'
 

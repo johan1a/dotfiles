@@ -51,6 +51,9 @@ set mail_check = 120
 set record = +Sent
 unset record
 
+set sort=threads
+set sort_aux=last-date-received
+
 set realname = 'Johan Andersson'
 set from = $imap_user
 set use_from = yes

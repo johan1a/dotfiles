@@ -60,6 +60,7 @@
       - ttf-freefont
       - ttf-liberation
       - ttf-droid
+      - clojure
 #     - dnsutils
 
   - name: Set default jdk
