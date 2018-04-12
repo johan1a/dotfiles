@@ -78,7 +78,6 @@
       - neofetch
       - figlet
       - inxi
-      - clojurescript-git
         #      - udiskie
       - msr-tools
         #      - translate-shell
