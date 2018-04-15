@@ -11,8 +11,8 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set altgr to modq
-exec --no-startup-id xmodmap -e 'keycode 108 = Hyper_R'
-exec --no-startup-id xmodmap -e 'add mod3 = Hyper_R'
+#exec --no-startup-id xmodmap -e 'keycode 108 = Hyper_R'
+#exec --no-startup-id xmodmap -e 'add mod2 = Hyper_R'
 
 exec --no-startup-id /usr/bin/pa-applet
 exec --no-startup-id i3-msg workspace $wp1
