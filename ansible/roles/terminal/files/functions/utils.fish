@@ -12,7 +12,6 @@ function git_is_dirty
     end
 end
 
-
 function mc
     mkdir -p $argv; and cd $argv
 end
@@ -106,8 +105,7 @@ end
 
 function colemak
     echo "Switched to Colemak."
-    setxkbmap colemaknordic
-    fixaltgr
+    setxkbmap colemaknordic -option altwin:swap_lalt_lwin -option caps:super
 end
 
 function todo
