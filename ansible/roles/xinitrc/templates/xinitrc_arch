@@ -8,7 +8,7 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 devmon --no-gui &
-setxkbmap us -variant colemak &
+setxkbmap colemaknordic &
 
 if [[ "$USER" -eq "vagrant" ]] ; then
   xrandr -s 1920x1080

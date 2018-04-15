@@ -7,6 +7,7 @@
       - yaourt
       - utils
       - terminal
+      - colemak
       - git
       - polybar
       - gpg

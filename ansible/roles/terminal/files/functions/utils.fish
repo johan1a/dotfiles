@@ -106,7 +106,7 @@ end
 
 function colemak
     echo "Switched to Colemak."
-    setxkbmap us -variant colemak
+    setxkbmap colemaknordic
     fixaltgr
 end
 

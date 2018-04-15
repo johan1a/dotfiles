@@ -144,7 +144,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias upgrade='sudo apt update && sudo apt upgrade -y'
-alias colemak="setxkbmap us -variant colemak && echo Switched to colemak"
+alias colemak="setxkbmap colemaknordic && echo Switched to colemak"
 alias swedish="setxkbmap se && echo Switched to Swedish \(QWERTY\)"
 alias danish="setxkbmap dk && echo Switched to Danish \(QWERTY\)"
 alias sb="source ~/.bashrc && echo ...sourced ~/.bashrc"

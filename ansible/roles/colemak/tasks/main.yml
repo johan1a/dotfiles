@@ -1,4 +1,12 @@
 
+  - name: Link xkb layout file
+    script: >
+          scripts/install_dotfile
+          "{{ user_home }}/dotfiles/ansible/roles/colemak/files/colemaknordic"
+          "/usr/share/X11/xkb/symbols/colemaknordic"
+    tags: colemak
+
   - name: Switching to colemak
-    command: setxkbmap us -variant colemak
+    command: setxkbmap colemaknordic
     when: ansible_os_family == "Archlinux" and not lookup('env', 'Vagrant')
+    tags: colemak
