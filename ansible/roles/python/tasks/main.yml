@@ -8,7 +8,7 @@
   - name: Upgrade pip3
     pip:
       name: pip
-      executable: pip3
+      executable: pip
       state: latest
 
   - name: Upgrade pip2

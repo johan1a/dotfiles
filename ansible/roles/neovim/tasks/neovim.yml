@@ -7,16 +7,17 @@
       - rdoc
       - neovim
 
-  - name: Install neovim pip package
+  - name: Install neovim pip2 package
     pip:
       name: neovim
       state: latest
+      executable: pip2
 
   - name: Install neovim pip3 package
     pip:
       name: neovim
       state: latest
-      executable: pip3
+      executable: pip
 
   - name: Make sure .vim exists
     file:
