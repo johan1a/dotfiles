@@ -130,8 +130,8 @@ function upgrade
     sudo apt update
     sudo apt upgrade
     sudo apt autoremove -y
-    pip2 list | awk  ' {print $1}' | xargs sudo pip2 install -U
-    pip3 list | awk  ' {print $1}' | xargs sudo pip3 install -U
+    pip2 list | tail -n +3 | awk  ' {print $1}' | xargs sudo pip2 install -U
+    pip3 list | tail -n +3 | awk  ' {print $1}' | xargs sudo pip3 install -U
 end
 
 function usb-backup
