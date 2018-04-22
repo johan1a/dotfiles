@@ -1,0 +1,28 @@
+
+
+  - name: Check if yay is installed
+    stat:
+      path="{{ user_home }}/.local/bin/yay"
+    register: yay_installed
+    failed_when: false
+
+  - name: download tarball
+    get_url:
+      url: https://github.com/Jguer/yay/releases/download/v5.675/yay_5.675_x86_64.tar.gz
+      dest: "{{ user_home }}/source/yay.tar.gz"
+    become: false
+    when: not yay_installed.stat.exists
+
+  - name: Extract files
+    unarchive:
+      src: "{{ user_home }}/source/yay.tar.gz"
+      dest: "{{ user_home }}/programs/"
+    when: not yay_installed.stat.exists
+
+  - name: Symlink executable
+    script: >
+          scripts/install_dotfile
+          "{{ user_home }}/programs/yay_5.675_x86_64//yay"
+          "{{ user_home }}/.local/bin/yay"
+    become_user: "{{ username }}"
+

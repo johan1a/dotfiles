@@ -61,6 +61,7 @@
       - ttf-liberation
       - ttf-droid
       - clojure
+      - rlwrap
 #     - dnsutils
 
   - name: Set default jdk

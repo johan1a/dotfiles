@@ -5,6 +5,7 @@
     roles:
       - misc
       - yaourt
+      - yay
       - utils
       - terminal
       - colemak
