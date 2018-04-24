@@ -38,6 +38,7 @@ alias gdd='git diff --cached'
 alias gl='git lg'
 alias gp='git pull --rebase'
 alias gs='git status -s'
+alias gt='./gradlew test'
 alias intercept="strace -ff -e trace=write -e write=1,2 -p "
 alias l='ls -alF'
 alias la='ls -A'
