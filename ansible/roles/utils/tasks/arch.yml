@@ -56,7 +56,6 @@
       - moreutils
       - elinks
       - cronie
-      - gnu-netcat
       - ttf-freefont
       - ttf-liberation
       - ttf-droid
