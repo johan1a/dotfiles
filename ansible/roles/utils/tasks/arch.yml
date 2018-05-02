@@ -61,6 +61,7 @@
       - ttf-droid
       - clojure
       - rlwrap
+      - sxiv
 #     - dnsutils
 
   - name: Set default jdk
