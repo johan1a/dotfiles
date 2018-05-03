@@ -15,6 +15,7 @@ alias amend='git commit --amend'
 alias cf="vim ~/.config/fish"
 alias ci3="vim ~/.config/i3/config"
 alias cl=clear
+alias con="./gradlew codenarcAll"
 alias cv="vim ~/.vimrc"
 alias d="docker"
 alias dev="cd ~/dev"
