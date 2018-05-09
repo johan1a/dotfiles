@@ -463,7 +463,10 @@ nnoremap <leader>ms :SudoWrite<cr>
 
 nnoremap <leader>1 :!
 
+set cedit=<ESC>
+
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
+
 
