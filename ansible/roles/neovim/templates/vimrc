@@ -377,6 +377,7 @@ nnoremap <leader><leader> <C-^>
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>k :NERDTreeFind<CR>
 nnoremap <leader>q :NERDTreeClose<CR>:q<CR>
+nnoremap <leader>b :bdelete<CR>
 
 " Increment / Decrement numbers
 nnoremap <A-a> <C-a>
@@ -468,5 +469,3 @@ set cedit=<ESC>
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
-
-
