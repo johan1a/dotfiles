@@ -12,6 +12,7 @@
       - libiw-dev
       - libalsa-ocaml
       - libalsa-ocaml-dev
+      - libjsoncpp-dev
 
   - name: Check if polybar is installed
     stat:
@@ -31,7 +32,7 @@
       path: "{{ user_home }}/source/polybar/build"
       state: directory
 
-  - name: Run autogen.sh
+  - name: Run cmake
     command: "cmake .."
     args:
       chdir: "{{ user_home }}/source/polybar/build"
@@ -43,3 +44,5 @@
       chdir: "{{ user_home }}/source/polybar/build"
     when: git_source.changed
     become: true
+
+    #http://archive.getdeb.net/ubuntu/pool/apps/p/polybar/polybar_2.5.2-1~getdeb2_amd64.deb
