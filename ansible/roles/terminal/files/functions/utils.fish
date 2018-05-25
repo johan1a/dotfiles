@@ -4,6 +4,7 @@ function get_git_branch
 end
 
 function git_is_dirty
+    git status > /dev/null
     git diff-index --quiet HEAD --;
     if [ $status = 0 ]
       echo False
