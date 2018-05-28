@@ -12,7 +12,7 @@ if status --is-interactive
   source $HOME/.config/base16-shell/profile_helper.fish
 end
 
-source ~/.config/fish/functions/utils.fish
+[ -e $HOME/.local.fish ]; and source $HOME/.local.fish
 
 alias sf="source ~/.config/fish/config.fish"
 alias c=cd
