@@ -140,7 +140,7 @@ let g:lsp_async_completion = 1
 
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie', '--lsp'],
-    \ 'groovy': ['java', '-jar', '~/dev/groovy-langserver/build/libs/groovy-langserver-all.jar'],
+    \ 'groovy': ['java', '-Dorg.slf4j.simpleLogger.defaultLogLevel=debug', '-jar', '~/dev/groovy-langserver/build/libs/groovy-langserver-all.jar', ],
     \ 'python': ['pyls'],
     \ 'java': ['java-lang-server'],
     \ 'typescript': ['typescript-language-server', '--stdio']
