@@ -1,28 +1,24 @@
 
+  - name: Clean up old installation files
+    file:
+      path: "{{ user_home }}/source/yay.tar.gz"
+      state: absent
 
   - name: Check if yay is installed
     stat:
-      path="{{ user_home }}/.local/bin/yay"
+      path: "{{ user_home }}/source/yay"
     register: yay_installed
     failed_when: false
 
-  - name: download tarball
-    get_url:
-      url: https://github.com/Jguer/yay/releases/download/v5.675/yay_5.675_x86_64.tar.gz
-      dest: "{{ user_home }}/source/yay.tar.gz"
+  - name: Clone source
+    command: git clone https://aur.archlinux.org/yay.git {{ user_home }}/source/yay
     become: false
     when: not yay_installed.stat.exists
 
-  - name: Extract files
-    unarchive:
-      src: "{{ user_home }}/source/yay.tar.gz"
-      dest: "{{ user_home }}/programs/"
-    when: not yay_installed.stat.exists
-
-  - name: Symlink executable
-    script: >
-          scripts/install_dotfile
-          "{{ user_home }}/programs/yay_5.675_x86_64//yay"
-          "{{ user_home }}/.local/bin/yay"
+  - name: Run makepkg
+    command: "makepkg -si --noconfirm"
+    args:
+      chdir: "{{ user_home }}/source/yay"
     become_user: "{{ username }}"
+    when: not yay_installed.stat.exists
 
