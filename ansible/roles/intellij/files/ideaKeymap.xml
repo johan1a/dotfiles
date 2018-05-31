@@ -42,9 +42,6 @@
     <keyboard-shortcut first-keystroke="alt enter" />
     <keyboard-shortcut first-keystroke="shift enter" />
   </action>
-  <action id="ToggleBreakpointEnabled">
-    <keyboard-shortcut first-keystroke="windows" />
-  </action>
   <action id="ToggleLineBreakpoint">
     <keyboard-shortcut first-keystroke="ctrl f8" />
     <keyboard-shortcut first-keystroke="ctrl 8" />
