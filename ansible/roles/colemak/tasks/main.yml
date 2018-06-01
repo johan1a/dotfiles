@@ -9,4 +9,5 @@
   - name: Switching to colemak
     command: setxkbmap colemaknordic
     when: ansible_os_family == "Archlinux" and not lookup('env', 'Vagrant')
+    failed_when: false
     tags: colemak
