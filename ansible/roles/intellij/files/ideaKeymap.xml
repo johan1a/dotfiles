@@ -2,6 +2,10 @@
   <action id="Annotate">
     <keyboard-shortcut first-keystroke="ctrl 0" />
   </action>
+  <action id="ChooseDebugConfiguration">
+    <keyboard-shortcut first-keystroke="shift alt f9" />
+    <keyboard-shortcut first-keystroke="ctrl 6" />
+  </action>
   <action id="CloseContent">
     <keyboard-shortcut first-keystroke="ctrl f4" />
     <keyboard-shortcut first-keystroke="ctrl w" />
@@ -29,7 +33,9 @@
     <keyboard-shortcut first-keystroke="ctrl 7" />
   </action>
   <action id="GotoBookmark0" />
+  <action id="GotoBookmark4" />
   <action id="GotoBookmark5" />
+  <action id="GotoBookmark6" />
   <action id="GotoBookmark7" />
   <action id="GotoBookmark8" />
   <action id="GotoBookmark9" />
@@ -41,6 +47,10 @@
   <action id="ShowIntentionActions">
     <keyboard-shortcut first-keystroke="alt enter" />
     <keyboard-shortcut first-keystroke="shift enter" />
+  </action>
+  <action id="Stop">
+    <keyboard-shortcut first-keystroke="ctrl f2" />
+    <keyboard-shortcut first-keystroke="ctrl 4" />
   </action>
   <action id="ToggleLineBreakpoint">
     <keyboard-shortcut first-keystroke="ctrl f8" />
