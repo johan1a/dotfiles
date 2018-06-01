@@ -11,6 +11,6 @@ elif [[ "${OS}" == *"Arch Linux"* ]] ; then
   sudo pacman -S python-pip --noconfirm
 fi
 
-sudo pip install --upgrade pip
+# sudo pip install --upgrade pip
 sudo pip install ansible
 ansible-playbook ansible/bootstrap.yml -i ansible/hosts.ini --become

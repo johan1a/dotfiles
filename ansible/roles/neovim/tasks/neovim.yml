@@ -12,6 +12,7 @@
       name: neovim
       state: latest
       executable: pip2
+    when: false
 
   - name: Install neovim pip3 package
     pip:

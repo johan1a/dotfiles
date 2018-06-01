@@ -16,4 +16,5 @@
       name: pip
       executable: pip2
       state: latest
+    when: false
 
