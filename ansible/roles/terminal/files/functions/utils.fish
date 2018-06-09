@@ -175,6 +175,10 @@ function pull-all
 
   set dirs (ls)
   for dir in $dirs
+    if not test -d $dir
+      continue
+    end
+
     cd $dir
 
     if not test -d .git
@@ -201,6 +205,10 @@ function mass-checkout
 
   set dirs (ls)
   for dir in $dirs
+    if not test -d $dir
+      continue
+    end
+
     cd $dir
 
     if not test -d .git
