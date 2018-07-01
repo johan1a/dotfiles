@@ -19,7 +19,6 @@ exec --no-startup-id i3-msg workspace $wp1
 exec --no-startup-id redshift &> /dev/null &
 exec --no-startup-id udiskie &> /dev/null &
 exec --no-startup-id exec bash $HOME/.fehbg
-exec_always --no-startup-id ~/.local/bin/compton.sh &
 exec_always --no-startup-id ~/.local/bin/polybar.sh &
 
 
