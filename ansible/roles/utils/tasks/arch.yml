@@ -62,6 +62,7 @@
       - clojure
       - rlwrap
       - sxiv
+      - lib32-glibc
 #     - dnsutils
 
   - name: Set default jdk
