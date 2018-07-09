@@ -63,7 +63,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+p exec dmenu_run
 
 
-bindsym $mod+i exec /home/johan/source/i3lock-fancy-multimonitor/lock -n -p -- scrot -z
+bindsym $mod+i exec /home/johan/source/i3lock-fancy-multimonitor/lock -n -p #-- scrot -z
 
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -243,3 +243,5 @@ for_window [class="Wfica_Seamless"] floating enable #, border normal
 
 # Assign Citrix windows to workspace 10
 assign [class="Wfica_Seamless"] 10
+assign [class="Firefox"] 9
+
