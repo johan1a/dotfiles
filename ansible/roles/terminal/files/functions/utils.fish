@@ -274,6 +274,11 @@ function grails
   command grails $argv
 end
 
+function vagrant
+  set TERM xterm
+  command vagrant $argv
+end
+
 function edit-xclip
   xclip -o | vipe | xclip
 end
