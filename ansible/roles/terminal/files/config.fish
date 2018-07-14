@@ -16,7 +16,6 @@ source ~/.config/fish/functions/utils.fish
 [ -e $HOME/.local.fish ]; and source $HOME/.local.fish
 
 alias sf="source ~/.config/fish/config.fish"
-alias c=cd
 
 # Start X at login
 if status is-login

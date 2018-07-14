@@ -12,6 +12,7 @@ alias ..9="cd ../../../../../../../../.."
 alias ..="cd .."
 alias a="ag --path-to-ignore ~/dotfiles/ansible/roles/terminal/files/grepignore"
 alias amend='git commit --amend'
+alias c=cd
 alias cf="vim ~/.config/fish"
 alias ci3="vim ~/.config/i3/config"
 alias cl=clear
