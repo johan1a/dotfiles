@@ -21,6 +21,12 @@
           "{{ dotfiles_dir }}/ansible/roles/terminal/files/config.fish"
           "{{ user_home }}/.config/fish/config.fish"
 
+  - name: Link fish_user_key_bindings
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/terminal/files/functions/fish_user_key_bindings.fish"
+          "{{ user_home }}/.config/fish/functions/fish_user_key_bindings.fish"
+
   - name: Add ~/.local/bin to path
     shell: "/usr/bin/fish -c 'set --universal fish_user_paths $fish_user_paths ~/.local/bin/'"
     when: not fish_exists.changed

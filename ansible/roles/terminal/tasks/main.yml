@@ -1,21 +1,29 @@
 
   - include: packages_debian.yml
     when: ansible_os_family == "Debian"
+    tags: fish
 
   - include: packages_arch.yml
     when: ansible_os_family == "Archlinux"
+    tags: fish
 
   - include: bash.yml
+    tags: fish
 
   - include: aliases.yml
+    tags: fish
 
   - include: fish.yml
+    tags: fish
 
   - include: termite_common.yml
+    tags: fish
 
   - include: base16.yml
+    tags: fish
 
   - include: xresources.yml
+    tags: fish
 
   - stat:
       path: "{{ user_home }}/.config/gtk-3.0/gtk.css"
@@ -23,8 +31,10 @@
     changed_when: false
     tags:
       - gtk
+      - fish
 
   - include: gtk3.yml
     when: not has_gtk3.stat.exists
     tags:
       - gtk
+      - fish
