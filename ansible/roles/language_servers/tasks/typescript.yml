@@ -1,2 +1,5 @@
   - name: Install Typescript language server
     command: npm install -g typescript-language-server
+
+  - name: Install Typescript formatter
+    command: npm install -g typescript-formatter
