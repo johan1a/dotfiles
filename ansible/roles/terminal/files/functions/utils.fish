@@ -321,3 +321,7 @@ end
 function to-txt
   cp $argv $argv.txt
 end
+
+function tcpd
+  sudo tcpdump -A -s 9999 -i any "port $argv"
+end
