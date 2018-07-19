@@ -387,6 +387,9 @@ nnoremap c* *Ncgn
 nnoremap gs :%s//<Left>
 vnoremap gs :s/\%V/<Left>
 
+" Git
+nnoremap <leader>0 :Gblame<CR>
+
 " Live preview of :%s/
 set inccommand=split
 
