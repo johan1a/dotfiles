@@ -2,25 +2,30 @@
   - name: Check for fzf
     stat: path="{{ user_home }}/.fzf"
     register: fzf_stat
+    tags: fzf
 
   - name: Download fzf source
     command: git clone --depth 1 https://github.com/junegunn/fzf.git {{ user_home }}/.fzf
     when: not fzf_stat.stat.exists
+    tags: fzf
 
   - name: Set permissions
     file:
       path: "{{ user_home }}/.fzf"
       recurse: yes
       owner: "{{ username }}"
+    tags: fzf
 
   - name: Make sure symlinks are absent
     file:
       path: "{{ user_home }}/.config/fish/functions/fzf_key_bindings.fish"
       state: absent
+    tags: fzf
 
   - name: install fzf
     command: bash -c "yes | {{ user_home }}/.fzf/install"
     become_user: "{{ username }}"
+    tags: fzf
 
   - name: Set dir permissions
     file:
@@ -28,4 +33,5 @@
       owner: "{{ username }}"
       recurse: yes
     when: not fzf_stat.stat.exists
+    tags: fzf
 
