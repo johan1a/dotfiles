@@ -2,30 +2,30 @@
   - name: Install misc packages...
     apt: name={{ item }} state=latest
     with_items:
-      - libtool-bin
-      - cscope
+      #- libtool-bin
+      #    - cscope
       - silversearcher-ag
       - suckless-tools
-      - wmctrl
-      - keepass2
+        #- wmctrl
+        #      - keepass2
       - xclip
       - wget
       - iotop
-      - tree
+        #      - tree
       - ranger
       - inxi
       - fish
       - pkg-config
       - feh
       - redshift
-      - udiskie
-      - pavucontrol
+      #- udiskie
+      #      - pavucontrol
       - fortune
       - npm
       - arandr
-      - libreoffice
-      - libemail-outlook-message-perl
-      - translate-shell
+        #      - 0libreoffice
+        #- libemail-outlook-message-perl
+      #- translate-shell
       - httpie
       - network-manager-openconnect-gnome
       - cloc
@@ -33,23 +33,23 @@
       - figlet
       - cmake
 
-  - include: ripgrep.yml
-    tags: ripgrep
+  # - include: ripgrep.yml
+  #   tags: ripgrep
 
-  - name: Add apt repository ppa:mfikes/planck
-    become: true
-    apt_repository:
-      repo: ppa:mfikes/planck
-      state: present
-    register: planck_repo
+  # - name: Add apt repository ppa:mfikes/planck
+  #   become: true
+  #   apt_repository:
+  #     repo: ppa:mfikes/planck
+  #     state: present
+  #   register: planck_repo
 
-  - name: Update apt
-    become: true
-    apt:
-      update_cache: yes
-    when: planck_repo.changed
+  # - name: Update apt
+  #   become: true
+  #   apt:
+  #     update_cache: yes
+  #   when: planck_repo.changed
 
-  - name: Install planck
-    apt:
-      name: planck
-      state: latest
+  # - name: Install planck
+  #   apt:
+  #     name: planck
+  #     state: latest

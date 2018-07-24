@@ -11,14 +11,14 @@
       - colemak
       - git
       - polybar
-      - gpg
+#      - gpg
       - neomutt
       - tmux
       - fzf
       - ranger
       - universal_ctags
       - python
-      - pygments
+        #`      - pygments
       - ruby
       - neovim
       - ncmpcpp
