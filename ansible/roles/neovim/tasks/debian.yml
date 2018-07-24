@@ -20,3 +20,9 @@
     apt: name=neovim state=latest
     become_method: sudo
 
+  - name: Install neovim pip3 package
+    pip:
+      name: neovim
+      state: latest
+      executable: pip
+
