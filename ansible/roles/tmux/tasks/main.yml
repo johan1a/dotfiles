@@ -1,18 +1,22 @@
 
   - include: debian.yml
     when: ansible_os_family == "Debian"
+    tags: tmux
 
   - include: arch.yml
     when: ansible_os_family == "Archlinux"
+    tags: tmux
 
   - name: Link tmux config
     script: >
           scripts/install_dotfile
           "{{ dotfiles_dir }}/ansible/roles/tmux/files/tmux.conf"
           "{{ user_home }}/.tmux.conf"
+    tags: tmux
 
   - name: Link .tmux.reset.conf
     script: >
           scripts/install_dotfile
           "{{ dotfiles_dir }}/ansible/roles/tmux/files/tmux.reset.conf"
           "{{ user_home }}/.tmux.reset.conf"
+    tags: tmux
