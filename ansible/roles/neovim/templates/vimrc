@@ -26,8 +26,8 @@ Plugin 'dag/vim-fish'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'honza/vim-snippets'
 Plugin 'jreybert/vimagit'
-Plugin 'junegunn/vim-slash'
 Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/vim-slash'
 Plugin 'justinmk/vim-sneak'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ludovicchabant/vim-gutentags'
@@ -299,14 +299,16 @@ augroup filetypes
   autocmd Filetype groovy                setlocal makeprg=./gradlew\ test
   autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
   autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
-  autocmd FileType json nnoremap <buffer> <leader>ff :%!python -m json.tool<cr>
-  autocmd FileType xml  noremap  <buffer> <leader>ff :%!xmllint --format -<cr>
+  autocmd FileType json                  nnoremap <buffer> <leader>ff :%!python -m json.tool<cr>
+  autocmd FileType xml                   nnoremap <buffer> <leader>ff :%!xmllint --format -<cr>
+  autocmd FileType typescript            nnoremap <buffer> <leader>ff :%!tsfmt<cr>
+  autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
   autocmd FileType fish compiler fish
   " Set this to have long lines wrap inside comments.
-  autocmd FileType fish setlocal textwidth=79
+  autocmd FileType fish                  setlocal textwidth=79
+  autocmd Filetype groovy                setlocal tabstop=4 shiftwidth=4
 augroup END
 
-autocmd Filetype groovy setlocal tabstop=4 shiftwidth=4
 
 " =========== search ===========
 
