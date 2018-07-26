@@ -1,5 +1,5 @@
   - name: Install Typescript language server
-    command: npm install -g typescript-language-server
+    command: npm install -g typescript-language-server tslint typescript-formatter
     tags: typescript
 
   - name: Check for yarn
