@@ -31,6 +31,7 @@ Plugin 'junegunn/vim-slash'
 Plugin 'justinmk/vim-sneak'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'sbdchd/neoformat'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'SirVer/ultisnips'
@@ -301,7 +302,7 @@ augroup filetypes
   autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
   autocmd FileType json                  nnoremap <buffer> <leader>ff :%!python -m json.tool<cr>
   autocmd FileType xml                   nnoremap <buffer> <leader>ff :%!xmllint --format -<cr>
-  autocmd FileType typescript            nnoremap <buffer> <leader>ff :%!tsfmt<cr>
+  autocmd FileType typescript            nnoremap <buffer> <leader>ff :Neoformat<cr>
   autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
   autocmd FileType fish compiler fish
   " Set this to have long lines wrap inside comments.
