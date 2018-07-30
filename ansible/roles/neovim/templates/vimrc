@@ -199,10 +199,6 @@ let g:EasyGrepCommand=1
 
 :set statusline+=%{gutentags#statusline('[Generating...]')}
 
-" =========== tagbar =========
-
-let g:tagbar_left=1
-
 " =========== vim-dispatch ===========
 
 augroup vim_dispatch
@@ -218,10 +214,6 @@ nnoremap <leader>d :Dispatch<CR>
 " =========== tmux-navigator ===========
 
 let g:tmux_navigator_disable_when_zoomed = 1 " Disable tmux auto zoom out
-
-" =========== tagbar ===========
-
-nmap <a-t> :TagbarToggle<CR>
 
 " =========== vim-fireplace ===========
 
@@ -271,6 +263,7 @@ set sidescrolloff=5
 set display+=lastline
 set hidden
 set gdefault
+set fileformat=unix
 
 " Magic to make autoread actually work
 " Trigger autoread when changing buffers while inside vim:
