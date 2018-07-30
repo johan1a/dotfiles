@@ -23,6 +23,7 @@
       - neovim
       - ncmpcpp
       - java
+      - intellij
       - leiningen
       - xinitrc
       - i3-gaps

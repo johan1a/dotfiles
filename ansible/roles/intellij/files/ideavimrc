@@ -1,0 +1,56 @@
+let mapleader =  "\<Space>"
+
+set number
+set relativenumber
+set ruler
+set showcmd
+"
+" Jump to tag under cursor
+nnoremap <leader>i <C-]>zz
+
+" Jump back up the tag stack
+nnoremap <leader>u <C-t>zz
+nnoremap <c-p> :lprev<cr>
+nnoremap <c-n> :lnext<cr>
+
+" Go to alternate file
+nnoremap <leader><leader> <C-^>
+
+nnoremap <leader>r :source ~/.vimrc<CR>
+nnoremap <leader>k :NERDTreeFind<CR>
+nnoremap <leader>q :NERDTreeClose<CR>:q<CR>
+nnoremap <leader>b :bdelete<CR>
+
+" Increment / Decrement numbers
+nnoremap <A-a> <C-a>
+nnoremap <A-x> <C-x>
+
+" replace and jump
+nnoremap c* *Ncgn
+nnoremap gs :%s//<Left>
+vnoremap gs :s/\%V/<Left>
+
+" Yank from cursor to end of line
+map Y y$
+
+nnoremap <leader>fp           olog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
+
+" Execute a shell command and read in the results
+noremap Q yyp!!$SHELL<CR>
+nnoremap <leader>y :!./%<CR>
+
+" Tabs and splits
+
+nnoremap <s-l> :bnext<cr>
+nnoremap <s-h> :bprevious<cr>
+nnoremap <leader>l :ls<cr>
+nnoremap <leader>s :sp<cr>
+nnoremap <leader>t :vs<cr>
+nnoremap <tab> :tabn<cr>
+" the tab mapping avove ruins <c-i>, why?
+nnoremap <c-i> <c-i>
+nnoremap <s-tab> :tabp<cr>
+
+" the tab mapping avove ruins <c-i>, why?
+nnoremap <c-i> <c-i>
+nnoremap <s-tab> :tabp<cr>
