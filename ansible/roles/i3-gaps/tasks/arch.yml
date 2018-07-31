@@ -8,3 +8,11 @@
       - imagemagick
       - compton
 
+  - name: Link logind.conf
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/i3-gaps/files/logind.conf"
+          "/etc/systemd/logind.conf"
+    tags:
+      - logind
+
