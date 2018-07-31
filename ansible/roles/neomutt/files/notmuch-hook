@@ -5,8 +5,8 @@ notmuch tag +inbox +unread -new -- tag:new
 # tag all messages from "me" as sent and remove tags inbox and unread
 notmuch tag -new -inbox +sent -- from:johan.peter.andersson@gmail.com
 # tag newsletters, but dont show them in inbox
-notmuch tag +openjdk-jigsaw-dev +unread -new -- to:jigsaw-dev@openjdk.java.net
-notmuch tag +openjdk-valhalla-dev +unread -new -- to:valhalla-dev@openjdk.java.net
-notmuch tag +openjdk-dev +unread -new -- to:build-dev@openjdk.java.net
-notmuch tag +arch-dev +unread -new -- from:arch-dev-public@archlinux.org or to:arch-dev-public@archlinux.org or to:arch-general@archlinux.org
-notmuch tag +haskell-beginners +unread -new -- to:beginners@haskell.org
+notmuch tag +newsletters +openjdk-jigsaw-dev -inbox +unread -new -- to:jigsaw-dev@openjdk.java.net
+notmuch tag +newsletters +openjdk-valhalla-dev -inbox +unread -new -- to:valhalla-dev@openjdk.java.net
+notmuch tag +newsletters +openjdk-dev -inbox +unread -new -- to:build-dev@openjdk.java.net
+notmuch tag +newsletters +arch-dev +unread -inbox -new -- from:arch-dev-public@archlinux.org or to:arch-dev-public@archlinux.org or to:arch-general@archlinux.org
+notmuch tag +newsletters +haskell-beginners -inbox +unread -new -- to:beginners@haskell.org
