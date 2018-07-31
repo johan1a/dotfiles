@@ -32,6 +32,7 @@
       - gnupg-agent
       - figlet
       - cmake
+      - urlview
 
   - include: ripgrep.yml
     tags: ripgrep
