@@ -33,6 +33,7 @@
       - figlet
       - cmake
       - urlview
+      - elinks
 
   - include: ripgrep.yml
     tags: ripgrep
