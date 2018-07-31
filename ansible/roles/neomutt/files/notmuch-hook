@@ -7,16 +7,20 @@ notmuch tag -new -inbox +sent -- from:johan.peter.andersson@gmail.com
 # tag newsletters, but dont show them in inbox
 notmuch tag +newsletters +dk-dev -inbox +unread -new -- to:build-dev@openjdk.java.net or to:valhalla-dev@openjdk.java.net or to:jigsaw-dev@openjdk.java.net
 notmuch tag +newsletters +arch-dev +unread -inbox -new -- from:arch-dev-public@archlinux.org or to:arch-dev-public@archlinux.org or to:arch-general@archlinux.org or to:arch-dev-public@lists.archlinux.org
-notmuch tag +newsletters +haskell -inbox +unread -new -- to:beginners@haskell.org or to:haskell@haskell.org
+notmuch tag +newsletters +haskell -inbox +unread -new -- to:beginners@haskell.org \
+  or to:haskell@haskell.org \
+  or subject:[Haskell]
 notmuch tag +social-media -inbox +unread -new -- from:messages-noreply@linkedin.com \
   or from:news@linkedin.com \
   or from:jobs-listings@linkedin.com \
   or from:groups-noreply@linkedin.com \
   or from:notifications-noreply@linkedin.com \
   or from:notification+2kweex2r@facebookmail.com \
-  or from:no-reply@m1.email.samsung.com
-notmuch tag +low-prio -inbox +unread -new -- from:panel-adm@tns-sifo.se
-notmuch tag +ads -inbox +unread -new -- from:de@e.opodo.com \
+  or from:no-reply@m1.email.samsung.com \
+  or from:notify@twitter.com
+notmuch tag +low-prio -inbox +unread -new -- from:paneladm@tns-sifo.se \
+  or from:noreply@boligsiden.dk
+notmuch tag +ads -inbox +unread -new -- from:e.opodo.com \
   or from:dockercon@docker.com \
   or from:hello@namecheap.com \
   or from:learn@codeacademy.com \
@@ -25,11 +29,30 @@ notmuch tag +ads -inbox +unread -new -- from:de@e.opodo.com \
         or subject:"förslag"\
         or subject:"Nu på Netflix"\
         or subject:"Kommer på")'\
-  or from:mail.paypal.se and subject:rabatt \
-  or from:pluralsight.com and subject:Free \
+  or from:mail.paypal.se \
+  or from:lindsey@pluralsight.com \
   or from:noreply@plex.tv \
   or from:message@my.zalando.se \
   or from:MemberUpdate@mp1.tripadvisor.com \
   or from:noreply.invitations@trustpilotmail.com \
   or from:noreply@mmsports.se \
-  or from:momondo@email.momondo.com
+  or from:momondo@email.momondo.com \
+  or from:utskick@stim.se \
+  or from:info@stim.se \
+  or from:service@oresundsbron.com \
+  or from:noreply@steampowered.com \
+  or from:vs_dev_essentials@e-mail.microsoft.com \
+  or from:info@midnattsloppet.com \
+  or from:travel@info.flybillett.dk \
+  or from:members@e.tripadvisor.com \
+  or from:info@boligportal.dk \
+  or from:info@email.dba.dk \
+  or from:info@emails.dba.dk \
+  or from:kontakt@boliga.dk \
+  or from:no-reply@e.swebus.se \
+  or from:palladium@musikisyd.se \
+  or from:tlth.se \
+  or subject:Studenthälsan \
+  or from:replies@oracle-mail.com
+notmuch tag +ci -inbox +unread -new -- from:builds@circleci.com
+notmuch tag +dotfiles -inbox +unread -new -- subject:dotfiles

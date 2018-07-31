@@ -22,7 +22,7 @@ set trash = +/Papperskorg
 # Any IMAP folders that should be checked regularly for new mail should be listed here:
 mailboxes =Inbox ='S&AOQ-nt' ='circle ci' ='Dev mailing lists' =Utkast =Papperskorg
 
-set sidebar_visible
+set sidebar_visible = no
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 set mail_check_stats
 
