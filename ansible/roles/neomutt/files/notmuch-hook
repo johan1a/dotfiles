@@ -10,6 +10,8 @@ notmuch tag +newsletters +arch-dev +unread -inbox -new -- from:arch-dev-public@a
 notmuch tag +newsletters +haskell -inbox +unread -new -- to:beginners@haskell.org \
   or to:haskell@haskell.org \
   or subject:[Haskell]
+notmuch tag +newsletters -inbox +unread -new -- subject:ccrama \
+  or to:FizzBuzzEnterpriseEdition@noreply.github.com
 notmuch tag +social-media -inbox +unread -new -- from:messages-noreply@linkedin.com \
   or from:news@linkedin.com \
   or from:jobs-listings@linkedin.com \
@@ -20,7 +22,7 @@ notmuch tag +social-media -inbox +unread -new -- from:messages-noreply@linkedin.
   or from:notify@twitter.com
 notmuch tag +low-prio -inbox +unread -new -- from:paneladm@tns-sifo.se \
   or from:noreply@boligsiden.dk
-notmuch tag +ads -inbox +unread -new -- from:e.opodo.com \
+notmuch tag --remove-all +ads -inbox +unread -new -- from:e.opodo.com \
   or from:dockercon@docker.com \
   or from:hello@namecheap.com \
   or from:learn@codeacademy.com \
@@ -53,6 +55,8 @@ notmuch tag +ads -inbox +unread -new -- from:e.opodo.com \
   or from:palladium@musikisyd.se \
   or from:tlth.se \
   or subject:Studenthälsan \
+  or from:info@findroommate.dk \
+  or subject:"Bevakning på lediga lägenheter" \
   or from:replies@oracle-mail.com
 notmuch tag +ci -inbox +unread -new -- from:builds@circleci.com
 notmuch tag +dotfiles -inbox +unread -new -- subject:dotfiles
