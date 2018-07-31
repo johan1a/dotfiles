@@ -5,8 +5,31 @@ notmuch tag +inbox +unread -new -- tag:new
 # tag all messages from "me" as sent and remove tags inbox and unread
 notmuch tag -new -inbox +sent -- from:johan.peter.andersson@gmail.com
 # tag newsletters, but dont show them in inbox
-notmuch tag +newsletters +openjdk-jigsaw-dev -inbox +unread -new -- to:jigsaw-dev@openjdk.java.net
-notmuch tag +newsletters +openjdk-valhalla-dev -inbox +unread -new -- to:valhalla-dev@openjdk.java.net
-notmuch tag +newsletters +openjdk-dev -inbox +unread -new -- to:build-dev@openjdk.java.net
-notmuch tag +newsletters +arch-dev +unread -inbox -new -- from:arch-dev-public@archlinux.org or to:arch-dev-public@archlinux.org or to:arch-general@archlinux.org
-notmuch tag +newsletters +haskell-beginners -inbox +unread -new -- to:beginners@haskell.org
+notmuch tag +newsletters +dk-dev -inbox +unread -new -- to:build-dev@openjdk.java.net or to:valhalla-dev@openjdk.java.net or to:jigsaw-dev@openjdk.java.net
+notmuch tag +newsletters +arch-dev +unread -inbox -new -- from:arch-dev-public@archlinux.org or to:arch-dev-public@archlinux.org or to:arch-general@archlinux.org or to:arch-dev-public@lists.archlinux.org
+notmuch tag +newsletters +haskell -inbox +unread -new -- to:beginners@haskell.org or to:haskell@haskell.org
+notmuch tag +social-media -inbox +unread -new -- from:messages-noreply@linkedin.com \
+  or from:news@linkedin.com \
+  or from:jobs-listings@linkedin.com \
+  or from:groups-noreply@linkedin.com \
+  or from:notifications-noreply@linkedin.com \
+  or from:notification+2kweex2r@facebookmail.com \
+  or from:no-reply@m1.email.samsung.com
+notmuch tag +low-prio -inbox +unread -new -- from:panel-adm@tns-sifo.se
+notmuch tag +ads -inbox +unread -new -- from:de@e.opodo.com \
+  or from:dockercon@docker.com \
+  or from:hello@namecheap.com \
+  or from:learn@codeacademy.com \
+  or from:info@mailer.netflix.com \
+    and '(subject:"har precis lagt till" \
+        or subject:"förslag"\
+        or subject:"Nu på Netflix"\
+        or subject:"Kommer på")'\
+  or from:mail.paypal.se and subject:rabatt \
+  or from:pluralsight.com and subject:Free \
+  or from:noreply@plex.tv \
+  or from:message@my.zalando.se \
+  or from:MemberUpdate@mp1.tripadvisor.com \
+  or from:noreply.invitations@trustpilotmail.com \
+  or from:noreply@mmsports.se \
+  or from:momondo@email.momondo.com
