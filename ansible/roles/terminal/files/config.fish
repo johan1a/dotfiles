@@ -12,7 +12,6 @@ source ~/.config/fish/functions/utils.fish
 [ -e $HOME/.local.fish ]; and source $HOME/.local.fish
 
 if status --is-interactive
-  preset-password
   source $HOME/.config/base16-shell/profile_helper.fish
 end
 
