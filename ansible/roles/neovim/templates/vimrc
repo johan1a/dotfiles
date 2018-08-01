@@ -297,10 +297,12 @@ augroup filetypes
   autocmd FileType xml                   nnoremap <buffer> <leader>ff :%!xmllint --format -<cr>
   autocmd FileType typescript            nnoremap <buffer> <leader>ff :Neoformat<cr>
   autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
+  autocmd FileType python                nnoremap <buffer> <leader>ff :Neoformat<cr>
   autocmd FileType fish compiler fish
   " Set this to have long lines wrap inside comments.
   autocmd FileType fish                  setlocal textwidth=79
   autocmd Filetype groovy                setlocal tabstop=4 shiftwidth=4
+  autocmd FileType haskell               setlocal tabstop=4
 augroup END
 
 
