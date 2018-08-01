@@ -1,4 +1,4 @@
-image: archlinux
+image: base/archlinux
 
 before_script:
   - ls -l
