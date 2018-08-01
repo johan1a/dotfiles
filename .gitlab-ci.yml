@@ -14,9 +14,11 @@ before_script:
   # - apt search libtool-bin
   # - apt search libtool
   - cat /etc/os-release
+  - useradd gitlab
+  - usermod -aG wheel gitlab
 
 test:
   script:
-    - whoami
-    - sh bootstrap.sh
+    - sudo -u gitlab whoami
+    - sudo -u gitlab ./bootstrap.sh
 
