@@ -8,18 +8,18 @@ before_script:
   - cat /etc/os-release
   - df -h
     #  - sed -i -e 's/\/home\/johan\/dotfiles/$TRAVIS_BUILD_DIR/g' ansible/group_vars/local.yml
-  - sed -i -e 's/johan/gitlab/g' ansible/group_vars/local.yml
+  - sed -i -e 's/johan/johan1a/g' ansible/group_vars/local.yml
   - cat /etc/os-release
   - pacman -Syu
   - pacman -S sudo --noconfirm
-  - useradd gitlab
-  - usermod -aG wheel gitlab
-  - echo "gitlab   ALL=(ALL) ALL" >> /etc/sudoers
-  - echo "Defaults:gitlab      !authenticate" >> /etc/sudoers
+  - useradd johan1a
+  - usermod -aG wheel johan1a
+  - echo "johan1a   ALL=(ALL) ALL" >> /etc/sudoers
+  - echo "Defaults:johan1a      !authenticate" >> /etc/sudoers
   - cat /etc/sudoers
 
 test:
   script:
-    - sudo -u gitlab whoami
-    - sudo -u gitlab ./bootstrap.sh
+    - sudo -u johan1a whoami
+    - sudo -u johan1a ./bootstrap.sh
 
