@@ -12,7 +12,6 @@ before_script:
   - apt search libtool-bin
   - apt search libtool
   - cat /etc/os-release
-  - cat /home/travis/.gitconfig
 
 test:
   script:
