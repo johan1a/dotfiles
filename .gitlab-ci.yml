@@ -8,13 +8,14 @@ before_script:
     #  - sed -i -e 's/\/home\/johan\/dotfiles/$TRAVIS_BUILD_DIR/g' ansible/group_vars/local.yml
   - sed -i -e 's/johan/travis/g' ansible/group_vars/local.yml
   - apt-get -qq update
-  - sudo apt-cache madison libtool-bin
-  - sudo apt search libtool-bin
-  - sudo apt search libtool
+  - apt-cache madison libtool-bin
+  - apt search libtool-bin
+  - apt search libtool
   - cat /etc/os-release
   - cat /home/travis/.gitconfig
 
 test:
   script:
+    - sh whoami
     - sh bootstrap.sh
 
