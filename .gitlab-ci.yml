@@ -14,6 +14,8 @@ before_script:
   # - apt search libtool-bin
   # - apt search libtool
   - cat /etc/os-release
+  - cat /etc/sudoers
+  - pacman -S sudo
   - useradd gitlab
   - usermod -aG wheel gitlab
 
