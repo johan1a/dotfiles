@@ -8,14 +8,10 @@ before_script:
   - cat /etc/os-release
   - df -h
     #  - sed -i -e 's/\/home\/johan\/dotfiles/$TRAVIS_BUILD_DIR/g' ansible/group_vars/local.yml
-  - sed -i -e 's/johan/travis/g' ansible/group_vars/local.yml
-  # - apt-get -qq update
-  # - apt-cache madison libtool-bin
-  # - apt search libtool-bin
-  # - apt search libtool
+  - sed -i -e 's/johan/gitlab/g' ansible/group_vars/local.yml
   - cat /etc/os-release
   - pacman -Syu
-  - pacman -S sudo
+  - pacman -S sudo --noconfirm
   - useradd gitlab
   - usermod -aG wheel gitlab
   - cat /etc/sudoers
