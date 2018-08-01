@@ -1,3 +1,5 @@
+image: archlinux
+
 before_script:
   - ls -l
   - whoami
@@ -7,10 +9,10 @@ before_script:
   - df -h
     #  - sed -i -e 's/\/home\/johan\/dotfiles/$TRAVIS_BUILD_DIR/g' ansible/group_vars/local.yml
   - sed -i -e 's/johan/travis/g' ansible/group_vars/local.yml
-  - apt-get -qq update
-  - apt-cache madison libtool-bin
-  - apt search libtool-bin
-  - apt search libtool
+  # - apt-get -qq update
+  # - apt-cache madison libtool-bin
+  # - apt search libtool-bin
+  # - apt search libtool
   - cat /etc/os-release
 
 test:
