@@ -7,11 +7,10 @@ before_script:
   - uptime
   - cat /etc/os-release
   - df -h
-    #  - sed -i -e 's/\/home\/johan\/dotfiles/$TRAVIS_BUILD_DIR/g' ansible/group_vars/local.yml
   - sed -i -e 's/johan/johan1a/g' ansible/group_vars/local.yml
   - cat /etc/os-release
   - pacman -Syu
-  - pacman -S sudo --noconfirm
+  - pacman -S sudo git --noconfirm
   - useradd johan1a
   - usermod -aG wheel johan1a
   - echo "johan1a   ALL=(ALL) ALL" >> /etc/sudoers
