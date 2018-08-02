@@ -13,5 +13,6 @@ fi
 
 # sudo pip install --upgrade pip
 sudo pip install ansible
+ls $HOME -lah
 sudo chown "$USER" "$HOME/.ansible"
 ansible-playbook ansible/bootstrap.yml -i ansible/hosts.ini --become
