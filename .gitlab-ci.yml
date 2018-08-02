@@ -1,4 +1,4 @@
-home/johan1a/.ansibleimage: base/archlinux
+image: base/archlinux
 
 before_script:
   - ls -l
