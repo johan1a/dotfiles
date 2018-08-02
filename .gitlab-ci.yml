@@ -1,4 +1,4 @@
-image: base/archlinux
+home/johan1a/.ansibleimage: base/archlinux
 
 before_script:
   - ls -l
@@ -16,7 +16,8 @@ before_script:
   - usermod -aG wheel johan1a
   - echo "johan1a   ALL=(ALL) ALL" >> /etc/sudoers
   - echo "Defaults:johan1a      !authenticate" >> /etc/sudoers
-  - cat /etc/sudoers
+  - mkdir /home/johan1a
+  - chown johan1a /home/johan1a -R
 
 test:
   script:
