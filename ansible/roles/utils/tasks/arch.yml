@@ -69,7 +69,7 @@
     command: archlinux-java set java-10-openjdk
 
   - name: Install misc yaourt packages...
-    command: yaourt -S {{ item }} --noconfirm --needed
+    command: yay -S {{ item }} --noconfirm --needed
     with_items:
       - groovy
       - grails
