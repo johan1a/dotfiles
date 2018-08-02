@@ -43,6 +43,9 @@
       - jdk8-openjdk
       - openjdk8-doc
       - openjdk8-src
+      - jdk10-openjdk
+      - openjdk10-doc
+      - openjdk10-src
       - dialog
       - ripgrep
       - wol
@@ -63,7 +66,7 @@
 #     - dnsutils
 
   - name: Set default jdk
-    command: archlinux-java set java-9-openjdk
+    command: archlinux-java set java-10-openjdk
 
   - name: Install misc yaourt packages...
     command: yaourt -S {{ item }} --noconfirm --needed
