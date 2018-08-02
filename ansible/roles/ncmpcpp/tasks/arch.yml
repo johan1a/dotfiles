@@ -7,6 +7,6 @@
       - ncmpcpp
       - mpd
 
-  - command: yaourt -S mopidy mopidy-spotify --noconfirm --needed
+  - command: yay -S mopidy mopidy-spotify --noconfirm --needed
     become_user: "{{ username }}"
 

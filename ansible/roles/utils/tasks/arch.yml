@@ -15,7 +15,7 @@
     with_items:
       - base-devel
       - wget
-      - yaourt
+      - yay
       - feh
       - gpicview
       - htop
@@ -68,7 +68,7 @@
   - name: Set default jdk
     command: archlinux-java set java-10-openjdk
 
-  - name: Install misc yaourt packages...
+  - name: Install misc yay packages...
     command: yay -S {{ item }} --noconfirm --needed
     with_items:
       - groovy
