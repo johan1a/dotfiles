@@ -16,7 +16,6 @@ before_script:
   - usermod -aG wheel johan1a
   - echo "johan1a   ALL=(ALL) ALL" >> /etc/sudoers
   - echo "Defaults:johan1a      !authenticate" >> /etc/sudoers
-  - chown johan1a -R home/johan1a/.ansible
   - cat /etc/sudoers
 
 test:
