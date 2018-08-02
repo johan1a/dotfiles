@@ -92,5 +92,5 @@
   - name: Start cron service
     service:
       name: cronie
-      state: started
+      state: reloaded
       enabled: yes
