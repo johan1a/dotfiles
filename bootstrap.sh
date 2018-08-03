@@ -15,4 +15,4 @@ pip --version
 sudo pip --version
 pip install --upgrade --user pip
 sudo pip install ansible
-ansible-playbook ansible/bootstrap.yml -i ansible/hosts.ini --become
+ansible-playbook ansible/bootstrap.yml -i ansible/hosts.ini --become -v

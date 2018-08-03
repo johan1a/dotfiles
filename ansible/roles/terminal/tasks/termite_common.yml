@@ -9,3 +9,4 @@
           scripts/install_dotfile
           "{{ dotfiles_dir }}/ansible/roles/terminal/files/config_termite"
           "{{ user_home }}/.config/termite/config"
+    become: false
