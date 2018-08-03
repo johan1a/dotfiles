@@ -8,7 +8,7 @@ if [[ "${OS}" == *"Ubuntu"* ]] ; then
   sudo apt-get install libssl-dev python-pip -y
 elif [[ "${OS}" == *"Arch Linux"* ]] ; then
   sudo pacman -Syu --noconfirm
-  sudo pacman -S python-pip --noconfirm
+  sudo pacman -S gcc python-pip --noconfirm
 fi
 
 pip install --upgrade --user pip
