@@ -14,9 +14,8 @@ fi
 echo 11111
 pip install --upgrade --user pip
 echo 22222
-pip install ansible
+pip install ansible --user
 echo 33333
 ls -l ~/.local/bin
 echo 44444
 ansible-playbook ansible/bootstrap.yml -i ansible/hosts.ini --become
-echo 55555
