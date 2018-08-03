@@ -57,6 +57,7 @@ notmuch tag --remove-all +ads -inbox +unread -new -- from:e.opodo.com \
   or subject:Studenthälsan \
   or from:info@findroommate.dk \
   or subject:"Bevakning på lediga lägenheter" \
+  or rom:no-reply@dropboxmail.com \
   or from:replies@oracle-mail.com
 notmuch tag +ci -inbox +unread -new -- from:builds@circleci.com
 notmuch tag +dotfiles -inbox +unread -new -- subject:dotfiles

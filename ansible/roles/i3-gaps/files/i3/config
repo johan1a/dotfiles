@@ -70,6 +70,7 @@ bindsym $mod+i exec /home/johan/source/i3lock-fancy-multimonitor/lock -n -p #-- 
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+c exec scrot -u
 
 # change focus
 bindsym $mod+h focus left
