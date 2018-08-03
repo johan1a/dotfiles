@@ -88,8 +88,8 @@
         #- httpie
     become_user: "{{ username }}"
 
-  - name: Start cron service
-    shell: systemctl start cronie
-
-  - name: Enable cron service
-    shell: systemctl enable cronie
+  - service:
+      name: cronie
+      state: reloaded
+      enabled: yes
+    when: not lookup('env', 'CI')
