@@ -10,6 +10,7 @@
       name: docker
       state: started
       enabled: yes
+    when: not ci
 
   - name: Add user to docker group
     user:
