@@ -1,6 +1,6 @@
 
   - include: debian.yml
-    when: ansible_os_family == "Debian"
+    when: debian
     tags: utils
 
   - include: arch.yml

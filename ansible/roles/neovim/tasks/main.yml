@@ -1,6 +1,6 @@
 
   - include: debian.yml
-    when: not ci and ansible_os_family == "Debian"
+    when: not ci and debian
     tags: neovim
 
   - include: arch.yml

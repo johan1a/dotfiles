@@ -9,7 +9,7 @@
       - "{{ user_home }}/.config/polybar"
 
   - include: debian.yml
-    when: ansible_os_family == "Debian"
+    when: debian
     tags: polybar
 
   - include: arch.yml

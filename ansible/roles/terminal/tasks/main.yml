@@ -1,6 +1,6 @@
 
   - include: packages_debian.yml
-    when: ansible_os_family == "Debian"
+    when: debian
     tags: fish
 
   - include: packages_arch.yml

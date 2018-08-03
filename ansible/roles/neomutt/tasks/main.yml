@@ -4,7 +4,7 @@
     tags: neomutt
 
   - include: debian.yml
-    when: ansible_os_family == "Debian"
+    when: debian
     tags: neomutt
 
   - include: neomutt.yml
