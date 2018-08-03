@@ -4,6 +4,6 @@
     tags: utils
 
   - include: arch.yml
-    when: not ci and ansible_os_family == "Archlinux"
+    when: not ci and arch
     tags: utils
 

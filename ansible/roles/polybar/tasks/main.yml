@@ -13,7 +13,7 @@
     tags: polybar
 
   - include: arch.yml
-    when: ansible_os_family == "Archlinux"
+    when: arch
     tags: polybar
 
   - include: polybar.yml

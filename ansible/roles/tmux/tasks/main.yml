@@ -4,7 +4,7 @@
     tags: tmux
 
   - include: arch.yml
-    when: ansible_os_family == "Archlinux"
+    when: arch
     tags: tmux
 
   - name: Link tmux config

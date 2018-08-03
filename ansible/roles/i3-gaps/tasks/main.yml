@@ -5,7 +5,7 @@
       - i3-gaps
 
   - include: arch.yml
-    when: ansible_os_family == "Archlinux" and not ci
+    when: arch and not ci
     tags:
       - i3-gaps
 

@@ -4,7 +4,7 @@
     tags: fish
 
   - include: packages_arch.yml
-    when: ansible_os_family == "Archlinux"
+    when: arch
     tags: fish
 
   - include: bash.yml

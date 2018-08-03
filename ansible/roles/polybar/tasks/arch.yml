@@ -2,5 +2,5 @@
   - name: Install polybar
     command: yay -S polybar --noconfirm --needed
     become_user: "{{ username }}"
-    when: ansible_os_family == "Archlinux"
+    when: arch
 

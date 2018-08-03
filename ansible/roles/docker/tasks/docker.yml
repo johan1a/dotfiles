@@ -3,7 +3,7 @@
     when: ansible_os_family == "Debian"
 
   - include: arch.yml
-    when: ansible_os_family == "Archlinux"
+    when: arch
 
   - name: Start dockerd
     service:

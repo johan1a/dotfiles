@@ -2,13 +2,13 @@
   - include: python.yml
 
   - include: java.yml
-    when: ansible_os_family == "Archlinux"
+    when: arch
 
   - include: typescript.yml
     tags: typescript
 
   - include: java.yml
-    when: ansible_os_family == "Archlinux"
+    when: arch
 
   - include: groovy.yml
     tags:
