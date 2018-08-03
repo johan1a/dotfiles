@@ -1,12 +1,11 @@
 
   - include: debian.yml
-    when: not ci and debian
+    when: debian
     tags: neovim
 
   - include: arch.yml
-    when: not ci and arch
+    when: arch
     tags: neovim
 
   - include: neovim.yml
-    when: not ci
     tags: neovim

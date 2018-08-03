@@ -1,12 +1,7 @@
 
   - include: debian.yml
-    when: not ci and not lookup('env', 'Vagrant') and debian
-    tags: ctags
+    when: not lookup('env', 'Vagrant') and debian
 
   - include: ctags.yml
-    when: not ci
-    tags: ctags
 
   - include: config.yml
-    when: not ci
-    tags: ctags

@@ -1,4 +1,4 @@
 
   - include: arch.yml
-    when: not ci and arch
+    when: arch
     tags: xinitrc
