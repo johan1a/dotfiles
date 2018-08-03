@@ -62,6 +62,7 @@
       - rlwrap
       - sxiv
       - lib32-glibc
+      - nodejs
 #     - dnsutils
 
   - name: Set default jdk
