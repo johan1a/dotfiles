@@ -1,9 +1,12 @@
 
   - name: Create directory
     file:
-      path: "{{ user_home }}/.config/polybar"
+      path: "{{ item }}"
       state: directory
       owner: "{{ username }}"
+    with_items:
+      - "{{ user_home }}/.config"
+      - "{{ user_home }}/.config/polybar"
 
   - include: debian.yml
     when: ansible_os_family == "Debian"
