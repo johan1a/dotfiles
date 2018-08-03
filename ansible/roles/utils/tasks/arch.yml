@@ -79,7 +79,7 @@
       - neofetch
       - figlet
       - inxi
-      - nodejs-lumo-cljs
+      # - nodejs-lumo-cljs
         #      - udiskie
       - msr-tools
         #      - translate-shell
