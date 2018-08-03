@@ -89,7 +89,7 @@
     become_user: "{{ username }}"
 
   - name: Start cron service
-    service:
-      name: cronie
-      state: reloaded
-      enabled: yes
+    shell: systemctl start cronie
+
+  - name: Enable cron service
+    shell: systemctl enable cronie
