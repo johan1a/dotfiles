@@ -14,7 +14,7 @@ fi
 echo 11111
 pip install --upgrade --user pip
 echo 22222
-pip install ansible --user
+sudo pip install ansible
 echo 33333
 ls -l ~/.local/bin
 echo 44444
