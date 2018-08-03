@@ -1,11 +1,17 @@
 
- - include: debian.yml
-   when: ansible_os_family == "Debian"
-   tags: polybar
+  - name: Create directory
+    file:
+      path: "{{ user_home }}/.config/polybar"
+      state: directory
+      owner: "{{ username }}"
 
- - include: arch.yml
-   when: ansible_os_family == "Archlinux"
-   tags: polybar
+  - include: debian.yml
+    when: ansible_os_family == "Debian"
+    tags: polybar
 
- - include: polybar.yml
-   tags: polybar
+  - include: arch.yml
+    when: ansible_os_family == "Archlinux"
+    tags: polybar
+
+  - include: polybar.yml
+    tags: polybar
