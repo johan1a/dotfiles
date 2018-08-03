@@ -48,10 +48,12 @@
   - name: Install plugins
     become: true
     command: nvim +PluginInstall +qall
+    when: not ci
 
   - name: Update remote plugins
     become: true
     command: nvim +UpdateRemotePlugins +qall
+    when: not ci
 
   - name: Setup permissions
     file:
