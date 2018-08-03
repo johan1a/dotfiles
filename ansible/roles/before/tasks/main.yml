@@ -1,7 +1,7 @@
 
  - name: Check for CI
    set_fact:
-     ci: lookup('env', 'CI') or lookup('env', 'ci')
-     debian: debian
-     arch: arch
+     ci: "{{ lookup('env', 'CI') or lookup('env', 'ci') }}"
+     debian: "{{ ansible_os_family == 'Debian' }}"
+     arch: "{{ ansible_os_family == 'arch' }}"
 
