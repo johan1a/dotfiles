@@ -1,21 +1,21 @@
 
   - include: debian.yml
-    when: ansible_os_family == "Debian" and not lookup('env', 'CI')
+    when: ansible_os_family == "Debian" and not ci
     tags:
       - i3-gaps
 
   - include: arch.yml
-    when: ansible_os_family == "Archlinux" and not lookup('env', 'CI')
+    when: ansible_os_family == "Archlinux" and not ci
     tags:
       - i3-gaps
 
   - include: i3-gaps.yml
-    when: not lookup('env', 'CI')
+    when: not ci
     tags:
       - i3-gaps
 
   - include: i3lock-fancy-multimonitor.yml
-    when: not lookup('env', 'CI')
+    when: not ci
     tags:
       - i3-gaps
 
