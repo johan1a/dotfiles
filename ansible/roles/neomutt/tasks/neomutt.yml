@@ -70,4 +70,5 @@
       minute: "*/3"
       job: "~/.local/bin/mbsync-launcher >> ~/.local/log/mbsync.log 2>&1"
     become_user: "{{ username }}"
+    when: not ci
 
