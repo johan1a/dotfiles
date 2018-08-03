@@ -1,0 +1,7 @@
+
+ - name: Check for CI
+   set_fact:
+     - ci: true
+   when: lookup('env', 'CI') or lookup('env', 'ci')
+
+
