@@ -47,7 +47,7 @@
 
   - name: Install plugins
     become: true
-    command: nvim +PlugInstall +qall
+    command: nvim +PluginInstall +qall
 
   - name: Update remote plugins
     become: true
