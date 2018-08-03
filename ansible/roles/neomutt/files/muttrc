@@ -86,5 +86,5 @@ bind index,pager c mail # Compose.
 
 macro index A "<modify-labels>+archive -unread -inbox -new\\n" "Archive message"
 macro index C "<change-vfolder>?" "Change to vfolder overview"
-macro index \\\\ "<vfolder-from-query>" "Search mailbox"
+macro index S "<vfolder-from-query>" "Search mailbox"
 macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
