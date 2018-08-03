@@ -10,3 +10,4 @@
       name: org.cups.cupsd.service
       enabled: yes
       state: started
+    when: not ci
