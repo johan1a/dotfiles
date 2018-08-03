@@ -93,3 +93,4 @@
       state: reloaded
       enabled: yes
     when: not lookup('env', 'CI')
+    failed_when: false

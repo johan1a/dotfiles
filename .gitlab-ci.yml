@@ -20,6 +20,6 @@ before_script:
 
 test:
   script:
-    - sudo -u johan1a whoami
+    - sudo -u johan1a env
     - sudo -u johan1a ./bootstrap.sh
 
