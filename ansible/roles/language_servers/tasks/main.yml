@@ -4,9 +4,6 @@
   - include: java.yml
     when: arch
 
-  - include: typescript.yml
-    tags: typescript
-
   - include: java.yml
     when: arch
 

@@ -1,0 +1,4 @@
+
+  - name: Install yarn
+    command: yay -S yarn --noconfirm --needed
+    tags: typescript

@@ -10,7 +10,7 @@
       - terminal
       - colemak
       - git
-      - polybar
+        #- polybar
       - gpg
       - neomutt
       - tmux
@@ -20,7 +20,7 @@
       - python
       - pygments
       - ruby
-      - neovim
+        #      - neovim
       - ncmpcpp
       - java
       - intellij
