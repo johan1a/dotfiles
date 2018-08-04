@@ -35,6 +35,6 @@
     script: >
           scripts/install_dotfile
           "{{ dotfiles_dir }}/ansible/roles/ncmpcpp/files/mopidy-visualizer"
-          "{{ user_home }}/.local/bin/"
+          "{{ user_home }}/.local/bin/mopidy-visualizer"
           --executable
     become_user: "{{ username }}"
