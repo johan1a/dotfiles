@@ -9,7 +9,7 @@ before_script:
   - df -h
   - cat /etc/os-release
   - sed -i -e 's/johan/johan1a/g' ansible/group_vars/local.yml
-  - sed -i -e 's/home/builds/g' ansible/group_vars/local.yml
+  - sed -i -e 's/home\/johan1a/builds\/johan1a/g' ansible/group_vars/local.yml
   - pacman -Syu
   - pacman -S sudo git --noconfirm
   - useradd johan1a
