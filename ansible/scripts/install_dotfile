@@ -4,6 +4,10 @@ set src  $argv[1]
 set dest $argv[2]
 set executable $argv[3]
 
+echo $src
+echo $dest
+echo $executable
+
 set backup_dir ~/.dotfiles_backup
 mkdir -p $backup_dir
 
@@ -17,7 +21,7 @@ end
 
 ln -s $src $dest
 
-if [ $executable = "--executable" ]
+if test -n "$executable"; and [ "$executable" = "--executable" ]
   sudo chmod +x $dest
 end
 
