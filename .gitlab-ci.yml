@@ -7,8 +7,9 @@ before_script:
   - uptime
   - cat /etc/os-release
   - df -h
-  - sed -i -e 's/johan/johan1a/g' ansible/group_vars/local.yml
   - cat /etc/os-release
+  - sed -i -e 's/johan/johan1a/g' ansible/group_vars/local.yml
+  - sed -i -e 's/home/builds/g' ansible/group_vars/local.yml
   - pacman -Syu
   - pacman -S sudo git --noconfirm
   - useradd johan1a
