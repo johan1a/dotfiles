@@ -1,15 +1,16 @@
 
   - include: debian.yml
-    when: ansible_os_family == "Debian"
+    when: debian
 
   - include: arch.yml
-    when: ansible_os_family == "Archlinux"
+    when: arch
 
   - name: Start dockerd
     service:
       name: docker
       state: started
       enabled: yes
+    when: not ci
 
   - name: Add user to docker group
     user:

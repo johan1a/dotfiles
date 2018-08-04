@@ -1,9 +1,4 @@
 
-  - name: Create directory
-    file:
-      path: "{{ user_home }}/.config/polybar"
-      state: directory
-
   - name: Link polybar config
     script: >
           scripts/install_dotfile

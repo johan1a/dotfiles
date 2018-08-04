@@ -1,0 +1,28 @@
+
+  - name: Install Typescript language server
+    command: npm install -g typescript-language-server tslint typescript-formatter
+    tags: typescript
+
+  - name: Check for yarn
+    command: type yarn
+    register: yarn_installed
+    failed_when: false
+    tags: typescript
+
+  - name: Install yarn (debian)
+    include: debian.yml
+    when: debian and yarn_installed.rc != 0
+    tags: typescript
+
+  - name: Install yarn (arch)
+    include: arch.yml
+    when: arch and yarn_installed.rc != 0
+    tags: typescript
+
+  - name: Install tslint
+    command: yarn global add tslint typescript
+    tags: typescript
+
+  - name: Install Typescript formatter
+    command: npm install -g typescript-formatter
+    tags: typescript

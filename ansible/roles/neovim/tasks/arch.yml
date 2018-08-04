@@ -1,6 +1,6 @@
 
   - name: install neovim
-    command: yaourt -S neovim --noconfirm --needed
+    command: yay -S neovim --noconfirm --needed
 
   - name: Install neovim pip3 package
     pip:

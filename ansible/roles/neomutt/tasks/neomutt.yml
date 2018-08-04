@@ -10,6 +10,7 @@
     file:
       path: "{{ user_home }}/.mutt/scripts"
       state: directory
+      owner: "{{ username }}"
 
   - name: Make sure ~/.mail/gmail exists
     file:
@@ -29,7 +30,6 @@
           "{{ dotfiles_dir }}/ansible/roles/neomutt/files/view_attachment.sh"
           "{{ user_home }}/.mutt/scripts/view_attachment.sh"
           --executable
-    become_user: "{{ username }}"
 
   - name: Link scripts
     script: >
@@ -37,7 +37,6 @@
           "{{ dotfiles_dir }}/ansible/roles/neomutt/files/{{ item }}"
           "{{ user_home }}/.local/bin/{{ item }}"
           --executable
-    become_user: "{{ username }}"
     with_items:
       - open
       - notmuch-hook
@@ -48,26 +47,23 @@
           scripts/install_dotfile
           "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mailcap"
           "{{ user_home }}/.mailcap"
-    become_user: "{{ username }}"
 
   - name: Link mailboxes
     script: >
           scripts/install_dotfile
           "{{ dotfiles_dir }}/ansible/roles/neomutt/files/mailboxes"
           "{{ user_home }}/.mutt/mailboxes"
-    become_user: "{{ username }}"
 
   - name: Link ~/.notmuch-config
     script: >
           scripts/install_dotfile
           "{{ dotfiles_dir }}/ansible/roles/neomutt/files/notmuch-config"
           "{{ user_home }}/.notmuch-config"
-    become_user: "{{ username }}"
 
   - name: Setup mbsync cron job
     cron:
       name: "Sync mails"
       minute: "*/3"
       job: "~/.local/bin/mbsync-launcher >> ~/.local/log/mbsync.log 2>&1"
-    become_user: "{{ username }}"
+    when: not ci
 

@@ -1,8 +1,8 @@
 
  - include_tasks: arch.yml
-   when: ansible_os_family == "Archlinux"
+   when: arch
    tags: cups
 
  - include_tasks: cups.yml
-   when: ansible_os_family == "Archlinux"
+   when: arch
    tags: cups

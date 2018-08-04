@@ -1,15 +1,25 @@
+image: base/archlinux
+
 before_script:
   - ls -l
-    #  - sed -i -e 's/\/home\/johan\/dotfiles/$TRAVIS_BUILD_DIR/g' ansible/group_vars/local.yml
-  - sed -i -e 's/johan/travis/g' ansible/group_vars/local.yml
-  - sudo apt-get -qq update
-  - sudo apt-cache madison libtool-bin
-  - sudo apt search libtool-bin
-  - sudo apt search libtool
+  - whoami
+  - env
+  - uptime
   - cat /etc/os-release
-  - cat /home/travis/.gitconfig
+  - df -h
+  - cat /etc/os-release
+  - sed -i -e 's/johan/johan1a/g' ansible/group_vars/local.yml
+  - sed -i -e 's/home\/johan1a\/dotfiles/builds\/johan1a\/dotfiles/g' ansible/group_vars/local.yml
+  - pacman -Syu
+  - pacman -S sudo git --noconfirm
+  - useradd johan1a
+  - usermod -aG wheel johan1a
+  - echo "johan1a   ALL=(ALL) ALL" >> /etc/sudoers
+  - echo "Defaults:johan1a      !authenticate" >> /etc/sudoers
+  - mkdir /home/johan1a
+  - chown johan1a /home/johan1a -R
 
 test:
   script:
-    - sh bootstrap.sh
+    - sudo -u johan1a bash -c 'export CI=True; ./bootstrap.sh'
 

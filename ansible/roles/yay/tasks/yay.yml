@@ -10,6 +10,43 @@
     register: yay_installed
     failed_when: false
 
+  - name: Install dependencies
+    pacman:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - autoconf
+      - pkg-config
+      - base-devel
+      - yajl
+
+  - name: Check if package-query is installed
+    stat:
+      path: "{{ user_home }}/source/package_query"
+    failed_when: false
+    changed_when: false
+    register: package_query_installed
+
+  - name: Pull package-query source
+    git: repo=https://aur.archlinux.org/package-query.git
+         dest="{{ user_home }}/source/package_query"
+    register: package_query_git
+    when: not package_query_installed.stat.exists
+
+  - name: Set source dir permissions
+    file:
+      path: "{{ user_home }}/source/package_query"
+      owner: "{{ username }}"
+      recurse: yes
+    when: package_query_git.changed
+
+  - name: Run makepkg
+    command: "makepkg -si --noconfirm"
+    args:
+      chdir: "{{ user_home }}/source/package_query"
+    become_user: "{{ username }}"
+    when: package_query_git.changed
+
   - name: Clone source
     command: git clone https://aur.archlinux.org/yay.git {{ user_home }}/source/yay
     become: false

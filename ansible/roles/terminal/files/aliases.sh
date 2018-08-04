@@ -78,8 +78,8 @@ alias v=nvim
 alias vim-debug='nvim -V9vim-debug.log'
 alias vim=nvim
 alias xc="xclip -selection clipboard "
-alias y=yaourt
+alias y=yay
 alias youtube-mp3='youtube-dl -t --extract-audio --audio-format mp3 '
-alias ys="yaourt -S "
-alias yss="yaourt -Ss "
+alias ys="yay -S "
+alias yss="yay -Ss "
 

@@ -1,12 +1,11 @@
 
   - include: debian.yml
-    when: not lookup('env', 'CI') and ansible_os_family == "Debian"
+    when: debian
     tags: neovim
 
   - include: arch.yml
-    when: not lookup('env', 'CI') and ansible_os_family == "Archlinux"
+    when: arch
     tags: neovim
 
   - include: neovim.yml
-    when: not lookup('env', 'CI')
     tags: neovim

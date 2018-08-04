@@ -22,6 +22,12 @@
       state: absent
     tags: fzf
 
+  - name: Make sure bashrc is present
+    file:
+      path: "{{ user_home }}/.bashrc"
+      state: absent
+    tags: fzf
+
   - name: install fzf
     command: bash -c "yes | {{ user_home }}/.fzf/install"
     become_user: "{{ username }}"

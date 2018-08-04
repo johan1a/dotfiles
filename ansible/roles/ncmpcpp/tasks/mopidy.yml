@@ -8,7 +8,7 @@
   - name: Link mopidy.conf
     script: >
           scripts/install_dotfile
-          "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.conf"
+          "{{ dotfiles_dir }}/ansible/roles/ncmpcpp/files/mopidy.conf"
           "{{ user_home }}/.config/mopidy/mopidy.conf"
 
   - command: mkfifo /tmp/mpd.fifo
@@ -27,14 +27,14 @@
   - name: Link mopidy startup script
     script: >
           scripts/install_dotfile
-          "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy.fish"
+          "{{ dotfiles_dir }}/ansible/roles/ncmpcpp/files/mopidy.fish"
           "{{ user_home }}/.local/bin/mopidy-launcher"
           --executable
 
   - name: Link mopidy visualizer
     script: >
           scripts/install_dotfile
-          "{{ user_home }}/dotfiles/ansible/roles/ncmpcpp/files/mopidy-visualizer"
-          "{{ user_home }}/.local/bin/"
+          "{{ dotfiles_dir }}/ansible/roles/ncmpcpp/files/mopidy-visualizer"
+          "{{ user_home }}/.local/bin/mopidy-visualizer"
           --executable
     become_user: "{{ username }}"

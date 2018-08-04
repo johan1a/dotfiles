@@ -1,10 +1,10 @@
 
   - include: arch.yml
-    when: ansible_os_family == "Archlinux"
+    when: arch
     tags: neomutt
 
   - include: debian.yml
-    when: ansible_os_family == "Debian"
+    when: debian
     tags: neomutt
 
   - include: neomutt.yml

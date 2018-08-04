@@ -18,10 +18,10 @@
       - vboxdrv
       - vboxnetadp
       - vboxnetflt
-    when: virtualbox_install.changed
+    when: virtualbox_install.changed and not ci
 
   - name: Reload virtualbox
     command: vboxreload
-    when: virtualbox_install.changed
+    when: virtualbox_install.changed and not ci
     become: true
 

@@ -15,7 +15,6 @@
     with_items:
       - base-devel
       - wget
-      - yaourt
       - feh
       - gpicview
       - htop
@@ -43,9 +42,9 @@
       - jdk8-openjdk
       - openjdk8-doc
       - openjdk8-src
-      - jdk9-openjdk
-      - openjdk9-doc
-      - openjdk9-src
+      - jdk10-openjdk
+      - openjdk10-doc
+      - openjdk10-src
       - dialog
       - ripgrep
       - wol
@@ -63,13 +62,14 @@
       - rlwrap
       - sxiv
       - lib32-glibc
+      - nodejs
 #     - dnsutils
 
   - name: Set default jdk
-    command: archlinux-java set java-9-openjdk
+    command: archlinux-java set java-10-openjdk
 
-  - name: Install misc yaourt packages...
-    command: yaourt -S {{ item }} --noconfirm --needed
+  - name: Install misc yay packages...
+    command: yay -S {{ item }} --noconfirm --needed
     with_items:
       - groovy
       - grails
@@ -80,7 +80,7 @@
       - neofetch
       - figlet
       - inxi
-      - nodejs-lumo-cljs
+      # - nodejs-lumo-cljs
         #      - udiskie
       - msr-tools
         #      - translate-shell
@@ -89,8 +89,8 @@
         #- httpie
     become_user: "{{ username }}"
 
-  - name: Start cron service
-    service:
+  - service:
       name: cronie
-      state: started
+      state: reloaded
       enabled: yes
+    when: not ci

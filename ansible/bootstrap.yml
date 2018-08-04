@@ -3,8 +3,8 @@
     hosts: local
     become: true
     roles:
+      - before
       - misc
-      - yaourt
       - yay
       - utils
       - terminal

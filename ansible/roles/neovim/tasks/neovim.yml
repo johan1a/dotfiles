@@ -47,11 +47,13 @@
 
   - name: Install plugins
     become: true
-    command: nvim +PlugInstall +qall
+    command: nvim +PluginInstall +qall
+    when: not ci
 
   - name: Update remote plugins
     become: true
     command: nvim +UpdateRemotePlugins +qall
+    when: not ci
 
   - name: Setup permissions
     file:
@@ -67,7 +69,6 @@
     npm:
       name: neovim
       global: yes
-    become: true
 
   - name: Symlink custom_snippets
     script: >

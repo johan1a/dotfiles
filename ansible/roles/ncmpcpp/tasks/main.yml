@@ -1,10 +1,10 @@
 
   - include: arch.yml
-    when: ansible_os_family == "Archlinux"
+    when: arch
     tags: ncmpcpp
 
   - include: debian.yml
-    when: ansible_os_family == "Debian"
+    when: debian
     tags: ncmpcpp
 
   - include: mpd.yml

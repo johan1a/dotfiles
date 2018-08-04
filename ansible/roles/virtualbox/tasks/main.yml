@@ -1,10 +1,10 @@
 
   - include: debian.yml
-    when: ansible_os_family == "Debian" and username != "vagrant"
+    when: debian and username != "vagrant"
 
 
   - include: arch.yml
-    when: ansible_os_family == "Archlinux" and username != "vagrant"
+    when: arch and username != "vagrant"
 
 
 

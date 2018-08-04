@@ -1,4 +1,4 @@
 
   - include: yay.yml
-    when: ansible_os_family == "Archlinux"
+    when: arch
     tags: yay
