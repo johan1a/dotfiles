@@ -17,7 +17,7 @@ end
 
 ln -s $src $dest
 
-if $executable -eq "--executable"
+if [ $executable = "--executable" ]
   chmod +x $dest
 end
 
