@@ -18,6 +18,6 @@ end
 ln -s $src $dest
 
 if [ $executable = "--executable" ]
-  chmod +x $dest
+  sudo chmod +x $dest
 end
 
