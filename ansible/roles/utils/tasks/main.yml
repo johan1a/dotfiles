@@ -4,6 +4,6 @@
     tags: utils
 
   - include: arch.yml
-    when: not ci and arch
+    when: arch
     tags: utils
 
