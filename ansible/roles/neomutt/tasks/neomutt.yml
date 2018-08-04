@@ -10,6 +10,7 @@
     file:
       path: "{{ user_home }}/.mutt/scripts"
       state: directory
+      owner: "{{ username }}"
 
   - name: Make sure ~/.mail/gmail exists
     file:
