@@ -1,3 +1,5 @@
 compton arch+ ubuntu installation
 
 sudo apt install libconfig8-dev libgl1-mesa-dev asciidoc
+
+https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
