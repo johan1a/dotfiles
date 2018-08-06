@@ -39,6 +39,7 @@ alias gc='git commit -m '
 alias gcb='git checkout -B '
 alias gd='git diff'
 alias gdd='git diff --cached'
+alias gh='git log -p '
 alias gitlabify="sed -i 's/github/gitlab/g' .git/config"
 alias gl='git lg'
 alias gp='git pull --rebase'
