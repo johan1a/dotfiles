@@ -10,7 +10,7 @@ before_script:
   - cat /etc/os-release
   - sed -i -e 's/johan/johan1a/g' ansible/group_vars/local.yml
   - sed -i -e 's/home\/johan1a\/dotfiles/builds\/johan1a\/dotfiles/g' ansible/group_vars/local.yml
-  - pacman -Syu
+  - pacman -Syu --noconfirm
   - pacman -S sudo git --noconfirm
   - useradd johan1a
   - usermod -aG wheel johan1a
