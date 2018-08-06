@@ -18,7 +18,6 @@ notmuch tag +social-media -inbox +unread -new -- from:messages-noreply@linkedin.
   or from:groups-noreply@linkedin.com \
   or from:notifications-noreply@linkedin.com \
   or from:notification+2kweex2r@facebookmail.com \
-  or from:no-reply@m1.email.samsung.com \
   or from:notify@twitter.com
 notmuch tag +low-prio -inbox +unread -new -- from:paneladm@tns-sifo.se \
   or from:noreply@boligsiden.dk
@@ -34,6 +33,7 @@ notmuch tag --remove-all +ads -inbox +unread -new -- from:e.opodo.com \
   or from:mail.paypal.se \
   or from:lindsey@pluralsight.com \
   or from:noreply@plex.tv \
+  or from:no-reply@m1.email.samsung.com \
   or from:message@my.zalando.se \
   or from:MemberUpdate@mp1.tripadvisor.com \
   or from:noreply.invitations@trustpilotmail.com \
