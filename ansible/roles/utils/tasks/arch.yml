@@ -63,6 +63,7 @@
       - sxiv
       - lib32-glibc
       - nodejs
+      - ncdu
 #     - dnsutils
 
   - name: Set default jdk
