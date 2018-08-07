@@ -325,3 +325,15 @@ end
 function tcpd
   sudo tcpdump -A -s 9999 -i any "port $argv"
 end
+
+function b
+  set encoded (echo -n $argv[1] | base64)
+  echo $encoded
+  echo $encoded | xclip
+end
+
+function bd
+  set decoded (echo -n $argv[1] | base64 -d)
+  echo $decoded
+  echo $decoded | xclip
+end
