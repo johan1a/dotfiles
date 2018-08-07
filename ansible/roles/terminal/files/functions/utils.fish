@@ -165,8 +165,12 @@ function sdk
     end
 end
 
-function clone
+function cloneg
   git clone git@github.com:$argv.git
+end
+
+function clone
+  git clone git@gitlab.com:$argv.git
 end
 
 function pull-all
