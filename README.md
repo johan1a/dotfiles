@@ -1,7 +1,7 @@
 
 # dotfiles
 
-[![Build Status](https://travis-ci.org/johan1a/dotfiles.svg?branch=master)](https://travis-ci.org/johan1a/dotfiles)
+[![pipeline status](https://gitlab.com/johan1a/dotfiles/badges/master/pipeline.svg)](https://gitlab.com/johan1a/dotfiles/commits/master)
 
 Automated system configuration.
 
