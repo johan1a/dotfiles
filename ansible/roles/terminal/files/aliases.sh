@@ -55,6 +55,7 @@ alias lt='ls -ltr'
 alias p=pwd
 alias pa='ps ax | a'
 alias package='dpkg -S /usr/bin/ls'
+alias pip=pip3
 alias pj="python -m json.tool"
 alias print-keymap="xkbcomp -xkb $DISPLAY my_xkb_keymap"
 alias printcert="keytool -printcert -v -file "
