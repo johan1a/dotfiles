@@ -14,6 +14,12 @@
       executable: pip2
     when: false
 
+  - name: Install neovim pip3 package
+    pip:
+      name: neovim
+      state: latest
+      executable: pip3
+
   - name: Make sure .vim exists
     file:
       path: "{{ user_home }}/.vim"
