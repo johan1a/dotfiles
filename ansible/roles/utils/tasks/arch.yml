@@ -64,7 +64,8 @@
       - lib32-glibc
       - nodejs
       - ncdu
-#     - dnsutils
+      - dnsutils
+      - arp-scan
 
   - name: Set default jdk
     command: archlinux-java set java-10-openjdk
