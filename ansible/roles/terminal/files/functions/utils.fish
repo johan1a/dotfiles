@@ -104,11 +104,6 @@ function scp
     /usr/bin/scp $argv
 end
 
-function colemak
-    echo "Switched to Colemak."
-    setxkbmap colemaknordic -option altwin:swap_lalt_lwin -option caps:super
-end
-
 function todo
     vim ~/documents/todo.txt
 end

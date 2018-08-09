@@ -17,6 +17,7 @@ alias cc='./gradlew clean check'
 alias cf="vim ~/.config/fish"
 alias ci3="vim ~/.config/i3/config"
 alias cl=clear
+alias colemak='setxkbmap colemaknordic -option altwin:swap_lalt_lwin -option caps:super; echo "Switched to Colemak."'
 alias con="./gradlew codenarcAll"
 alias cv="vim ~/.vimrc"
 alias d="docker"
