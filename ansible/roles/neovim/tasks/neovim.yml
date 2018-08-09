@@ -6,6 +6,7 @@
     with_items:
       - rdoc
       - neovim
+      - multi_json
 
   - name: Install neovim pip2 package
     pip:
