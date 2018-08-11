@@ -47,6 +47,17 @@ alias gp='git pull --rebase'
 alias gs='git status -s'
 alias gt='./gradlew test'
 alias intercept="strace -ff -e trace=write -e write=1,2 -p "
+alias k=kubectl
+alias ka="kubectl get all"
+alias kaa="kubectl get all --all-namespaces"
+alias kd="kubectl get deployments"
+alias kda="kubectl get deployments --all-namespaces"
+alias ks="kubectl get services"
+alias ksa="kubectl get services --all-namespaces"
+alias kp="kubectl get pods"
+alias kpa="kubectl get pods --all-namespaces"
+alias ki="kubectl get ingress"
+alias kia="kubectl get ingress --all-namespaces"
 alias l='ls -alF'
 alias la='ls -A'
 alias less="less -S"
