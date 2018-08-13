@@ -1,0 +1,8 @@
+
+  - name: Link ~/.profile
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/terminal/files/profile"
+          "{{ user_home }}/.profile"
+    become: false
+

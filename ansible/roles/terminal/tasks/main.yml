@@ -3,6 +3,10 @@
     when: debian
     tags: fish
 
+  - include: debian.yml
+    when: debian
+    tags: bash_profile
+
   - include: packages_arch.yml
     when: arch
     tags: fish

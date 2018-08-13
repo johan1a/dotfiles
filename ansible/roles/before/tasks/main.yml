@@ -4,4 +4,6 @@
      ci: "{{ lookup('env', 'CI') or lookup('env', 'ci') }}"
      debian: "{{ ansible_os_family == 'Debian' }}"
      arch: "{{ ansible_os_family == 'Archlinux' }}"
+   tags:
+     - always
 
