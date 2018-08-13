@@ -22,6 +22,7 @@
       - ruby
       - neovim
       - ncmpcpp
+      - kubernetes
       - java
       - intellij
       - leiningen
