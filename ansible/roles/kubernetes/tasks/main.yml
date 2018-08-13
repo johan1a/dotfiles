@@ -2,12 +2,13 @@
   - name: Check for kubectl
     command: type kubectl
     register: kube_test
+    become: false
     failed_when: false
     tags:
       - kubectl
 
   - set_fact:
-      has_kubectl: kube_test.rc == 0
+      has_kubectl: "{{ kube_test.rc == 0 }}"
     tags:
       - kubectl
 
@@ -37,7 +38,7 @@
   - name: Make kubectl executable
     file:
       path: /usr/local/bin/kubectl
-      mode: +x
+      mode: 0755
     tags:
       - kubectl
     when: not has_kubectl
