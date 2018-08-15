@@ -190,6 +190,7 @@ function pull-all
       echo Pulling (pwd)
       git pull --rebase
     else
+      git fetch --all
       echo (pwd) is dirty, not pulling.
     end
     cd ..
