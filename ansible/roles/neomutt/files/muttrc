@@ -7,7 +7,6 @@ set imap_user=johan.peter.andersson@gmail.com
 # Maildir
 set mbox_type=Maildir
 
-# set virtual_spoolfile=yes
 set folder=~/.mail/
 source ~/.mutt/mailboxes
 
@@ -62,6 +61,9 @@ set use_from = yes
 set smtp_url=smtps://$imap_user@smtp.gmail.com:465/
 set ssl_force_tls = yes
 
+set sort = reverse-date-received
+
+set virtual_spoolfile=yes
 
 # Automatically feed HTML emails through elinks, but only if there is no
 # alternative.
