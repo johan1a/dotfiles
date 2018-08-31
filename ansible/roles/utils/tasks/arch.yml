@@ -66,6 +66,7 @@
       - ncdu
       - dnsutils
       - arp-scan
+      - xdotool
 
   - name: Set default jdk
     command: archlinux-java set java-10-openjdk
