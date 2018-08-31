@@ -51,6 +51,13 @@
     when: i3gaps_git.changed
     become: true
 
+  - name: Install is-tmux script
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/i3-gaps/files/is-tmux"
+          "/usr/local/bin/is-tmux"
+          --executable
+
   - name: Link i3 config dir
     script: >
           scripts/install_dotfile

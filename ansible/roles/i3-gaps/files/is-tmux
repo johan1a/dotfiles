@@ -1,0 +1,2 @@
+#!/bin/fish
+ps -o state= -o comm= -t (ps -o tty= (pgrep -P (xdotool getwindowpid (xdotool getactivewindow)))) | sed 's/is-tmux/ignored/g' | grep -iqE tmux
