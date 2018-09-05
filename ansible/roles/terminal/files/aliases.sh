@@ -1,6 +1,7 @@
 
 # Find auto completion:
 # complete -p git
+
 alias ..2="cd ../.."
 alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
@@ -22,8 +23,8 @@ alias con="./gradlew codenarcAll"
 alias cv="vim ~/.vimrc"
 alias d="docker"
 alias dev="cd ~/dev"
-alias dotfiles="cd ~/dotfiles"
 alias dl="docker images | head -n 2 |  tail -n 1 | awk ' {print \$2}'"
+alias dotfiles="cd ~/dotfiles"
 alias dp="docker stop "
 alias dps="docker ps "
 alias dr="docker restart "
@@ -56,12 +57,13 @@ alias kda="kubectl get deployments --all-namespaces"
 alias kdd="kubectl describe deployment"
 alias kdp="kubectl describe pod"
 alias kds="kubectl describe service"
-alias ks="kubectl get services"
-alias ksa="kubectl get services --all-namespaces"
-alias kp="kubectl get pods"
-alias kpa="kubectl get pods --all-namespaces"
 alias ki="kubectl get ingress"
 alias kia="kubectl get ingress --all-namespaces"
+alias kl="kubectl logs"
+alias kp="kubectl get pods"
+alias kpa="kubectl get pods --all-namespaces"
+alias ks="kubectl get services"
+alias ksa="kubectl get services --all-namespaces"
 alias l='ls -alF'
 alias la='ls -A'
 alias less="less -S"
@@ -101,4 +103,3 @@ alias y=yay
 alias youtube-mp3='youtube-dl -t --extract-audio --audio-format mp3 '
 alias ys="yay -S "
 alias yss="yay -Ss "
-
