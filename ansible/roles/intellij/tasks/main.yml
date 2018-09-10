@@ -9,7 +9,7 @@
   - name: Copy keymap
     copy:
       src: ideaKeymap.xml
-      dest: "{{ user_home }}/.IntelliJIdea2018.1/config/keymaps"
+      dest: "{{ user_home }}/.IntelliJIdea2018.2/config/keymaps"
     tags:
       - idea
 
