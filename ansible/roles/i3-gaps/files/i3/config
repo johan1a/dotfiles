@@ -167,6 +167,9 @@ bindsym $mod+8 workspace $wp8
 bindsym $mod+9 workspace $wp9
 bindsym $mod+0 workspace $wp10
 
+bindsym $mod+Control+l workspace next
+bindsym $mod+Control+h workspace prev
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $wp1
 bindsym $mod+Shift+2 move container to workspace $wp2
