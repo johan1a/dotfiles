@@ -49,6 +49,7 @@ alias gp='git pull --rebase'
 alias gs='git status -s'
 alias gt='./gradlew test'
 alias intercept="strace -ff -e trace=write -e write=1,2 -p "
+alias k-delete="kubectl get pods | grep Error | cut -d' ' -f 1 | xargs kubectl delete pod"
 alias k=kubectl
 alias ka="kubectl get all"
 alias kaa="kubectl get all --all-namespaces"
