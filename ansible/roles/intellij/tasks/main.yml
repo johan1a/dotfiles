@@ -1,7 +1,7 @@
 
   - name: Create keymap dir
     file:
-      path: "{{ user_home }}/.IntelliJIdea2018.1/config/keymaps"
+      path: "{{ user_home }}/.IntelliJIdea2018.2/config/keymaps"
       state: directory
     tags:
       - idea
