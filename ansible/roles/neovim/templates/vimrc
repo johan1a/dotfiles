@@ -303,6 +303,7 @@ augroup filetypes
   autocmd FileType fish                  setlocal textwidth=79
   autocmd Filetype groovy                setlocal tabstop=4 shiftwidth=4
   autocmd FileType haskell               setlocal tabstop=4
+  autocmd Filetype yaml                  setlocal cursorcolumn
 augroup END
 
 
