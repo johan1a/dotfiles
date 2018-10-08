@@ -168,32 +168,35 @@ function clone
   git clone git@gitlab.com:$argv.git
 end
 
+function pull-dir
+  set dir $argv
+  if test -d $dir
+    cd $dir
+    if test -d .git
+      echo ""
+      if [ (git_is_dirty) = "False" ]
+        echo Pulling (pwd)
+        git pull --rebase
+      else
+        git fetch --all
+        echo (pwd) is dirty, not pulling.
+      end
+    end
+    cd ..
+  end
+end
+
+function wait-for-jobs
+  while fg ^| grep -qv "There are no suitable jobs"; end
+end
+
 function pull-all
   echo Pulling non-dirty git-projects...
   echo ""
 
   set dirs (ls)
   for dir in $dirs
-    if not test -d $dir
-      continue
-    end
-
-    cd $dir
-
-    if not test -d .git
-      cd ..
-      continue
-    end
-
-    echo ""
-    if [ (git_is_dirty) = "False" ]
-      echo Pulling (pwd)
-      git pull --rebase
-    else
-      git fetch --all
-      echo (pwd) is dirty, not pulling.
-    end
-    cd ..
+    pull-dir $dir
   end
 
   echo Done!
