@@ -68,6 +68,7 @@
       - arp-scan
       - xdotool
       - nfs-utils
+      - xorg-xrandr
 
   - name: Set default jdk
     command: archlinux-java set java-10-openjdk
