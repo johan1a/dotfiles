@@ -71,6 +71,8 @@
       - xorg-xrandr
       - gnome-keyring
       - libsecret
+      - udiskie
+      - redshift
 
   - name: Set default jdk
     command: archlinux-java set java-10-openjdk
@@ -88,7 +90,6 @@
       - figlet
       - inxi
       # - nodejs-lumo-cljs
-        #      - udiskie
       - msr-tools
         #      - translate-shell
       - google-chrome
