@@ -69,6 +69,8 @@
       - xdotool
       - nfs-utils
       - xorg-xrandr
+      - gnome-keyring
+      - libsecret
 
   - name: Set default jdk
     command: archlinux-java set java-10-openjdk
