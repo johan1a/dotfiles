@@ -71,8 +71,8 @@
       - xorg-xrandr
       - gnome-keyring
       - libsecret
-      - udiskie
-      - redshift
+      # - udiskie
+      # - redshift
 
   - name: Set default jdk
     command: archlinux-java set java-10-openjdk
