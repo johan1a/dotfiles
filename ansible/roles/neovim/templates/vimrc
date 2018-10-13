@@ -174,12 +174,18 @@ let g:LanguageClient_diagnosticsDisplay = {
       \        },
       \    }
 
-nnoremap <silent> gk         :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> <leader>fd :call LanguageClient_textDocument_definition()<CR>:sleep 30m<CR>zz
-nnoremap <silent> gr         :call LanguageClient_textDocument_rename()<CR>i
-nnoremap <silent> <leader>fr :call LanguageClient_textDocument_references()<CR>:sleep 30m<CR>:lr 1<CR>zz
-nnoremap <silent> <leader>fq :call LanguageClient#exit()<CR>:call LanguageClient#startServer()<CR>
-nnoremap <silent> <leader>fe :call LanguageClient_textDocument_rename()<CR>:sleep 30m<CR>:edit! %<CR>
+
+function! ClearQuickFixAndLocationLists()
+  call setqflist([])
+  call setloclist(winnr(), [])
+endfunction
+
+nnoremap <silent> gk         :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <leader>fd :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_definition()<CR>:sleep 30m<CR>zz
+nnoremap <silent> gr         :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_rename()<CR>i
+nnoremap <silent> <leader>fr :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_references()<CR>:sleep 30m<CR>:lr 1<CR>zz
+nnoremap <silent> <leader>fq :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient#exit()<CR>:call LanguageClient#startServer()<CR>
+nnoremap <silent> <leader>fe :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_rename()<CR>:sleep 30m<CR>:edit! %<CR>
 
 let g:LanguageClient_loggingLevel = 'DEBUG'
 
