@@ -181,9 +181,9 @@ function! ClearQuickFixAndLocationLists()
 endfunction
 
 nnoremap <silent> gk         :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> <leader>fd :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_definition()<CR>:sleep 30m<CR>zz
+nnoremap <silent> <leader>e :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_definition()<CR>:sleep 30m<CR>zz
 nnoremap <silent> gr         :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_rename()<CR>i
-nnoremap <silent> <leader>fr :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_references()<CR>:sleep 30m<CR>:lr 1<CR>zz
+nnoremap <silent> <leader>v :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_references()<CR>:sleep 30m<CR>:lr 1<CR>zz
 nnoremap <silent> <leader>fq :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient#exit()<CR>:call LanguageClient#startServer()<CR>
 nnoremap <silent> <leader>fe :call ClearQuickFixAndLocationLists()<CR>:call LanguageClient_textDocument_rename()<CR>:sleep 30m<CR>:edit! %<CR>
 
@@ -435,7 +435,7 @@ tnoremap <leader><esc> <C-\><esc>
 
 " Execute a shell command and read in the results
 noremap Q yyp!!$SHELL<CR>
-nnoremap <leader>y :!./%<CR>
+nnoremap <leader>fr :!./%<CR>
 
 " Tabs and splits
 
