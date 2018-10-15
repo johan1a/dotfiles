@@ -173,13 +173,10 @@ function pull-dir
   if test -d $dir
     cd $dir
     if test -d .git
-      echo ""
       if [ (git_is_dirty) = "False" ]
-        echo Pulling (pwd)
-        git pull --rebase
+        git pull --rebase >/dev/null 2>&1
       else
-        git fetch --all
-        echo (pwd) is dirty, not pulling.
+        git fetch --all >/dev/null 2>&1
       end
     end
     cd ..
@@ -190,14 +187,33 @@ function wait-for-jobs
   while fg ^| grep -qv "There are no suitable jobs"; end
 end
 
+function get-nbr-children
+  ps -o pid --ppid $argv --noheaders | wc -l
+end
+
+function wait-for-children
+  set parent_pid (python3 -c "import os; print(os.getppid())")
+  set nbr_children (get-nbr-children $parent_pid)
+  while [ $nbr_children -gt 2 ] ;
+    sleep 0.2
+    set nbr_children (get-nbr-children $parent_pid)
+  end
+end
+
+function background
+  fish -c "$argv" &
+end
+
 function pull-all
   echo Pulling non-dirty git-projects...
   echo ""
 
   set dirs (ls)
   for dir in $dirs
-    pull-dir $dir
+    background pull-dir $dir
   end
+
+  wait-for-children
 
   echo Done!
 end
