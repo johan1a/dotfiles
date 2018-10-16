@@ -174,8 +174,10 @@ function pull-dir
     cd $dir
     if test -d .git
       if [ (git_is_dirty) = "False" ]
+        echo "Pulling $dir"
         git pull --rebase >/dev/null 2>&1
       else
+        echo "Not pulling dirty dir: $dir"
         git fetch --all >/dev/null 2>&1
       end
     end
