@@ -1,12 +1,6 @@
 
   - include: python.yml
 
-  - include: java.yml
-    when: arch
-
-  - include: java.yml
-    when: arch
-
   - include: groovy.yml
     tags:
       - groovy-lang-server

@@ -1,4 +1,0 @@
-
-  - name: Install Java language server
-    command: yay -S jdtls --noconfirm --needed
-    become_user: "{{ username }}"
