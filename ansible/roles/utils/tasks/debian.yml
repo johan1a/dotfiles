@@ -21,7 +21,6 @@
       - udiskie
       - pavucontrol
       - fortune
-      - npm
       - arandr
       - libreoffice
       - libemail-outlook-message-perl
