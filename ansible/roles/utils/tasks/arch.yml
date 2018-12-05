@@ -71,6 +71,7 @@
       - xorg-xrandr
       - gnome-keyring
       - libsecret
+      - locate
       # - udiskie
       # - redshift
 
