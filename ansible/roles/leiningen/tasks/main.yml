@@ -28,7 +28,7 @@
   - name: Link ~/.lein/profiles.clj
     script: >
           scripts/install_dotfile
-          "{{ dotfiles_dir }}/ansible/roles/leiningen/templates/profiles.clj"
+          "{{ dotfiles_dir }}/ansible/roles/leiningen/files/profiles.clj"
           "{{ user_home }}/.lein/profiles.clj"
     tags: leiningen
 
