@@ -47,6 +47,7 @@ Plugin 'udalov/kotlin-vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'zchee/deoplete-jedi'
+Plugin 'venantius/vim-cljfmt'
 
 call vundle#end()
 filetype plugin indent on
@@ -68,8 +69,8 @@ endif
 let g:deoplete#disable_auto_complete = 0
 
 " Enter: complete&close popup if visible (so next Enter works); else: break undo
-inoremap <silent><expr> <Cr> pumvisible() ?
-            \ deoplete#mappings#close_popup() : "<C-g>u<Cr>"
+" inoremap <silent><expr> <Cr> pumvisible() ?
+"             \ deoplete#mappings#close_popup() : "<C-g>u<Cr>"
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -304,6 +305,7 @@ augroup filetypes
   autocmd FileType typescript            nnoremap <buffer> <leader>ff :Neoformat<cr>
   autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
   autocmd FileType python                nnoremap <buffer> <leader>ff :Neoformat<cr>
+  autocmd FileType clojure               nnoremap <buffer> <leader>ff :!lein cljfmt fix %<cr>
   autocmd FileType fish compiler fish
   " Set this to have long lines wrap inside comments.
   autocmd FileType fish                  setlocal textwidth=79
@@ -435,7 +437,7 @@ tnoremap <leader><esc> <C-\><esc>
 
 " Execute a shell command and read in the results
 noremap Q yyp!!$SHELL<CR>
-nnoremap <leader>ffr :!./%<CR>
+nnoremap <leader>Qr :!./%<CR>
 
 " Tabs and splits
 
