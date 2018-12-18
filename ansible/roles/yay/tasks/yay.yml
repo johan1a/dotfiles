@@ -35,10 +35,14 @@
 
   - name: Set source dir permissions
     file:
-      path: "{{ user_home }}/source/package_query"
+      path: "{{ user_home }}/source/{{ item }}"
       owner: "{{ username }}"
+      state: directory
       recurse: yes
     when: package_query_git.changed
+    with_items:
+      - package_query
+      - yay
 
   - name: Run makepkg
     command: "makepkg -si --noconfirm"
