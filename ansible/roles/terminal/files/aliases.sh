@@ -85,7 +85,7 @@ alias pj="python -m json.tool"
 alias print-keymap="xkbcomp -xkb $DISPLAY my_xkb_keymap"
 alias printcert="keytool -printcert -v -file "
 alias python=python3
-alias r=rg
+alias r='rg -S'
 alias rclocal="sudo /etc/rc.local"
 alias readram="sudo dd if=/dev/mem | cat | strings"
 alias s=sudo
