@@ -72,6 +72,8 @@
       - gnome-keyring
       - libsecret
       - mlocate
+      - fdupes
+      - fail2ban
       # - udiskie
       # - redshift
 
