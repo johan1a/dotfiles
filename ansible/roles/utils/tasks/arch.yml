@@ -77,6 +77,17 @@
       # - udiskie
       # - redshift
 
+  - name: Create pacman local config dir
+    file:
+      state: directory
+      path: "{{ user_home }}/.config/pacman"
+
+  - name: Add ~/.config/pacman/makepkg.conf
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/utils/files/makepkg.conf"
+          "{{ user_home }}/.config/pacman/makepkg.conf"
+
   - name: Set default jdk
     command: archlinux-java set java-10-openjdk
 
