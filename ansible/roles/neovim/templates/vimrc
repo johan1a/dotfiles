@@ -15,9 +15,16 @@ filetype off                  " required by Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+if has('nvim')
+  Plugin 'autozimu/LanguageClient-neovim'
+  Plugin 'Shougo/deoplete.nvim'
+  Plugin 'zchee/deoplete-jedi'
+  Plugin 'sbdchd/neoformat'
+  Plugin 'SirVer/ultisnips'
+endif
+
 Plugin 'airblade/vim-gitgutter'
 Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -31,10 +38,7 @@ Plugin 'junegunn/vim-slash'
 Plugin 'justinmk/vim-sneak'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'sbdchd/neoformat'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'SirVer/ultisnips'
 Plugin 'tommcdo/vim-lion'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
@@ -46,7 +50,6 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'udalov/kotlin-vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'zchee/deoplete-jedi'
 Plugin 'venantius/vim-cljfmt'
 
 call vundle#end()
@@ -398,7 +401,9 @@ vnoremap gs :s/\%V/<Left>
 nnoremap <leader>0 :Gblame<CR>
 
 " Live preview of :%s/
-set inccommand=split
+if has('nvim')
+  set inccommand=split
+endif
 
 " Copy / Paste
 
