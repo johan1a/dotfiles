@@ -115,6 +115,7 @@
       - google-chrome
         #      - stack-bin
         #- httpie
+      - python-cheat
     become_user: "{{ username }}"
 
   - service:
