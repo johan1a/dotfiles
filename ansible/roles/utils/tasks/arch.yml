@@ -9,7 +9,7 @@
   - name: Enable pacman colors
     lineinfile:
       path: /etc/pacman.conf
-      regexp: '^#Color'
+      regexp: '^Color'
       line: 'Color'
 
   - command: pacman -Syu
