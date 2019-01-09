@@ -4,3 +4,7 @@
       name: docker
       state: latest
 
+  - name: install docker-compose
+    pacman:
+      name: docker-compose
+      state: latest
