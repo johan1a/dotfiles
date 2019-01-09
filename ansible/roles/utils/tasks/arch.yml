@@ -87,12 +87,19 @@
     file:
       state: directory
       path: "{{ user_home }}/.config/pacman"
+      owner: "{{ username }}"
 
   - name: Add ~/.config/pacman/makepkg.conf
     script: >
           scripts/install_dotfile
           "{{ dotfiles_dir }}/ansible/roles/utils/files/makepkg.conf"
           "{{ user_home }}/.config/pacman/makepkg.conf"
+
+  - name: Set permissions on ~/.config dir
+    file:
+      state: directory
+      path: "{{ user_home }}/.config"
+      owner: "{{ username }}"
 
   - name: Set default jdk
     command: archlinux-java set java-10-openjdk
