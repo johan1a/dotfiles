@@ -4,6 +4,7 @@
       name: "{{ item }}"
       state: latest
     with_items:
+      - msgpack
       - rdoc
       - neovim
       - multi_json
