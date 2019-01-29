@@ -80,6 +80,7 @@
       - mlocate
       - fdupes
       - fail2ban
+      - java-openjfx
       # - udiskie
       # - redshift
 
