@@ -81,6 +81,8 @@
       - fdupes
       - fail2ban
       - java-openjfx
+      - task
+      - ledger
       # - udiskie
       # - redshift
 
@@ -117,6 +119,9 @@
       - neofetch
       - figlet
       - inxi
+      - ipcalc
+      - tig
+      - remind
       # - nodejs-lumo-cljs
       - msr-tools
         #      - translate-shell
