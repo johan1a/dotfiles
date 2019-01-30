@@ -32,5 +32,10 @@
     when: not fish_exists.changed
     become: false
 
+  - name: Set default shell to fish
+    user:
+      name: "{{ username }}"
+      shell: /usr/bin/fish
+
   - name: Set correct permissions on ~/.config/fish
     command: chown {{ username }} {{ user_home }}/.config/fish
