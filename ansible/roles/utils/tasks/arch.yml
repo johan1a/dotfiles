@@ -83,6 +83,8 @@
       - java-openjfx
       - task
       - ledger
+      - xorg-server
+      - xorg-xinit
       # - udiskie
       # - redshift
 
