@@ -73,11 +73,6 @@
     command: gem install neovim
     become: true
 
-  - name: install neovim npm package
-    npm:
-      name: neovim
-      global: yes
-
   - name: Symlink custom_snippets
     script: >
           scripts/install_dotfile
