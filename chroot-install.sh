@@ -45,13 +45,13 @@ echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
 #systemctl enable ntpdate.service
 
-su - johan
+echo $password | sudo -S -s -u johan
 cd /home/$user
 git clone https://gitlab.com/johan1a/dotfiles.git
 cd dotfiles
 chmod +x bootstrap.sh
 echo $password | sudo -S ls > /dev/null
-sudo -u $user ./bootstrap.sh
+./bootstrap.sh
 
 exit
 exit
