@@ -53,4 +53,5 @@ chmod +x bootstrap.sh
 echo $password | sudo -S ls > /dev/null
 sudo -u $user ./bootstrap.sh
 
-echo 'Done'
+exit
+exit
