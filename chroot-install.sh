@@ -38,10 +38,10 @@ echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 
 echo 'Setting up user'
 read -t 1 -n 1000000 discard      # discard previous input
-echo "root:$password" | chpasswd
-useradd -m -G wheel $user
-echo "$user:$password" | chpasswd
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
+echo root:$password | chpasswd
+useradd -m -G wheel $user
+echo $user:$password | chpasswd
 
 #systemctl enable ntpdate.service
 
