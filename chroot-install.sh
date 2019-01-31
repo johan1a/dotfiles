@@ -45,7 +45,7 @@ echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
 #systemctl enable ntpdate.service
 
-su -s johan
+su - johan
 cd /home/$user
 git clone https://gitlab.com/johan1a/dotfiles.git
 cd dotfiles
