@@ -21,7 +21,8 @@ echo "org /home/$user/dev vboxsf uid=$user,gid=wheel,rw,dmode=700,fmode=600,nofa
 
 # chroot
 wget https://gitlab.com/johan1a/dotfiles/raw/master/chroot-install.sh /mnt/chroot-install.sh -O /mnt/chroot-install.sh
-arch-chroot /mnt /bin/bash ./chroot-install.sh $user $password
+chmod +x /mnt/chroot-install.sh
+arch-chroot /mnt /bin/bash -c "./chroot-install.sh $user $password"
 
 # reboot
 umount /mnt
