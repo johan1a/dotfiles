@@ -10,8 +10,6 @@ fi
 NAME_STR="$(head -n 1 /etc/os-release)"
 OS="$(echo ${NAME_STR} | sed 's/NAME=//g')"
 
-echo $PASSWORD | sudo -S ls > /dev/null
-
 if [[ "${OS}" == *"Ubuntu"* ]] ; then
   echo $PASSWORD | sudo -S  apt-get update
   echo $PASSWORD | sudo -S  apt-get install libssl-dev python-pip -y
