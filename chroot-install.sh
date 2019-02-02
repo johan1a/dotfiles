@@ -51,13 +51,11 @@ systemctl enable dhcpcd
 systemctl start dhcpcd
 
 
-echo $password | sudo -S -s -u johan
 cd /home/$user
-git clone https://gitlab.com/johan1a/dotfiles.git
+echo $password | sudo -S -u johan git clone https://gitlab.com/johan1a/dotfiles.git
 cd dotfiles
 chmod +x bootstrap.sh
-echo $password | sudo -S ls > /dev/null
-./bootstrap.sh $password
+echo $password | sudo -S -u johan ./bootstrap.sh $password
 
 exit
 exit
