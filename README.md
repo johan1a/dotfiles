@@ -18,4 +18,11 @@ chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
 
+## Install Arch Linux from a Live CD
+
+```
+wget https://gitlab.com/johan1a/dotfiles/raw/master/install.sh
+sh install.sh
+```
+
 
