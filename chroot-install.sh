@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/usr/bin/bash -e
 
 user=$1
 password=$2
@@ -40,8 +40,8 @@ echo 'Setting up user'
 echo 'Creating user'
 useradd -m -G wheel -s /usr/bin/bash $user
 echo 'Setting password'
-echo $user:$password | chpasswd
-echo root:$password | chpasswd
+echo "$user:$password" | chpasswd
+echo "root:$password" | chpasswd
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
 #systemctl enable ntpdate.service
