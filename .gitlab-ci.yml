@@ -21,5 +21,5 @@ before_script:
 
 test:
   script:
-    - sudo -u johan1a bash -c 'export CI=True; ./bootstrap.sh'
+    - sudo -u johan1a bash -c 'export CI=True; ./bootstrap.sh hunter2'
 

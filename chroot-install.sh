@@ -45,6 +45,10 @@ echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
 #systemctl enable ntpdate.service
 
+systemctl enable dhcpcd
+systemctl start dhcpcd
+
+
 echo $password | sudo -S -s -u johan
 cd /home/$user
 git clone https://gitlab.com/johan1a/dotfiles.git
