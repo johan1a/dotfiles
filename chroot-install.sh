@@ -37,7 +37,7 @@ pacman -S --noconfirm virtualbox-guest-modules-arch virtualbox-guest-utils
 echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 
 echo 'Creating user'
-useradd -m -G wheel -s /usr/bin/bash $username
+useradd -m -G wheel -s /bin/bash $username
 echo 'Setting password'
 echo "$username:$password" | chpasswd
 echo "root:$password" | chpasswd
