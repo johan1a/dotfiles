@@ -142,8 +142,13 @@
       path: "{{ user_home }}/.fehbg"
     register: fehbg
 
-  - name: Add Wallpaper
+  - name: Add .fehbg
     script: >
           scripts/install_dotfile
           "{{ dotfiles_dir }}/ansible/roles/utils/files/fehbg"
           "{{ user_home }}/.fehbg"
+    when: not fehbg.stat.exists
+
+  - name: Set default wallpaper
+    script: "{{ user_home }}/.fehbg"
+    when: not fehbg.stat.exists
