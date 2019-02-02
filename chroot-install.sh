@@ -1,6 +1,6 @@
 #!/usr/bin/bash -e
 
-user=$1
+username=$1
 password=$2
 
 # setup timezone
@@ -36,11 +36,10 @@ pacman -S --noconfirm virtualbox-guest-modules-arch virtualbox-guest-utils
 
 echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 
-echo 'Setting up user'
 echo 'Creating user'
-useradd -m -G wheel -s /usr/bin/bash $user
+useradd -m -G wheel -s /usr/bin/bash $username
 echo 'Setting password'
-echo "$user:$password" | chpasswd
+echo "$username:$password" | chpasswd
 echo "root:$password" | chpasswd
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
@@ -50,7 +49,7 @@ systemctl enable dhcpcd
 systemctl start dhcpcd
 
 
-cd /home/$user
+cd /home/$username
 echo $password | sudo -S -u johan git clone https://gitlab.com/johan1a/dotfiles.git
 cd dotfiles
 chmod +x bootstrap.sh
