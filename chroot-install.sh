@@ -55,7 +55,7 @@ git clone https://gitlab.com/johan1a/dotfiles.git
 cd dotfiles
 chmod +x bootstrap.sh
 echo $password | sudo -S ls > /dev/null
-./bootstrap.sh
+./bootstrap.sh $password
 
 exit
 exit
