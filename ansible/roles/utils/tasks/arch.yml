@@ -6,12 +6,6 @@
         SigLevel = Never
         Server = http://repo.archlinux.fr/x86_64
 
-  - name: Enable pacman colors
-    lineinfile:
-      path: /etc/pacman.conf
-      regexp: '^Color'
-      line: 'Color'
-
   - command: pacman -Syu
 
   - name: Install misc pacman packages...
