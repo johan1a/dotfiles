@@ -152,3 +152,4 @@
   - name: Set default wallpaper
     script: "{{ user_home }}/.fehbg"
     when: not fehbg.stat.exists
+    failed_when: false
