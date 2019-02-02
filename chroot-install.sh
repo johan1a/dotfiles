@@ -37,7 +37,6 @@ pacman -S --noconfirm virtualbox-guest-modules-arch virtualbox-guest-utils
 echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 
 echo 'Setting up user'
-read -t 1 -n 1000000 discard      # discard previous input
 echo 'Creating user'
 useradd -m -G wheel -s /usr/bin/bash $user
 echo 'Setting password'
