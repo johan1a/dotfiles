@@ -11,3 +11,4 @@
       enabled: yes
       state: started
     when: not ci
+    failed_when: false
