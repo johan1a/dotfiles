@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 user=$1
 password=$2
@@ -38,7 +38,9 @@ echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 
 echo 'Setting up user'
 read -t 1 -n 1000000 discard      # discard previous input
+echo 'Creating user'
 useradd -m -G wheel -s /usr/bin/bash $user
+echo 'Setting password'
 echo $user:$password | chpasswd
 echo root:$password | chpasswd
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
