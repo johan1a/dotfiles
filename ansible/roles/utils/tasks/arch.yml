@@ -79,6 +79,7 @@
       - ledger
       - xorg-server
       - xorg-xinit
+      - parallel
       # - udiskie
       # - redshift
 
