@@ -28,6 +28,13 @@
       state: absent
     tags: fzf
 
+  - name: Set dir permissions
+    file:
+      path: "{{ user_home }}/.config"
+      owner: "{{ username }}"
+      recurse: yes
+    tags: fzf
+
   - name: install fzf
     command: bash -c "yes | {{ user_home }}/.fzf/install"
     become_user: "{{ username }}"
