@@ -80,6 +80,8 @@
       - xorg-server
       - xorg-xinit
       - parallel
+      - iftop
+      - nethogs
       # - udiskie
       # - redshift
 
