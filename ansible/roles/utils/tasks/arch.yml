@@ -136,3 +136,14 @@
       enabled: yes
     when: not ci
     failed_when: false
+
+  - name: Check for a wallpaper
+    stat:
+      path: "{{ user_home }}/.fehbg"
+    register: fehbg
+
+  - name: Add Wallpaper
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/utils/files/fehbg"
+          "{{ user_home }}/.fehbg"
