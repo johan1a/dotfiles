@@ -11,6 +11,7 @@
       state: started
       enabled: yes
     when: not ci
+    failed_when: false
 
   - name: Add user to docker group
     user:
