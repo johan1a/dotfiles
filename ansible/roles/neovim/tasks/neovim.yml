@@ -54,12 +54,12 @@
     when: not vundle_dir.stat.exists
 
   - name: Install plugins
-    become_user: {{ "username" }}
+    become_user: "{{ username }}"
     command: nvim +PluginInstall +qall
     when: not ci
 
   - name: Update remote plugins
-    become_user: {{ "username" }}
+    become_user: "{{ username }}"
     command: nvim +UpdateRemotePlugins +qall
     when: not ci
 
@@ -71,7 +71,7 @@
 
   - name: install neovim gem
     command: gem install neovim
-    become_user: {{ "username" }}
+    become_user: "{{ username }}"
 
   - name: Symlink custom_snippets
     script: >
