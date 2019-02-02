@@ -63,6 +63,18 @@
     command: nvim +UpdateRemotePlugins +qall
     when: not ci
 
+  - name: Check for LanguageClient-neovim
+    stat:
+      path: "{{ user_home }}/.vim/bundle/LanguageClient-neovim/bin/languageclient"
+    register: languageclient
+
+  - name: Install LanguageClient-neovim
+    script:
+      path: install.sh
+    args:
+      chdir: "{{ user_home }}/.vim/bundle/LanguageClient-neovim"
+    when: not languageclient.stat.exists
+
   - name: Setup permissions
     file:
       path: "{{ user_home }}/.vim"
