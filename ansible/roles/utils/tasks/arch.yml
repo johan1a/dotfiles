@@ -143,10 +143,10 @@
     register: fehbg
 
   - name: Add .fehbg
-    script: >
-          scripts/install_dotfile
-          "{{ dotfiles_dir }}/ansible/roles/utils/files/fehbg"
-          "{{ user_home }}/.fehbg"
+    template: 
+      src: fehbg
+      dest: "{{ user_home }}/.fehbg"
+      mode: 0774
     when: not fehbg.stat.exists
 
   - name: Set default wallpaper
