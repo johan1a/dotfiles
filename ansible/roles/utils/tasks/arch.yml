@@ -42,9 +42,9 @@
       - jdk8-openjdk
       - openjdk8-doc
       - openjdk8-src
-      - jdk10-openjdk
-      - openjdk10-doc
-      - openjdk10-src
+      - jdk-openjdk
+      - openjdk-doc
+      - openjdk-src
       - dialog
       - ripgrep
       - wol
