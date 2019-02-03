@@ -71,9 +71,11 @@
   - name: Install LanguageClient-neovim
     script:
       path: install.sh
+    become_user: "{{ username }}"
     args:
       chdir: "{{ user_home }}/.vim/bundle/LanguageClient-neovim"
     when: not languageclient.stat.exists
+    failed_when: false
 
   - name: Setup permissions
     file:
