@@ -3,4 +3,5 @@
     command: chown {{ username }}:{{ username }} {{ item }} -R
     with_items:
       - "{{ user_home }}"
-      - "{{ user_home }}/.*"
+      - "{{ user_home }}.xinitrc"
+      - "{{ user_home }}.Xresources"
