@@ -1,3 +1,6 @@
 
   - name: Set correct permissions on dirs
-    command: chown {{ username }} {{ user_home }} -R
+    command: chown {{ username }}:{{ username }} {{ item }} -R
+    with_items:
+      - "{{ user_home }}"
+      - "{{ user_home }}/.*"
