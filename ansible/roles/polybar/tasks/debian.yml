@@ -2,7 +2,6 @@
   - name: Install dependencies
     apt:
       state: latest
-      name: "{{ item }}"
       name: ['xcb-proto',
         'python-xcbgen',
         'libxcb-ewmh-dev',
