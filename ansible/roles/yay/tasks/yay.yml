@@ -12,13 +12,11 @@
 
   - name: Install dependencies
     pacman:
-      name: "{{ item }}"
       state: latest
-    with_items:
-      - autoconf
-      - pkg-config
-      - base-devel
-      - yajl
+      name: ['toconf',
+        'pkg-config',
+        'base-devel',
+        'yajl']
 
   - name: Check if package-query is installed
     stat:
