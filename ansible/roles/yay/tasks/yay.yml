@@ -13,7 +13,7 @@
   - name: Install dependencies
     pacman:
       state: latest
-      name: ['toconf',
+      name: ['autoconf',
         'pkg-config',
         'base-devel',
         'yajl']
