@@ -2,9 +2,3 @@
   - name: install neovim
     command: yay -S neovim --noconfirm --needed
 
-  - name: Install neovim pip3 package
-    pip:
-      name: neovim
-      state: latest
-      executable: pip
-
