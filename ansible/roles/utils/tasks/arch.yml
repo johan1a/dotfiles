@@ -10,80 +10,78 @@
 
   - name: Install misc pacman packages...
     pacman:
-      name: "{{ item }}"
       state: latest
-    with_items:
-      - base-devel
-      - wget
-      - feh
-      - gpicview
-      - htop
-      - iotop
-      - tree
-      - ranger
-      - vlc
-      - arandr
-      - ttf-dejavu
-      - ttf-inconsolata
-      - udevil
-      - alsa-firmware
-      - alsa-utils
-      - alsa-plugins
-      - pulseaudio-alsa
-      - pulseaudio
-      - pavucontrol
-      - dmenu
-      - the_silver_searcher
-      - strace
-      - fish
-      - npm
-      - w3m
-      - isync
-      - jdk8-openjdk
-      - openjdk8-doc
-      - openjdk8-src
-      - jdk-openjdk
-      - openjdk-doc
-      - openjdk-src
-      - dialog
-      - ripgrep
-      - wol
-      - ethtool
-      - ttf-inconsolata
-      - lm_sensors
-      - ntp
-      - moreutils
-      - elinks
-      - cronie
-      - ttf-freefont
-      - ttf-liberation
-      - ttf-droid
-      - clojure
-      - rlwrap
-      - sxiv
-      - lib32-glibc
-      - nodejs
-      - ncdu
-      - dnsutils
-      - arp-scan
-      - xdotool
-      - nfs-utils
-      - xorg-xrandr
-      - gnome-keyring
-      - libsecret
-      - mlocate
-      - fdupes
-      - fail2ban
-      - java-openjfx
-      - task
-      - ledger
-      - xorg-server
-      - xorg-xinit
-      - parallel
-      - iftop
-      - nethogs
-      # - udiskie
-      # - redshift
+      name: ['base-devel',
+        'wget',
+        'feh',
+        'gpicview',
+        'htop',
+        'iotop',
+        'tree',
+        'ranger',
+        'vlc',
+        'arandr',
+        'ttf-dejavu',
+        'ttf-inconsolata',
+        'udevil',
+        'alsa-firmware',
+        'alsa-utils',
+        'alsa-plugins',
+        'pulseaudio-alsa',
+        'pulseaudio',
+        'pavucontrol',
+        'dmenu',
+        'the_silver_searcher',
+        'strace',
+        'fish',
+        'npm',
+        'w3m',
+        'isync',
+        'jdk8-openjdk',
+        'openjdk8-doc',
+        'openjdk8-src',
+        'jdk-openjdk',
+        'openjdk-doc',
+        'openjdk-src',
+        'dialog',
+        'ripgrep',
+        'wol',
+        'ethtool',
+        'ttf-inconsolata',
+        'lm_sensors',
+        'ntp',
+        'moreutils',
+        'elinks',
+        'cronie',
+        'ttf-freefont',
+        'ttf-liberation',
+        'ttf-droid',
+        'clojure',
+        'rlwrap',
+        'sxiv',
+        'lib32-glibc',
+        'nodejs',
+        'ncdu',
+        'dnsutils',
+        'arp-scan',
+        'xdotool',
+        'nfs-utils',
+        'xorg-xrandr',
+        'gnome-keyring',
+        'libsecret',
+        'mlocate',
+        'fdupes',
+        'fail2ban',
+        'java-openjfx',
+        'task',
+        'ledger',
+        'xorg-server',
+        'xorg-xinit',
+        'parallel',
+        'iftop',
+        'nethogs']
+        # - udiskie
+        # - redshift
 
   - name: Create pacman local config dir
     file:

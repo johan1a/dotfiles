@@ -3,9 +3,3 @@
     pacman:
       name: python-pip
       state: latest
-
-  - name: install Python2
-    pacman:
-      name: python2-pip
-      state: latest
-
