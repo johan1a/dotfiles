@@ -1,11 +1,8 @@
 
   - name: Install dependencies
     pacman:
-      name: "{{ item }}"
+      name: ['ncmpcpp', 'mpd',]
       state: latest
-    with_items:
-      - ncmpcpp
-      - mpd
 
   - name: Install mopidy
     command: yay -S mopidy mopidy-spotify --noconfirm --needed
