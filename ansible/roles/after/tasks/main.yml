@@ -5,3 +5,4 @@
       - "{{ user_home }}"
       - "{{ user_home }}/.xinitrc"
       - "{{ user_home }}/.Xresources"
+    failed_when: false
