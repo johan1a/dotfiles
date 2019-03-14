@@ -10,11 +10,5 @@
       name: pip
       executable: pip
       state: latest
-
-  - name: Upgrade pip2
-    pip:
-      name: pip
-      executable: pip2
-      state: latest
-    when: false
-
+      extra_args: --user
+    become_user: "{{ username }}"

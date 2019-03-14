@@ -9,18 +9,13 @@
       - neovim
       - multi_json
 
-  - name: Install neovim pip2 package
-    pip:
-      name: neovim
-      state: latest
-      executable: pip2
-    when: false
-
   - name: Install neovim pip3 package
     pip:
       name: neovim
       state: latest
       executable: pip3
+      extra_args: --user
+    become_user: "{{ username }}"
 
   - name: Make sure .vim exists
     file:

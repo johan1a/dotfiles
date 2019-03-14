@@ -1,9 +1,7 @@
 
   - name: Install neomutt, notmuch, and isync / mbsync
     apt:
-      name: "{{ item }}"
+      name: ['neomutt',
+      'notmuch',
+      'isync']
       state: latest
-    with_items:
-      - neomutt
-      - notmuch
-      - isync

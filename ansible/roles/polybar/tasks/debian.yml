@@ -1,18 +1,16 @@
 
   - name: Install dependencies
     apt:
-      name: "{{ item }}"
       state: latest
-    with_items:
-      - xcb-proto
-      - python-xcbgen
-      - libxcb-ewmh-dev
-      - libcurl4-openssl-dev
-      - libmpdclient-dev
-      - libiw-dev
-      - libalsa-ocaml
-      - libalsa-ocaml-dev
-      - libjsoncpp-dev
+      name: ['xcb-proto',
+        'python-xcbgen',
+        'libxcb-ewmh-dev',
+        'libcurl4-openssl-dev',
+        'libmpdclient-dev',
+        'libiw-dev',
+        'libalsa-ocaml',
+        'libalsa-ocaml-dev',
+        'libjsoncpp-dev']
 
   - name: Check if polybar is installed
     stat:

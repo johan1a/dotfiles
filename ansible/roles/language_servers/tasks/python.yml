@@ -1,3 +1,5 @@
 
   - name: Install python-language-server
-    command: pip install python-language-server
+    command: pip install python-language-server --user
+    become_user: "{{ username }}"
+

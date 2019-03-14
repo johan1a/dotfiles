@@ -1,6 +1,6 @@
 
   - name: Set correct permissions on dirs
-    command: chown {{ username }}:{{ username }} {{ item }} -R
+    command: chown "{{ username }}:" "{{ item }}" -R
     with_items:
       - "{{ user_home }}"
       - "{{ user_home }}/.xinitrc"

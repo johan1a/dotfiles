@@ -18,9 +18,5 @@
 
   - name: Install dependencies
     apt:
-      name: "{{ item }}"
+      name: ['ncmpcpp', 'mopidy', 'mopidy-spotify']
       state: latest
-    with_items:
-      - ncmpcpp
-      - mopidy
-      - mopidy-spotify
