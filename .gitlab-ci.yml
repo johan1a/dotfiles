@@ -4,7 +4,6 @@ before_script:
   - ls -l
   - whoami
   - env
-  - uptime
   - cat /etc/os-release
   - df -h
   - cat /etc/os-release
