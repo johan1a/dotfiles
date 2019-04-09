@@ -1,13 +1,9 @@
 
   - name: Install xorg
     pacman:
-      name: "{{ item }}"
+      name: ['xorg', 'xorg-xinit', 'xorg-server']
       state: latest
     when: username != "vagrant"
-    with_items:
-      - xorg
-      - xorg-xinit
-      - xorg-server
 
   - name: Link .xinitrc config
     script: >

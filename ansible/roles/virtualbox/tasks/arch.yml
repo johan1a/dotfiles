@@ -1,13 +1,8 @@
 
   - name: Install virtualbox
     pacman:
-      name: "{{ item }}"
+      name: ['virtualbox-host-modules-arch', 'virtualbox', 'net-tools', 'virtualbox-guest-iso']
       state: latest
-    with_items:
-      - virtualbox-host-modules-arch
-      - virtualbox
-      - net-tools
-      - virtualbox-guest-iso
     register: virtualbox_install
 
   - name: Load virtualbox modules

@@ -1,8 +1,5 @@
 
   - name: Install packages
     pacman:
-      name: "{{ item }}"
+      name: ['cups', 'cups-pdf']
       state: latest
-    with_items:
-      - cups
-      - cups-pdf

@@ -1,12 +1,8 @@
 
   - name: install i3-gaps
-    pacman: name={{ item }} state=latest
-    with_items:
-      - i3-gaps
-      - i3status
-      - i3lock
-      - imagemagick
-      - compton
+    pacman:
+      name: ['i3-gaps', 'i3status', 'i3lock', 'imagemagick', 'compton']
+      state: latest
 
   - name: Link logind.conf
     script: >
