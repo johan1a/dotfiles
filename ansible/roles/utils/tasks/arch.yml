@@ -16,6 +16,9 @@
         'feh',
         'gpicview',
         'htop',
+        'scrot',
+        'dos2unix'
+        'rsync',
         'iotop',
         'tree',
         'ranger',
