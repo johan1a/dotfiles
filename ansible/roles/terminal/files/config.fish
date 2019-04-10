@@ -1,4 +1,3 @@
-
 set fish_greeting
 set -x VISUAL nvim
 set -x ANSIBLE_NOCOWS 1
@@ -16,6 +15,10 @@ export XDG_VIDEOS_DIR="$HOME/videos"
 
 if status --is-interactive;
     [ -e $HOME/.aliases.sh ]; and . $HOME/.aliases.sh
+end
+
+if command -v nvim > /dev/null 2>&1;
+  alias vim=nvim
 end
 
 
