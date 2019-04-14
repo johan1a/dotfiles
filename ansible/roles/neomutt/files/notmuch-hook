@@ -1,27 +1,27 @@
 #!/bin/sh
 notmuch new
-# retag all "new" messages "inbox" and "unread"
-notmuch tag +inbox +unread -new -- tag:new
+# retag all "new" messages "inbox"
+notmuch tag +inbox -new -- tag:new
 # tag all messages from "me" as sent and remove tags inbox and unread
 notmuch tag -new -inbox +sent -- from:johan.peter.andersson@gmail.com
 # tag newsletters, but dont show them in inbox
-notmuch tag +newsletters +dk-dev -inbox +unread -new -- to:build-dev@openjdk.java.net or to:valhalla-dev@openjdk.java.net or to:jigsaw-dev@openjdk.java.net
-notmuch tag +newsletters +arch-dev +unread -inbox -new -- from:arch-dev-public@archlinux.org or to:arch-dev-public@archlinux.org or to:arch-general@archlinux.org or to:arch-dev-public@lists.archlinux.org
-notmuch tag +newsletters +haskell -inbox +unread -new -- to:beginners@haskell.org \
+notmuch tag +newsletters +dk-dev -inbox -new -- to:build-dev@openjdk.java.net or to:valhalla-dev@openjdk.java.net or to:jigsaw-dev@openjdk.java.net
+notmuch tag +newsletters +arch-dev -inbox -new -- from:arch-dev-public@archlinux.org or to:arch-dev-public@archlinux.org or to:arch-general@archlinux.org or to:arch-dev-public@lists.archlinux.org
+notmuch tag +newsletters +haskell -inbox -new -- to:beginners@haskell.org \
   or to:haskell@haskell.org \
   or subject:[Haskell]
-notmuch tag +newsletters -inbox +unread -new -- subject:ccrama \
+notmuch tag +newsletters -inbox -new -- subject:ccrama \
   or to:FizzBuzzEnterpriseEdition@noreply.github.com
-notmuch tag +social-media -inbox +unread -new -- from:messages-noreply@linkedin.com \
+notmuch tag +social-media -inbox -new -- from:messages-noreply@linkedin.com \
   or from:news@linkedin.com \
   or from:jobs-listings@linkedin.com \
   or from:groups-noreply@linkedin.com \
   or from:notifications-noreply@linkedin.com \
   or from:notification+2kweex2r@facebookmail.com \
   or from:notify@twitter.com
-notmuch tag +low-prio -inbox +unread -new -- from:paneladm@tns-sifo.se \
+notmuch tag +low-prio -inbox -new -- from:paneladm@tns-sifo.se \
   or from:noreply@boligsiden.dk
-notmuch tag --remove-all +ads -inbox +unread -new -- from:e.opodo.com \
+notmuch tag --remove-all +ads -inbox -new -- from:e.opodo.com \
   or from:dockercon@docker.com \
   or from:hello@namecheap.com \
   or from:learn@codeacademy.com \
@@ -60,5 +60,5 @@ notmuch tag --remove-all +ads -inbox +unread -new -- from:e.opodo.com \
   or rom:no-reply@dropboxmail.com \
   or rom:no-reply@findroommate.dk \
   or from:replies@oracle-mail.com
-notmuch tag +ci -inbox +unread -new -- from:builds@circleci.com
-notmuch tag +dotfiles -inbox +unread -new -- subject:dotfiles
+notmuch tag +ci -inbox -new -- from:builds@circleci.com
+notmuch tag +dotfiles -inbox -new -- subject:dotfiles
