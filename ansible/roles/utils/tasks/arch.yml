@@ -141,7 +141,7 @@
     register: fehbg
 
   - name: Add .fehbg
-    template: 
+    template:
       src: fehbg
       dest: "{{ user_home }}/.fehbg"
       mode: 0774
