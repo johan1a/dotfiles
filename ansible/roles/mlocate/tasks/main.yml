@@ -1,0 +1,17 @@
+
+  - name: Install mlocate
+    pacman:
+      name: mlocate
+      state: latest
+    when: arch
+    tags: mlocate
+
+  - name: Setup updatedb cron job
+    cron:
+      name: "Run updatedb"
+      minute: "*/15"
+      job: "updatedb -l 0 -o ~/.config/mlocate/mlocate.db >> ~/.local/log/updatedb.log 2>&1"
+      user: "{{ username }}"
+    when: not ci
+    tags: mlocate
+
