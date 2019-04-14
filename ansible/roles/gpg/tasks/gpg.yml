@@ -13,4 +13,4 @@
 
   - name: Reload gpg-agent
     command: gpg-connect-agent reloadagent /bye
-    when: create_dir.changed
+    when: create_dir.changed and not ci
