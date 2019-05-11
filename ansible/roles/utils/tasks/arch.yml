@@ -16,9 +16,6 @@
         'feh',
         'gpicview',
         'htop',
-        'scrot',
-        'dos2unix'
-        'rsync',
         'iotop',
         'tree',
         'ranger',
@@ -83,6 +80,9 @@
         'parallel',
         'iftop',
         'nethogs']
+        'scrot',
+        'dos2unix'
+        'rsync'
         # - udiskie
         # - redshift
 
@@ -144,7 +144,7 @@
     register: fehbg
 
   - name: Add .fehbg
-    template: 
+    template:
       src: fehbg
       dest: "{{ user_home }}/.fehbg"
       mode: 0774
