@@ -79,10 +79,10 @@
         'xorg-xinit',
         'parallel',
         'iftop',
-        'nethogs']
+        'nethogs',
         'scrot',
-        'dos2unix'
-        'rsync'
+        'dos2unix',
+        'rsync']
         # - udiskie
         # - redshift
 
