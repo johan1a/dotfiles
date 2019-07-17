@@ -122,6 +122,7 @@
       - ipcalc
       - tig
       - remind
+      - light
       # - nodejs-lumo-cljs
       - msr-tools
         #      - translate-shell
