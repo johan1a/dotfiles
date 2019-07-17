@@ -13,7 +13,8 @@ untrack=rm -r --cached
 [core]
 	editor = nvim
 	excludesfile = /home/johan/.gitignore_global
-	autocrlf = true
+	autocrlf = false
+	eof = lf
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

@@ -79,7 +79,10 @@
         'xorg-xinit',
         'parallel',
         'iftop',
-        'nethogs']
+        'nethogs',
+        'scrot',
+        'dos2unix',
+        'rsync']
         # - udiskie
         # - redshift
 
@@ -102,7 +105,7 @@
       owner: "{{ username }}"
 
   - name: Set default jdk
-    command: archlinux-java set java-11-openjdk
+    command: archlinux-java set java-12-openjdk
 
   - name: Install misc yay packages...
     command: yay -S {{ item }} --noconfirm --needed
@@ -141,7 +144,7 @@
     register: fehbg
 
   - name: Add .fehbg
-    template: 
+    template:
       src: fehbg
       dest: "{{ user_home }}/.fehbg"
       mode: 0774
