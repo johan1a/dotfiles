@@ -53,7 +53,7 @@
         'moreutils',
         'elinks',
         'cronie',
-        'ttf-freefont',
+        'gnu-free-fonts',
         'ttf-liberation',
         'ttf-droid',
         'clojure',
