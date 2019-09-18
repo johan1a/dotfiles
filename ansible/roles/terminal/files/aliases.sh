@@ -70,6 +70,7 @@ alias kia="kubectl get ingress --all-namespaces"
 alias kl="kubectl logs"
 alias kp="kubectl get pods"
 alias kpa="kubectl get pods --all-namespaces"
+alias kpn="kubectl get pod -o=custom-columns=NAME:.metadata.name,STATUS:.status.phase,NODE:.spec.nodeName "
 alias ks="kubectl get services"
 alias ksa="kubectl get services --all-namespaces"
 alias l='ls -alF'
