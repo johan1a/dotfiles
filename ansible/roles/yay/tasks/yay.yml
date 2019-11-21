@@ -17,6 +17,7 @@
         'pkg-config',
         'base-devel',
         'yajl']
+    when: not yay_installed.stat.exists
 
   - name: Check if package-query is installed
     stat:
@@ -29,7 +30,7 @@
     git: repo=https://aur.archlinux.org/package-query.git
          dest="{{ user_home }}/source/package_query"
     register: package_query_git
-    when: not package_query_installed.stat.exists
+    when: (not yay_installed.stat.exists) or (not package_query_installed.stat.exists)
 
   - name: Set source dir permissions
     file:
