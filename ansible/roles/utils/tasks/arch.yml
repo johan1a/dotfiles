@@ -62,7 +62,7 @@
         'lib32-glibc',
         'nodejs',
         'ncdu',
-        'dnsutils',
+        # 'dnsutils',
         'arp-scan',
         'xdotool',
         'nfs-utils',
@@ -82,7 +82,8 @@
         'nethogs',
         'scrot',
         'dos2unix',
-        'rsync']
+        'rsync'
+        ]
         # - udiskie
         # - redshift
 
@@ -105,7 +106,7 @@
       owner: "{{ username }}"
 
   - name: Set default jdk
-    command: archlinux-java set java-12-openjdk
+    command: archlinux-java set java-13-openjdk
 
   - name: Install misc yay packages...
     command: yay -S {{ item }} --noconfirm --needed
@@ -129,7 +130,7 @@
       - google-chrome
         #      - stack-bin
         #- httpie
-      - python-cheat
+      # - python-cheat
     become_user: "{{ username }}"
 
   - service:
