@@ -1,7 +1,22 @@
 
   - name: install i3-gaps
     pacman:
-      name: ['i3-gaps', 'i3status', 'i3lock', 'imagemagick', 'compton']
+      name: ['i3-gaps']
+      state: latest
+
+  - name: install i3-gaps
+    pacman:
+      name: ['i3status']
+      state: latest
+
+  - name: install i3-gaps
+    pacman:
+      name: ['i3lock']
+      state: latest
+
+  - name: install i3-gaps
+    pacman:
+      name: ['imagemagick']
       state: latest
 
   - name: Link logind.conf
