@@ -492,3 +492,7 @@ end
 function tl
   tmux list-sessions
 end
+
+function locate
+  command locate -d ~/.config/mlocate/mlocate.db $argv
+end
