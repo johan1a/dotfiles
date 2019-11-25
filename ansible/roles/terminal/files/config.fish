@@ -14,10 +14,10 @@ export XDG_PICTURES_DIR="$HOME/pictures"
 export XDG_VIDEOS_DIR="$HOME/videos"
 
 source ~/.config/fish/functions/utils.fish
+
 [ -e $HOME/.local.fish ]; and source $HOME/.local.fish
 
 if status --is-interactive;
-    [ -e $HOME/.aliases.sh ]; and . $HOME/.aliases.sh
     preset-password
 end
 

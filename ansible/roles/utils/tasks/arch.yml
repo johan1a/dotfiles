@@ -127,7 +127,7 @@
       # - nodejs-lumo-cljs
       - msr-tools
         #      - translate-shell
-      - google-chrome
+      # - google-chrome
         #      - stack-bin
         #- httpie
       # - python-cheat

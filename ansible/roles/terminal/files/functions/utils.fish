@@ -358,3 +358,137 @@ function bd
   echo $decoded
   echo $decoded | xclip
 end
+
+# Aliases
+
+function ..
+  cd ..
+end
+
+function ...
+  cd ../..
+end
+
+function ....
+  cd ../../..
+end
+
+function .....
+  cd ../../../..
+end
+
+function ......
+  cd ../../../../..
+end
+
+function ..2
+  cd ../..
+end
+
+function ..3
+  cd ../../..
+end
+
+function ..4
+  cd ../../../..
+end
+
+function ..4
+  cd ../../../..
+end
+
+function a
+  ag --path-to-ignore ~/dotfiles/ansible/roles/terminal/files/grepignore $argv
+end
+
+function amend
+  git commit --amend $argv
+end
+
+function colemak
+  setxkbmap colemaknordic -option altwin:swap_lalt_lwin -option caps:super; echo "Switched to Colemak."
+end
+
+function executable
+  chmod +x $argv
+end
+
+function ga
+  git add $argv
+end
+
+function gc
+  git commit -m $argv
+end
+
+function gd
+  git diff $argv
+end
+
+function gdd
+  git diff --cached $argv
+end
+
+function gl
+  git lg $argv
+end
+
+function gp
+  git pull --rebase $argv
+end
+
+function gs
+  git status -s $argv
+end
+
+function k
+  kubectl $argv
+end
+
+function kp
+  kubectl get pods $argv
+end
+
+function l
+  ls -alF $argv
+end
+
+function la
+  ls -A $argv
+end
+
+function less
+  command less -S $argv
+end
+
+function lt
+  ls -ltr $argv
+end
+
+function p
+  pwd
+end
+
+function pa
+  ps ax | a $argv
+end
+
+function r
+  rg -S $argv
+end
+
+function sd
+  trans sv:da $argv
+end
+
+function ds
+  trans da:sv $argv
+end
+
+function ta
+  tmux attach -t $argv
+end
+
+function tl
+  tmux list-sessions
+end
