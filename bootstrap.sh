@@ -3,7 +3,7 @@
 PASSWORD=$1
 
 if [ -z $PASSWORD ] ; then
-  echo "Enter sudo password: "
+  echo "Enter SUDO password: "
   read -s PASSWORD
 fi
 
@@ -16,8 +16,8 @@ if [[ "${OS}" == *"Ubuntu"* ]] ; then
   pip install --upgrade --user pip
   pip install --user ansible
 elif [[ "${OS}" == *"Arch Linux"* ]] ; then
-  echo $PASSWORD | sudo -S pacman -Syu --noconfirm
-  echo $PASSWORD | sudo -S pacman -S gcc python-pip ansible --noconfirm
+  echo $PASSWORD | sudo -S pacman -Syu --noconfirm --needed
+  echo $PASSWORD | sudo -S pacman -S gcc python-pip ansible --noconfirm --needed
 fi
 
 ansible-playbook -e "ansible_become_pass=$PASSWORD" ansible/bootstrap.yml -i ansible/hosts.ini --become
