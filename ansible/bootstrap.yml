@@ -4,8 +4,8 @@
     become: true
     roles:
       - before
-      - misc
       - yay
+      - misc
       - utils
       - terminal
       - colemak
