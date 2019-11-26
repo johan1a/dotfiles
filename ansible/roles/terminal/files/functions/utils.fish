@@ -496,3 +496,7 @@ end
 function locate
   command locate -d ~/.config/mlocate/mlocate.db $argv
 end
+
+function init-base16
+  source $HOME/.config/base16-shell/profile_helper.fish
+end

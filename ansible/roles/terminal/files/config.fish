@@ -26,7 +26,7 @@ if command -v nvim > /dev/null 2>&1;
 end
 
 if status --is-interactive; and [ "$SSH_CLIENT" = "" ]
-  source $HOME/.config/base16-shell/profile_helper.fish
+  eval sh '"'(realpath ~/.base16_theme)'"'
 end
 
 alias sf="source ~/.config/fish/config.fish"
