@@ -12,27 +12,45 @@ endif
 set nocompatible              " Don't emulate vi
 filetype off                  " required by Vundle
 
+
+" The has('nvim') check does not work
+function! IsWsl()
+  let versionString = system("cat /proc/version")
+  return versionString =~ "Microsoft"
+endfunction
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 if has('nvim')
-  " Plugin 'autozimu/LanguageClient-neovim'
-  " Plugin 'Shougo/deoplete.nvim'
-  " Plugin 'zchee/deoplete-jedi'
+  if !IsWsl()
+    Plugin 'autozimu/LanguageClient-neovim'
+    Plugin 'Shougo/deoplete.nvim'
+    Plugin 'zchee/deoplete-jedi'
+  endif
+
   Plugin 'sbdchd/neoformat'
   Plugin 'SirVer/ultisnips'
 endif
 
+if !IsWsl()
+  Plugin 'artur-shaik/vim-javacomplete2'
+  Plugin 'clojure-vim/async-clj-omni'
+  Plugin 'dkprice/vim-easygrep'
+  Plugin 'honza/vim-snippets'
+  Plugin 'jreybert/vimagit'
+  Plugin 'tpope/vim-dispatch'
+  Plugin 'tpope/vim-fireplace'
+  Plugin 'udalov/kotlin-vim'
+  Plugin 'vimwiki/vimwiki'
+  Plugin 'venantius/vim-cljfmt'
+endif
+
 Plugin 'airblade/vim-gitgutter'
-" Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
-" Plugin 'clojure-vim/async-clj-omni'
 Plugin 'dag/vim-fish'
-" Plugin 'dkprice/vim-easygrep'
-" Plugin 'honza/vim-snippets'
-" Plugin 'jreybert/vimagit'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/vim-slash'
 Plugin 'justinmk/vim-sneak'
@@ -41,15 +59,10 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tommcdo/vim-lion'
 Plugin 'tpope/vim-commentary'
-" Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-eunuch'
-" Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-" Plugin 'udalov/kotlin-vim'
-" Plugin 'vimwiki/vimwiki'
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'venantius/vim-cljfmt'
 
 call vundle#end()
 filetype plugin indent on
