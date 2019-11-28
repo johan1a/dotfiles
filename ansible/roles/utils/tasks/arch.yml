@@ -10,6 +10,7 @@
 
   - name: Install misc pacman packages...
     pacman:
+      extra_args: --needed
       state: latest
       name: ['base-devel',
         'wget',
@@ -119,7 +120,7 @@
       - xclip
       - neofetch
       - figlet
-      - inxi
+      # - inxi
       - ipcalc
       - tig
       - remind
