@@ -500,3 +500,7 @@ end
 function init-base16
   source $HOME/.config/base16-shell/profile_helper.fish
 end
+
+function owning-package
+  pacman -Qo $argv
+end
