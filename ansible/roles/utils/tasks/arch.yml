@@ -120,6 +120,7 @@
       - xclip
       - neofetch
       - figlet
+      - time
       # - inxi
       - ipcalc
       - tig
