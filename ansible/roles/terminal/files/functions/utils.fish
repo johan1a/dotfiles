@@ -504,3 +504,7 @@ end
 function owning-package
   pacman -Qo $argv
 end
+
+function files-in-package
+  pacman -Ql $argv
+end
