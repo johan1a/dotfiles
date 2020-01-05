@@ -38,6 +38,12 @@
       - .vimrc
       - .vim/init.vim
 
+  - name: Symlink .coc-settings.json
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/neovim/templates/coc-settings.json"
+          "{{ user_home }}/.vim/coc-settings.json"
+
   - name: Check if Vundle exists
     stat: path="{{ user_home }}/.vim/bundle/Vundle.vim"
     register: vundle_dir

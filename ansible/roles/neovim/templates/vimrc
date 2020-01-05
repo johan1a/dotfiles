@@ -115,7 +115,7 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" =========== coc.vim ===========
+" =========== coc.nvim ===========
 
 
 " Smaller updatetime for CursorHold & CursorHoldI
@@ -135,21 +135,32 @@ set signcolumn=yes
 set cmdheight=2
 
 " Use <c-space> for trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-y> coc#refresh()
 
 " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" navigate diagnostics
+nmap <silent> <leader>cu <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>cy <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <leader>cc <Plug>(coc-definition)
+nmap <silent> <leader>cn <Plug>(coc-type-definition)
+nmap <silent> <leader>ci <Plug>(coc-implementation)
+nmap <silent> <leader>cr <Plug>(coc-references)
 
 " Remap for do codeAction of current line
 nmap <leader>ac <Plug>(coc-codeaction)
@@ -172,7 +183,7 @@ endfunction
 " autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>cx <Plug>(coc-rename)
 
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
@@ -253,7 +264,7 @@ let g:sneak#label = 1
 
 " =========== Magit ===========
 
-nnoremap <leader>ma :Magit<cr>
+" nnoremap <leader>ma :Magit<cr>
 
   " ____                           _            _   _   _
  " / ___| ___ _ __   ___ _ __ __ _| |  ___  ___| |_| |_(_)_ __   __ _ ___
@@ -308,6 +319,7 @@ augroup filetypes
   autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
   autocmd FileType json                  nnoremap <buffer> <leader>ff :%!python -m json.tool<cr>
   autocmd FileType xml                   nnoremap <buffer> <leader>ff :%!xmllint --format -<cr>
+  autocmd FileType scala                 nnoremap <buffer> <leader>ff :Neoformat<cr>
   autocmd FileType typescript            nnoremap <buffer> <leader>ff :Neoformat<cr>
   autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
   autocmd FileType python                nnoremap <buffer> <leader>ff :Neoformat<cr>
@@ -434,8 +446,8 @@ nnoremap d "*d
 vnoremap d "*d
 nnoremap <leader>fp           olog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
 
-noremap <down>   <c-w>+
-noremap <up>     <c-w>-
+" noremap <down>   <c-w>+
+" noremap <up>     <c-w>-
 noremap <left>  5<c-w><
 noremap <right> 5<c-w>>
 
