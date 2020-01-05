@@ -129,6 +129,8 @@
       # - nodejs-lumo-cljs
       - msr-tools
       - gotop-bin
+      - metals
+      - scalafmt
         #      - translate-shell
       # - google-chrome
         #      - stack-bin

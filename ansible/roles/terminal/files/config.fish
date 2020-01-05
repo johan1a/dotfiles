@@ -12,6 +12,7 @@ export XDG_DOWNLOAD_DIR="$HOME/downloads/"
 export XDG_MUSIC_DIR="$HOME/music"
 export XDG_PICTURES_DIR="$HOME/pictures"
 export XDG_VIDEOS_DIR="$HOME/videos"
+export COURSIER_CACHE="$XDG_DOWNLOAD_DIR/.couries-cache"
 
 source ~/.config/fish/functions/utils.fish
 
