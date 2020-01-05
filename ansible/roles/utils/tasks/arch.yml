@@ -128,6 +128,7 @@
       - light
       # - nodejs-lumo-cljs
       - msr-tools
+      - gotop-bin
         #      - translate-shell
       # - google-chrome
         #      - stack-bin
