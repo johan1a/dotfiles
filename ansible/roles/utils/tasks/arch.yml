@@ -137,6 +137,8 @@
         #- httpie
       # - python-cheat
     become_user: "{{ username }}"
+    environment:
+      COURSIER_CACHE: ".coursier-cache"
 
   - service:
       name: cronie

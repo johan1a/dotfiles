@@ -1,7 +1,7 @@
 
   - name: install termite
     pacman:
-      name: termite
+      name: termite-git
       state: latest
 
   - name: install fish

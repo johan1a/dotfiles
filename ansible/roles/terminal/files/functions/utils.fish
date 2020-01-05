@@ -508,3 +508,12 @@ end
 function files-in-package
   pacman -Ql $argv
 end
+
+function kl
+  if test (count $argv) -gt 1
+    set n $argv[1]
+  else
+    set n 0
+  end
+  kubectl get pods | grep $argv[1] | head -n 1 | awk '{print $1}' | xargs kubectl logs -f
+end

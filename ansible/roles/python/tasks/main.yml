@@ -4,11 +4,3 @@
 
   - include: arch.yml
     when: arch
-
-  - name: Upgrade pip3
-    pip:
-      name: pip
-      executable: pip
-      state: latest
-      extra_args: --user
-    become_user: "{{ username }}"
