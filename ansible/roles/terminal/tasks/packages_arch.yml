@@ -1,8 +1,6 @@
 
   - name: install termite
-    pacman:
-      name: "termite-git"
-      state: latest
+    command: yay -S termite-git --noconfirm --needed
 
   - name: install fish
     pacman:
