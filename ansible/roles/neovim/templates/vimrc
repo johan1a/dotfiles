@@ -26,7 +26,6 @@ if has('nvim')
   if !IsWsl()
     Plugin 'derekwyatt/vim-scala'
     Plugin 'neoclide/coc.nvim'
-    Plugin 'autozimu/LanguageClient-neovim'
     Plugin 'Shougo/deoplete.nvim'
     Plugin 'zchee/deoplete-jedi'
     Plugin 'SirVer/ultisnips'
