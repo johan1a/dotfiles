@@ -1,0 +1,38 @@
+
+  - name: Check if fakeroot-tcp is installed
+    stat:
+      path: "{{ user_home }}/source/fakeroot-tcp"
+    failed_when: false
+    changed_when: false
+    register: fakeroot_tcp_installed
+
+  - name: Get source
+    get_url:
+      url: http://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.24.orig.tar.bz2
+      dest: "{{ user_home }}/source/fakeroot-tcp"
+    when: not fakeroot_tcp_installed
+
+  - name: Run cmake
+    shell: "./bootstrap"
+    args:
+      chdir: "{{ user_home }}/source/fakeroot-tcp/"
+    when: not fakeroot_tcp_installed
+
+  - name: Run configure
+    shell: "./configure --prefix=/opt/fakeroot --libdir=/opt/fakeroot/libs --disable-static --with-ipc=tcp"
+    args:
+      chdir: "{{ user_home }}/source/fakeroot-tcp"
+    when: not fakeroot_tcp_installed
+
+  - name: Run make
+    shell: "make"
+    args:
+      chdir: "{{ user_home }}/source/fakeroot-tcp"
+    when: not fakeroot_tcp_installed
+
+  - name: Run sudo make install
+    shell: "make install"
+    args:
+      chdir: "{{ user_home }}/source/fakeroot-tcp"
+    when: not fakeroot_tcp_installed
+    become: true

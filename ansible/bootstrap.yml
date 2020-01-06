@@ -5,6 +5,7 @@
     roles:
       - before
       - yay
+      - fakeroot-tcp
       - misc
       - utils
       - terminal
