@@ -1,6 +1,7 @@
 
   - name: install termite
     command: yay -S termite-git --noconfirm --needed
+    become: false
 
   - name: install fish
     pacman:
