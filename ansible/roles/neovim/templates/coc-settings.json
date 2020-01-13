@@ -1,3 +1,4 @@
 {
-  "metals.javaHome": "/usr/lib/jvm/java-11-openjdk/"
+  "metals.javaHome": "/usr/lib/jvm/java-11-openjdk/",
+  "java.errors.incompleteClasspath.severity": "ignore"
 }

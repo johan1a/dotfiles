@@ -10,7 +10,6 @@ if &shell =~# 'fish$'
 endif
 
 set nocompatible              " Don't emulate vi
-filetype off                  " required by Vundle
 
 
 " The has('nvim') check does not work
@@ -19,53 +18,57 @@ function! IsWsl()
   return versionString =~ "Microsoft"
 endfunction
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
 
 if has('nvim')
   if !IsWsl()
-    Plugin 'derekwyatt/vim-scala'
-    Plugin 'neoclide/coc.nvim'
-    Plugin 'Shougo/deoplete.nvim'
-    Plugin 'zchee/deoplete-jedi'
-    Plugin 'SirVer/ultisnips'
+    Plug 'derekwyatt/vim-scala'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'zchee/deoplete-jedi'
+    Plug 'SirVer/ultisnips'
   endif
 
-  Plugin 'sbdchd/neoformat'
+  Plug 'sbdchd/neoformat'
 endif
 
 if !IsWsl()
-  Plugin 'artur-shaik/vim-javacomplete2'
-  Plugin 'dkprice/vim-easygrep'
-  Plugin 'honza/vim-snippets'
-  Plugin 'jreybert/vimagit'
-  Plugin 'tpope/vim-dispatch'
-  Plugin 'tpope/vim-fireplace'
-  Plugin 'udalov/kotlin-vim'
-  Plugin 'vimwiki/vimwiki'
-  Plugin 'venantius/vim-cljfmt'
+  Plug 'artur-shaik/vim-javacomplete2'
+  Plug 'dkprice/vim-easygrep'
+  Plug 'honza/vim-snippets'
+  Plug 'jreybert/vimagit'
+  Plug 'tpope/vim-dispatch'
+  Plug 'tpope/vim-fireplace'
+  Plug 'udalov/kotlin-vim'
+  Plug 'vimwiki/vimwiki'
+  Plug 'venantius/vim-cljfmt'
 endif
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'bkad/CamelCaseMotion'
-Plugin 'chriskempson/base16-vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'dag/vim-fish'
-Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/vim-slash'
-Plugin 'justinmk/vim-sneak'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tommcdo/vim-lion'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'VundleVim/Vundle.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'bkad/CamelCaseMotion'
+Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'dag/vim-fish'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-slash'
+Plug 'justinmk/vim-sneak'
+Plug 'leafgarland/typescript-vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'scrooloose/nerdtree'
+Plug 'tommcdo/vim-lion'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
+
 let mapleader =  "\<Space>"
 
  " ____  _             _                          __ _
@@ -99,6 +102,7 @@ let g:gitgutter_max_signs = 1000
 
 set rtp+=~/.fzf
 nnoremap <leader>n :FZF<cr>
+nnoremap <leader>t :Tags<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Customize fzf colors to match your color scheme
@@ -155,7 +159,7 @@ inoremap <silent><expr> <Tab>
       \ coc#refresh()
 
 " navigate diagnostics
-nmap <silent> <leader>cu <Plug>(coc-diagnostic-prev)
+nmap <silent> <F2> <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>cy <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
@@ -182,23 +186,23 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>cx <Plug>(coc-rename)
 
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>ca  :<C-u>CocList diagnostics<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>co  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>cs  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <space>cj  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <space>ck  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <space>cp  :<C-u>CocListResume<CR>
 
 " Notify coc.nvim that <enter> has been pressed.
 " Currently used for the formatOnType feature.
@@ -284,7 +288,7 @@ set sidescrolloff=5
 set display+=lastline
 set hidden
 set gdefault
-set fileformat=unix
+" set fileformat=unix
 
 " Magic to make autoread actually work
 " Trigger autoread when changing buffers while inside vim:
@@ -319,13 +323,13 @@ augroup filetypes
   autocmd Filetype groovy                setlocal makeprg=./gradlew\ test
   autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
   autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
-  autocmd FileType json                  nnoremap <buffer> <leader>ff :%!python -m json.tool<cr>
-  autocmd FileType xml                   nnoremap <buffer> <leader>ff :%!xmllint --format -<cr>
-  autocmd FileType scala                 nnoremap <buffer> <leader>ff :Neoformat<cr>
-  autocmd FileType typescript            nnoremap <buffer> <leader>ff :Neoformat<cr>
+  autocmd FileType json                  nnoremap <buffer> <leader>f :%!python -m json.tool<cr>
+  autocmd FileType xml                   nnoremap <buffer> <leader>f :%!xmllint --format -<cr>
+  autocmd FileType scala                 nnoremap <buffer> <leader>f :Neoformat<cr>
+  autocmd FileType typescript            nnoremap <buffer> <leader>f :Neoformat<cr>
   autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
-  autocmd FileType python                nnoremap <buffer> <leader>ff :Neoformat<cr>
-  autocmd FileType clojure               nnoremap <buffer> <leader>ff :!lein cljfmt fix %<cr>
+  autocmd FileType python                nnoremap <buffer> <leader>f :Neoformat<cr>
+  autocmd FileType clojure               nnoremap <buffer> <leader>f :!lein cljfmt fix %<cr>
   autocmd FileType fish compiler fish
   " Set this to have long lines wrap inside comments.
   autocmd FileType fish                  setlocal textwidth=79
@@ -403,7 +407,7 @@ nnoremap <leader><leader> <C-^>
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>k :NERDTreeFind<CR>
 nnoremap <leader>q :NERDTreeClose<CR>:q<CR>
-nnoremap <leader>b :bdelete<CR>
+nnoremap <leader>bd :bdelete<CR>
 
 " Increment / Decrement numbers
 nnoremap <A-a> <C-a>
@@ -446,7 +450,7 @@ vnoremap C "*C
 nnoremap C "*C
 nnoremap d "*d
 vnoremap d "*d
-nnoremap <leader>fp           olog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
+nnoremap <leader>cp           olog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
 
 " noremap <down>   <c-w>+
 " noremap <up>     <c-w>-
@@ -465,9 +469,9 @@ nnoremap <leader>Qr :!./%<CR>
 
 nnoremap <s-l> :bnext<cr>
 nnoremap <s-h> :bprevious<cr>
-nnoremap <leader>l :ls<cr>
-nnoremap <leader>s :sp<cr>
-nnoremap <leader>t :vs<cr>
+nnoremap <leader>bl :ls<cr>
+nnoremap <leader>bs :sp<cr>
+nnoremap <leader>bt :vs<cr>
 nnoremap <tab> :tabn<cr>
 " the tab mapping avove ruins <c-i>, why?
 nnoremap <c-i> <c-i>
