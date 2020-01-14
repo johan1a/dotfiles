@@ -11,8 +11,7 @@ endif
 
 set nocompatible              " Don't emulate vi
 
-
-" The has('nvim') check does not work
+" The has('wsl') check does not work
 function! IsWsl()
   let versionString = system("cat /proc/version")
   return versionString =~ "Microsoft"
@@ -33,6 +32,7 @@ if has('nvim')
     Plug 'Shougo/deoplete.nvim'
     Plug 'zchee/deoplete-jedi'
     Plug 'SirVer/ultisnips'
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   endif
 
   Plug 'sbdchd/neoformat'
@@ -403,6 +403,8 @@ nnoremap <c-n> :lnext<cr>
 
 " Go to alternate file
 nnoremap <leader><leader> <C-^>
+
+nnoremap <C-W> :w<CR>
 
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>k :NERDTreeFind<CR>
