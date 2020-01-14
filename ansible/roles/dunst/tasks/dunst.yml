@@ -1,0 +1,15 @@
+
+  - name: Install dunst
+    command: yay -S dunst --noconfirm --needed
+
+  - name: Ensure dunst config dir exists
+    file:
+      path: "{{ user_home }}/.config/dunst"
+      state: directory
+
+  - name: Link dunst config
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/dunst/files/dunstrc"
+          "{{ user_home }}/.config/dunst/dunstrc"
+

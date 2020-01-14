@@ -30,6 +30,7 @@
       - leiningen
       - xinitrc
       - i3-gaps
+      - dunst
       - cups
       - language_servers
       - virtualbox
