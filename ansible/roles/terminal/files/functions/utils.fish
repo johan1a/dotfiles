@@ -521,3 +521,9 @@ end
 function dunst_base16
   curl https://raw.githubusercontent.com/khamer/base16-dunst/master/themes/$argv.dunstrc >> $XDG_CONFIG_HOME/dunst/dunstrc
 end
+
+function take_screenshot
+  mkdir -p ~/pictures/screenshots/
+  scrot -e 'mv $f ~/pictures/screenshots/'
+  notify-send "Took a screenshot!"
+end
