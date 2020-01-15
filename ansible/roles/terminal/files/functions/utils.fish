@@ -517,3 +517,7 @@ function kl
   end
   kubectl get pods | grep $argv[1] | head -n 1 | awk '{print $1}' | xargs kubectl logs -f
 end
+
+function dunst_base16
+  curl https://raw.githubusercontent.com/khamer/base16-dunst/master/themes/$argv.dunstrc >> $XDG_CONFIG_HOME/dunst/dunstrc
+end
