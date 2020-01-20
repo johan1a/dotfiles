@@ -527,3 +527,8 @@ function take_screenshot
   scrot -e 'mv $f ~/pictures/screenshots/'
   notify-send "Took a screenshot!"
 end
+
+function generate_application_secret
+  head -c 32 /dev/urandom | base64
+end
+
