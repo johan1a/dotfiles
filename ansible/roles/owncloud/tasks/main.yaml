@@ -1,0 +1,9 @@
+
+  - name: Link documents directory
+    script: >
+          scripts/install_dotfile
+          "{{ user_home }}/ownCloud/documents"
+          "{{ user_home }}/documents"
+    tags:
+      - owncloud
+
