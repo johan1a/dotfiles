@@ -23,6 +23,7 @@
       - pygments
       - ruby
       - neovim
+      - taskwarrior
       - ncmpcpp
       - kubernetes
       - java
