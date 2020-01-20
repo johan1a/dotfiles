@@ -7,3 +7,13 @@
     when: arch
     tags: utils
 
+  - name: Link executables to ~/.local/bin
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/utils/files/bin/{{ item }}"
+          "{{ user_home }}/.local/bin/{{ item }}"
+          --executable
+    with_items:
+      - background-notify
+    tags: utils
+
