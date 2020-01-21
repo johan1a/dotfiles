@@ -27,20 +27,19 @@ call plug#begin()
 
 if has('nvim')
   if !IsWsl()
-    Plug 'derekwyatt/vim-scala'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'Shougo/deoplete.nvim'
     Plug 'zchee/deoplete-jedi'
     Plug 'SirVer/ultisnips'
     Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   endif
 
+  Plug 'derekwyatt/vim-scala'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'sbdchd/neoformat'
 endif
 
 if !IsWsl()
   Plug 'artur-shaik/vim-javacomplete2'
-  Plug 'dkprice/vim-easygrep'
   Plug 'honza/vim-snippets'
   Plug 'jreybert/vimagit'
   Plug 'tpope/vim-dispatch'
@@ -50,6 +49,7 @@ if !IsWsl()
   Plug 'venantius/vim-cljfmt'
 endif
 
+Plug 'dkprice/vim-easygrep'
 Plug 'airblade/vim-gitgutter'
 Plug 'bkad/CamelCaseMotion'
 Plug 'chriskempson/base16-vim'
