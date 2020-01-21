@@ -45,10 +45,10 @@ if !IsWsl()
   Plug 'tpope/vim-dispatch'
   Plug 'tpope/vim-fireplace'
   Plug 'udalov/kotlin-vim'
-  Plug 'vimwiki/vimwiki'
   Plug 'venantius/vim-cljfmt'
 endif
 
+Plug 'vimwiki/vimwiki'
 Plug 'dkprice/vim-easygrep'
 Plug 'airblade/vim-gitgutter'
 Plug 'bkad/CamelCaseMotion'
