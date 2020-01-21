@@ -6,4 +6,5 @@
           "{{ user_home }}/documents"
     tags:
       - owncloud
+    when: not wsl
 
