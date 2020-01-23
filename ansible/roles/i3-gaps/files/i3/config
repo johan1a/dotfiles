@@ -17,6 +17,7 @@
 exec --no-startup-id /usr/bin/pa-applet
 exec --no-startup-id i3-msg workspace $wp1
 exec --no-startup-id redshift -b 0.7 -l 55.681311:12.577553 &> /dev/null &
+exec --no-startup-id owncloud &> /dev/null &
 exec --no-startup-id udiskie &> /dev/null &
 exec --no-startup-id exec bash $HOME/.fehbg
 exec_always --no-startup-id ~/.local/bin/polybar.sh &
