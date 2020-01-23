@@ -12,8 +12,8 @@
      ci: "{{ lookup('env', 'CI') or lookup('env', 'ci') }}"
      debian: "{{ ansible_os_family == 'Debian' }}"
      arch: "{{ ansible_os_family == 'Archlinux' }}"
-     is_vm: cpuinfo | search('hypervisor') |bool
-     wsl: version is search('Microsoft') |bool
+     is_vm: (cpuinfo | search('hypervisor'))|bool
+     wsl: (version is search('Microsoft'))|bool
    tags:
      - always
 

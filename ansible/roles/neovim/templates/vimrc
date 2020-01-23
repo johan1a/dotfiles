@@ -50,6 +50,7 @@ endif
 
 Plug 'vimwiki/vimwiki'
 Plug 'dkprice/vim-easygrep'
+"Plug 'ianks/vim-tsx'
 Plug 'airblade/vim-gitgutter'
 Plug 'bkad/CamelCaseMotion'
 Plug 'chriskempson/base16-vim'
@@ -209,6 +210,8 @@ nnoremap <silent> <space>cp  :<C-u>CocListResume<CR>
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+
 " =========== Vimwiki ===========
 
 let g:vimwiki_list = [{'path': '~/vimwiki/',
@@ -336,6 +339,8 @@ augroup filetypes
   autocmd Filetype groovy                setlocal tabstop=4 shiftwidth=4
   autocmd FileType haskell               setlocal tabstop=4
   autocmd Filetype yaml                  setlocal cursorcolumn
+  autocmd Filetype ts                    setlocal filetype=typescript
+  autocmd Filetype tsx                   setlocal filetype=typescript.tsx
 augroup END
 
 
