@@ -34,7 +34,7 @@ if has('nvim')
   endif
 
   Plug 'derekwyatt/vim-scala'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'} " branch release makes the start text disappear, irritating!
   Plug 'sbdchd/neoformat'
 endif
 
