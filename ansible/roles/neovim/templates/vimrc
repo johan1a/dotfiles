@@ -50,7 +50,7 @@ endif
 
 Plug 'vimwiki/vimwiki'
 Plug 'dkprice/vim-easygrep'
-"Plug 'ianks/vim-tsx'
+Plug 'ianks/vim-tsx'
 Plug 'airblade/vim-gitgutter'
 Plug 'bkad/CamelCaseMotion'
 Plug 'chriskempson/base16-vim'
@@ -263,9 +263,9 @@ sunmap ge
 " =========== unimpaired-vim ===========
 
 nmap <c-up>   [e
-nmap <c-down> ]e
+nmap <c-d> ]e
 vmap <c-up>   [egv
-vmap <c-down> ]egv
+vmap <c-d> ]egv
 
 " =========== vim-sneak ===========
 
@@ -459,7 +459,7 @@ nnoremap d "*d
 vnoremap d "*d
 nnoremap <leader>cp           olog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
 
-" noremap <down>   <c-w>+
+" noremap <d>   <c-w>+
 " noremap <up>     <c-w>-
 noremap <left>  5<c-w><
 noremap <right> 5<c-w>>
