@@ -1,10 +1,13 @@
 
-  - name: Link documents directory
+  - name: Link directories
     script: >
           scripts/install_dotfile
-          "{{ user_home }}/ownCloud/documents"
-          "{{ user_home }}/documents"
+          "{{ user_home }}/ownCloud/{{ item }}"
+          "{{ user_home }}/{{ item }}"
     tags:
       - owncloud
+    with_items:
+      - documents
+      - vimwiki
     when: not wsl
 
