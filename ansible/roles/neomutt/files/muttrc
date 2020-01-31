@@ -11,15 +11,8 @@ set folder=~/.mail/
 source ~/.mutt/mailboxes
 
 # Maildir
-set folder=~/.mail/gmail              # the default location of your mailboxes.
-set mbox = +/Inbox
-set spoolfile=+/Inbox                 # The folder where your (unfiltered) e-mail arrives.
-set postponed =+/Utkast
-set record=+/S&AOQ-nt
-set mbox=+/Archive                    # the folder into which read mail in your `` $spoolfile'' folder will be appended.
-set trash = +/Papperskorg
-# Any IMAP folders that should be checked regularly for new mail should be listed here:
-mailboxes =Inbox ='S&AOQ-nt' ='circle ci' ='Dev mailing lists' =Utkast =Papperskorg
+set folder=~/.mail/                      #the default location of your mailboxes.
+set virtual_spoolfile=yes
 
 set sidebar_visible = no
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
@@ -44,7 +37,7 @@ unset imap_passive
 set imap_keepalive = 300
 
 # How often to check for new mail (time in seconds).
-set mail_check = 120
+set mail_check = 60
 
 
 set record = +Sent
@@ -62,8 +55,6 @@ set smtp_url=smtps://$imap_user@smtp.gmail.com:465/
 set ssl_force_tls = yes
 
 set sort = reverse-date-received
-
-set virtual_spoolfile=yes
 
 # Automatically feed HTML emails through elinks, but only if there is no
 # alternative.
