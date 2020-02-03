@@ -49,6 +49,7 @@ set sort_aux=last-date-received
 set realname = 'Johan Andersson'
 set from = $imap_user
 set use_from = yes
+set send_charset="utf-8"
 
 #set smtp_url=smtps://$imap_user:$imap_pass@smtp.gmail.com:465/
 set smtp_url=smtps://$imap_user@smtp.gmail.com:465/
