@@ -263,9 +263,9 @@ sunmap ge
 " =========== unimpaired-vim ===========
 
 nmap <c-up>   [e
-"nmap <c-d> ]e
+" nmap <c-d> ]e
 vmap <c-up>   [egv
-"vmap <c-d> ]egv
+" vmap <c-d> ]egv
 
 " =========== vim-sneak ===========
 
