@@ -532,7 +532,6 @@ function generate_application_secret
   head -c 32 /dev/urandom | base64
 end
 
-
 function week
   date +%V
 end
