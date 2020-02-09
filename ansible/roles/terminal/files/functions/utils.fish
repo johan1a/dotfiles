@@ -535,3 +535,7 @@ end
 function week
   date +%V
 end
+
+function translate
+  ~/dev/translate/translate $argv
+end
