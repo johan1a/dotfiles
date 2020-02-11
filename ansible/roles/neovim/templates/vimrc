@@ -398,6 +398,9 @@ set showcmd
 " |_|\_\___|\__, | |_| |_| |_|\__,_| .__/|___/
  "          |___/                  |_|
 
+" Copy buffer
+nnoremap <leader>x :!xclip %<cr>
+
 " Jump to tag under cursor
 nnoremap <leader>i <C-]>zz
 
