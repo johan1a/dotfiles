@@ -186,8 +186,7 @@ function pull-dir
 end
 
 function wait-for-jobs
-  echo "wait-for-jobs is broken"
-  #while fg ^| grep -qv "There are no suitable jobs"; end
+  while fg | grep -qv "There are no suitable jobs"; end
 end
 
 function get-nbr-children
