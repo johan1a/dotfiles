@@ -131,6 +131,8 @@
       - gotop-bin
       - metals
       - scalafmt
+      - libffado
+      - cadence
         #      - translate-shell
       # - google-chrome
         #      - stack-bin
