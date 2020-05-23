@@ -4,6 +4,7 @@ set -x ANSIBLE_NOCOWS 1
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set -x BROWSER google-chrome-stable
+set -x WINEARCH win32
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DESKTOP_DIR="$HOME/"

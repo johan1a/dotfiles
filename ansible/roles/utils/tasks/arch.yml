@@ -133,6 +133,7 @@
       - scalafmt
       - libffado
       - cadence
+      - lib32-libpulse
         #      - translate-shell
       # - google-chrome
         #      - stack-bin
