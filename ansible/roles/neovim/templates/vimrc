@@ -399,7 +399,7 @@ set showcmd
  "          |___/                  |_|
 
 " Copy buffer
-nnoremap <leader>x :!xclip %<cr>
+nnoremap <leader>x :!xclip -selection clipboard %<cr>
 
 " Jump to tag under cursor
 nnoremap <leader>i <C-]>zz
