@@ -1,10 +1,18 @@
 
-  - blockinfile:
+  - name: Enable archlinuxfr
+    blockinfile:
       path: /etc/pacman.conf
       block: |
         [archlinuxfr]
         SigLevel = Never
         Server = http://repo.archlinux.fr/x86_64
+
+  - name: Enable multilib repository
+    blockinfile:
+      path: /etc/pacman.conf
+      block: |
+        [multilib]
+        Include = /etc/pacman.d/mirrorlist
 
   - command: pacman -Syu
 
