@@ -115,7 +115,7 @@
       owner: "{{ username }}"
 
   - name: Set default jdk
-    command: archlinux-java set java-13-openjdk
+    command: archlinux-java set java-14-openjdk
 
   - name: Install misc yay packages...
     command: yay -S {{ item }} --noconfirm --needed
