@@ -120,6 +120,7 @@
   - name: Install misc yay packages...
     command: yay -S {{ item }} --noconfirm --needed
     with_items:
+      - jack2
       - groovy
       - grails
       - gradle
@@ -142,7 +143,6 @@
       - libffado
       - cadence
       - lib32-libpulse
-      - jack2
       - python-dbus
       - cadence
       - carla
