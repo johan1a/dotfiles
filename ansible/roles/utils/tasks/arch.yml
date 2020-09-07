@@ -142,6 +142,13 @@
       - libffado
       - cadence
       - lib32-libpulse
+      - jack2
+      - python-dbus
+      - cadence
+      - carla
+      - qjackctl
+      - pulseaudio-jack
+      - linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
         #      - translate-shell
       # - google-chrome
         #      - stack-bin
