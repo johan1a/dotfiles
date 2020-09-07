@@ -120,7 +120,7 @@
   - name: Install misc yay packages...
     command: yay -S {{ item }} --noconfirm --needed
     with_items:
-      - jack2
+      # - jack2
       - groovy
       - grails
       - gradle
