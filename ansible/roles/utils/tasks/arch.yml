@@ -158,6 +158,15 @@
     when: not ci
     failed_when: false
 
+  - name: Add scripts
+    script: >
+          scripts/install_dotfile
+          "{{ dotfiles_dir }}/ansible/roles/utils/files/{{ item }}"
+          "{{ user_home }}/.local/bin/{{ item }}"
+          --executable
+    with_items:
+      - stomp_start_jack
+
   - name: Check for a wallpaper
     stat:
       path: "{{ user_home }}/.fehbg"
