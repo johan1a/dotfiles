@@ -449,6 +449,14 @@ function kp
   kubectl get pods $argv
 end
 
+function ks
+  kubectl get svc $argv
+end
+
+function kd
+  kubectl get deploy $argv
+end
+
 function l
   ls -alF $argv
 end
