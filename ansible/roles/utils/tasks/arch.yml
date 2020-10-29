@@ -158,6 +158,7 @@
     become_user: "{{ username }}"
     environment:
       COURSIER_CACHE: ".coursier-cache"
+    failed_when: false
 
   - service:
       name: cronie
