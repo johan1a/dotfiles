@@ -2,6 +2,4 @@
   - include: debian.yml
     when: not lookup('env', 'Vagrant') and debian
 
-  - include: ctags.yml
-
   - include: config.yml

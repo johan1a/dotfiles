@@ -149,6 +149,7 @@
       - qjackctl
       - pulseaudio-jack
       - linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
+      - universal-ctags-git
         #      - translate-shell
       # - google-chrome
         #      - stack-bin
