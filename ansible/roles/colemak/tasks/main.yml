@@ -7,7 +7,7 @@
     tags: colemak
 
   - name: Switching to colemak
-    command: setxkbmap colemaknordic
+    command: setxkbmap colemaknordic -option altwin:swap_lalt_lwin -option caps:super
     when: arch and not lookup('env', 'Vagrant')
     failed_when: false
     tags: colemak
