@@ -509,6 +509,9 @@ nnoremap <leader>ms :SudoWrite<cr>
 
 nnoremap <leader>1 :!
 
+ "Decrease number
+nnoremap <C-c> <C-x>
+
 set cedit=<ESC>
 
 if filereadable(glob("~/.vimrc.local"))
