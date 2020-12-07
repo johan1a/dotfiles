@@ -547,3 +547,7 @@ end
 function translate
   ~/dev/translate/translate $argv
 end
+
+function scalafmt-changed-files
+  git status --short | awk '{print $2}' | xargs scalafmt
+end
