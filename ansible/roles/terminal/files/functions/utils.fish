@@ -551,3 +551,8 @@ end
 function scalafmt-changed-files
   git status --short | awk '{print $2}' | xargs scalafmt
 end
+
+function k8s-images
+  kubectl -n "$argv" get pods -o jsonpath='{.items[*].spec.containers[*].image}' | tr -s '[[:space:]]' '\n' | sort
+end
+
