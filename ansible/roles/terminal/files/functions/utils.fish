@@ -556,3 +556,10 @@ function k8s-images
   kubectl -n "$argv" get pods -o jsonpath='{.items[*].spec.containers[*].image}' | tr -s '[[:space:]]' '\n' | sort
 end
 
+function bluetooth-volume-up
+  dbus-send --print-reply --system --dest=org.bluez /org/bluez/hci0/dev_38_18_4C_BC_F1_AA  org.bluez.MediaControl1.VolumeUp
+end
+
+function bluetooth-volume-down
+  dbus-send --print-reply --system --dest=org.bluez /org/bluez/hci0/dev_38_18_4C_BC_F1_AA  org.bluez.MediaControl1.VolumeDown
+end
