@@ -545,7 +545,10 @@ function week
 end
 
 function translate
-  cd ~/dev/translate && pipenv run python translate $argv
+  pushd .
+  cd ~/dev/translate
+  pipenv run python translate $argv
+  popd
 end
 
 function scalafmt-changed-files
