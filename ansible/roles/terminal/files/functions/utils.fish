@@ -566,3 +566,7 @@ end
 function bluetooth-volume-down
   dbus-send --print-reply --system --dest=org.bluez /org/bluez/hci0/dev_38_18_4C_BC_F1_AA  org.bluez.MediaControl1.VolumeDown
 end
+
+function x
+  xdg-open $argv
+end
