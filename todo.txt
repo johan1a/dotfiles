@@ -5,3 +5,8 @@ sudo apt install libconfig8-dev libgl1-mesa-dev asciidoc
 https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 
 systemctl enable systemd-timesyncd
+
+xdg-mime default google-chrome.desktop text/html
+xdg-mime default google-chrome.desktop x-scheme-handler/http
+xdg-mime default google-chrome.desktop x-scheme-handler/https
+xdg-mime default google-chrome.desktop x-scheme-handler/about
