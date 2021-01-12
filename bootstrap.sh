@@ -17,7 +17,11 @@ if [[ "${OS}" == *"Ubuntu"* ]] ; then
   pip install --user ansible
 elif [[ "${OS}" == *"Arch Linux"* ]] ; then
   echo $PASSWORD | sudo -S pacman -Syu --noconfirm --needed
-  echo $PASSWORD | sudo -S pacman -S gcc python-pip ansible --noconfirm --needed
+  echo $PASSWORD | sudo -S pacman -S gcc leiningen python-pip ansible --noconfirm --needed
 fi
+
+cd tfconfig
+lein run
+cd ..
 
 ansible-playbook -e "ansible_become_pass=$PASSWORD" ansible/bootstrap.yml -i ansible/hosts.ini --become
