@@ -116,6 +116,7 @@
 
   - name: Set default jdk
     command: archlinux-java set java-14-openjdk
+    failed_when: false
 
   - name: Install misc yay packages...
     command: yay -S {{ item }} --noconfirm --needed
