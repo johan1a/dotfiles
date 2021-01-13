@@ -8,7 +8,8 @@
 ; when not ci
 (defn reload-gpg-agent
   [context changes]
-  (command "gpg-connect-agent" ["reloadagent" "/bye"] context))
+  (when-not (:ci context)
+    (command "gpg-connect-agent" ["reloadagent" "/bye"] context)))
 
 (defn run
   [context]

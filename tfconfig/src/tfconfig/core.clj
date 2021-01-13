@@ -39,7 +39,8 @@
                  :verbose (some #(= "--verbose" %) args)
                  :username user
                  :changes changes
-                 :throw-errors true}]
+                 :throw-errors true
+                 :ci (System/getenv "CI")}]
     (if password
       (do
         (aur/run context)
