@@ -7,9 +7,10 @@
   (let [desired-state (:state context)
         owner (:owner context)
         src (:src context)
-        is-dir (= 0 (:code (command "test" ["-d" path] context)))
-        is-file (= 0 (:code (command "test" ["-f" path] context)))
-        is-link (= 0 (:code (command "test" ["-L" path] context)))]
+        disabled-errors-context (assoc context :throw-errors false)
+        is-dir (= 0 (:code (command "test" ["-d" path] disabled-errors-context)))
+        is-file (= 0 (:code (command "test" ["-f" path] disabled-errors-context)))
+        is-link (= 0 (:code (command "test" ["-L" path] disabled-errors-context)))]
     (do
       (when (and (= desired-state "dir") (not is-dir))
         (do

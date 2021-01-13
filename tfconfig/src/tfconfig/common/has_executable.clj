@@ -2,7 +2,8 @@
   (:require [tfconfig.common.command :refer :all]))
 
 (defn has-executable?
-  [executable]
-  (let [result (command "which" [executable] {})
+  [context executable]
+  (let [disabled-errors-context (assoc context :throw-errors false)
+        result (command "which" [executable] disabled-errors-context)
         exit-code (:code result)]
     (= exit-code 0)))

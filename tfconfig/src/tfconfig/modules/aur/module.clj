@@ -14,7 +14,7 @@
 
 (defn install-paru
   [context sources-dir password]
-  (when-not (has-executable? "paru")
+  (when-not (has-executable? context "paru")
     (println "Installing paru")
     (let [base-dir (str sources-dir "paru")]
       (do

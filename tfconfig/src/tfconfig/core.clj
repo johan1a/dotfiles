@@ -38,7 +38,8 @@
                  :password password
                  :verbose (some #(= "--verbose" %) args)
                  :username user
-                 :changes changes}]
+                 :changes changes
+                 :throw-errors true}]
     (if password
       (do
         (aur/run context)

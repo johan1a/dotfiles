@@ -59,7 +59,7 @@
         stderr-callback (partial err-callback options (:sudo-prompt options) (:password options))]
     (run-proc new-options "sudo" ["-S" "true"] (partial out-callback options) stderr-callback)))
 
-(defn run-with-password
+(defn command
   [cmd args options]
   (log options cmd args)
   (let [sudo-prompt "thesudoprompt"
@@ -71,8 +71,7 @@
         new-args (if sudo (concat ["-S" cmd] args) args)]
     (if (:pre-auth options)
       (pre-auth new-options))
-    (run-proc new-options2 new-cmd new-args (partial out-callback options) (partial err-callback options sudo-prompt password))))
-
-(defn command
-  [command args options]
-  (run-with-password command args options))
+    (let [result (run-proc new-options2 new-cmd new-args (partial out-callback options) (partial err-callback options sudo-prompt password))]
+      (if (or (= 0 (:code result)) (not (:throw-errors options)))
+        result
+        (throw (ex-info (str "Error: command failed: " cmd " " args) result))))))
