@@ -18,6 +18,7 @@
                  :sources-dir "/home/johan/source/"
                  :password password
                  :verbose (some #(= "--verbose" %) args)
+                 :username "johan"
                  }]
     (if password
       (do

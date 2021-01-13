@@ -63,13 +63,21 @@
 
 (defn run-with-password
   [cmd args options]
-  (log cmd args)
+  (println options)
+  (log options cmd args)
   (let [sudo-prompt "thesudoprompt"
+        sudo (:sudo options)
         password (:password options)
-        new-options (assoc options :sudo-prompt sudo-prompt)]
+        new-options (assoc options :sudo-prompt sudo-prompt)
+        new-options2 (if sudo (assoc new-options :input password) new-options)
+        new-cmd (if sudo "sudo" cmd)
+        new-args (if sudo (first (concat ["-S" cmd] args)) args)
+        x (log options new-cmd)
+        y (log options new-args)
+        ]
     (if (:pre-auth options)
       (pre-auth new-options))
-    (run-proc new-options cmd args (partial out-callback options) (partial err-callback options sudo-prompt password))))
+    (run-proc new-options2 new-cmd new-args (partial out-callback options) (partial err-callback options sudo-prompt password))))
 
 (defn command
   [command args options]

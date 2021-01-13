@@ -4,9 +4,13 @@
 (defn file
   [dir options]
   (let [desired-state (:state options)
+        owner (:owner options)
         is-dir (= 0 (:code (command "stat" ["-d" dir] {})))
-        is-file (= 0 (:code (command "stat" ["-f" dir] {})))]
+        is-file (= 0 (:code (command "stat" ["-f" dir] {})))
+        ]
     (when (and (= desired-state "dir") (not is-dir))
-      (do
         (println (str "Creating directory: " dir)
-        (command "mkdir" ["-p" dir] {}))))))
+        (command "mkdir" ["-p" dir] {:sudo true :verbose (:verbose options)})))
+    (when owner
+      (println (str "Setting owner to: " owner " for directory: " dir)
+      (command "chown" [owner dir] {:sudo true :verbose (:verbose options)}))))
