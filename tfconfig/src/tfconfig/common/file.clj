@@ -10,7 +10,7 @@
         ]
     (when (and (= desired-state "dir") (not is-dir))
         (println (str "Creating directory: " dir)
-        (command "mkdir" ["-p" dir] {:sudo true :verbose (:verbose options)})))
+        (command "mkdir" ["-p" dir] (assoc options :sudo true))))
     (when owner
       (println (str "Setting owner to: " owner " for directory: " dir)
-      (command "chown" [owner dir] {:sudo true :verbose (:verbose options)})))))
+      (command "chown" [owner dir] (assoc options :sudo true))))))

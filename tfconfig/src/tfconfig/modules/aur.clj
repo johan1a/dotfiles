@@ -13,7 +13,7 @@
       (file sources-dir (assoc context :state "dir" :owner "johan:")
       (command "rm" ["-rf" base-dir] context)
       (command "git" ["clone" "https://aur.archlinux.org/paru.git" base-dir] context)
-      (command "makepkg" ["-si" "--noconfirm"] (assoc context :dir base-dir :pre-auth true)))))
+      (command "makepkg" ["-si" "--noconfirm"] (assoc context :dir base-dir :pre-auth true))))))
 
 (defn install-aur-package
   [context package password]
