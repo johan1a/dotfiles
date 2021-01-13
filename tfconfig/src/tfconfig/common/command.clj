@@ -71,9 +71,9 @@
         new-options (assoc options :sudo-prompt sudo-prompt)
         new-options2 (if sudo (assoc new-options :input password) new-options)
         new-cmd (if sudo "sudo" cmd)
-        new-args (if sudo (first (concat ["-S" cmd] args)) args)
-        x (log options new-cmd)
-        y (log options new-args)
+        new-args (if sudo (concat ["-S" cmd] args) args)
+        x (log options "new-cmd: " new-cmd)
+        y (log options "new-args: " new-args)
         ]
     (if (:pre-auth options)
       (pre-auth new-options))

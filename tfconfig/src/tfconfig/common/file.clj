@@ -3,6 +3,7 @@
 
 (defn file
   [dir options]
+  (println "file")
   (let [desired-state (:state options)
         owner (:owner options)
         is-dir (= 0 (:code (command "test" ["-d" dir] options)))
