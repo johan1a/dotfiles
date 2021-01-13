@@ -2,10 +2,17 @@
   (:require [tfconfig.modules.aur :as aur])
   (:gen-class))
 
+
+(defn get-password
+  [args]
+  (if args
+    (let [i (.indexOf args "--password")]
+      (if-not (= i -1)
+        (nth args (+ i 1))))))
+
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (let [password (first args)
+  (let [password (get-password args)
         context {
                  :root-dir "/home/johan/dotfiles/"
                  :sources-dir "/home/johan/source/"
@@ -18,4 +25,4 @@
         (aur/run context)
         (println "Done!")
         (shutdown-agents))
-      (println "No password supplied"))))
+      (println "No password specified"))))

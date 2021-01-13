@@ -21,7 +21,7 @@ elif [[ "${OS}" == *"Arch Linux"* ]] ; then
 fi
 
 cd tfconfig
-lein run $PASSWORD --verbose
+lein run --password $PASSWORD --verbose
 cd ..
 
 ansible-playbook -e "ansible_become_pass=$PASSWORD" ansible/bootstrap.yml -i ansible/hosts.ini --become

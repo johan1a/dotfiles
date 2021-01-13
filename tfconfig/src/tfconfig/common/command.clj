@@ -40,14 +40,14 @@
   [context stdout stdin]
     (loop []
       (when-let [line (.readLine ^java.io.BufferedReader stdout)]
-        (log context line); (println (str "stdout: " line))
+        (log context (str "stdin: " line) line)
         (recur))))
 
 (defn err-callback
   [context sudo-prompt password stderr stdin]
     (loop []
       (when-let [line (.readLine ^java.io.BufferedReader stderr)]
-        (log context line)
+        (log context (str "stderr: " line))
           ; (println (str "stderr: " line))
            ; (when (clojure.string/includes? line sudo-prompt)
            ;  (println "writing" )
