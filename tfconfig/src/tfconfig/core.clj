@@ -8,6 +8,7 @@
   (let [context {
                  :root-dir "/home/johan/dotfiles/"
                  :sources-dir "/home/johan/source/"
+                 :password (first args)
                  }]
     (println "Configuring...")
     (aur/run context)
