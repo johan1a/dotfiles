@@ -10,6 +10,7 @@
                  :root-dir "/home/johan/dotfiles/"
                  :sources-dir "/home/johan/source/"
                  :password password
+                 :verbose (some #(= "--verbose" %) args)
                  }]
     (if password
       (do

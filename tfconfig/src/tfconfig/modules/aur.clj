@@ -7,6 +7,7 @@
 (defn install-paru
   [sources-dir password]
   (when-not (has-executable? "paru")
+    (println "Installing paru")
     (let [base-dir (str sources-dir "paru")]
       (command "rm" ["-rf" base-dir] {})
       (command "git" ["clone" "https://aur.archlinux.org/paru.git" base-dir] {})
@@ -14,9 +15,9 @@
       )))
 
 (defn install-aur-package
-  [package password]
+  [context package password]
   (println (str "Installing " package))
-  (command "paru" ["-S" package "--noconfirm" "--needed" "--sudoloop"] {:pre-auth true :password password}))
+  (command "paru" ["-S" package "--noconfirm" "--needed" "--sudoloop"] {:pre-auth true :password password :verbose (:verbose context)}))
 
 (defn run
   "Install an AUR helper and useful packages"
@@ -24,4 +25,4 @@
   (do
     (println "Installing AUR packages")
     (install-paru (:sources-dir context) (:password context))
-    (dorun (map #(install-aur-package % (:password context)) packages))))
+    (dorun (map #(install-aur-package context % (:password context)) packages))))
