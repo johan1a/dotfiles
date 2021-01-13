@@ -23,7 +23,7 @@ fi
 which which
 
 cd tfconfig
-lein run --password $PASSWORD --verbose
+lein run --password $PASSWORD --user $USER --verbose
 cd ..
 
 ansible-playbook -e "ansible_become_pass=$PASSWORD" ansible/bootstrap.yml -i ansible/hosts.ini --become
