@@ -13,4 +13,4 @@
         (command "mkdir" ["-p" dir] {:sudo true :verbose (:verbose options)})))
     (when owner
       (println (str "Setting owner to: " owner " for directory: " dir)
-      (command "chown" [owner dir] {:sudo true :verbose (:verbose options)}))))
+      (command "chown" [owner dir] {:sudo true :verbose (:verbose options)})))))
