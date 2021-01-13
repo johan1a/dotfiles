@@ -3,6 +3,7 @@
 
 (defn has-executable?
   [executable]
+  (println (str "has-executable?" executable))
   (let [result (shell/sh "which" executable)
         exit-code (:exit result)]
     (= exit-code 0)))

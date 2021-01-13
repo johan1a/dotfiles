@@ -7,6 +7,7 @@
 
 (defn install-paru
   [sources-dir password]
+  (println "Installing paru, before check")
   (when-not (has-executable? "paru")
     (println "Installing paru")
     (let [base-dir (str sources-dir "paru")]
