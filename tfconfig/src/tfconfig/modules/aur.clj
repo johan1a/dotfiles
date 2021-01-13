@@ -1,5 +1,6 @@
 (ns tfconfig.modules.aur
   (:require [tfconfig.common.command :refer :all])
+  (:require [tfconfig.common.file :refer :all])
   (:require [tfconfig.common.has-executable :refer :all]))
 
 (def packages ["figlet" "cowsay"])
@@ -9,6 +10,7 @@
   (when-not (has-executable? "paru")
     (println "Installing paru")
     (let [base-dir (str sources-dir "paru")]
+      (file sources-dir {:state "dir"})
       (command "rm" ["-rf" base-dir] {})
       (command "git" ["clone" "https://aur.archlinux.org/paru.git" base-dir] {})
       (command "makepkg" ["-si" "--noconfirm"] {:dir base-dir :pre-auth true :password password})

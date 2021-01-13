@@ -1,8 +1,6 @@
 (ns tfconfig.common.command
   (:require [clojure.java.shell :as shell]
-            [clojure.java.io :as io]
-            [me.raynes.conch :refer [programs with-programs let-programs] :as conch])
-  (:use [clojure.java.io :only (as-file)])
+            [clojure.java.io :as io])
   (:import (java.io InputStreamReader OutputStreamWriter)))
 
 
@@ -29,12 +27,14 @@
             (do
               (.write stdin (str input "\n"))
               (.flush stdin)))
-            (let [
-                  stderr-future (future (stderr-callback stderr stdin))
+            (let [stderr-future (future (stderr-callback stderr stdin))
                   stdout-future (future (stdout-callback stdout stdin))
                   stderr-result (deref stderr-future)
                   stdout-result (deref stdout-future)
-                  ]))))))
+                  ]
+              (do
+                (.waitFor process)
+                {:code (.exitValue process)})))))))
 
 (defn out-callback
   [context stdout stdin]
