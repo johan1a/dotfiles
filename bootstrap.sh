@@ -20,8 +20,6 @@ elif [[ "${OS}" == *"Arch Linux"* ]] ; then
   echo $PASSWORD | sudo -S pacman -S gcc which leiningen python-pip ansible --noconfirm --needed
 fi
 
-which which
-
 cd tfconfig
 lein run --password $PASSWORD --user $USER --verbose
 cd ..
