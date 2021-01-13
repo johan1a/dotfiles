@@ -1,4 +1,4 @@
-(ns tfconfig.modules.aur
+(ns tfconfig.modules.aur.module
   (:require [tfconfig.common.command :refer :all])
   (:require [tfconfig.common.file :refer :all])
   (:require [tfconfig.common.pacman :refer :all])
@@ -20,7 +20,6 @@
       (do
         (dorun (install-dependencies context))
         (dorun (file sources-dir (assoc context :state "dir" :owner (str (:username context) ":"))))
-        (command "ls" ["-lah" sources-dir] context)
         (command "rm" ["-rf" base-dir] context)
         (command "git" ["clone" "https://aur.archlinux.org/paru.git" base-dir] context)
         (command "makepkg" ["-si" "--noconfirm"] (assoc context :dir base-dir :pre-auth true))))))

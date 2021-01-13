@@ -1,18 +1,36 @@
 (ns tfconfig.common.file
   (:require [tfconfig.common.command :refer :all]))
 
+(defn notify
+  [context event]
+  (let [changes (:changes context)
+        change-ref (:change-ref context)]
+    (swap! changes
+           (fn [current-state]
+             (println current-state)
+             (update-in current-state [change-ref] #(conj % event))))))
+
 (defn file
-  [dir options]
-  (println "file")
-  (let [desired-state (:state options)
-        owner (:owner options)
-        is-dir (= 0 (:code (command "test" ["-d" dir] options)))
-        is-file (= 0 (:code (command "test" ["-f" dir] options)))
-        ]
+  [path context]
+  (let [desired-state (:state context)
+        owner (:owner context)
+        src (:src context)
+        is-dir (= 0 (:code (command "test" ["-d" path] context)))
+        is-file (= 0 (:code (command "test" ["-f" path] context)))
+        is-link (= 0 (:code (command "test" ["-L" path] context)))]
     (do
       (when (and (= desired-state "dir") (not is-dir))
-          (println (str "Creating directory: " dir)
-          (command "mkdir" ["-p" dir] (assoc options :sudo true))))
+        (do
+          (println (str "Creating directory: " path))
+          (command "mkdir" ["-p" path] (assoc context :sudo true))
+          (command "chown" [(:username context) path] (assoc context :sudo true))
+          (notify context "created")))
+      (when (= desired-state "link")
+        (if is-link
+          (command "rm" [path] context)
+          (command "mv" [path (:backup-dir context)] context))
+        (command "ln" ["-s" src path] context)
+        (when (:executable context)
+          (command "chmod" ["+x" path] (assoc context :sudo true))))
       (when owner
-        (println (str "Setting owner to: " owner " for directory: " dir)
-        (command "chown" [owner dir] (assoc options :sudo true)))))))
+        (command "chown" [owner path] (assoc context :sudo true))))))

@@ -12,7 +12,6 @@
       - colemak
       - git
       - polybar
-      - gpg
       - neomutt
       - tmux
       - mlocate

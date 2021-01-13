@@ -7,11 +7,10 @@
 
 (defn pacman
   [package options]
-  (println "pacman")
   (let [desired-state (:state options)
         sudo-options (assoc options :sudo true)]
     (do
       (when (= desired-state "present")
-          (command "pacman" ["-S" package "--noconfirm" "--needed"] sudo-options)))
-      (when (= desired-state "absent")
-          (command "pacman" ["-R" package "--noconfirm"] sudo-options))))
+        (command "pacman" ["-S" package "--noconfirm" "--needed"] sudo-options)))
+    (when (= desired-state "absent")
+      (command "pacman" ["-R" package "--noconfirm"] sudo-options))))
