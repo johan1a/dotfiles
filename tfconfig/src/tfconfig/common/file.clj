@@ -5,8 +5,8 @@
   [dir options]
   (let [desired-state (:state options)
         owner (:owner options)
-        is-dir (= 0 (:code (command "stat" ["-d" dir] {})))
-        is-file (= 0 (:code (command "stat" ["-f" dir] {})))
+        is-dir (= 0 (:code (command "stat" ["-d" dir] options)))
+        is-file (= 0 (:code (command "stat" ["-f" dir] options)))
         ]
     (when (and (= desired-state "dir") (not is-dir))
         (println (str "Creating directory: " dir)
