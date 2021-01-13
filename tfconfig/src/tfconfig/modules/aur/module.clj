@@ -13,10 +13,12 @@
   (dorun (map #(pacman % (assoc context :state "present")) paru-dependencies)))
 
 (defn install-paru
-  [context sources-dir password]
+  [context]
   (when-not (has-executable? context "paru")
     (println "Installing paru")
-    (let [base-dir (str sources-dir "paru")]
+    (let [sources-dir (:sources-dir context)
+          password (:password context)
+          base-dir (str sources-dir "paru")]
       (do
         (dorun (install-dependencies context))
         (dorun (file sources-dir (assoc context :state "dir" :owner (str (:username context) ":"))))
@@ -25,14 +27,14 @@
         (command "makepkg" ["-si" "--noconfirm"] (assoc context :dir base-dir :pre-auth true))))))
 
 (defn install-aur-package
-  [context package password]
+  [context package]
   (println (str "Installing " package))
-  (command "paru" ["-S" package "--noconfirm" "--needed" "--sudoloop"] {:pre-auth true :password password :verbose (:verbose context)}))
+  (command "paru" ["-S" package "--noconfirm" "--needed" "--sudoloop"] (assoc context pre-auth true)))
 
 (defn run
   "Install an AUR helper and useful packages"
   [context]
   (do
     (println "Installing AUR packages")
-    (install-paru context (:sources-dir context) (:password context))
-    (dorun (map #(install-aur-package context % (:password context)) packages))))
+    (install-paru context)
+    (dorun (map (partial install-aur-package context) packages))))

@@ -65,13 +65,12 @@
   (let [sudo-prompt "thesudoprompt"
         sudo (:sudo options)
         password (:password options)
-        new-options (assoc options :sudo-prompt sudo-prompt)
-        new-options2 (if sudo (assoc new-options :input password) new-options)
+        new-options (assoc options :sudo-prompt sudo-prompt :input (if sudo password nil))
         new-cmd (if sudo "sudo" cmd)
         new-args (if sudo (concat ["-S" cmd] args) args)]
     (if (:pre-auth options)
       (pre-auth new-options))
-    (let [result (run-proc new-options2 new-cmd new-args (partial out-callback options) (partial err-callback options sudo-prompt password))]
+    (let [result (run-proc new-options new-cmd new-args (partial out-callback options) (partial err-callback options sudo-prompt password))]
       (if (or (= 0 (:code result)) (not (:throw-errors options)))
         result
         (throw (ex-info (str "Error: command failed: " cmd " " args) result))))))
