@@ -40,7 +40,7 @@
   [context stdout stdin]
     (loop []
       (when-let [line (.readLine ^java.io.BufferedReader stdout)]
-        (log context (str "stdin: " line) line)
+        (log context (str "stdin: " line))
         (recur))))
 
 (defn err-callback

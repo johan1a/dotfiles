@@ -1,14 +1,6 @@
 (ns tfconfig.common.file
-  (:require [tfconfig.common.command :refer :all]))
-
-(defn notify
-  [context event]
-  (let [changes (:changes context)
-        change-ref (:change-ref context)]
-    (swap! changes
-           (fn [current-state]
-             (println current-state)
-             (update-in current-state [change-ref] #(conj % event))))))
+  (:require [tfconfig.common.command :refer :all])
+  (:require [tfconfig.common.handler :refer :all]))
 
 (defn file
   [path context]
