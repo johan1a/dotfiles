@@ -8,14 +8,14 @@
 ; when not ci
 (defn reload-gpg-agent
   [context changes]
-    (command "gpg-connect-agent" ["reloadagent" "/bye"] context))
+  (command "gpg-connect-agent" ["reloadagent" "/bye"] context))
 
 (defn run
   [context]
   (do
     (println "Installing gpg")
     (handler context :create-gpg-dir reload-gpg-agent)
-    (let [base-dir (str (:home context) "/.gnupg-test/")
+    (let [base-dir (str (:home context) "/.gnupg/")
           src-file (str (:modules-dir context) "gpg/files/gpg-agent.conf")
           dest-file (str base-dir "gpg-agent.conf")]
       (pacman "gnupg" (assoc context :state "present"))
