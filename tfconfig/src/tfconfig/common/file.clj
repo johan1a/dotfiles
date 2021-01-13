@@ -9,8 +9,6 @@
         is-dir (= 0 (:code (command "test" ["-d" dir] options)))
         is-file (= 0 (:code (command "test" ["-f" dir] options)))
         ]
-    (println "is-dir:" is-dir)
-    (println "is-file" is-dir)
     (do
       (when (and (= desired-state "dir") (not is-dir))
           (println (str "Creating directory: " dir)
