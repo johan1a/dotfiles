@@ -8,7 +8,6 @@
 ; from https://stackoverflow.com/a/45293277
 (defn run-proc
   [options proc-name args stdout-callback stderr-callback]
-      (println proc-name args options)
   (let [sudo-prompt (:sudo-prompt options)
         dir (:dir options)
         input (:input options)
@@ -22,7 +21,6 @@
         (with-open [stdin (clojure.java.io/writer (.getOutputStream process))]
           (when input
             (do
-              (println (str "writing to stdin: " input))
               (.write stdin (str input "\n"))
               (.flush stdin)))
             (let [
@@ -36,14 +34,14 @@
   [stdout stdin]
     (loop []
       (when-let [line (.readLine ^java.io.BufferedReader stdout)]
-        (println (str "stdout: " line))
+        ; (println (str "stdout: " line))
         (recur))))
 
 (defn err-callback
   [sudo-prompt password stderr stdin]
     (loop []
       (when-let [line (.readLine ^java.io.BufferedReader stderr)]
-          (println (str "stderr: " line))
+          ; (println (str "stderr: " line))
            ; (when (clojure.string/includes? line sudo-prompt)
            ;  (println "writing" )
            ;    (.write stdin (str password "\n"))
@@ -52,14 +50,13 @@
 
 (defn pre-auth
   [options]
-  (println "pre-auth")
   (let [new-options (assoc options :input (:password options))
         stderr-callback (partial err-callback (:sudo-prompt options) (:password options))]
-  (run-proc new-options "sudo" ["-S" "ls" "-lah"] out-callback stderr-callback)))
+  (run-proc new-options "sudo" ["-S" "true"] out-callback stderr-callback)))
 
 (defn run-with-password
-  [options cmd args]
-  (println cmd args)
+  [cmd args options]
+  ; (println cmd args)
   (let [sudo-prompt "thesudoprompt"
         password (:password options)
         new-options (assoc options :sudo-prompt sudo-prompt)]
@@ -69,4 +66,4 @@
 
 (defn command
   [command args options]
-  (run-with-password options command args))
+  (run-with-password command args options))

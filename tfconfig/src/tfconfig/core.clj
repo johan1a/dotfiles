@@ -5,12 +5,16 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (let [context {
+  (let [password (first args)
+        context {
                  :root-dir "/home/johan/dotfiles/"
                  :sources-dir "/home/johan/source/"
-                 :password (first args)
+                 :password password
                  }]
-    (println "Configuring...")
-    (aur/run context)
-    (println "Done!")
-    (shutdown-agents)))
+    (if password
+      (do
+        (println "Configuring...")
+        (aur/run context)
+        (println "Done!")
+        (shutdown-agents))
+      (println "No password supplied"))))
