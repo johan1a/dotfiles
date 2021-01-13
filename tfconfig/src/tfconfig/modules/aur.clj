@@ -14,8 +14,7 @@
       (file sources-dir {:state "dir"})
       (command "rm" ["-rf" base-dir] {})
       (command "git" ["clone" "https://aur.archlinux.org/paru.git" base-dir] {})
-      (command "makepkg" ["-si" "--noconfirm"] {:dir base-dir :pre-auth true :password password})
-      )))
+      (command "makepkg" ["-si" "--noconfirm"] {:dir base-dir :pre-auth true :password password}))))
 
 (defn install-aur-package
   [context package password]
