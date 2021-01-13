@@ -6,18 +6,14 @@
 (def packages ["figlet" "cowsay"])
 
 (defn install-paru
-  [sources-dir password]
+  [context sources-dir password]
   (when-not (has-executable? "paru")
     (println "Installing paru")
     (let [base-dir (str sources-dir "paru")]
-      (println "before file")
       (file sources-dir {:state "dir"})
-      (println "after file")
-      (command "rm" ["-rf" base-dir] {})
-      (println "after rm")
-      (command "git" ["clone" "https://aur.archlinux.org/paru.git" base-dir] {})
-      (println "after git")
-      (command "makepkg" ["-si" "--noconfirm"] {:dir base-dir :pre-auth true :password password}))))
+      (command "rm" ["-rf" base-dir] context)
+      (command "git" ["clone" "https://aur.archlinux.org/paru.git" base-dir] context)
+      (command "makepkg" ["-si" "--noconfirm"] {:dir base-dir :pre-auth true :password password :verbose context}))))
 
 (defn install-aur-package
   [context package password]
@@ -29,5 +25,5 @@
   [context]
   (do
     (println "Installing AUR packages")
-    (install-paru (:sources-dir context) (:password context))
+    (install-paru context (:sources-dir context) (:password context))
     (dorun (map #(install-aur-package context % (:password context)) packages))))
