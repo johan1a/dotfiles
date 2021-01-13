@@ -1,9 +1,10 @@
 (ns tfconfig.common.has-executable
-  (:require [clojure.java.shell :as shell]))
+  (:require [tfconfig.common.command :refer :all]))
 
 (defn has-executable?
   [executable]
-  (println (str "has-executable?" executable))
-  (let [result (shell/sh "which" executable)
+  (println (str "has-executable? " executable))
+  (let [result (command "which" [executable] {})
         exit-code (:exit result)]
+    (println result)
     (= exit-code 0)))
