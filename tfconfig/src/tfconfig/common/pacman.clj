@@ -1,0 +1,17 @@
+(ns tfconfig.common.pacman
+  (:require [tfconfig.common.command :refer :all]))
+
+(defn pacman-upgrade
+  [options]
+  (command "pacman" ["-Syu"] (assoc options :sudo true)))
+
+(defn pacman
+  [package options]
+  (println "pacman")
+  (let [desired-state (:state options)
+        sudo-options (assoc options :sudo true)]
+    (do
+      (when (= desired-state "present")
+          (command "pacman" ["-S" package "--needed"] sudo-options)))
+      (when (= desired-state "absent")
+          (command "pacman" ["-R" package] sudo-options))))

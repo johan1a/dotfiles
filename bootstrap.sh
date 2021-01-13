@@ -17,7 +17,7 @@ if [[ "${OS}" == *"Ubuntu"* ]] ; then
   pip install --user ansible
 elif [[ "${OS}" == *"Arch Linux"* ]] ; then
   echo $PASSWORD | sudo -S pacman -Syu --noconfirm --needed
-  echo $PASSWORD | sudo -S pacman -S fakeroot gcc coreutils which leiningen python-pip ansible --noconfirm --needed
+  echo $PASSWORD | sudo -S pacman -S gcc which leiningen python-pip ansible --noconfirm --needed
 fi
 
 which which

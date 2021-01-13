@@ -1,9 +1,16 @@
 (ns tfconfig.modules.aur
   (:require [tfconfig.common.command :refer :all])
   (:require [tfconfig.common.file :refer :all])
+  (:require [tfconfig.common.pacman :refer :all])
   (:require [tfconfig.common.has-executable :refer :all]))
 
 (def packages ["figlet" "cowsay"])
+
+(def paru-dependencies ["fakeroot" "coreutils" "pkgconf"])
+
+(defn install-dependencies
+  [context]
+  (dorun (map #(pacman % (assoc context :state "present")) paru-dependencies)))
 
 (defn install-paru
   [context sources-dir password]
@@ -11,6 +18,7 @@
     (println "Installing paru")
     (let [base-dir (str sources-dir "paru")]
       (do
+        (dorun (install-dependencies context))
         (dorun (file sources-dir (assoc context :state "dir" :owner (str (:username context) ":"))))
         (command "ls" ["-lah" sources-dir] context)
         (command "rm" ["-rf" base-dir] context)
