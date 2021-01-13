@@ -12,6 +12,6 @@
         sudo-options (assoc options :sudo true)]
     (do
       (when (= desired-state "present")
-          (command "pacman" ["-S" package "--needed"] sudo-options)))
+          (command "pacman" ["-S" package "--noconfirm" "--needed"] sudo-options)))
       (when (= desired-state "absent")
-          (command "pacman" ["-R" package] sudo-options))))
+          (command "pacman" ["-R" package "--noconfirm"] sudo-options))))
