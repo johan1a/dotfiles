@@ -7,13 +7,16 @@
 
 (defn install-paru
   [sources-dir password]
-  (println "Installing paru, before check")
   (when-not (has-executable? "paru")
     (println "Installing paru")
     (let [base-dir (str sources-dir "paru")]
+      (println "before file")
       (file sources-dir {:state "dir"})
+      (println "after file")
       (command "rm" ["-rf" base-dir] {})
+      (println "after rm")
       (command "git" ["clone" "https://aur.archlinux.org/paru.git" base-dir] {})
+      (println "after git")
       (command "makepkg" ["-si" "--noconfirm"] {:dir base-dir :pre-auth true :password password}))))
 
 (defn install-aur-package
