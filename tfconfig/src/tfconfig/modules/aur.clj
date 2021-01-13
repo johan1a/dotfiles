@@ -2,7 +2,7 @@
   (:require [tfconfig.common.command :refer :all])
   (:require [tfconfig.common.has-executable :refer :all]))
 
-(def packages ["figlet"])
+(def packages ["figlet" "cowsay"])
 
 (defn install-paru
   [sources-dir password]
@@ -24,4 +24,4 @@
   (do
     (println "Installing AUR packages")
     (install-paru (:sources-dir context) (:password context))
-    (dorun (map #(install-aur-package % (:password context)) ["figlet" "cowsay"]))))
+    (dorun (map #(install-aur-package % (:password context)) packages))))
