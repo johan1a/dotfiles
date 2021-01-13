@@ -12,11 +12,17 @@
 
 (defn get-password
   [args]
-  (get-arg-value args "--password"))
+  (let [password (get-arg-value args "--password")]
+    (if password
+        password
+        (System/getenv "PASSWORD"))))
 
 (defn get-user
   [args]
-  (get-arg-value args "--user"))
+  (let [user (get-arg-value args "--user")]
+  (if user
+      user
+      (System/getenv "USER"))))
 
 (defn -main
   [& args]
@@ -24,14 +30,13 @@
         user (get-user args)
         context {
                  :root-dir "/home/johan/dotfiles/"
-                 :sources-dir "/home/johan/source2/"
+                 :sources-dir "/home/johan/source/"
                  :password password
                  :verbose (some #(= "--verbose" %) args)
                  :username user
                  }]
     (if password
       (do
-        (println "Configuring...")
         (aur/run context)
         (println "Done!")
         (shutdown-agents))

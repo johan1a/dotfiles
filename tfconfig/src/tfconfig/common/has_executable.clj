@@ -4,5 +4,5 @@
 (defn has-executable?
   [executable]
   (let [result (command "which" [executable] {})
-        exit-code (:exit result)]
+        exit-code (:code result)]
     (= exit-code 0)))

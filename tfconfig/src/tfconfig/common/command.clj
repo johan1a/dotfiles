@@ -63,7 +63,6 @@
 
 (defn run-with-password
   [cmd args options]
-  (println options)
   (log options cmd args)
   (let [sudo-prompt "thesudoprompt"
         sudo (:sudo options)
