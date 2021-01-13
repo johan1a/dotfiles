@@ -6,9 +6,12 @@
   [sources-dir]
   (when-not (has-executable? "parux")
     (let [base-dir (str sources-dir "paru")]
-      (command "rm" "-rf" base-dir)
-      (command "git" "clone" "https://aur.archlinux.org/paru.git" base-dir)
-      (command-in-dir base-dir "makepkg" "-si"))))
+      (command "rm" ["-rf" base-dir])
+      (command "git" ["clone" "https://aur.archlinux.org/paru.git" base-dir])
+      ; (command-in-dir base-dir "makepkg" ["-si"])
+      (command-in-dir base-dir "ls" ["-lah"])
+      
+      )))
 
 (defn run
   "Install an AUR helper and useful packages"

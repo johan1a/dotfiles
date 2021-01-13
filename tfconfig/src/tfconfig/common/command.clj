@@ -7,41 +7,49 @@
 
 ; from https://stackoverflow.com/a/45293277
 (defn run-proc
-  [proc-name arg-string callback]
-  (let [pbuilder (ProcessBuilder. (into-array String [proc-name arg-string]))
+  [sudo-prompt dir proc-name args stdout-callback stderr-callback]
+  (let [pbuilder (ProcessBuilder. (into-array String (flatten [proc-name args])))
+        env (.environment pbuilder)
+        _0 (.put env "SUDO_PROMPT" sudo-prompt)
+        _1 (when dir (.directory pbuilder (clojure.java.io/file dir)))
         process (.start pbuilder)]
-    (with-open [reader (clojure.java.io/reader (.getInputStream process))]
-      (with-open [error (clojure.java.io/reader (.getErrorStream process))]
-        (with-open [writer (clojure.java.io/writer (.getOutputStream process))]
-          (loop []
-            (let [line (.readLine ^java.io.BufferedReader reader)
-                  err-line (.readLine ^java.io.BufferedReader reader)]
-              (callback writer line err-line)
-              (recur))))))))
+    (with-open [stdout (clojure.java.io/reader (.getInputStream process))]
+      (with-open [stderr (clojure.java.io/reader (.getErrorStream process))]
+        (with-open [stdin (clojure.java.io/writer (.getOutputStream process))]
+            (let [stdout-future (future (stdout-callback stdout stdin))
+                  stderr-future (future (stderr-callback stderr stdin))
+                  stdout-result (deref stdout-future)
+                  stderr-result (deref stderr-future)]))))))
 
-(defn enter-password
-  [password writer line err-line]
-  (println "enter-password")
-  (println line)
-  (println err-line)
-  (.write writer "user input"))
+(defn out-callback
+  [stdout stdin]
+    (loop []
+      (when-let [line (.readLine ^java.io.BufferedReader stdout)]
+        (println (str "stdout: " line))
+        (recur))))
+
+(defn err-callback
+  [sudo-prompt password stderr stdin]
+    (loop []
+      (when-let [line (.readLine ^java.io.BufferedReader stderr)]
+          (println (str "stderr: " line))
+           (when (clojure.string/includes? line sudo-prompt)
+            (println "writing" )
+              (.write stdin (str password "\n"))
+              (.flush stdin))
+         (recur))))
 
 (defn run-with-password
   [options cmd args]
-  (println "run-with-password")
-  (let [password (:password options)]
-    (run-proc cmd args (partial enter-password password))))
+  (println cmd args)
+  (let [sudo-prompt "thesudoprompt"
+        password (:password options)]
+    (run-proc sudo-prompt (:dir options) cmd args out-callback (partial err-callback sudo-prompt password))))
 
- ; [sudo] password for
 (defn command
-  [& args]
-  (run-with-password {:password "test"} "sleep" "1; echo hey")
-  (println "(apply shell/sh args)"))
+  [command args]
+  (run-with-password {:password "test"} command args))
 
 (defn command-in-dir
-  [dir & args]
-  (println args)
-  (shell/with-sh-dir dir
-    (println "(apply shell/sh args)")))
-
-; (with-open [rdr (clojure.java.io/reader (:out (sh/proc "watch" "ls")))] (printf "%s\n" (clojure.string/join "\n" (line-seq rdr))))
+  [dir command args]
+  (run-with-password {:password "test" :dir dir} command args))
