@@ -9,9 +9,10 @@
   [context]
   (println "-- Module: dirs --")
   (let [home (:home context)
+        owner (str (:username context) ":")
         dirs [(:sources-dir context)
               (:backup-dir context)
               (str home ".local/bin")
               (str home ".local/lib")
               (str home ".config")]]
-    (dorun (map #(file % (assoc context :state "dir" :owner (:username context))) dirs))))
+    (dorun (map #(file % (assoc context :state "dir" :owner owner)) dirs))))
