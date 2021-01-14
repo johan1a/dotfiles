@@ -50,7 +50,7 @@
   [context]
   (do
     (when-not (:ci context)
-      (command "nvim" ["+PlugInstall" "qall"] context()))
+      (command "nvim" ["+PlugInstall" "qall"] context))
     (command "nvim" ["+UpdateRemotePlugins" "qall"] context)))
 
 (defn run
