@@ -7,8 +7,7 @@
   [context gem-name desired-state]
   (do
     (when-not (has-executable? context "gem")
-      (println "has no gem executable")
-      (dorun (pacman "rubygems" context)))
+      (pacman "rubygems" (assoc context :state "present")))
     (let [disabled-errors-context (assoc context :throw-errors false)
           cmd-result (command "gem" ["list" gem-name] disabled-errors-context)
           is-present (clojure.string/includes? (:stdout cmd-result) gem-name)]
