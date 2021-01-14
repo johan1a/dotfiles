@@ -14,7 +14,7 @@
         src (:src context)
         disabled-errors-context (assoc context :throw-errors false)
         is-dir (= 0 (:code (command "test" ["-d" path] disabled-errors-context)))
-        is-file (file-exists? path)
+        is-file (file-exists? context path)
         is-link (= 0 (:code (command "test" ["-L" path] disabled-errors-context)))]
     (do
       (when (and (= desired-state "dir") (not is-dir))

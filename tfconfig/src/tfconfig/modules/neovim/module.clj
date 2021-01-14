@@ -49,29 +49,15 @@
 (defn install-plugins
   [context]
   (do
-    (when-not (:ci context)
-      (command "nvim" ["+PlugInstall" "qall"] context))
-    (command "nvim" ["+UpdateRemotePlugins" "qall"] context)))
+    (when-not (or false (:ci context))
+      (command "nvim" ["+PlugInstall" "+qall"] context))
+    (command "nvim" ["+UpdateRemotePlugins" "+qall"] context)))
 
-(defn install-language-client
-  [context base-dir]
-  (let [language-client-dir (str base-dir "bundle/LanguageClient-neovim")
-        executable-path (str language-client-dir "/bin/languageclient")]
-    (when-not (file-exists? executable-path)
-      (command "sh" ["install.sh"] (assoc context :dir language-client-dir)))))
-
-  ; - name: Check for LanguageClient-neovim
-  ;   stat:
-  ;     path: "{{ user_home }}/.vim/bundle/LanguageClient-neovim/bin/languageclient"
-  ;   register: languageclient
-
-  ; - name: Install LanguageClient-neovim
-  ;   command: sh install.sh
-  ;   become_user: "{{ username }}"
-  ;   args:
-  ;     chdir: "{{ user_home }}/.vim/bundle/LanguageClient-neovim"
-  ;   when: not languageclient.stat.exists
-  ;   failed_when: false
+(defn link-custom-snippets
+  [context nvim-dir]
+  (let [src-file (str (:modules-dir context) "neovim/files/custom_snippets")
+        dest-file (str nvim-dir "custom_snippets")]
+    (file dest-file (assoc context :state "link" :src src-file))))
 
 (defn run
   [context]
@@ -81,20 +67,8 @@
     (install-make context)
     (install-gems context)
     (install-neovim-pip-package context)
-    (let [base-dir (str (:home context) ".config/nvim/")]
-      (create-vim-dir context base-dir)
-      (link-configs context base-dir)
+    (let [nvim-dir (str (:home context) ".config/nvim/")]
+      (create-vim-dir context nvim-dir)
+      (link-configs context nvim-dir)
       (install-plugins context)
-      (install-language-client context base-dir))))
-
-  ; - name: Setup permissions
-  ;   file:
-  ;     path: "{{ user_home }}/.vim"
-  ;     owner: "{{ username }}"
-  ;     recurse: yes
-
-  ; - name: Symlink custom_snippets
-  ;   script: >
-  ;         scripts/install_dotfile
-  ;         "{{ dotfiles_dir }}/ansible/roles/neovim/templates/custom_snippets"
-  ;         "{{ user_home }}/.vim/custom_snippets"
+      (link-custom-snippets context nvim-dir))))
