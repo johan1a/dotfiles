@@ -22,7 +22,8 @@
 
 (defn install-neovim-pip-package
   [context]
-  (command "ls" ["-lah"] context)
+  (dorun (command "ls" ["-lah" "~/.local/"] context))
+  (dorun (command "ls" ["-lah" "~/.local/lib"] context))
   (pip context "neovim" "present"))
 
 (defn install-make
