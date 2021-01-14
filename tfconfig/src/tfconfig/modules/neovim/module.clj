@@ -4,7 +4,8 @@
   (:require [tfconfig.common.pacman :refer :all])
   (:require [tfconfig.common.has-executable :refer :all])
   (:require [tfconfig.common.handler :refer :all])
-  (:require [tfconfig.common.gem :refer :all]))
+  (:require [tfconfig.common.gem :refer :all])
+  (:require [tfconfig.common.pip :refer :all]))
 
 (def required-gems ["msgpack" "rdoc" "neovim" "multi_json"])
 
@@ -23,11 +24,17 @@
   [context]
   (pip context "neovim" "present"))
 
+(defn install-make
+  "Make is required for the msgpack gem"
+  [context]
+  (pacman "neovim" (assoc context :state "present")))
+
 (defn run
   [context]
   (do
     (println "-- Module: Neovim --")
     (install-neovim context)
+    (install-make context)
     (install-gems context)
     (install-neovim-pip-package context)))
 

@@ -1,5 +1,7 @@
 (ns tfconfig.common.pip
-  (:require [tfconfig.common.command :refer :all]))
+  (:require [tfconfig.common.command :refer :all])
+  (:require [tfconfig.common.pacman :refer :all])
+  (:require [tfconfig.common.has-executable :refer :all]))
 
 (defn pip
   [context package-name desired-state]
