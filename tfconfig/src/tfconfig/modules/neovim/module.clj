@@ -19,12 +19,17 @@
   [context]
   (dorun (map #(gem context % "present") required-gems)))
 
+(defn install-neovim-pip-package 
+  [context]
+  (pip context "neovim" "present"))
+
 (defn run
   [context]
   (do
-    (println "neovim")
+    (println "-- Module: Neovim --")
     (install-neovim context)
-    (install-gems context)))
+    (install-gems context)
+    (install-neovim-pip-package context)))
 
 ; WARNING:  You don't have /home/johan/.gem/ruby/2.7.0/bin in your PATH,
 ;           gem executables will not run.

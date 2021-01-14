@@ -14,7 +14,7 @@
 (defn run
   [context]
   (do
-    (println "Installing gpg")
+    (println "-- Module: GPG --")
     (handler context :create-gpg-dir reload-gpg-agent)
     (let [base-dir (str (:home context) "/.gnupg/")
           src-file (str (:modules-dir context) "gpg/files/gpg-agent.conf")

@@ -35,6 +35,6 @@
   "Install an AUR helper and useful packages"
   [context]
   (do
-    (println "Installing AUR packages")
+    (println "-- Module: AUR --")
     (install-paru context)
     (dorun (map (partial install-aur-package context) packages))))
