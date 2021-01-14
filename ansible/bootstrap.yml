@@ -31,6 +31,5 @@
       - dunst
       - cups
       - language_servers
-      - vagrant
       - docker
       - after

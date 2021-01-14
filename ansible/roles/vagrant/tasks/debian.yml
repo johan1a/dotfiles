@@ -1,5 +1,0 @@
-
-  - name: install vagrant
-    apt: name=vagrant state=latest
-    become_method: sudo
-

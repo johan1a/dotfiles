@@ -1,9 +1,0 @@
-
-  - include: debian.yml
-    when: debian and username != "vagrant"
-
-
-  - include: arch.yml
-    when: arch and username != "vagrant"
-
-
