@@ -11,12 +11,6 @@ endif
 
 set nocompatible              " Don't emulate vi
 
-" The has('wsl') check does not work
-function! IsWsl()
-  let versionString = system("cat /proc/version")
-  return versionString =~ "Microsoft"
-endfunction
-
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -26,28 +20,23 @@ endif
 call plug#begin()
 
 if has('nvim')
-  if !IsWsl()
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'zchee/deoplete-jedi'
-    Plug 'SirVer/ultisnips'
-    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-  endif
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'zchee/deoplete-jedi'
+  Plug 'SirVer/ultisnips'
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
   Plug 'derekwyatt/vim-scala'
   Plug 'neoclide/coc.nvim', {'branch': 'release'} " branch release makes the start text disappear, irritating!
   Plug 'sbdchd/neoformat'
 endif
 
-if !IsWsl()
-  Plug 'artur-shaik/vim-javacomplete2'
-  Plug 'honza/vim-snippets'
-  Plug 'jreybert/vimagit'
-  Plug 'tpope/vim-dispatch'
-  Plug 'tpope/vim-fireplace'
-  Plug 'udalov/kotlin-vim'
-  Plug 'venantius/vim-cljfmt'
-endif
-
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'honza/vim-snippets'
+Plug 'jreybert/vimagit'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fireplace'
+Plug 'udalov/kotlin-vim'
+Plug 'venantius/vim-cljfmt'
 Plug 'airblade/vim-gitgutter'
 Plug 'bkad/CamelCaseMotion'
 Plug 'chriskempson/base16-vim'
