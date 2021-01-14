@@ -22,6 +22,7 @@
 
 (defn install-neovim-pip-package
   [context]
+  (command "ls" ["-lah"] context)
   (pip context "neovim" "present"))
 
 (defn install-make
