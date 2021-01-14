@@ -21,7 +21,6 @@
       - python
       - pygments
       - ruby
-      - neovim
       - taskwarrior
       - owncloud
       - ncmpcpp

@@ -1,4 +1,0 @@
-
-  - name: install neovim
-    command: yay -S neovim --noconfirm --needed
-
