@@ -20,7 +20,7 @@
   [context]
   (dorun (map #(gem context % "present") required-gems)))
 
-(defn install-neovim-pip-package 
+(defn install-neovim-pip-package
   [context]
   (pip context "neovim" "present"))
 
@@ -48,8 +48,10 @@
 
 (defn install-plugins
   [context]
-  (command "nvim" ["+PlugInstall" "qall"] context)
-  (command "nvim" ["+UpdateRemotePlugins" "qall"] context))
+  (do
+    (when-not (:ci context)
+      (command "nvim" ["+PlugInstall" "qall"] context()))
+    (command "nvim" ["+UpdateRemotePlugins" "qall"] context)))
 
 (defn run
   [context]
