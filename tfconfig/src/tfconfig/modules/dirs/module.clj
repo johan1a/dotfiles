@@ -10,6 +10,7 @@
         owner (str (:username context) ":")
         dirs [(:sources-dir context)
               (:backup-dir context)
+              (str home ".local")
               (str home ".local/bin")
               (str home ".local/lib")
               (str home ".config")]]
