@@ -1,7 +1,0 @@
-
-
-  - include: arch.yml
-    when: arch
-
-  - include: ranger.yml
-

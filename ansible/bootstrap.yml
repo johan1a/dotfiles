@@ -15,7 +15,6 @@
       - tmux
       - mlocate
       - fzf
-      - ranger
       - universal_ctags
       - python
       - pygments

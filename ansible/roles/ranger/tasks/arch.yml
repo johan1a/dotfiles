@@ -1,7 +1,0 @@
-
-  - pacman:
-      name: ranger
-      state: latest
-
-  - command: yay -S w3m --noconfirm --needed
-
