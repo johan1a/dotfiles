@@ -2,6 +2,7 @@
   (:require [tfconfig.modules.aur.module :as aur]
             [tfconfig.modules.gpg.module :as gpg]
             [tfconfig.modules.neovim.module :as neovim]
+            [tfconfig.modules.dirs.module :as dirs]
             [tfconfig.modules.i3-gaps.module :as i3-gaps])
   (:gen-class))
 
@@ -38,6 +39,7 @@
                  :modules-dir (str home "dotfiles/tfconfig/src/tfconfig/modules/")
                  :sources-dir (str home "source/")
                  :backup-dir (str home ".dotfiles_backup")
+                 :bin-dir (str home ".local/bin")
                  :password password
                  :verbose (some #(= "--verbose" %) args)
                  :username user
@@ -46,6 +48,7 @@
                  :ci (System/getenv "CI")}]
     (if password
       (do
+        (dirs/run context)
         (i3-gaps/run context)
         (neovim/run context)
         (aur/run context)
