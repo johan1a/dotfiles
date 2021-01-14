@@ -46,6 +46,11 @@
     (file vimrc-dest (assoc context :state "link" :src init-vim-src))
     (file coc-settings-dest (assoc context :state "link" :src coc-settings-src))))
 
+(defn install-plugins
+  [context]
+  (command "nvim" ["+PluginInstall" "qall"] context)
+  (command "nvim" ["+UpdateRemotePlugins" "qall"] context))
+
 (defn run
   [context]
   (do
@@ -56,20 +61,11 @@
     (install-neovim-pip-package context)
     (let [base-dir (str (:home context) ".config/nvim/")]
       (create-vim-dir context base-dir)
-      (link-configs context base-dir))))
+      (link-configs context base-dir))
+    (install-plugins context)))
 
 ; WARNING:  You don't have /home/johan/.gem/ruby/2.7.0/bin in your PATH,
 ;           gem executables will not run.
-
-  ; - name: Check if Vundle exists
-  ;   stat: path="{{ user_home }}/.vim/bundle/Vundle.vim"
-  ;   register: vundle_dir
-
-  ; - name: Install Vundle
-  ;   git: repo=https://github.com/VundleVim/Vundle.vim.git
-  ;        dest="{{ user_home }}/.vim/bundle/Vundle.vim"
-  ;        accept_hostkey=yes
-  ;   when: not vundle_dir.stat.exists
 
   ; - name: Install plugins
   ;   become_user: "{{ username }}"
