@@ -19,7 +19,6 @@
       - universal_ctags
       - python
       - pygments
-      - ruby
       - taskwarrior
       - owncloud
       - ncmpcpp
