@@ -8,7 +8,8 @@
   "Create standard directories"
   [context]
   (println "-- Module: dirs --")
-  (let [dirs [(:sources-dir context)
+  (let [home (:home context)
+        dirs [(:sources-dir context)
               (:backup-dir context)
               (str home ".local/bin")
               (str home ".local/lib")
