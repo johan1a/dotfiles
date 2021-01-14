@@ -44,9 +44,9 @@
                  :ci (System/getenv "CI")}]
     (if password
       (do
+        (neovim/run context)
         (aur/run context)
         (gpg/run context)
-        (neovim/run context)
         (println "Done!")
         (shutdown-agents))
       (println "No password specified"))))
