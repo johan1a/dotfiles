@@ -7,15 +7,26 @@
   (let [opts (assoc context :throw-errors false)]
     (= 0 (:code (command "test" ["-f" path] opts)))))
 
+(defn dir-exists?
+  [context path]
+  (let [opts (assoc context :throw-errors false)]
+    (= 0 (:code (command "test" ["-d" path] opts)))))
+
+(defn link-exists?
+  [context path]
+  (let [opts (assoc context :throw-errors false)]
+    (= 0 (:code (command "test" ["-L" path] opts)))))
+
 (defn file
   [path context]
   (let [desired-state (:state context)
         owner (:owner context)
         src (:src context)
         disabled-errors-context (assoc context :throw-errors false)
-        is-dir (= 0 (:code (command "test" ["-d" path] disabled-errors-context)))
+        sudo-context (assoc context :sudo true)
+        is-dir (dir-exists? context path)
         is-file (file-exists? context path)
-        is-link (= 0 (:code (command "test" ["-L" path] disabled-errors-context)))]
+        is-link (link-exists? context path)]
     (do
       (when (and (= desired-state "dir") (not is-dir))
         (do
@@ -26,11 +37,13 @@
       (when (= desired-state "link")
         (do
           (if is-link
-            (command "rm" [path] context)
+            (command "rm" [path] sudo-context)
             (when (or is-dir is-file)
               (command "mv" [path (:backup-dir context)] context)))
-          (command "ln" ["-s" src path] context)
-          (when (:executable context)
-            (command "chmod" ["+x" path] (assoc context :sudo true)))))
+          (do
+            (command "ln" ["-s" src path] sudo-context)
+            (command "chown" [(:username context) path] sudo-context))))
+      (when (:executable context)
+        (command "chmod" ["+x" path] sudo-context))
       (when owner
-        (command "chown" [owner path] (assoc context :sudo true))))))
+        (command "chown" [owner path] sudo-context)))))

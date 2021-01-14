@@ -1,7 +1,8 @@
 (ns tfconfig.core
   (:require [tfconfig.modules.aur.module :as aur]
             [tfconfig.modules.gpg.module :as gpg]
-            [tfconfig.modules.neovim.module :as neovim])
+            [tfconfig.modules.neovim.module :as neovim]
+            [tfconfig.modules.i3-gaps.module :as i3-gaps])
   (:gen-class))
 
 (defn get-arg-value
@@ -45,6 +46,7 @@
                  :ci (System/getenv "CI")}]
     (if password
       (do
+        (i3-gaps/run context)
         (neovim/run context)
         (aur/run context)
         (gpg/run context)
