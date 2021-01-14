@@ -1,6 +1,7 @@
 (ns tfconfig.core
   (:require [tfconfig.modules.aur.module :as aur]
-            [tfconfig.modules.gpg.module :as gpg])
+            [tfconfig.modules.gpg.module :as gpg]
+            [tfconfig.modules.neovim.module :as neovim])
   (:gen-class))
 
 (defn get-arg-value
@@ -45,6 +46,7 @@
       (do
         (aur/run context)
         (gpg/run context)
+        (neovim/run context)
         (println "Done!")
         (shutdown-agents))
       (println "No password specified"))))
