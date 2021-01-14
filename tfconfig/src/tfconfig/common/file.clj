@@ -32,7 +32,7 @@
         (do
           (println (str "Creating directory: " path))
           (command "mkdir" ["-p" path] (assoc context :sudo true))
-          (command "chown" [(:username context) path] (assoc context :sudo true))
+          (command "chown" [(str (:username context) ":") path] (assoc context :sudo true))
           (notify context "created")))
       (when (= desired-state "link")
         (do
