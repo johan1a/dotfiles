@@ -31,11 +31,12 @@
   [& args]
   (let [password (get-password args)
         user (get-user args)
-        context {:home "/home/johan/"
-                 :root-dir "/home/johan/dotfiles/"
-                 :modules-dir "/home/johan/dotfiles/tfconfig/src/tfconfig/modules/"
-                 :sources-dir "/home/johan/source/"
-                 :backup-dir "/home/johan/.dotfiles_backup"
+        home (str "/home/" user "/")
+        context {:home home
+                 :root-dir (str home "dotfiles/")
+                 :modules-dir (str home "dotfiles/tfconfig/src/tfconfig/modules/")
+                 :sources-dir (str home "source/")
+                 :backup-dir (str home ".dotfiles_backup")
                  :password password
                  :verbose (some #(= "--verbose" %) args)
                  :username user
