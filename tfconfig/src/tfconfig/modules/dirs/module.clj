@@ -10,5 +10,6 @@
   (println "-- Module: dirs --")
   (let [dirs [(:sources-dir context)
               (:backup-dir context)
-              (:bin-dir context)]]
+              (:bin-dir context)
+              (:config-dir context)]]
     (dorun (map #(file % (assoc context :state "dir")) dirs))))

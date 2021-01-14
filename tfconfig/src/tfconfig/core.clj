@@ -40,6 +40,7 @@
                  :sources-dir (str home "source/")
                  :backup-dir (str home ".dotfiles_backup")
                  :bin-dir (str home ".local/bin")
+                 :config-dir (str home ".local/config")
                  :password password
                  :verbose (some #(= "--verbose" %) args)
                  :username user
