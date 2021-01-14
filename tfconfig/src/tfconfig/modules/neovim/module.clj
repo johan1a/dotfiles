@@ -27,7 +27,7 @@
 (defn install-make
   "Make is required for the msgpack gem"
   [context]
-  (pacman "neovim" (assoc context :state "present")))
+  (pacman "make" (assoc context :state "present")))
 
 (defn run
   [context]
