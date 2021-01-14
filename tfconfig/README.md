@@ -10,7 +10,11 @@ Download from http://example.com/FIXME.
 
 FIXME: explanation
 
-    $ java -jar tfconfig-0.1.0-standalone.jar [args]
+```
+read -s PASSWORD
+set -x PASSWORD $PASSWORD # or export PASSWORD=$PASSWORD
+lein run
+```
 
 ## Options
 
