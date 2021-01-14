@@ -39,7 +39,7 @@
           (if is-link
             (command "rm" [path] sudo-context)
             (when (or is-dir is-file)
-              (command "mv" [path (:backup-dir context)] context)))
+              (command "mv" [path (:backup-dir context)] sudo-context)))
           (do
             (command "ln" ["-s" src path] sudo-context)
             (command "chown" [(:username context) path] sudo-context))))
