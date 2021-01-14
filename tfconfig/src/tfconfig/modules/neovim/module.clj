@@ -53,31 +53,12 @@
       (command "nvim" ["+PlugInstall" "qall"] context))
     (command "nvim" ["+UpdateRemotePlugins" "qall"] context)))
 
-(defn run
-  [context]
-  (do
-    (println "-- Module: Neovim --")
-    (install-neovim context)
-    (install-make context)
-    (install-gems context)
-    (install-neovim-pip-package context)
-    (let [base-dir (str (:home context) ".config/nvim/")]
-      (create-vim-dir context base-dir)
-      (link-configs context base-dir))
-    (install-plugins context)))
-
-; WARNING:  You don't have /home/johan/.gem/ruby/2.7.0/bin in your PATH,
-;           gem executables will not run.
-
-  ; - name: Install plugins
-  ;   become_user: "{{ username }}"
-  ;   command: nvim +PluginInstall +qall
-  ;   when: not ci
-
-  ; - name: Update remote plugins
-  ;   become_user: "{{ username }}"
-  ;   command: nvim +UpdateRemotePlugins +qall
-  ;   when: not ci
+(defn install-language-client
+  [context base-dir]
+  (let [language-client-dir (str base-dir "bundle/LanguageClient-neovim")
+        executable-path (str language-client-dir "/bin/languageclient")]
+    (when-not (file-exists? executable-path)
+      (command "sh" ["install.sh"] (assoc context :dir language-client-dir)))))
 
   ; - name: Check for LanguageClient-neovim
   ;   stat:
@@ -92,15 +73,25 @@
   ;   when: not languageclient.stat.exists
   ;   failed_when: false
 
+(defn run
+  [context]
+  (do
+    (println "-- Module: Neovim --")
+    (install-neovim context)
+    (install-make context)
+    (install-gems context)
+    (install-neovim-pip-package context)
+    (let [base-dir (str (:home context) ".config/nvim/")]
+      (create-vim-dir context base-dir)
+      (link-configs context base-dir)
+      (install-plugins context)
+      (install-language-client context base-dir))))
+
   ; - name: Setup permissions
   ;   file:
   ;     path: "{{ user_home }}/.vim"
   ;     owner: "{{ username }}"
   ;     recurse: yes
-
-  ; - name: install neovim gem
-  ;   command: gem install neovim
-  ;   become_user: "{{ username }}"
 
   ; - name: Symlink custom_snippets
   ;   script: >

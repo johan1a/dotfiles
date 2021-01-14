@@ -2,6 +2,11 @@
   (:require [tfconfig.common.command :refer :all])
   (:require [tfconfig.common.handler :refer :all]))
 
+(defn file-exists?
+  [context path]
+  (let [opts (assoc context :throw-errors false)]
+    (= 0 (:code (command "test" ["-f" path] opts)))))
+
 (defn file
   [path context]
   (let [desired-state (:state context)
@@ -9,7 +14,7 @@
         src (:src context)
         disabled-errors-context (assoc context :throw-errors false)
         is-dir (= 0 (:code (command "test" ["-d" path] disabled-errors-context)))
-        is-file (= 0 (:code (command "test" ["-f" path] disabled-errors-context)))
+        is-file (file-exists? path)
         is-link (= 0 (:code (command "test" ["-L" path] disabled-errors-context)))]
     (do
       (when (and (= desired-state "dir") (not is-dir))

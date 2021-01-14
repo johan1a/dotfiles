@@ -3,6 +3,10 @@
   (:require [tfconfig.common.has-executable :refer :all])
   (:require [tfconfig.common.pacman :refer :all]))
 
+
+; TODO WARNING:  You don't have /home/johan/.gem/ruby/2.7.0/bin in your PATH,
+;           gem executables will not run.
+
 (defn gem
   [context gem-name desired-state]
   (do
