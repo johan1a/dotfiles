@@ -12,4 +12,4 @@
               (:backup-dir context)
               (:bin-dir context)
               (:config-dir context)]]
-    (dorun (map #(file % (assoc context :state "dir")) dirs))))
+    (dorun (map #(file % (assoc context :state "dir" :owner (:username context))) dirs))))
