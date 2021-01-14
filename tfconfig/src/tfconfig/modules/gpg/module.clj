@@ -16,7 +16,7 @@
   (do
     (println "-- Module: GPG --")
     (handler context :create-gpg-dir reload-gpg-agent)
-    (let [base-dir (str (:home context) "/.gnupg/")
+    (let [base-dir (str (:home context) ".gnupg/")
           src-file (str (:modules-dir context) "gpg/files/gpg-agent.conf")
           dest-file (str base-dir "gpg-agent.conf")]
       (pacman "gnupg" (assoc context :state "present"))

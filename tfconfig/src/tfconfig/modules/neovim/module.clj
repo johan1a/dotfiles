@@ -29,6 +29,19 @@
   [context]
   (pacman "make" (assoc context :state "present")))
 
+(defn create-vim-dir
+  [context base-dir]
+    (file base-dir (assoc context :state "dir")))
+
+(defn link-configs
+  "Symlink init.vim and .vimrc"
+  [context nvim-base-dir]
+  (let [config-file (str (:modules-dir context) "neovim/files/init.vim")
+        init-vim (str nvim-base-dir "init.vim")
+        vimrc (str (:home context) ".vimrc")]
+    (file init-vim (assoc context :state "link" :src config-file))
+    (file vimrc (assoc context :state "link" :src config-file))))
+
 (defn run
   [context]
   (do
@@ -36,24 +49,15 @@
     (install-neovim context)
     (install-make context)
     (install-gems context)
-    (install-neovim-pip-package context)))
+    (install-neovim-pip-package context)
+    (let [base-dir (str (:home context) ".config/nvim/")]
+      (create-vim-dir context base-dir)
+      (link-configs context base-dir)
+      
+      )))
 
 ; WARNING:  You don't have /home/johan/.gem/ruby/2.7.0/bin in your PATH,
 ;           gem executables will not run.
-
-  ; - name: Install neovim pip3 package
-  ;   pip:
-  ;     name: neovim
-  ;     state: latest
-  ;     executable: pip3
-  ;     extra_args: --user
-  ;   become_user: "{{ username }}"
-
-  ; - name: Make sure .vim exists
-  ;   file:
-  ;     path: "{{ user_home }}/.vim"
-  ;     state: directory
-  ;     owner: "{{ username }}"
 
   ; - name: Link neovim to vim config
   ;   script: >

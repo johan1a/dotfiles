@@ -31,7 +31,7 @@
   [& args]
   (let [password (get-password args)
         user (get-user args)
-        context {:home "/home/johan"
+        context {:home "/home/johan/"
                  :root-dir "/home/johan/dotfiles/"
                  :modules-dir "/home/johan/dotfiles/tfconfig/src/tfconfig/modules/"
                  :sources-dir "/home/johan/source/"
