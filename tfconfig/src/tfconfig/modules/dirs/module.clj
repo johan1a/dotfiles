@@ -7,7 +7,8 @@
 (defn run
   "Create standard directories"
   [context]
+  (println "-- Module: dirs --")
   (let [dirs [(:sources-dir context)
               (:backup-dir context)
               (:bin-dir context)]]
-    (map #(file % (assoc context :state "dir")) dirs)))
+    (dorun (map #(file % (assoc context :state "dir")) dirs))))
