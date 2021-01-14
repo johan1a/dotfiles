@@ -36,11 +36,15 @@
 (defn link-configs
   "Symlink init.vim and .vimrc"
   [context nvim-base-dir]
-  (let [config-file (str (:modules-dir context) "neovim/files/init.vim")
-        init-vim (str nvim-base-dir "init.vim")
-        vimrc (str (:home context) ".vimrc")]
-    (file init-vim (assoc context :state "link" :src config-file))
-    (file vimrc (assoc context :state "link" :src config-file))))
+  (let [module-files-dir (str (:modules-dir context) "neovim/files/")
+        init-vim-src (str module-files-dir "init.vim")
+        init-vim-dest (str nvim-base-dir "init.vim")
+        vimrc-dest (str (:home context) ".vimrc")
+        coc-settings-src (str module-files-dir "coc-settings.json")
+        coc-settings-dest (str nvim-base-dir "coc-settings.json")]
+    (file init-vim-dest (assoc context :state "link" :src init-vim-src))
+    (file vimrc-dest (assoc context :state "link" :src init-vim-src))
+    (file coc-settings-dest (assoc context :state "link" :src coc-settings-src))))
 
 (defn run
   [context]
@@ -52,33 +56,10 @@
     (install-neovim-pip-package context)
     (let [base-dir (str (:home context) ".config/nvim/")]
       (create-vim-dir context base-dir)
-      (link-configs context base-dir)
-      
-      )))
+      (link-configs context base-dir))))
 
 ; WARNING:  You don't have /home/johan/.gem/ruby/2.7.0/bin in your PATH,
 ;           gem executables will not run.
-
-  ; - name: Link neovim to vim config
-  ;   script: >
-  ;         scripts/install_dotfile
-  ;         "{{ user_home }}/.vim"
-  ;         "{{ user_home }}/.config/nvim"
-
-  ; - name: Symlink .vimrc
-  ;   script: >
-  ;         scripts/install_dotfile
-  ;         "{{ dotfiles_dir }}/ansible/roles/neovim/templates/vimrc"
-  ;         "{{ user_home }}/{{ item }}"
-  ;   with_items:
-  ;     - .vimrc
-  ;     - .vim/init.vim
-
-  ; - name: Symlink .coc-settings.json
-  ;   script: >
-  ;         scripts/install_dotfile
-  ;         "{{ dotfiles_dir }}/ansible/roles/neovim/templates/coc-settings.json"
-  ;         "{{ user_home }}/.vim/coc-settings.json"
 
   ; - name: Check if Vundle exists
   ;   stat: path="{{ user_home }}/.vim/bundle/Vundle.vim"
