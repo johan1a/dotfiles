@@ -19,11 +19,13 @@
           (command "chown" [(:username context) path] (assoc context :sudo true))
           (notify context "created")))
       (when (= desired-state "link")
-        (if is-link
-          (command "rm" [path] context)
+        (do
+        (when is-link
+          (command "rm" [path] context))
+        (when (or is-dir is-file)
           (command "mv" [path (:backup-dir context)] context))
         (command "ln" ["-s" src path] context)
         (when (:executable context)
-          (command "chmod" ["+x" path] (assoc context :sudo true))))
+          (command "chmod" ["+x" path] (assoc context :sudo true)))))
       (when owner
         (command "chown" [owner path] (assoc context :sudo true))))))
