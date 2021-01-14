@@ -14,5 +14,4 @@
               (str home ".local/bin")
               (str home ".local/lib")
               (str home ".config")]]
-    (dorun (map #(file % (assoc context :state "dir" :owner owner)) dirs))
-    (dorun (command "ls" ["-lah" (str (:home context) ".local/")] context))))
+    (dorun (map #(file % (assoc context :state "dir" :owner owner)) dirs))))

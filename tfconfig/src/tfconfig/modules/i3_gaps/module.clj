@@ -33,19 +33,3 @@
     (install-dependencies context)
     (setup-links context)
     (install-i3lock context)))
-
-  ; - name: Check if i3lock-fancy-multimonitor exists
-  ;   stat: path="{{ user_home }}/source/i3lock-fancy-multimonitor"
-  ;   register: lockdir
-
-  ; - name: Pull i3lock-fancy-multimonitor source
-  ;   git: repo=https://github.com/guimeira/i3lock-fancy-multimonitor.git
-  ;        dest="{{ user_home }}/source/i3lock-fancy-multimonitor"
-  ;   register: i3lockfancymulti_git
-  ;   when: not lockdir.stat.exists
-
-  ; - name: Set run permissions
-  ;   file:
-  ;     path: "{{ user_home }}/source/i3lock-fancy-multimonitor/lock"
-  ;     mode: a+x
-
