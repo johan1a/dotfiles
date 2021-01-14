@@ -29,17 +29,6 @@
 ; WARNING:  You don't have /home/johan/.gem/ruby/2.7.0/bin in your PATH,
 ;           gem executables will not run.
 
-
-  ; - name: Install neovim gems
-  ;   gem:
-  ;     name: "{{ item }}"
-  ;     state: latest
-  ;   with_items:
-  ;     - msgpack
-  ;     - rdoc
-  ;     - neovim
-  ;     - multi_json
-
   ; - name: Install neovim pip3 package
   ;   pip:
   ;     name: neovim
