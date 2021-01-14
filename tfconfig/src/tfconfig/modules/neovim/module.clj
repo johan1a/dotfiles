@@ -31,7 +31,7 @@
 
 (defn create-vim-dir
   [context base-dir]
-    (file base-dir (assoc context :state "dir")))
+  (file base-dir (assoc context :state "dir")))
 
 (defn link-configs
   "Symlink init.vim and .vimrc"

@@ -11,6 +11,6 @@
     (let [disabled-errors-context (assoc context :throw-errors false)
           cmd-result (command "pip" ["list" package-name] disabled-errors-context)
           is-present (clojure.string/includes? (:stdout cmd-result) package-name)]
-    (when (= desired-state "present")
-      (when-not is-present
-        (command "pip" ["install" "--user" package-name] context))))))
+      (when (= desired-state "present")
+        (when-not is-present
+          (command "pip" ["install" "--user" package-name] context))))))

@@ -13,18 +13,18 @@
 
 (defn setup-links
   [context]
-    (let [files-dir (str (:modules-dir context) "i3_gaps/files")
-          logind-conf (str files-dir "/logind.conf")]
-          (file "/etc/systemd/logind.conf" (assoc context :state "link" :src logind-conf))
-          (file (str (:home context) ".local/bin/is-tmux") (assoc context :state "link" :src (str files-dir "/is-tmux")))
-          (file (str (:home context) ".config/i3") (assoc context :state "link" :src (str files-dir "/i3")))))
+  (let [files-dir (str (:modules-dir context) "i3_gaps/files")
+        logind-conf (str files-dir "/logind.conf")]
+    (file "/etc/systemd/logind.conf" (assoc context :state "link" :src logind-conf))
+    (file (str (:home context) ".local/bin/is-tmux") (assoc context :state "link" :src (str files-dir "/is-tmux")))
+    (file (str (:home context) ".config/i3") (assoc context :state "link" :src (str files-dir "/i3")))))
 
 (defn install-i3lock
   [context]
   (let [source-dir (str (:sources-dir context "i3lock-fancy-multimonitor"))]
-       (when-not (dir-exists? context source-dir)
-         (command "git" ["clone" "https://github.com/guimeira/i3lock-fancy-multimonitor.git" source-dir] context)
-         (file (str source-dir "i3lock-fancy-multimonitor/lock") (assoc context :executable true)))))
+    (when-not (dir-exists? context source-dir)
+      (command "git" ["clone" "https://github.com/guimeira/i3lock-fancy-multimonitor.git" source-dir] context)
+      (file (str source-dir "i3lock-fancy-multimonitor/lock") (assoc context :executable true)))))
 
 (defn run
   [context]

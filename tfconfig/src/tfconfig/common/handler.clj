@@ -2,10 +2,10 @@
 
 (defn handler
   [context handled-key callback]
-    (add-watch (:changes context) handled-key
-               (fn [key watched old-state new-state]
-                 (when (= key handled-key)
-                   (callback context (key new-state))))))
+  (add-watch (:changes context) handled-key
+             (fn [key watched old-state new-state]
+               (when (= key handled-key)
+                 (callback context (key new-state))))))
 
 (defn notify
   [context event]
