@@ -6,7 +6,6 @@ before_script:
   - env
   - cat /etc/os-release
   - df -h
-  - cat /etc/os-release
   - sed -i -e 's/johan/johan1a/g' ansible/group_vars/local.yml
   - sed -i -e 's/home\/johan1a\/dotfiles/builds\/johan1a\/dotfiles/g' ansible/group_vars/local.yml
   - pacman -Syu --noconfirm
@@ -17,6 +16,7 @@ before_script:
   - echo "Defaults:johan1a      !authenticate" >> /etc/sudoers
   - mkdir /home/johan1a
   - chown johan1a /home/johan1a -R
+  - ls -l /home/johan1a/
 
 test:
   script:
