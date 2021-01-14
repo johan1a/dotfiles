@@ -48,7 +48,7 @@
 
 (defn install-plugins
   [context]
-  (command "nvim" ["+PluginInstall" "qall"] context)
+  (command "nvim" ["+PlugInstall" "qall"] context)
   (command "nvim" ["+UpdateRemotePlugins" "qall"] context))
 
 (defn run
