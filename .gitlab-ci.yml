@@ -1,7 +1,7 @@
 image: archlinux/base
 
 before_script:
-  - ls -l
+  - ls -la
   - whoami
   - env
   - cat /etc/os-release
@@ -16,7 +16,7 @@ before_script:
   - echo "Defaults:johan1a      !authenticate" >> /etc/sudoers
   - mkdir /home/johan1a
   - chown johan1a /home/johan1a -R
-  - ls -l /home/johan1a/
+  - ls -la /home/johan1a/
 
 test:
   script:
