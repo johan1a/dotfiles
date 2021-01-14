@@ -40,7 +40,7 @@
       (if-not line
         lines
         (do
-          (log context (str "stderr: " line))
+          (log context (str "stdout: " line))
           (recur (conj lines line)))))))
 
 (defn err-callback
