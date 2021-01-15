@@ -36,9 +36,10 @@
   (let [password (get-password args)
         user (get-user args)
         home (<< "/home/~{user}/")
+        dotfiles-root (clojure.string/replace (System/getProperty "user.dir") #"/tfconfig" "")
         context {:home home
-                 :root-dir (clojure.string/replace (System/getProperty "user.dir") #"/tfconfig" "")
-                 :modules-dir (str home "dotfiles/tfconfig/src/tfconfig/modules/")
+                 :root-dir dotfiles-root
+                 :modules-dir (str dotfiles-root "/tfconfig/src/tfconfig/modules/")
                  :sources-dir (str home "source/")
                  :backup-dir (str home ".dotfiles_backup")
                  :password password
