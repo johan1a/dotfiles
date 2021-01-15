@@ -1,3 +1,0 @@
-
-  - include: global.yml
-    when: not ci and debian
