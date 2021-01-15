@@ -16,7 +16,6 @@
       - fzf
       - universal_ctags
       - taskwarrior
-      - owncloud
       - ncmpcpp
       - kubernetes
       - intellij
