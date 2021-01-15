@@ -15,7 +15,6 @@
       - mlocate
       - fzf
       - universal_ctags
-      - python
       - pygments
       - taskwarrior
       - owncloud

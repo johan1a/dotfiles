@@ -1,9 +1,0 @@
-
-  - name: install Python3
-    apt: name=python3-pip state=latest
-    become_method: sudo
-
-  - name: install Python2
-    apt: name=python-pip state=latest
-    become_method: sudo
-

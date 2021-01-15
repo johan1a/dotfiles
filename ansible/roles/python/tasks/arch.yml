@@ -1,5 +1,0 @@
-
-  - name: install Python3
-    pacman:
-      name: python-pip
-      state: latest
