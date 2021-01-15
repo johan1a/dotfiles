@@ -50,5 +50,5 @@
   ([context src dest]
    (link context src dest {}))
   ([context src dest opts]
-   (file dest (assoc context :src src :state "link" :executable (:executable opts)))))
+   (file dest (merge opts (assoc context :src src :state "link")))))
 
