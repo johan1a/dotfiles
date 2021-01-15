@@ -21,7 +21,7 @@ before_script:
 test:
   script:
     - pwd
+    - chown "johan1a:" . -R
     - ls -lah .
-    - ls -lah /home/johan1a/
     - sudo -u johan1a bash -c 'export CI=True; ./bootstrap.sh hunter2'
 
