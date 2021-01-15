@@ -1,3 +1,0 @@
-
-  - include: pygments.yml
-    when: not ci and debian
