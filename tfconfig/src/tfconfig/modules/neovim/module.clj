@@ -42,9 +42,9 @@
         vimrc-dest (str (:home context) ".vimrc")
         coc-settings-src (str module-files-dir "coc-settings.json")
         coc-settings-dest (str nvim-base-dir "coc-settings.json")]
-    (file init-vim-dest (assoc context :state "link" :src init-vim-src))
-    (file vimrc-dest (assoc context :state "link" :src init-vim-src))
-    (file coc-settings-dest (assoc context :state "link" :src coc-settings-src))))
+    (link context init-vim-src init-vim-dest)
+    (link context init-vim-src vimrc-dest)
+    (link context coc-settings-src coc-settings-dest)))
 
 (defn install-plugins
   [context]
@@ -57,7 +57,7 @@
   [context nvim-dir]
   (let [src-file (str (:modules-dir context) "neovim/files/custom_snippets")
         dest-file (str nvim-dir "custom_snippets")]
-    (file dest-file (assoc context :state "link" :src src-file))))
+    (link context src-file dest-file)))
 
 (defn run
   [context]
