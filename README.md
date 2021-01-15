@@ -3,12 +3,7 @@
 
 [![pipeline status](https://gitlab.com/johan1a/dotfiles/badges/master/pipeline.svg)](https://gitlab.com/johan1a/dotfiles/commits/master)
 
-Automated system configuration.
-
-Supported operating systems:
-
-* Arch Linux
-* Ubuntu
+Automated Arch Linux system configuration.
 
 ## How to run
 
