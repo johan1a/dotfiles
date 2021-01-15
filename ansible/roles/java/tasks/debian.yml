@@ -1,5 +1,0 @@
-
-  - name: install openjdk-8-jdk
-    apt: name=openjdk-8-jdk state=latest
-    become_method: sudo
-

@@ -21,7 +21,6 @@
       - owncloud
       - ncmpcpp
       - kubernetes
-      - java
       - intellij
       - xinitrc
       - dunst
