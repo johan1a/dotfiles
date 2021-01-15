@@ -45,3 +45,10 @@
         (command "chmod" ["+x" path] context))
       (when owner
         (command "chown" [owner path] context)))))
+
+(defn link
+  ([context src dest]
+   (link context src dest {}))
+  ([context src dest opts]
+   (file dest (assoc context :src src :state "link" :executable (:executable opts)))))
+
