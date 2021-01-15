@@ -37,7 +37,7 @@
         user (get-user args)
         home (<< "/home/~{user}/")
         context {:home home
-                 :root-dir (str home "dotfiles/")
+                 :root-dir (clojure.string/replace (System/getProperty "user.dir") #"/tfconfig" "")
                  :modules-dir (str home "dotfiles/tfconfig/src/tfconfig/modules/")
                  :sources-dir (str home "source/")
                  :backup-dir (str home ".dotfiles_backup")
@@ -49,6 +49,7 @@
                  :ci (System/getenv "CI")}]
     (if password
       (do
+        (println (str "Root dir: " (:root-dir context)))
         (dirs/run context)
         (i3-gaps/run context)
         (neovim/run context)
