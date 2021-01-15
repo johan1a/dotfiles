@@ -49,10 +49,10 @@
     (if password
       (do
         (dirs/run context)
-        (polybar/run context)
         (i3-gaps/run context)
         (neovim/run context)
         (aur/run context)
+        (polybar/run context)
         (gpg/run context)
         (println "Done!")
         (shutdown-agents))
