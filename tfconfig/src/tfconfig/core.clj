@@ -3,6 +3,7 @@
             [tfconfig.modules.gpg.module :as gpg]
             [tfconfig.modules.neovim.module :as neovim]
             [tfconfig.modules.dirs.module :as dirs]
+            [tfconfig.modules.polybar.module :as polybar]
             [tfconfig.modules.i3-gaps.module :as i3-gaps])
   (:gen-class))
 
@@ -48,6 +49,7 @@
     (if password
       (do
         (dirs/run context)
+        (polybar/run context)
         (i3-gaps/run context)
         (neovim/run context)
         (aur/run context)

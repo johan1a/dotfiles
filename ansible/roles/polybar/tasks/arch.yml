@@ -1,6 +1,0 @@
-
-  - name: Install polybar
-    command: yay -S polybar --noconfirm --needed
-    become_user: "{{ username }}"
-    when: arch
-
