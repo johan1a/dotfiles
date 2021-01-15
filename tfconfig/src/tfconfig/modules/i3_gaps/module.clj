@@ -15,7 +15,7 @@
   [context]
   (let [files-dir (str (:modules-dir context) "i3_gaps/files")
         logind-conf (str files-dir "/logind.conf")]
-    (file "/etc/systemd/logind.conf" (assoc context :state "link" :src logind-conf))
+    (file "/etc/systemd/logind.conf" (assoc context :state "link" :src logind-conf :sudo true))
     (file (str (:home context) ".local/bin/is-tmux") (assoc context :state "link" :src (str files-dir "/is-tmux")))
     (file (str (:home context) ".config/i3") (assoc context :state "link" :src (str files-dir "/i3")))))
 

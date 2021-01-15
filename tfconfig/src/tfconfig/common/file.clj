@@ -23,7 +23,7 @@
         owner (:owner context)
         src (:src context)
         disabled-errors-context (assoc context :throw-errors false)
-        sudo-context (assoc context :sudo true)
+        force-sudo-context (assoc context :sudo true)
         is-dir (dir-exists? context path)
         is-file (file-exists? context path)
         is-link (link-exists? context path)]
@@ -37,12 +37,11 @@
       (when (= desired-state "link")
         (do
           (if is-link
-            (command "rm" [path] sudo-context)
+            (command "rm" [path] force-sudo-context)
             (when (or is-dir is-file)
-              (command "mv" [path (:backup-dir context)] sudo-context)))
-          (command "ln" ["-s" src path] sudo-context)
-          (command "chown" [(str (:username context) ":") path] sudo-context)))
+              (command "mv" [path (:backup-dir context)] force-sudo-context)))
+          (command "ln" ["-s" src path] context)))
       (when (:executable context)
-        (command "chmod" ["+x" path] sudo-context))
+        (command "chmod" ["+x" path] context))
       (when owner
-        (command "chown" [owner path] sudo-context)))))
+        (command "chown" [owner path] context)))))
