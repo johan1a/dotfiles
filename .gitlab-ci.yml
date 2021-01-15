@@ -16,7 +16,10 @@ before_script:
   - echo "Defaults:johan1a      !authenticate" >> /etc/sudoers
   - mkdir /home/johan1a
   - chown "johan1a:" /home/johan1a -R
-  - tree /home/johan1a/
+  - ls -lah /home/johan1a/
+  - ls -lah /home/johan1a/dotfiles
+  - ls -lah /home/johan1a/dotfiles/tfconfig/
+  - ls -lah /home/johan1a/dotfiles/tfconfig/src/tfconfig/modules/
 
 test:
   script:
