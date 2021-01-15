@@ -21,4 +21,5 @@
     (file (str (:home context) ".config/polybar") (assoc context :state "dir" :owner (str (:username context) ":")))
     (command "paru" ["-S" "--noconfirm" "--needed" "polybar"] context)
     (command "ls" ["-lah" (str (:home context) ".config/polybar")] (assoc context :sudo true))
+    (command "ls" ["-lah" (str (:home context) ".local/bin")] (assoc context :sudo true))
     (link-files context)))
