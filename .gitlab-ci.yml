@@ -15,7 +15,8 @@ before_script:
   - echo "johan1a   ALL=(ALL) ALL" >> /etc/sudoers
   - echo "Defaults:johan1a      !authenticate" >> /etc/sudoers
   - mkdir /home/johan1a
-  - chown johan1a /home/johan1a -R
+  - chown johan1a: /home/johan1a -R
+  - tree /home/johan1a/
 
 test:
   script:
