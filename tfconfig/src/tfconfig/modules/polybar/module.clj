@@ -12,6 +12,7 @@
         startup-script-src (<< "~{files-dir}/polybar.sh")
         startup-script-dest (<< "~{home}.local/bin/polybar.sh")]
     (link context config-src config-dest)
+    (command "tree" [(:modules-dir context)] (assoc context :sudo true))
     (command "ls" ["-lah" files-dir] (assoc context :sudo true))
     (link context startup-script-src startup-script-dest {:executable true})))
 

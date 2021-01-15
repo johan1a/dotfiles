@@ -21,4 +21,4 @@
           dest-file (str base-dir "gpg-agent.conf")]
       (pacman "gnupg" (assoc context :state "present"))
       (file base-dir (assoc context :state "dir" :handler-ref :create-gpg-dir))
-      (file dest-file (assoc context :state "link" :src src-file)))))
+      (link context src-file dest-file))))
