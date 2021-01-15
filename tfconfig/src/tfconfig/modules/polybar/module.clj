@@ -11,7 +11,7 @@
         config-dest (str (:home context) ".config/polybar/config")
         startup-script-src (str files-dir "/polybar.sh")
         startup-script-dest (str (:home context) ".local/bin/polybar.sh")]
-    (file config-dest (assoc context :state "link" :src config-src))
+    (file config-dest (assoc context :state "link" :src config-src :owner (str (:username context) ":") ))
     (file startup-script-dest (assoc context :state "link" :src startup-script-src :executable "true"))))
 
 (defn run

@@ -40,7 +40,8 @@
             (command "rm" [path] sudo-context)
             (when (or is-dir is-file)
               (command "mv" [path (:backup-dir context)] sudo-context)))
-          (command "ln" ["-s" src path] sudo-context)))
+          (command "ln" ["-s" src path] sudo-context)
+          (command "chown" [(str (:username context) ":") path] sudo-context)))
       (when (:executable context)
         (command "chmod" ["+x" path] sudo-context))
       (when owner
