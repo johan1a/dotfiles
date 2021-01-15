@@ -4,7 +4,8 @@
             [tfconfig.modules.neovim.module :as neovim]
             [tfconfig.modules.dirs.module :as dirs]
             [tfconfig.modules.polybar.module :as polybar]
-            [tfconfig.modules.i3-gaps.module :as i3-gaps])
+            [tfconfig.modules.i3-gaps.module :as i3-gaps]
+            [clojure.core.strint :refer [<<]])
   (:gen-class))
 
 (defn get-arg-value
@@ -34,7 +35,7 @@
   [& args]
   (let [password (get-password args)
         user (get-user args)
-        home (str "/home/" user "/")
+        home (<< "/home/~{user}/")
         context {:home home
                  :root-dir (str home "dotfiles/")
                  :modules-dir (str home "dotfiles/tfconfig/src/tfconfig/modules/")

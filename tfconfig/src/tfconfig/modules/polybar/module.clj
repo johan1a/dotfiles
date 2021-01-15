@@ -1,8 +1,9 @@
 (ns tfconfig.modules.polybar.module
-  (:require [tfconfig.common.command :refer :all])
-  (:require [tfconfig.common.file :refer :all])
-  (:require [tfconfig.common.has-executable :refer :all])
-  (:require [tfconfig.common.handler :refer :all]))
+  (:require [tfconfig.common.command :refer :all]
+  [tfconfig.common.file :refer :all]
+  [tfconfig.common.has-executable :refer :all]
+  [tfconfig.common.handler :refer :all]
+  [clojure.core.strint :refer [<<]]))
 
 (defn link-files
   [context]
@@ -12,6 +13,7 @@
         startup-script-src (str files-dir "/polybar.sh")
         startup-script-dest (str (:home context) ".local/bin/polybar.sh")]
     (file config-dest (assoc context :state "link" :src config-src))
+    (command "ls" ["-lah" startup-script-src] (assoc context :sudo true))
     (file startup-script-dest (assoc context :state "link" :src startup-script-src :executable "true"))))
 
 (defn run
