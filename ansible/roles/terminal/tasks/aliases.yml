@@ -1,5 +1,0 @@
-  - name: Link .aliases.sh
-    script: >
-          scripts/install_dotfile
-          "{{ dotfiles_dir }}/ansible/roles/terminal/files/aliases.sh"
-          "{{ user_home }}/.aliases.sh"
