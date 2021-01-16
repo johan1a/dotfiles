@@ -11,10 +11,7 @@
 
 (defn install-neovim
   [context]
-  (when-not (has-executable? context "nvim")
-    (do
-      (println "Installing neovim")
-      (pacman "neovim" (assoc context :state "present")))))
+  (pacman "neovim" (assoc context :state "present")))
 
 (defn install-gems
   [context]
