@@ -22,8 +22,8 @@
     (link context (<< "~{functions-dir}/fish_prompt.fish") (<< "~{dest-dir}/functions/fish_prompt.fish"))
     (link context (<< "~{functions-dir}/utils.fish") (<< "~{dest-dir}/functions/utils.fish"))
     (link context (<< "~{functions-dir}/fish_user_key_bindings.fish") (<< "~{dest-dir}/functions/fish_user_key_bindings.fish"))
-    (link context (<< "~{src-dir}/config.fish") (<< "~{dest-dir}/config.fish"))
-    )))
+    (command "ls" ["-lah" (<< "~{dest-dir}")] context)
+    (link context (<< "~{src-dir}/config.fish") (<< "~{dest-dir}/config.fish")))))
 
 (defn set-permissions
   [context]
