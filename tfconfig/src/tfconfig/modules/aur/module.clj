@@ -23,7 +23,7 @@
         (dorun (install-dependencies context))
         (dorun (file sources-dir (assoc context :state "dir" :owner (str (:username context) ":"))))
         (command "rm" ["-rf" base-dir] context)
-        (command "git" ["clone" "https://aur.archlinux.org/paru.git" base-dir] context)
+        (command "git" ["clone" "https://aur.archlinux.org/paru-bin.git" base-dir] context)
         (command "makepkg" ["-si" "--noconfirm"] (assoc context :dir base-dir :pre-auth true))))))
 
 (defn install-aur-package

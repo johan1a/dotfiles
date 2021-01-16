@@ -10,7 +10,7 @@
 (defn set-default-shell
   [context changes]
   (do
-    (command "chsh" ["-s" "/usr/bin/fish"] (assoc context :sudo true))))
+    (command "chsh" ["-s" "/usr/bin/fish"] (assoc context :input (:password context)))))
 
 (defn link-files
   [context]
@@ -32,8 +32,8 @@
 (defn setup-fish
   [context]
   (do
-    (handler context :installed-fish set-default-shell)
-    (pacman "fish" (assoc context :handler-ref :installed-fish))
+    ; (handler context :installed-fish set-default-shell) ; FIXME it does not enter the password correctly, just hangs
+    (pacman "fish" (assoc context :state "present" :handler-ref :installed-fish))
     (link context (<< "~(:modules-dir context)terminal/files/bashrc") (str (:home context) ".bashrc"))
     (link context (<< "~(:modules-dir context)terminal/files/inputrc") (str (:home context) ".inputrc"))
     (link context (<< "~(:modules-dir context)terminal/files/aliases.sh") (str (:home context) ".aliases.sh"))
