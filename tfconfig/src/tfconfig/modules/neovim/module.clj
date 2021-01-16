@@ -1,11 +1,11 @@
 (ns tfconfig.modules.neovim.module
-  (:require [tfconfig.common.command :refer :all])
+  (:require [tfconfig.common.command :refer :all]
             [tfconfig.common.file :refer :all]
             [tfconfig.common.pacman :refer :all]
             [tfconfig.common.has-executable :refer :all]
             [tfconfig.common.handler :refer :all]
             [tfconfig.common.gem :refer :all]
-            [tfconfig.common.pip :refer :all])
+            [tfconfig.common.pip :refer :all]))
 
 (def required-gems ["msgpack" "rdoc" "neovim" "multi_json"])
 
