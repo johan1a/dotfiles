@@ -67,7 +67,8 @@
     (pacman "xorg-xinit" pacman-state-present)
     (link context src-file dest-file)
     (command "ls" ["-lah" (:home context)] context)
-    (command "xrdb" ["-merge" dest-file] context))))
+    (when-not (:ci context)
+      (command "xrdb" ["-merge" dest-file] context)))))
 
 (defn setup-gtk3
   [context]
