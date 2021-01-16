@@ -6,6 +6,6 @@
   [context]
   (let [home (:home context)]
     (do
-      (println "-- Module: Owncloud --")
+      (println "-- Module: owncloud --")
       (link context (<< "~{home}ownCloud/documents") (<< "~{home}/documents"))
       (link context (<< "~{home}ownCloud/vimwiki") (<< "~{home}/vimwiki")))))

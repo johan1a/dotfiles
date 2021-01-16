@@ -52,3 +52,8 @@
   ([context src dest opts]
    (file dest (merge opts (assoc context :src src :state "link")))))
 
+(defn directory
+  ([context path]
+   (directory context path {}))
+  ([context path opts]
+   (file path (merge opts (assoc context :state "dir")))))

@@ -1,4 +1,0 @@
-
-  - include: dunst.yml
-    tags: dunst
-    when: arch

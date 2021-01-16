@@ -59,7 +59,7 @@
 (defn run
   [context]
   (do
-    (println "-- Module: Neovim --")
+    (println "-- Module: neovim --")
     (install-neovim context)
     (install-make context)
     (install-gems context)
