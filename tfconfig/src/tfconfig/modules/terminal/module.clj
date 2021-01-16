@@ -18,7 +18,7 @@
     (let [src-dir (<< "~(:modules-dir context)terminal/files")
           functions-dir (str src-dir "/functions")
           dest-dir (str (:home context) ".config/fish")]
-    (directory (assoc context :owner (str (:username context) ":")) dest-dir)
+    (directory (assoc context :owner (str (:username context) ":") :sudo true) dest-dir)
     (link context (<< "~{functions-dir}/fish_mode_prompt.fish") (<< "~{dest-dir}/functions/fish_mode_prompt.fish"))
     (link context (<< "~{functions-dir}/fish_prompt.fish") (<< "~{dest-dir}/functions/fish_prompt.fish"))
     (link context (<< "~{functions-dir}/utils.fish") (<< "~{dest-dir}/functions/utils.fish"))
