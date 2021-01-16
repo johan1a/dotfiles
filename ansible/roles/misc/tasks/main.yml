@@ -5,8 +5,6 @@
       state: directory
     with_items:
       - "{{ user_home }}"
-      - "{{ user_home }}/documents"
-      - "{{ user_home }}/documents/notes"
       - "{{ user_home }}/dev"
       - "{{ user_home }}/misc"
       - "{{ user_home }}/bin"
