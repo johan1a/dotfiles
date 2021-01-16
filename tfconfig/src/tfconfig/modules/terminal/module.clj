@@ -8,8 +8,9 @@
             [clojure.core.strint :refer [<<]]))
 
 (defn set-default-shell
-  [context]
-  (command "chsh" ["-s" "/usr/bin/fish"] context))
+  [context changes]
+  (do
+    (command "chsh" ["-s" "/usr/bin/fish"] (assoc context :sudo true))))
 
 (defn link-files
   [context]
