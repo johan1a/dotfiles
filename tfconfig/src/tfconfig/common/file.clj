@@ -1,6 +1,6 @@
 (ns tfconfig.common.file
-  (:require [tfconfig.common.command :refer :all])
-  (:require [tfconfig.common.handler :refer :all]))
+  (:require [tfconfig.common.command :refer :all]
+            [tfconfig.common.handler :refer :all]))
 
 (defn file-exists?
   [context path]

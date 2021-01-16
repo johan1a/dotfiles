@@ -8,6 +8,7 @@
             [tfconfig.modules.owncloud.module :as owncloud]
             [tfconfig.modules.intellij.module :as intellij]
             [tfconfig.modules.dunst.module :as dunst]
+            [tfconfig.modules.terminal.module :as terminal]
             [tfconfig.modules.taskwarrior.module :as taskwarrior]
             [clojure.core.strint :refer [<<]])
   (:gen-class))
@@ -62,6 +63,7 @@
         (i3-gaps/run context)
         (neovim/run context)
         (aur/run context)
+        (terminal/run context)
         (dunst/run context)
         (polybar/run context)
         (gpg/run context)

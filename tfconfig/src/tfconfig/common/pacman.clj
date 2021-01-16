@@ -1,5 +1,6 @@
 (ns tfconfig.common.pacman
-  (:require [tfconfig.common.command :refer :all]))
+  (:require [tfconfig.common.command :refer :all]
+            [tfconfig.common.handler :refer :all]))
 
 (defn pacman-upgrade
   [options]
@@ -11,6 +12,9 @@
         sudo-options (assoc options :sudo true)]
     (do
       (when (= desired-state "present")
-        (command "pacman" ["-S" package "--noconfirm" "--needed"] sudo-options)))
-    (when (= desired-state "absent")
-      (command "pacman" ["-R" package "--noconfirm"] sudo-options))))
+        (let [result (command "pacman" ["-S" package "--noconfirm" "--needed"] sudo-options)
+              output (:stdout result)]
+          (when-not (clojure.string/includes? output "is up to date -- skipping")
+            (notify options"installed"))))
+      (when (= desired-state "absent")
+        (command "pacman" ["-R" package "--noconfirm"] sudo-options)))))

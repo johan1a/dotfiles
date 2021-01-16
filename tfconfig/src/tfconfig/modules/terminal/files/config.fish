@@ -4,7 +4,8 @@ set -x ANSIBLE_NOCOWS 1
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set -x BROWSER google-chrome-stable
-set -x WINEARCH win32
+set -x WINEARCH win64
+set -x WINEPREFIX /home/johan/.wine64
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DESKTOP_DIR="$HOME/"
@@ -14,6 +15,8 @@ export XDG_MUSIC_DIR="$HOME/music"
 export XDG_PICTURES_DIR="$HOME/pictures"
 export XDG_VIDEOS_DIR="$HOME/videos"
 export COURSIER_CACHE="$XDG_DOWNLOAD_DIR/.couries-cache"
+
+contains ~/.local/bin/ $fish_user_paths; or set -Ua fish_user_paths ~/.local/bin/
 
 source ~/.config/fish/functions/utils.fish
 
