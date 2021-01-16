@@ -6,6 +6,7 @@
             [tfconfig.modules.polybar.module :as polybar]
             [tfconfig.modules.i3-gaps.module :as i3-gaps]
             [tfconfig.modules.owncloud.module :as owncloud]
+            [tfconfig.modules.intellij.module :as intellij]
             [tfconfig.modules.taskwarrior.module :as taskwarrior]
             [clojure.core.strint :refer [<<]])
   (:gen-class))
@@ -54,6 +55,7 @@
       (do
         (println (str "Root dir: " (:root-dir context)))
         (dirs/run context)
+        (intellij/run context)
         (owncloud/run context)
         (taskwarrior/run context)
         (i3-gaps/run context)

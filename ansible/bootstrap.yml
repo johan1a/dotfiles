@@ -17,7 +17,6 @@
       - universal_ctags
       - ncmpcpp
       - kubernetes
-      - intellij
       - xinitrc
       - dunst
       - cups
