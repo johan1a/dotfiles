@@ -28,6 +28,8 @@
         is-file (file-exists? context path)
         is-link (link-exists? context path)]
     (do
+      (when (and (= desired-state "file") (not is-file) (not is-dir))
+          (command "touch" [path] context))
       (when (and (= desired-state "dir") (not is-dir))
         (do
           (println (str "Creating directory: " path))
