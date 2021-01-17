@@ -1,5 +1,0 @@
-
-  - include: debian.yml
-    when: not lookup('env', 'Vagrant') and debian
-
-  - include: config.yml

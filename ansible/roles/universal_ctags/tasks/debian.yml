@@ -1,6 +1,0 @@
-
-
-  - name: install universal-ctags prerequisites
-    apt: name=dh-autoreconf state=latest
-    become_method: sudo
-

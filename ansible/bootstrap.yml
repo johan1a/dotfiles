@@ -10,7 +10,6 @@
       - neomutt
       - mlocate
       - fzf
-      - universal_ctags
       - kubernetes
       - xinitrc
       - cups
