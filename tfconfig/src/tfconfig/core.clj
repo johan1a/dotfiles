@@ -58,7 +58,6 @@
       (do
         (println (str "Root dir: " (:root-dir context)))
         (dirs/run context)
-        (colemak/run context)
         (intellij/run context)
         (owncloud/run context)
         (taskwarrior/run context)
@@ -66,6 +65,7 @@
         (neovim/run context)
         (aur/run context)
         (terminal/run context)
+        (colemak/run context)
         (dunst/run context)
         (polybar/run context)
         (gpg/run context)
