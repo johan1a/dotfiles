@@ -13,7 +13,6 @@
   (let [managed-str (str (:managed-str context) name)
         cron-file (<< "/var/spool/cron/~(:username context)")]
     (do
-      (command "touch" [cron-file] context)
       (with-open [reader (clojure.java.io/reader cron-file)]
         (let [lines (line-seq reader)
               index (.indexOf lines managed-str)
