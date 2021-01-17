@@ -4,7 +4,7 @@
             [tfconfig.common.pacman :refer :all]
             [clojure.core.strint :refer [<<]]))
 
-(def packages ["autoconf"])
+(def packages ["base-devel" "autoconf"])
 
 (defn run
   "Installs useful packages"
