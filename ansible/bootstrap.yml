@@ -8,7 +8,6 @@
       - misc
       - utils
       - neomutt
-      - mlocate
       - fzf
       - kubernetes
       - cups

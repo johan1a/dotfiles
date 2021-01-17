@@ -4,6 +4,7 @@
             [tfconfig.modules.neovim.module :as neovim]
             [tfconfig.modules.dirs.module :as dirs]
             [tfconfig.modules.packages.module :as packages]
+            [tfconfig.modules.mlocate.module :as mlocate]
             [tfconfig.modules.polybar.module :as polybar]
             [tfconfig.modules.i3-gaps.module :as i3-gaps]
             [tfconfig.modules.owncloud.module :as owncloud]
@@ -13,6 +14,7 @@
             [tfconfig.modules.colemak.module :as colemak]
             [tfconfig.modules.tmux.module :as tmux]
             [tfconfig.modules.git.module :as git]
+            [tfconfig.modules.mlocate.module :as mlocate]
             [tfconfig.modules.xorg.module :as xorg]
             [tfconfig.modules.ctags.module :as ctags]
             [tfconfig.modules.taskwarrior.module :as taskwarrior]
@@ -58,14 +60,17 @@
                  :username user
                  :changes changes
                  :throw-errors true
+                 :managed-str "The following line is managed by tfconfig, do not edit. Description: "
                  :ci (System/getenv "CI")}]
     (if password
       (do
         (println (str "Root dir: " (:root-dir context)))
         (dirs/run context)
         (packages/run context)
+        (mlocate/run context)
         (git/run context)
         (ctags/run context)
+        (mlocate/run context)
         (intellij/run context)
         (owncloud/run context)
         (taskwarrior/run context)
