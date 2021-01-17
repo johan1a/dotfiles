@@ -11,6 +11,7 @@
             [tfconfig.modules.terminal.module :as terminal]
             [tfconfig.modules.colemak.module :as colemak]
             [tfconfig.modules.tmux.module :as tmux]
+            [tfconfig.modules.git.module :as git]
             [tfconfig.modules.taskwarrior.module :as taskwarrior]
             [clojure.core.strint :refer [<<]])
   (:gen-class))
@@ -59,6 +60,7 @@
       (do
         (println (str "Root dir: " (:root-dir context)))
         (dirs/run context)
+        (git/run context)
         (intellij/run context)
         (owncloud/run context)
         (taskwarrior/run context)
