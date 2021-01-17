@@ -1,3 +1,0 @@
-  - name: Install Haskell language server
-    command: yay -S haskell-ide-engine --noconfirm --needed
-    become_user: "{{ username }}"

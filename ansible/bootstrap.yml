@@ -11,6 +11,5 @@
       - fzf
       - kubernetes
       - cups
-      - language_servers
       - docker
       - after

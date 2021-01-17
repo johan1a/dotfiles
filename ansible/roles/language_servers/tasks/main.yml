@@ -1,6 +1,0 @@
-
-  - include: python.yml
-
-  - include: groovy.yml
-    tags:
-      - groovy-lang-server
