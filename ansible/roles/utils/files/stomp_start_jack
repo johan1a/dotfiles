@@ -9,4 +9,3 @@ jack_control dps period 256
 sleep 1
 # a2jmidid -e &
 # sleep 10
-qjackctl &
