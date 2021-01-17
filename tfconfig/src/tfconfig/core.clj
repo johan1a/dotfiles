@@ -3,6 +3,7 @@
             [tfconfig.modules.gpg.module :as gpg]
             [tfconfig.modules.neovim.module :as neovim]
             [tfconfig.modules.dirs.module :as dirs]
+            [tfconfig.modules.packages.module :as packages]
             [tfconfig.modules.polybar.module :as polybar]
             [tfconfig.modules.i3-gaps.module :as i3-gaps]
             [tfconfig.modules.owncloud.module :as owncloud]
@@ -61,6 +62,7 @@
       (do
         (println (str "Root dir: " (:root-dir context)))
         (dirs/run context)
+        (packages/run context)
         (git/run context)
         (ctags/run context)
         (intellij/run context)
