@@ -1,6 +1,0 @@
-
-
-  - name: install tmux
-    apt: name=tmux state=latest
-    become_method: sudo
-

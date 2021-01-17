@@ -10,6 +10,7 @@
             [tfconfig.modules.dunst.module :as dunst]
             [tfconfig.modules.terminal.module :as terminal]
             [tfconfig.modules.colemak.module :as colemak]
+            [tfconfig.modules.tmux.module :as tmux]
             [tfconfig.modules.taskwarrior.module :as taskwarrior]
             [clojure.core.strint :refer [<<]])
   (:gen-class))
@@ -65,6 +66,7 @@
         (neovim/run context)
         (aur/run context)
         (terminal/run context)
+        (tmux/run context)
         (colemak/run context)
         (dunst/run context)
         (polybar/run context)

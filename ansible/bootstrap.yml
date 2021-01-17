@@ -9,7 +9,6 @@
       - utils
       - git
       - neomutt
-      - tmux
       - mlocate
       - fzf
       - universal_ctags
