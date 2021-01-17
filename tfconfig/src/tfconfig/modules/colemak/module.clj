@@ -1,4 +1,4 @@
-(ns tfconfig.modules.neovim.module
+(ns tfconfig.modules.colemak.module
   (:require [tfconfig.common.command :refer :all]
             [tfconfig.common.file :refer :all]
             [clojure.core.strint :refer [<<]]))

@@ -9,6 +9,7 @@
             [tfconfig.modules.intellij.module :as intellij]
             [tfconfig.modules.dunst.module :as dunst]
             [tfconfig.modules.terminal.module :as terminal]
+            [tfconfig.modules.colemak.module :as colemak]
             [tfconfig.modules.taskwarrior.module :as taskwarrior]
             [clojure.core.strint :refer [<<]])
   (:gen-class))
@@ -57,6 +58,7 @@
       (do
         (println (str "Root dir: " (:root-dir context)))
         (dirs/run context)
+        (colemak/run context)
         (intellij/run context)
         (owncloud/run context)
         (taskwarrior/run context)
