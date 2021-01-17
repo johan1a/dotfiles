@@ -56,20 +56,6 @@
     (when-not (dir-exists? context dest-dir)
         (command "git" ["clone" repo dest-dir] context))))
 
-(defn setup-xorg
-  [context]
-  (do
-    (let [src-file (<< "~(:modules-dir context)terminal/files/Xresources")
-          dest-file (str (:home context) ".Xresources")
-          pacman-state-present (assoc context :state "present")]
-    (pacman "xorg-xrandr" pacman-state-present)
-    (pacman "xorg-server" pacman-state-present)
-    (pacman "xorg-xinit" pacman-state-present)
-    (link context src-file dest-file)
-    (command "ls" ["-lah" (:home context)] context)
-    (when-not (:ci context)
-      (command "xrdb" ["-merge" dest-file] context)))))
-
 (defn setup-gtk3
   [context]
   (do
@@ -87,6 +73,5 @@
     (setup-fish context)
     (setup-termite context)
     (setup-base16 context)
-    (setup-xorg context)
     (setup-gtk3 context)))
 

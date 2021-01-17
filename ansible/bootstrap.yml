@@ -11,7 +11,6 @@
       - mlocate
       - fzf
       - kubernetes
-      - xinitrc
       - cups
       - language_servers
       - docker

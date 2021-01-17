@@ -13,6 +13,7 @@
             [tfconfig.modules.colemak.module :as colemak]
             [tfconfig.modules.tmux.module :as tmux]
             [tfconfig.modules.git.module :as git]
+            [tfconfig.modules.xorg.module :as xorg]
             [tfconfig.modules.ctags.module :as ctags]
             [tfconfig.modules.taskwarrior.module :as taskwarrior]
             [clojure.core.strint :refer [<<]])
@@ -71,6 +72,7 @@
         (i3-gaps/run context)
         (neovim/run context)
         (aur/run context)
+        (xorg/run context)
         (terminal/run context)
         (tmux/run context)
         (colemak/run context)

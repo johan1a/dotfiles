@@ -1,4 +1,0 @@
-
-  - include: arch.yml
-    when: arch
-    tags: xinitrc
