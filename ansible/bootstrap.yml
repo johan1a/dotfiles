@@ -8,8 +8,6 @@
       - misc
       - utils
       - neomutt
-      - fzf
-      - kubernetes
       - cups
       - docker
       - after
