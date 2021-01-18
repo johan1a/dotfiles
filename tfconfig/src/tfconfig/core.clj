@@ -11,6 +11,7 @@
             [tfconfig.modules.intellij.module :as intellij]
             [tfconfig.modules.dunst.module :as dunst]
             [tfconfig.modules.terminal.module :as terminal]
+            [tfconfig.modules.fzf.module :as fzf]
             [tfconfig.modules.colemak.module :as colemak]
             [tfconfig.modules.tmux.module :as tmux]
             [tfconfig.modules.git.module :as git]
@@ -79,6 +80,7 @@
         (aur/run context)
         (xorg/run context)
         (terminal/run context)
+        (fzf/run context)
         (tmux/run context)
         (colemak/run context)
         (dunst/run context)
