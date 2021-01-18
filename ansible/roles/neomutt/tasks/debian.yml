@@ -1,7 +1,0 @@
-
-  - name: Install neomutt, notmuch, and isync / mbsync
-    apt:
-      name: ['neomutt',
-      'notmuch',
-      'isync']
-      state: latest

@@ -1,5 +1,0 @@
-
-  - name: Install neomutt and notmuch
-    pacman:
-      name: ['neomutt', 'notmuch']
-      state: latest

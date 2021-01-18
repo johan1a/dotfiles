@@ -19,6 +19,7 @@
             [tfconfig.modules.git.module :as git]
             [tfconfig.modules.mlocate.module :as mlocate]
             [tfconfig.modules.xorg.module :as xorg]
+            [tfconfig.modules.neomutt.module :as neomutt]
             [tfconfig.modules.ctags.module :as ctags]
             [tfconfig.modules.cups.module :as cups]
             [tfconfig.modules.taskwarrior.module :as taskwarrior]
@@ -67,7 +68,7 @@
                  :username user
                  :changes changes
                  :throw-errors true
-                 :managed-str "The following line is managed by tfconfig, do not edit. Description: "
+                 :managed-str "# The following line is managed by tfconfig, do not edit. Description: "
                  :profile profile
                  :ci (System/getenv "CI")}]
     (if password
@@ -75,6 +76,7 @@
         (println (str "Root dir: " (:root-dir context)))
         (dirs/run context)
         (packages/run context)
+        (neomutt/run context)
         (docker/run context)
         (cups/run context)
         (mlocate/run context)
