@@ -22,3 +22,5 @@ untrack=rm -r --cached
 	required = true
 [pull]
 	rebase = false
+[init]
+	defaultBranch = master
