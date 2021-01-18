@@ -11,10 +11,11 @@
 (defn create-dirs
   [context]
   (let [home (:home context)
-        files-dir (<< "~(:modules-dir context)neomutt/files")]
+        files-dir (<< "~(:modules-dir context)neomutt/files")
+        owning-context (assoc context :sudo true :owner (str (:username context) ":"))]
     (do
-      (directory context (str home ".mutt/scripts"))
-      (directory context (str home ".mail/gmail")))))
+      (directory owning-context (str home ".mutt/scripts"))
+      (directory owning-context (str home ".mail/gmail")))))
 
 (defn link-files
   [context]
