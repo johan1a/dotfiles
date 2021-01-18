@@ -8,9 +8,9 @@
   [context]
   (do
     (println "-- Module: xorg --")
-    (let [xresources-src (<< "~(:modules-dir context)terminal/files/Xresources")
+    (let [xresources-src (<< "~(:modules-dir context)xorg/files/Xresources")
           xresources-dest (str (:home context) ".Xresources")
-          xinitrc-src (<< "~(:modules-dir context)terminal/files/xinitrc")
+          xinitrc-src (<< "~(:modules-dir context)xorg/files/xinitrc")
           xinitrc-dest (str (:home context) ".xinitrc")
           pacman-state-present (assoc context :state "present")]
       (pacman "xorg" pacman-state-present)
