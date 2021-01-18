@@ -10,8 +10,13 @@
         owner (str (:username context) ":")
         dirs [(:sources-dir context)
               (:backup-dir context)
+              (str home "dev") ; My code
+              (str home ".dotfiles_backup")
+              (str home "source") ; Third-party code, for compilation
+              (str home "programs") ; For portable programs e.g. Intellij
               (str home ".local")
               (str home ".local/bin")
               (str home ".local/lib")
+              (str home ".local/log")
               (str home ".config")]]
     (dorun (map #(file % (assoc context :state "dir" :owner owner)) dirs))))

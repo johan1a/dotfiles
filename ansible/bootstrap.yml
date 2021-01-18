@@ -5,7 +5,6 @@
     roles:
       - before
       - yay
-      - misc
       - utils
       - neomutt
       - after
