@@ -1,8 +1,0 @@
-
- - include_tasks: arch.yml
-   when: arch
-   tags: cups
-
- - include_tasks: cups.yml
-   when: arch
-   tags: cups
