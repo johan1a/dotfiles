@@ -11,6 +11,7 @@
             [tfconfig.modules.owncloud.module :as owncloud]
             [tfconfig.modules.intellij.module :as intellij]
             [tfconfig.modules.dunst.module :as dunst]
+            [tfconfig.modules.docker.module :as docker]
             [tfconfig.modules.terminal.module :as terminal]
             [tfconfig.modules.fzf.module :as fzf]
             [tfconfig.modules.colemak.module :as colemak]
@@ -74,6 +75,7 @@
         (println (str "Root dir: " (:root-dir context)))
         (dirs/run context)
         (packages/run context)
+        (docker/run context)
         (cups/run context)
         (mlocate/run context)
         (git/run context)
