@@ -19,6 +19,7 @@
             [tfconfig.modules.mlocate.module :as mlocate]
             [tfconfig.modules.xorg.module :as xorg]
             [tfconfig.modules.ctags.module :as ctags]
+            [tfconfig.modules.cups.module :as cups]
             [tfconfig.modules.taskwarrior.module :as taskwarrior]
             [clojure.core.strint :refer [<<]])
   (:gen-class))
@@ -73,6 +74,7 @@
         (println (str "Root dir: " (:root-dir context)))
         (dirs/run context)
         (packages/run context)
+        (cups/run context)
         (mlocate/run context)
         (git/run context)
         (ctags/run context)

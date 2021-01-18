@@ -1,5 +1,0 @@
-
-  - name: Install packages
-    pacman:
-      name: ['cups', 'cups-pdf']
-      state: latest
