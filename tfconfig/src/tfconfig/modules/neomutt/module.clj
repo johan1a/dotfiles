@@ -14,6 +14,7 @@
         files-dir (<< "~(:modules-dir context)neomutt/files")
         owning-context (assoc context :sudo true :owner (str (:username context) ":"))]
     (do
+      (directory owning-context (str home ".mutt"))
       (directory owning-context (str home ".mutt/scripts"))
       (directory owning-context (str home ".mail/gmail")))))
 
