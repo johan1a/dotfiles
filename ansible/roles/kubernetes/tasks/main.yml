@@ -1,3 +1,0 @@
-
-  - include: kubernetes.yml
-    when: not ci and username != "vagrant"
