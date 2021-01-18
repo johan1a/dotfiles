@@ -48,6 +48,7 @@
 
 (defn -main
   [& args]
+  (println "Setting up context")
   (let [password (get-password args)
         user (get-user args)
         home (<< "/home/~{user}/")
