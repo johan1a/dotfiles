@@ -7,5 +7,7 @@
   (let [home (:home context)]
     (do
       (println "-- Module: owncloud --")
-      (link context (<< "~{home}ownCloud/documents") (<< "~{home}/documents"))
-      (link context (<< "~{home}ownCloud/vimwiki") (<< "~{home}/vimwiki")))))
+      (when-not (= (:profile context) "work")
+        (do
+          (link context (<< "~{home}ownCloud/documents") (<< "~{home}documents"))
+          (link context (<< "~{home}ownCloud/vimwiki") (<< "~{home}vimwiki")))))))

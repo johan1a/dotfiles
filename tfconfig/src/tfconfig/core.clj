@@ -1,5 +1,6 @@
 (ns tfconfig.core
-  (:require [tfconfig.modules.aur.module :as aur]
+  (:require [tfconfig.common.command :refer :all]
+            [tfconfig.modules.aur.module :as aur]
             [tfconfig.modules.gpg.module :as gpg]
             [tfconfig.modules.neovim.module :as neovim]
             [tfconfig.modules.dirs.module :as dirs]
@@ -51,6 +52,8 @@
         user (get-user args)
         home (<< "/home/~{user}/")
         dotfiles-root (clojure.string/replace (System/getProperty "user.dir") #"/tfconfig" "")
+        hostname (first (:stdout (command "hostname" [] {})))
+        profile (if (= hostname "thinkpad") "work" "home")
         context {:home home
                  :root-dir dotfiles-root
                  :modules-dir (str dotfiles-root "/tfconfig/src/tfconfig/modules/")
@@ -62,6 +65,7 @@
                  :changes changes
                  :throw-errors true
                  :managed-str "The following line is managed by tfconfig, do not edit. Description: "
+                 :profile profile
                  :ci (System/getenv "CI")}]
     (if password
       (do
