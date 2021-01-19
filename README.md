@@ -8,9 +8,9 @@ Automated Arch Linux system configuration.
 ## How to run
 
 ```
-chmod +x bootstrap.sh
+chmod +x install.sh
 
-./bootstrap.sh
+./install.sh
 ```
 
 ## Install Arch Linux from a Live CD

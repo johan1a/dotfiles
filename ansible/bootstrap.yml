@@ -1,8 +1,0 @@
-
-  - name: Setup local environment
-    hosts: local
-    become: true
-    roles:
-      - before
-      - yay
-      - after
