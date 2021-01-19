@@ -1,10 +1,45 @@
 (ns tfconfig.modules.aur.module
-  (:require [tfconfig.common.command :refer :all])
-  (:require [tfconfig.common.file :refer :all])
-  (:require [tfconfig.common.pacman :refer :all])
-  (:require [tfconfig.common.has-executable :refer :all]))
+  (:require [tfconfig.common.command :refer :all]
+            [tfconfig.common.file :refer :all]
+            [tfconfig.common.handler :refer :all]
+            [tfconfig.common.pacman :refer :all]
+            [tfconfig.common.has-executable :refer :all]))
 
-(def packages ["figlet" "cowsay"])
+; TODO is this important: COURSIER_CACHE: ".coursier-cache"
+(def packages [
+     ; jack2
+      "grails"
+      "gradle"
+      "youtube-dl"
+      "fortune-mod"
+      "xclip"
+      "neofetch"
+      "time"
+      ; inxi
+      "ipcalc"
+      "tig"
+      "remind"
+      "light"
+      ;nodejs-lumo-cljs
+      "msr-tools"
+      "gotop-bin"
+      "metals"
+      "scalafmt"
+      "libffado"
+      "cadence"
+      "lib32-libpulse"
+      "python-dbus"
+      "cadence"
+      "carla"
+      "qjackctl"
+      "pulseaudio-jack"
+      ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
+      ;       translate-shell
+      ;  google-chrome
+        ;       stack-bin
+        ; httpie
+      ;  python-cheat
+      ])
 
 (def paru-dependencies ["fakeroot" "coreutils" "pkgconf"])
 

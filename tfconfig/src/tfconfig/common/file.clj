@@ -61,3 +61,26 @@
    (directory context path {}))
   ([context path opts]
    (file path (merge opts (assoc context :state "dir")))))
+
+(defn update-content
+  [lines index managed-str lines-to-add]
+  (if (= -1 index)
+    (concat lines (cons managed-str lines-to-add))
+    (concat (take index lines) (cons managed-str lines-to-add) (drop (+ 1 (count lines-to-add) index) lines))))
+
+(defn file-content
+  [context path description lines-to-add]
+  (let [managed-str (str (:managed-str context) description)
+        tmp-file (str "/tmp/tfconfig-" (rand) )]
+    (do
+      (command "cp" [path tmp-file] (assoc context :preauth true))
+      (with-open [reader (clojure.java.io/reader tmp-file)]
+              (let [lines (line-seq reader)
+                    index (.indexOf (or lines []) managed-str)
+                    new-lines (update-content lines index managed-str lines-to-add)]
+                (when (= index -1)
+                  (do
+                    (with-open [writer (clojure.java.io/writer tmp-file)]
+                      (dorun (map #(.write writer (str % "\n")) new-lines)))
+                    (command "mv" [tmp-file path] (assoc context :sudo true :preauth true))
+                    (notify context "lines"))))))))

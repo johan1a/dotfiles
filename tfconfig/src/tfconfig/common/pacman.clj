@@ -13,8 +13,9 @@
     (do
       (when (= desired-state "present")
         (let [result (command "pacman" ["-S" package "--noconfirm" "--needed"] sudo-options)
-              output (:stdout result)]
-          (when-not (clojure.string/includes? output "is up to date -- skipping")
-            (notify options"installed"))))
+              output (:stdout result)
+              err (:stdout result) ]
+          (when-not (or (clojure.string/includes? output "is up to date -- skipping") (clojure.string/includes? err "is up to date -- skipping"))
+            (notify options "installed"))))
       (when (= desired-state "absent")
         (command "pacman" ["-R" package "--noconfirm"] sudo-options)))))

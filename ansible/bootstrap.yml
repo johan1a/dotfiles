@@ -5,5 +5,4 @@
     roles:
       - before
       - yay
-      - utils
       - after
