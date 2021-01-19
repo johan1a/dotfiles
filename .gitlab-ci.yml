@@ -1,8 +1,6 @@
 image: archlinux/base
 
 before_script:
-  - sed -i -e 's/johan/johan1a/g' ansible/group_vars/local.yml
-  - sed -i -e 's/home\/johan1a\/dotfiles/builds\/johan1a\/dotfiles/g' ansible/group_vars/local.yml
   - pacman -Syu --noconfirm
   - pacman -S sudo git --noconfirm
   - useradd johan1a
@@ -15,5 +13,5 @@ before_script:
 test:
   script:
     - chown "johan1a:" . -R
-    - sudo -u johan1a bash -c 'export CI=True; ./bootstrap.sh hunter2'
+    - sudo -u johan1a bash -c 'export CI=True; ./install.sh hunter2'
 

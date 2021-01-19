@@ -1,29 +1,21 @@
-#!/bin/sh
+#!/bin/bash -e
 
-echo "Enter username: "
-read username
+PASSWORD=$1
 
-echo "Enter password: "
-read -s password
+if [ -z $PASSWORD ] ; then
+  echo "Enter SUDO password: "
+  read -s PASSWORD
+fi
 
-timedatectl set-ntp true
+echo $PASSWORD | sudo -S pacman -Syu --noconfirm --needed
+echo $PASSWORD | sudo -S pacman -S inetutils which leiningen --noconfirm --needed
 
-parted --script /dev/sda mklabel msdos mkpart primary ext4 0% 100%
-mkfs.ext4 /dev/sda1
-mount /dev/sda1 /mnt
+if [ -z $CI ] ; then
+  export VERBOSE_FLAG=
+else
+  export VERBOSE_FLAG=--verbose
+fi
 
-# pacstrap
-pacstrap /mnt base git sudo
-
-# fstab
-genfstab -U /mnt >> /mnt/etc/fstab
-echo "org /home/$username/dev vboxsf uid=$username,gid=wheel,rw,dmode=700,fmode=600,nofail 0 0" >> /mnt/etc/fstab
-
-# chroot
-wget https://gitlab.com/johan1a/dotfiles/raw/master/chroot-install.sh /mnt/chroot-install.sh -O /mnt/chroot-install.sh
-chmod +x /mnt/chroot-install.sh
-arch-chroot /mnt /bin/bash -c "./chroot-install.sh $username $password"
-
-# reboot
-umount /mnt
-reboot
+cd tfconfig
+lein run --password $PASSWORD --user $USER $VERBOSE_FLAG
+cd ..
