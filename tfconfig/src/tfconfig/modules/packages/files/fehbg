@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-scale '/home/johan/pictures/wallpapers/yosemite-2560x1440-5k-4k-wallpaper-8k-forest-osx-3955.jpg' 

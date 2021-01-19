@@ -1,0 +1,9 @@
+#Ansible: Sync mails
+*/3 * * * * ~/.local/bin/mbsync-launcher >> ~/.local/log/mbsync.log 2>&1
+#Ansible: Run updatedb
+*/15 * * * * updatedb -l 0 -o ~/.config/mlocate/mlocate.db >> ~/.local/log/updatedb.log 2>&1
+
+
+45 21 * * mon-fri /usr/bin/shutdown 22:00 && /home/johan/.local/bin/background-notify "Shutting down in 15 minutes."
+
+#* * * * mon-fri shutdown -k 22:00 && /home/johan/.local/bin/background-notify "Shutting down in 15 minutes." >> ~/test.log 2>&1

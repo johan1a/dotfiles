@@ -3,15 +3,16 @@
 (defn handler
   [context handled-key callback]
   (add-watch (:changes context) handled-key
-             (fn [key watched old-state new-state]
-               (when (= key handled-key)
-                 (callback context (key new-state))))))
+             (fn [the-key watched old-state new-state]
+               (when (= the-key handled-key)
+                 (callback context (the-key new-state))))))
 
 (defn notify
   [context event]
   (let [changes (:changes context)
         handler-ref (:handler-ref context)]
-    (swap! changes
-           (fn [current-state]
-             (update-in current-state [handler-ref] #(conj % event))))))
+    (when handler-ref
+      (swap! changes
+             (fn [current-state]
+               (update-in current-state [handler-ref] #(conj % event)))))))
 
