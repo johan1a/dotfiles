@@ -410,10 +410,6 @@ nnoremap <leader>k :NERDTreeFind<CR>
 nnoremap <leader>q :NERDTreeClose<CR>:q<CR>
 nnoremap <leader>bd :bdelete<CR>
 
-" Increment / Decrement numbers
-nnoremap <A-a> <C-a>
-nnoremap <A-x> <C-x>
-
 " replace and jump
 nnoremap c* *Ncgn
 nnoremap gs :%s//<Left>
