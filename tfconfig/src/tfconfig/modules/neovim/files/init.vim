@@ -24,10 +24,9 @@ if has('nvim')
   Plug 'zchee/deoplete-jedi'
   Plug 'SirVer/ultisnips'
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-
-  Plug 'derekwyatt/vim-scala'
   Plug 'neoclide/coc.nvim', {'branch': 'release'} " branch release makes the start text disappear, irritating!
   Plug 'sbdchd/neoformat'
+  Plug 'scalameta/nvim-metals'
 endif
 
 Plug 'artur-shaik/vim-javacomplete2'
@@ -68,6 +67,38 @@ let mapleader =  "\<Space>"
 " |  __/| | |_| | (_| | | | | | | (_| (_) | | | |  _| | (_| |
 " |_|   |_|\__,_|\__, |_|_| |_|  \___\___/|_| |_|_| |_|\__, |
  "               |___/                                 |___/
+
+
+" =========== nvim-metals ===========
+
+" Remove F from shortmess. set shortmess-=F NOTE: Without doing this, autocommands that deal with filetypes prohibit messages from being shown... and since we heavily rely on this, this must be set.
+set shortmess-=F
+
+if has('nvim-0.5')
+
+  " NOTE: It's higly recommened to set your `statusBarProvider` to `on`. This
+  " enables `metals/status` and also other helpful messages that are shown to you.
+  " However, to enable this you _must_ have the metals status shown in your status
+  " bar somehow. This can be by using the provided |metals#status()| function, or
+  " by just accessing it with Lua via `vim.g['metals_status']`. Everything will
+  " still work without this, but the status messages and feedback that you will
+  "
+  " Enable nvim-metals statusBarProvider
+  " This doesn't work when indented
+:lua << EOF
+  metals_config = require'metals'.bare_config
+  metals_config.init_options.statusBarProvider = 'on'
+EOF
+
+  augroup lsp
+    au!
+    au FileType scala,sbt lua require('metals').initialize_or_attach(metals_config)
+  augroup end
+
+  " TODO :set statusline+=%{metals#status()}
+
+endif
+
 
 " =========== ultisnips ===========
 
@@ -154,10 +185,10 @@ nmap <silent> <F2> <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>cy <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> <leader>cc <Plug>(coc-definition)
-nmap <silent> <leader>cn <Plug>(coc-type-definition)
-nmap <silent> <leader>ci <Plug>(coc-implementation)
-nmap <silent> <leader>cr <Plug>(coc-references)
+" nmap <silent> <leader>cc <Plug>(coc-definition)
+" nmap <silent> <leader>cn <Plug>(coc-type-definition)
+" nmap <silent> <leader>ci <Plug>(coc-implementation)
+" nmap <silent> <leader>cr <Plug>(coc-references)
 
 " Remap for do codeAction of current line
 nmap <leader>ac <Plug>(coc-codeaction)
@@ -166,7 +197,7 @@ nmap <leader>ac <Plug>(coc-codeaction)
 nnoremap <silent> F :call CocAction('format')<CR>
 
 " Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if &filetype == 'vim'
@@ -318,7 +349,8 @@ augroup filetypes
   autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
   autocmd FileType json                  nnoremap <buffer> <leader>f :%!python -m json.tool<cr>
   autocmd FileType xml                   nnoremap <buffer> <leader>f :%!xmllint --format -<cr>
-  autocmd FileType scala                 nnoremap <buffer> <leader>f :Neoformat<cr>
+ " uses nvim-metals
+  autocmd FileType scala                 nnoremap <buffer> <leader>f :Format<cr>
   autocmd FileType typescript            nnoremap <buffer> <leader>f :Neoformat<cr>
   autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
   autocmd FileType python                nnoremap <buffer> <leader>f :Neoformat<cr>
@@ -388,6 +420,25 @@ set showcmd
 " | . \  __/ |_| | | | | | | | (_| | |_) \__ \
 " |_|\_\___|\__, | |_| |_| |_|\__,_| .__/|___/
  "          |___/                  |_|
+
+
+ " lsp
+if has('nvim-0.5')
+  nnoremap <silent> <leader>cc    <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> <leader>ci    <cmd>lua vim.lsp.buf.implementation()<CR>
+  nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+  nnoremap <silent> <leader>ct   <cmd>lua vim.lsp.buf.type_definition()<CR>
+  nnoremap <silent> <leader>cr    <cmd>lua vim.lsp.buf.references()<CR>
+  nnoremap <silent> <leader>ce    <cmd>lua vim.lsp.buf.rename()<CR>
+  nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+  nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+  nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
+  nnoremap <silent> <leader>ca    <cmd>lua vim.lsp.buf.code_action()<CR>
+
+  nnoremap <silent> <leader>cn    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+endif
+
 
 " Copy buffer
 nnoremap <leader>x :!xclip -selection clipboard %<cr>
