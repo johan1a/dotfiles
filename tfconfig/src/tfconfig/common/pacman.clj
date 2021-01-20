@@ -12,6 +12,7 @@
         sudo-options (assoc options :sudo true)]
     (do
       (when (= desired-state "present")
+        (println (str "Installing " package))
         (let [result (command "pacman" ["-S" package "--noconfirm" "--needed"] sudo-options)
               output (:stdout result)
               err (:stdout result)]
