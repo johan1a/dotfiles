@@ -6,40 +6,39 @@
             [tfconfig.common.has-executable :refer :all]))
 
 ; TODO is this important: COURSIER_CACHE: ".coursier-cache"
-(def packages [
-     ; jack2
-      "grails"
-      "gradle"
-      "youtube-dl"
-      "fortune-mod"
-      "xclip"
-      "neofetch"
-      "time"
+(def packages [; jack2
+               "grails"
+               "gradle"
+               "youtube-dl"
+               "fortune-mod"
+               "xclip"
+               "neofetch"
+               "time"
       ; inxi
-      "ipcalc"
-      "tig"
-      "remind"
-      "light"
+               "ipcalc"
+               "tig"
+               "remind"
+               "light"
       ;nodejs-lumo-cljs
-      "msr-tools"
-      "gotop-bin"
-      "metals"
-      "scalafmt"
-      "libffado"
-      "cadence"
-      "lib32-libpulse"
-      "python-dbus"
-      "cadence"
-      "carla"
-      "qjackctl"
-      "pulseaudio-jack"
+               "msr-tools"
+               "gotop-bin"
+               "metals"
+               "scalafmt"
+               "libffado"
+               "cadence"
+               "lib32-libpulse"
+               "python-dbus"
+               "cadence"
+               "carla"
+               "qjackctl"
+               "pulseaudio-jack"
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
       ;       translate-shell
       ;  google-chrome
         ;       stack-bin
         ; httpie
       ;  python-cheat
-      ])
+               ])
 
 (def paru-dependencies ["fakeroot" "coreutils" "pkgconf"])
 

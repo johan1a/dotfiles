@@ -2,7 +2,6 @@
   (:require [tfconfig.common.command :refer :all]
             [tfconfig.common.pacman :refer :all]))
 
-
 (defn run
   [context]
   (do

@@ -19,9 +19,9 @@
   [context]
   (do
     (println "-- Module: ctags --")
-      (install-universal-ctags context)
-      (let [config-dir (str (:home context) ".ctags.d")
-            src-file (<< "~(:modules-dir context)ctags/files/main.ctags")
-            dest-file (str config-dir "/main.ctags")]
-            (directory context config-dir)
-            (link context src-file dest-file))))
+    (install-universal-ctags context)
+    (let [config-dir (str (:home context) ".ctags.d")
+          src-file (<< "~(:modules-dir context)ctags/files/main.ctags")
+          dest-file (str config-dir "/main.ctags")]
+      (directory context config-dir)
+      (link context src-file dest-file))))

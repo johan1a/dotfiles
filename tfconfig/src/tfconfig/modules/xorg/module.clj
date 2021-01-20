@@ -24,4 +24,4 @@
 
 (defn run
   [context]
-    (setup-xorg context))
+  (setup-xorg context))

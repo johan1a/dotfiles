@@ -9,6 +9,6 @@
     (println "-- Module: colemak --")
     (let [src (<< "~(:modules-dir context)colemak/files/colemaknordic")
           dest "/usr/share/X11/xkb/symbols/colemaknordic"]
-             (link (assoc context :sudo true) src dest)
-             (when-not (:ci context)
-               (command "setxkbmap" ["colemaknordic" "-option" "altwin:swap_lalt_lwin" "-option" "caps:super"] context)))))
+      (link (assoc context :sudo true) src dest)
+      (when-not (:ci context)
+        (command "setxkbmap" ["colemaknordic" "-option" "altwin:swap_lalt_lwin" "-option" "caps:super"] context)))))

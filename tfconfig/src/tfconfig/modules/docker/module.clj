@@ -1,9 +1,9 @@
 (ns tfconfig.modules.docker.module
-  (:require 
-    [tfconfig.common.file :refer :all]
-    [tfconfig.common.command :refer :all]
-    [tfconfig.common.pacman :refer :all]
-    [clojure.core.strint :refer [<<]]))
+  (:require
+   [tfconfig.common.file :refer :all]
+   [tfconfig.common.command :refer :all]
+   [tfconfig.common.pacman :refer :all]
+   [clojure.core.strint :refer [<<]]))
 
 (defn run
   [context]

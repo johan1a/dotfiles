@@ -29,9 +29,9 @@
         is-link (link-exists? context path)]
     (do
       (when (and (= desired-state "absent") (or is-file is-dir is-link))
-          (command "rm" ["-rf" path] context))
+        (command "rm" ["-rf" path] context))
       (when (and (= desired-state "file") (not is-file) (not is-dir))
-          (command "touch" [path] context))
+        (command "touch" [path] context))
       (when (and (= desired-state "dir") (not is-dir))
         (do
           (println (str "Creating directory: " path))
@@ -71,16 +71,16 @@
 (defn file-content
   [context path description lines-to-add]
   (let [managed-str (str (:managed-str context) description)
-        tmp-file (str "/tmp/tfconfig-" (rand) )]
+        tmp-file (str "/tmp/tfconfig-" (rand))]
     (do
       (command "cp" [path tmp-file] (assoc context :preauth true))
       (with-open [reader (clojure.java.io/reader tmp-file)]
-              (let [lines (line-seq reader)
-                    index (.indexOf (or lines []) managed-str)
-                    new-lines (update-content lines index managed-str lines-to-add)]
-                (when (= index -1)
-                  (do
-                    (with-open [writer (clojure.java.io/writer tmp-file)]
-                      (dorun (map #(.write writer (str % "\n")) new-lines)))
-                    (command "mv" [tmp-file path] (assoc context :sudo true :preauth true))
-                    (notify context "lines"))))))))
+        (let [lines (line-seq reader)
+              index (.indexOf (or lines []) managed-str)
+              new-lines (update-content lines index managed-str lines-to-add)]
+          (when (= index -1)
+            (do
+              (with-open [writer (clojure.java.io/writer tmp-file)]
+                (dorun (map #(.write writer (str % "\n")) new-lines)))
+              (command "mv" [tmp-file path] (assoc context :sudo true :preauth true))
+              (notify context "lines"))))))))

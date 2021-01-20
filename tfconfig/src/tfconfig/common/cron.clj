@@ -5,9 +5,9 @@
 
 (defn updated-content
   [lines index managed-str job]
-        (if (= -1 index)
-          (concat lines [managed-str job])
-          (concat (take index lines) [managed-str job] (drop (+ 2 index) lines))))
+  (if (= -1 index)
+    (concat lines [managed-str job])
+    (concat (take index lines) [managed-str job] (drop (+ 2 index) lines))))
 
 (defn cron
   [context name job]

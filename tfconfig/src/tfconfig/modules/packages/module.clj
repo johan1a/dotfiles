@@ -92,7 +92,7 @@
   (do
     (handler context :multilib-enabled sync-packages)
     ; TODO don't think this works properly
-    (file-content (assoc context :handler-ref :multilib-enabled) "/etc/pacman.conf" "Activate multilib" ["[multilib]" "Include = /etc/pacman.d/mirrorlist"])) )
+    (file-content (assoc context :handler-ref :multilib-enabled) "/etc/pacman.conf" "Activate multilib" ["[multilib]" "Include = /etc/pacman.d/mirrorlist"])))
 
 (defn config-makepkg
   [context]

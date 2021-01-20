@@ -35,7 +35,6 @@
       (link context (str files-dir "/mailboxes") (str home ".mutt/mailboxes"))
       (link context (str files-dir "/notmuch-config") (str home ".notmuch-config")))))
 
-
 (defn run
   [context]
   (do
