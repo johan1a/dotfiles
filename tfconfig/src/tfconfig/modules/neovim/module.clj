@@ -49,9 +49,9 @@
 (defn install-plugins
   [context]
   (do
-    (when-not (or false (:ci context))
-      (command "nvim" ["+PlugInstall" "+qall"] context))
-    (command "nvim" ["+UpdateRemotePlugins" "+qall"] context)))
+    (when-not (:ci context)
+      (command "nvim" ["+PlugInstall" "+qall"] context)
+      (command "nvim" ["+UpdateRemotePlugins" "+qall"] context))))
 
 (defn link-custom-snippets
   [context nvim-dir]
