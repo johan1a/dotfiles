@@ -2,6 +2,7 @@
   (:require [tfconfig.common.command :refer :all]
             [tfconfig.common.file :refer :all]
             [tfconfig.common.pacman :refer :all]
+            [tfconfig.common.aur :refer :all]
             [tfconfig.common.has-executable :refer :all]
             [tfconfig.common.handler :refer :all]
             [tfconfig.common.gem :refer :all]
@@ -11,7 +12,7 @@
 
 (defn install-neovim
   [context]
-  (pacman "neovim" (assoc context :state "present")))
+  (install-aur-package (assoc context :state "present") "neovim-nightly-bin"))
 
 (defn install-gems
   [context]
