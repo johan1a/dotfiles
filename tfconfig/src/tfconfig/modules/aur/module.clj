@@ -3,6 +3,7 @@
             [tfconfig.common.file :refer :all]
             [tfconfig.common.handler :refer :all]
             [tfconfig.common.pacman :refer :all]
+            [tfconfig.common.aur :refer :all]
             [tfconfig.common.has-executable :refer :all]))
 
 ; TODO is this important: COURSIER_CACHE: ".coursier-cache"
@@ -59,11 +60,6 @@
         (command "rm" ["-rf" base-dir] context)
         (command "git" ["clone" "https://aur.archlinux.org/paru-bin.git" base-dir] context)
         (command "makepkg" ["-si" "--noconfirm"] (assoc context :dir base-dir :pre-auth true))))))
-
-(defn install-aur-package
-  [context package]
-  (println (str "Installing " package))
-  (command "paru" ["-S" package "--noconfirm" "--needed" "--sudoloop"] (assoc context pre-auth true)))
 
 (defn run
   "Install an AUR helper and useful packages"

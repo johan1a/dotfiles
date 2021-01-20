@@ -47,7 +47,7 @@
     (directory context (<< "~(:home context).config/termite"))
     (link context (<< "~(:modules-dir context)terminal/files/config_termite") (str (:home context) ".config/termite/config"))
     (when-not (has-executable? context "termite")
-      (paru context "termite-git")))) ; TODO install community/termite instead?
+      (install-aur-package context "termite-git")))) ; TODO install community/termite instead?
 
 (defn setup-base16
   [context]
