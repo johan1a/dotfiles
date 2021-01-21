@@ -29,6 +29,7 @@ if has('nvim')
   Plug 'scalameta/nvim-metals'
 endif
 
+Plug 'BrandonRoehl/auto-omni' " Trigger automatic omnicompletion
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'honza/vim-snippets'
 Plug 'jreybert/vimagit'
@@ -68,6 +69,12 @@ let mapleader =  "\<Space>"
 " |_|   |_|\__,_|\__, |_|_| |_|  \___\___/|_| |_|_| |_|\__, |
  "               |___/                                 |___/
 
+" =========== auto-omni ===========
+" Keys that trigger omnicomplete.
+" I added '.' to the default.
+let g:auto_omnicomplete_key =
+            \ '. a b c d e f g h i j k l m n o p q r s t u v w x y z ' .
+            \ 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'
 
 " =========== nvim-metals ===========
 
@@ -351,6 +358,7 @@ augroup filetypes
   autocmd FileType xml                   nnoremap <buffer> <leader>f :%!xmllint --format -<cr>
  " uses nvim-metals
   autocmd FileType scala                 nnoremap <buffer> <leader>f :Format<cr>
+  autocmd Filetype scala                 setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd FileType typescript            nnoremap <buffer> <leader>f :Neoformat<cr>
   autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
   autocmd FileType python                nnoremap <buffer> <leader>f :Neoformat<cr>
@@ -366,6 +374,7 @@ augroup filetypes
   autocmd BufRead,BufNewFile *.avdl      setlocal filetype=avdl
 augroup END
 
+set completeopt=noinsert,menuone
 
 " =========== search ===========
 
@@ -458,6 +467,8 @@ nnoremap <c-n> :lnext<cr>
 nnoremap <leader><leader> <C-^>
 
 nnoremap <C-W> :w<CR>
+
+inoremap <C-Space> <C-x><C-o>
 
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>k :NERDTreeFind<CR>
