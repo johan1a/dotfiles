@@ -95,7 +95,7 @@ EOF
     au FileType scala,sbt lua require('metals').initialize_or_attach(metals_config)
   augroup end
 
-  " TODO :set statusline+=%{metals#status()}
+  :set statusline=%{metals#status()} " TODO check this. Does it work with gutentags statusline below etc.
 
 endif
 
@@ -428,8 +428,11 @@ if has('nvim-0.5')
   nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
   nnoremap <silent> <leader>ci    <cmd>lua vim.lsp.buf.implementation()<CR>
   nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-  nnoremap <silent> <leader>ct   <cmd>lua vim.lsp.buf.type_definition()<CR>
+  nnoremap <silent> <leader>ct    <cmd>lua vim.lsp.buf.type_definition()<CR>
   nnoremap <silent> <leader>cr    <cmd>lua vim.lsp.buf.references()<CR>
+
+  " This is actually <c-7>
+  nnoremap <silent>             <cmd>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> <leader>ce    <cmd>lua vim.lsp.buf.rename()<CR>
   nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
   nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
