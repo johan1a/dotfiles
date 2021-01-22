@@ -73,7 +73,7 @@ let mapleader =  "\<Space>"
 " Keys that trigger omnicomplete.
 " I added '.' to the default.
 let g:auto_omnicomplete_key =
-            \ '. a b c d e f g h i j k l m n o p q r s t u v w x y z ' .
+            \ 'period . a b c d e f g h i j k l m n o p q r s t u v w x y z ' .
             \ 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'
 
 " =========== nvim-metals ===========
@@ -188,8 +188,8 @@ inoremap <silent><expr> <Tab>
       \ coc#refresh()
 
 " navigate diagnostics
-nmap <silent> <F2> <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>cy <Plug>(coc-diagnostic-next)
+" nmap <silent> <F2> <Plug>(coc-diagnostic-prev)
+" nmap <silent> <leader>cy <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 " nmap <silent> <leader>cc <Plug>(coc-definition)
@@ -449,6 +449,7 @@ if has('nvim-0.5')
   nnoremap <silent> <leader>ca    <cmd>lua vim.lsp.buf.code_action()<CR>
 
   nnoremap <silent> <leader>cn    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+  nnoremap <silent> <F2>    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 endif
 
 
@@ -469,6 +470,18 @@ nnoremap <leader><leader> <C-^>
 nnoremap <C-W> :w<CR>
 
 inoremap <C-Space> <C-x><C-o>
+
+
+" WTF vimscript
+function! TryOmnicomplete()
+  call feedkeys("a")
+  if &omnifunc ==# ""
+   else
+     call feedkeys("\<C-x>\<C-o>")
+  endif
+endfunction
+
+inoremap <silent> <BS> <BS><ESC>:call TryOmnicomplete()<CR>
 
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>k :NERDTreeFind<CR>
