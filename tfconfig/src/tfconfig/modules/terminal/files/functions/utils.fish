@@ -582,3 +582,7 @@ function posix-source
     set -gx $arr[2] $arr[3]
   end
 end
+
+function m4a-to-mp3
+  ffmpeg -v 5 -y -i $argv -acodec libmp3lame -ac 2 -ab 64k output.mp3
+end
