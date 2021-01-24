@@ -456,6 +456,23 @@ endif
 " Copy buffer
 nnoremap <leader>x :!xclip -selection clipboard %<cr>
 
+function! PrintBuffers()
+  let clipboardContent = system('xclip -o --selection clipboard')
+  call feedkeys("acliboard content:\<esc>o")
+  call feedkeys(clipboardContent)
+
+  let primaryContent = system('xclip -o --selection primary')
+  call feedkeys("\<cr>primary content:\<esc>o")
+  call feedkeys(primaryContent)
+
+  let secondaryContent = system('xclip -o --selection secondary')
+  call feedkeys("\<cr>secondary content:\<esc>o")
+  call feedkeys(secondaryContent)
+  call feedkeys("\<esc>")
+endfunction
+
+nnoremap <leader>p :call PrintBuffers()<cr>
+
 " Jump to tag under cursor
 nnoremap <leader>i <C-]>zz
 
