@@ -29,7 +29,9 @@ if has('nvim')
   Plug 'scalameta/nvim-metals'
 endif
 
-Plug 'BrandonRoehl/auto-omni' " Trigger automatic omnicompletion
+" Only run auto omnicomplete for languages where we are likely of having a
+" language server running to avoid annoying error messages.
+Plug 'BrandonRoehl/auto-omni', { 'for': 'scala'} " Trigger automatic omnicompletion
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'honza/vim-snippets'
 Plug 'jreybert/vimagit'
@@ -343,6 +345,14 @@ augroup END
 
 " =========== filetypes ===========
 
+function! TryOmnicomplete()
+  call feedkeys("a")
+  if &omnifunc ==# ""
+   else
+     call feedkeys("\<C-x>\<C-o>")
+  endif
+endfunction
+
 au BufRead,BufNewFile *.sbt set filetype=scala
 
 " jsoc comment syntax highlighting support
@@ -356,9 +366,11 @@ augroup filetypes
   autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
   autocmd FileType json                  nnoremap <buffer> <leader>f :%!python -m json.tool<cr>
   autocmd FileType xml                   nnoremap <buffer> <leader>f :%!xmllint --format -<cr>
+
  " uses nvim-metals
   autocmd FileType scala                 nnoremap <buffer> <leader>f :Format<cr>
   autocmd Filetype scala                 setlocal omnifunc=v:lua.vim.lsp.omnifunc
+  autocmd Filetype scala                 inoremap <silent> <BS> <BS><ESC>:call TryOmnicomplete()<CR>
   autocmd FileType typescript            nnoremap <buffer> <leader>f :Neoformat<cr>
   autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
   autocmd FileType python                nnoremap <buffer> <leader>f :Neoformat<cr>
@@ -487,18 +499,6 @@ nnoremap <leader><leader> <C-^>
 nnoremap <C-W> :w<CR>
 
 inoremap <C-Space> <C-x><C-o>
-
-
-" WTF vimscript
-function! TryOmnicomplete()
-  call feedkeys("a")
-  if &omnifunc ==# ""
-   else
-     call feedkeys("\<C-x>\<C-o>")
-  endif
-endfunction
-
-inoremap <silent> <BS> <BS><ESC>:call TryOmnicomplete()<CR>
 
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>k :NERDTreeFind<CR>
