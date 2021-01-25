@@ -7,7 +7,7 @@
             [tfconfig.common.has-executable :refer :all]))
 
 ; TODO is this important: COURSIER_CACHE: ".coursier-cache"
-(def packages [; jack2
+(def packages ["jack2"
                "grails"
                "gradle"
                "youtube-dl"
@@ -29,7 +29,6 @@
                "cadence"
                "lib32-libpulse"
                "python-dbus"
-               "cadence"
                "carla"
                "qjackctl"
                "pulseaudio-jack"
@@ -67,4 +66,4 @@
   (do
     (println "-- Module: AUR --")
     (install-paru context)
-    (dorun (map (partial install-aur-package context) packages))))
+    (dorun (map (partial install-aur-package (assoc context :throw-errors false)) packages))))
