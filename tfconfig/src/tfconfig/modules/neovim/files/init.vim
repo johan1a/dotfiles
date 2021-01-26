@@ -529,19 +529,9 @@ nnoremap <leader>' ?<C-R>0<CR>
 
 " ALWAYS use the clipboard for ALL operations (as opposed
 " to interacting with the '+' and/or '*' registers explicitly):
-set clipboard+=unnamedplus
+" unnamedplus is for the <C-c> <C-v> mappings used in many GUI programs
+set clipboard+=unnamed,unnamedplus
 
-" Use system copy buffer
-nnoremap y "*y
-vnoremap y "*y
-nnoremap p "*p
-vnoremap p "*p
-vnoremap c "*c
-nnoremap c "*c
-vnoremap C "*C
-nnoremap C "*C
-nnoremap d "*d
-vnoremap d "*d
 nnoremap <leader>cp           olog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
 
 " noremap <d>   <c-w>+
