@@ -20,9 +20,11 @@
   [context]
   (dorun (map #(gem context % "present") required-gems)))
 
-(defn install-neovim-pip-package
+(defn install-neovim-pip-packages
   [context]
-  (pip context "neovim" "present"))
+  (do
+    (pip context "neovim" "present")
+    (pip context "python-language-server[all]")))
 
 (defn install-make
   "Make is required for the msgpack gem"
@@ -66,7 +68,7 @@
     (install-neovim context)
     (install-make context)
     (install-gems context)
-    (install-neovim-pip-package context)
+    (install-neovim-pip-packages context)
     (let [nvim-dir (str (:home context) ".config/nvim/")]
       (create-vim-dir context nvim-dir)
       (link-configs context nvim-dir)

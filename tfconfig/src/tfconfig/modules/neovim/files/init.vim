@@ -27,6 +27,7 @@ if has('nvim')
   Plug 'neoclide/coc.nvim', {'branch': 'release'} " branch release makes the start text disappear, irritating!
   Plug 'sbdchd/neoformat'
   Plug 'scalameta/nvim-metals'
+  Plug 'neovim/nvim-lspconfig' " Not sure what this does specifically
 endif
 
 " Only run auto omnicomplete for languages where we are likely of having a
@@ -97,6 +98,11 @@ if has('nvim-0.5')
 :lua << EOF
   metals_config = require'metals'.bare_config
   metals_config.init_options.statusBarProvider = 'on'
+EOF
+
+" Python language server
+:lua << EOF
+  require'lspconfig'.pyls.setup{}
 EOF
 
   augroup lsp
@@ -373,7 +379,8 @@ augroup filetypes
   autocmd Filetype scala                 inoremap <silent> <BS> <BS><ESC>:call TryOmnicomplete()<CR>
   autocmd FileType typescript            nnoremap <buffer> <leader>f :Neoformat<cr>
   autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
-  autocmd FileType python                nnoremap <buffer> <leader>f :Neoformat<cr>
+  autocmd FileType python                nnoremap <buffer> <leader>f :Format<cr>
+  autocmd Filetype python                setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd FileType clojure               nnoremap <buffer> <leader>f :!lein cljfmt fix %<cr>
   autocmd FileType fish compiler fish
   " Set this to have long lines wrap inside comments.
@@ -442,6 +449,7 @@ set showcmd
 " |_|\_\___|\__, | |_| |_| |_|\__,_| .__/|___/
  "          |___/                  |_|
 
+ " TODO c-enter compile & RUN
 
  " lsp
 if has('nvim-0.5')
