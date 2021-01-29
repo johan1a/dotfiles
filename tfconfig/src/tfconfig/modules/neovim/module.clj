@@ -24,7 +24,7 @@
   [context]
   (do
     (pip context "neovim" "present")
-    (pip context "python-language-server[all]")))
+    (pip context "python-language-server[all]" "present")))
 
 (defn install-make
   "Make is required for the msgpack gem"
