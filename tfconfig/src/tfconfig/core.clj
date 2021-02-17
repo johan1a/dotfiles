@@ -57,7 +57,7 @@
         home (<< "/home/~{user}/")
         dotfiles-root (clojure.string/replace (System/getProperty "user.dir") #"/tfconfig" "")
         hostname (first (:stdout (command "hostname" [] {})))
-        profile (if (= hostname "thinkpad") "work" "home")
+        profile (if (= hostname "PSSE307") "work" "home")
         context {:home home
                  :root-dir dotfiles-root
                  :modules-dir (str dotfiles-root "/tfconfig/src/tfconfig/modules/")
