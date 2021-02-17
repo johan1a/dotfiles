@@ -121,12 +121,13 @@
     (enable-multilib context)
     (config-makepkg context)
     (dorun (map #(pacman % (assoc context :state "present")) packages))
-    (let [sudo-context (assoc context :sudo true)]
+    (let [sudo-context (assoc context :sudo true)
+          executable-context (assoc context :executable true)]
       (command "archlinux-java" ["set" "java-14-openjdk"] (assoc sudo-context :throw-errors false)) ; TODO move
       (when-not (:ci context)
         (command "systemctl" ["enable" "cronie"] sudo-context)
         (command "systemctl" ["restart" "cronie"] sudo-context))
-      (link (assoc context :executable true) (<< "~(:modules-dir context)packages/files/bin/background-notify") (str (:home context) ".local/bin/background-notify"))
-      (link (assoc context :executable true) (<< "~(:modules-dir context)packages/files/bin/stomp_start_jack") (str (:home context) ".local/bin/stomp_start_jack"))
+      (link executable-context (<< "~(:modules-dir context)packages/files/bin/background-notify") (str (:home context) ".local/bin/background-notify"))
+      (link executable-context (<< "~(:modules-dir context)packages/files/bin/stomp_start_jack") (str (:home context) ".local/bin/stomp_start_jack"))
       ; (enable-wallpaper context)
       )))

@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+
+[ -e $HOME/.i3.after.local ]; and $HOME/.i3.after.local
