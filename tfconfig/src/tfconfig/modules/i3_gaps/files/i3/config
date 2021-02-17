@@ -24,6 +24,7 @@ exec --no-startup-id exec bash $HOME/.fehbg
 exec --no-startup-id udiskie &> /dev/null &
 exec --no-startup-id /usr/bin/blueman-applet &
 exec --no-startup-id /usr/bin/nm-applet &
+exec --no-startup-id preset-password &
 
 exec --no-startup-id /home/johan/.local/bin/i3-after-hook &> /dev/null &
 
