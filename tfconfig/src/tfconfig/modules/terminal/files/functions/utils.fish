@@ -258,6 +258,7 @@ function preset-password
 
   switch "$cached"
     case "ERR*"
+    # Requires secret-tool store --label "Mbsync password" id mbsync-password
     set password (secret-tool lookup id mbsync-password)
     echo "$password" | /usr/lib/gnupg/gpg-preset-passphrase --preset $keygrip
   end
