@@ -22,10 +22,6 @@ source ~/.config/fish/functions/utils.fish
 
 [ -e $HOME/.local.fish ]; and source $HOME/.local.fish
 
-if status --is-interactive;
-    preset-password
-end
-
 if command -v nvim > /dev/null 2>&1;
   alias vim=nvim
 end
