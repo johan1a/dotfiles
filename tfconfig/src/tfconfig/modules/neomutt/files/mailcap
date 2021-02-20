@@ -1,11 +1,11 @@
 # Originally from https://github.com/wincent/wincent
 
 # Images
-image/jpg; ~/.mutt/scripts/view_attachment.sh %s jpg
-image/jpeg; ~/.mutt/scripts/view_attachment.sh %s jpg
-image/pjpeg; ~/.mutt/scripts/view_attachment.sh %s jpg
-image/png; ~/.mutt/scripts/view_attachment.sh %s png
-image/gif; ~/.mutt/scripts/view_attachment.sh %s gif
+image/jpg; feh -. %s
+image/jpeg; feh -. %s
+image/pjpeg; feh -. %s
+image/png; feh -. %s
+image/gif; feh -. %s
 
 # PDFs
 application/pdf; ~/.mutt/scripts/view_attachment.sh %s pdf
@@ -18,8 +18,8 @@ application/pdf; ~/.mutt/scripts/view_attachment.sh %s pdf
 # Explicitly render in browser with "v" (view attachment):
 text/html; CHARSET=%{charset} ~/.mutt/scripts/view_attachment.sh %s html
 
-# Try to display implicitly using elinks:
-text/html; elinks -dump %s -dump-charset %{charset} -force-html; nametemplate=%s.html; copiousoutput
+# Try to display implicitly using w3m:
+text/html; w3m -v -F -T text/html -dump %s; copiousoutput
 
 text/plain; ~/.mutt/scripts/view_mail.sh %s %{charset}; needsterminal
 
