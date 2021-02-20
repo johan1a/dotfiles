@@ -16,6 +16,7 @@
                "iotop"
                "tree"
                "ranger"
+               "jack2"
                "vlc"
                "arandr"
                "ttf-dejavu"

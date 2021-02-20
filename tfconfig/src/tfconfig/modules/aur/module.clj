@@ -7,8 +7,7 @@
             [tfconfig.common.has-executable :refer :all]))
 
 ; TODO is this important: COURSIER_CACHE: ".coursier-cache"
-(def packages ["jack2"
-               "grails"
+(def packages ["grails"
                "gradle"
                "youtube-dl"
                "fortune-mod"
@@ -66,4 +65,4 @@
   (do
     (println "-- Module: AUR --")
     (install-paru context)
-    (dorun (map (partial install-aur-package (assoc context :throw-errors false)) packages))))
+    (dorun (map (partial install-aur-package context) packages))))
