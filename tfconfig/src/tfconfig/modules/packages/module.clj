@@ -32,6 +32,7 @@
                "the_silver_searcher"
                "strace"
                "fish"
+               "blueman"
                "npm"
                "w3m"
                "isync"
