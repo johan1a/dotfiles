@@ -591,3 +591,10 @@ function cl
   set newest_dir (ls -td ./* | head -1)
   cd $newest_dir
 end
+
+function hard-reset-jack
+  rm -rf ~/.jackdrc ~/.config/jack/conf.xml ~/.config/rncbc.org/QjackCtl.conf
+  kill -9 jackdbus
+  sleep 1
+  stomp_start_jack
+end
