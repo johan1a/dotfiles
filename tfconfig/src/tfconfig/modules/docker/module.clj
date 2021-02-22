@@ -8,7 +8,6 @@
 (defn run
   [context]
   (do
-    (println "-- Module: docker --")
     (let [sudo-context (assoc context :sudo true)]
       (pacman "docker" (assoc sudo-context :state "present"))
       (pacman "docker-compose" (assoc sudo-context :state "present"))

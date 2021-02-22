@@ -5,7 +5,6 @@
 (defn run
   [context]
   (do
-    (println "-- Module: cups --")
     (let [sudo-context (assoc context :sudo true)]
       (pacman "cups" (assoc sudo-context :state "present"))
       (pacman "cups-pdf" (assoc sudo-context :state "present"))

@@ -1,29 +1,7 @@
 (ns tfconfig.core
   (:require [tfconfig.common.command :refer :all]
-            [tfconfig.modules.aur.module :as aur]
-            [tfconfig.modules.gpg.module :as gpg]
-            [tfconfig.modules.neovim.module :as neovim]
-            [tfconfig.modules.dirs.module :as dirs]
-            [tfconfig.modules.packages.module :as packages]
-            [tfconfig.modules.mlocate.module :as mlocate]
-            [tfconfig.modules.polybar.module :as polybar]
-            [tfconfig.modules.i3-gaps.module :as i3-gaps]
-            [tfconfig.modules.owncloud.module :as owncloud]
-            [tfconfig.modules.intellij.module :as intellij]
-            [tfconfig.modules.dunst.module :as dunst]
-            [tfconfig.modules.docker.module :as docker]
-            [tfconfig.modules.terminal.module :as terminal]
-            [tfconfig.modules.fzf.module :as fzf]
-            [tfconfig.modules.colemak.module :as colemak]
-            [tfconfig.modules.tmux.module :as tmux]
-            [tfconfig.modules.git.module :as git]
-            [tfconfig.modules.mlocate.module :as mlocate]
-            [tfconfig.modules.xorg.module :as xorg]
-            [tfconfig.modules.neomutt.module :as neomutt]
-            [tfconfig.modules.ctags.module :as ctags]
-            [tfconfig.modules.cups.module :as cups]
-            [tfconfig.modules.taskwarrior.module :as taskwarrior]
-            [clojure.core.strint :refer [<<]])
+            [clojure.core.strint :refer [<<]]
+            [clj-yaml.core :as yaml])
   (:gen-class))
 
 (defn get-arg-value
@@ -47,7 +25,41 @@
       user
       (System/getenv "USER"))))
 
+(defn get-config
+  [args]
+  (let [path (get-arg-value args "--config")]
+    (if path (yaml/parse-string (slurp path)) {})))
+
 (def changes (atom {}))
+
+(defn is-module
+  [file]
+  (clojure.string/includes? (.getAbsolutePath file) "module.clj"))
+
+(defn get-modules
+  [dir-name]
+  (filter is-module (file-seq (clojure.java.io/file dir-name))))
+
+(defn get-parent-name
+  [file]
+  (let [parent (.getParent file)]
+    (last (clojure.string/split parent #"/"))))
+
+(defn find-in-list
+  [all-modules module]
+  (first (filter #(= (get-parent-name %) module) all-modules)))
+
+(defn get-modules-to-run
+  [all-modules config]
+  (let [chosen-modules (:modules config)]
+    (remove nil? (map #(find-in-list all-modules %) chosen-modules))))
+
+(defn run-module
+  [file context]
+  (do
+    (println (<< "-- Module: ~(get-parent-name file) --"))
+    (let [run-module (load-file (.getAbsolutePath file))]
+          (run-module context))))
 
 (defn -main
   [& args]
@@ -56,11 +68,16 @@
         user (get-user args)
         home (<< "/home/~{user}/")
         dotfiles-root (clojure.string/replace (System/getProperty "user.dir") #"/tfconfig" "")
+        config (get-config args)
+
         hostname (first (:stdout (command "hostname" [] {})))
         profile (if (= hostname "PSSE307") "work" "home")
+        modules-dir (str dotfiles-root "/tfconfig/src/tfconfig/modules/")
+        all-modules (get-modules modules-dir)
+        modules-to-run (get-modules-to-run all-modules config)
         context {:home home
                  :root-dir dotfiles-root
-                 :modules-dir (str dotfiles-root "/tfconfig/src/tfconfig/modules/")
+                 :modules-dir modules-dir
                  :sources-dir (str home "source/")
                  :backup-dir (str home ".dotfiles_backup")
                  :password password
@@ -75,29 +92,7 @@
       (if password
         (do
           (println (str "Root dir: " (:root-dir context)))
-          (dirs/run context)
-          (packages/run context)
-          (neomutt/run context)
-          (docker/run context)
-          (cups/run context)
-          (mlocate/run context)
-          (git/run context)
-          (ctags/run context)
-          (mlocate/run context)
-          (intellij/run context)
-          (owncloud/run context)
-          (taskwarrior/run context)
-          (i3-gaps/run context)
-          (aur/run context)
-          (neovim/run context)
-          (xorg/run context)
-          (terminal/run context)
-          (fzf/run context)
-          (tmux/run context)
-          (colemak/run context)
-          (dunst/run context)
-          (polybar/run context)
-          (gpg/run context)
+          (dorun (map #(run-module % context) modules-to-run))
           (println "Done!"))
         (println "No password specified"))
       (shutdown-agents))))

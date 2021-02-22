@@ -1,0 +1,26 @@
+profiles:
+  - name: work
+    hostname: tbd
+modules:
+  - dirs
+  - packages
+  - neomutt
+  - docker
+  - cups
+  - mlocate
+  - git
+  - ctags
+  - intellij
+  - owncloud
+  - taskwarrior
+  - i3_gaps
+  - aur
+  - neovim
+  - xorg
+  - terminal
+  - fzf
+  - tmux
+  - colemak
+  - dunst
+  - polybar
+  - gpg

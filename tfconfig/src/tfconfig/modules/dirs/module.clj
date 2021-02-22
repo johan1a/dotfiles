@@ -5,7 +5,6 @@
 (defn run
   "Create standard directories"
   [context]
-  (println "-- Module: dirs --")
   (let [home (:home context)
         owner (str (:username context) ":")
         dirs [(:sources-dir context)

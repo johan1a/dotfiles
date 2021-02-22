@@ -6,7 +6,6 @@
   [context]
   (let [home (:home context)]
     (do
-      (println "-- Module: owncloud --")
       (when-not (= (:profile context) "work")
         (do
           (link context (<< "~{home}ownCloud/documents") (<< "~{home}documents"))

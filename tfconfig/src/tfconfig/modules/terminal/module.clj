@@ -69,7 +69,6 @@
 (defn run
   [context]
   (do
-    (println "-- Module: terminal --")
     (setup-fish context)
     (setup-termite context)
     (setup-base16 context)

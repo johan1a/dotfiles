@@ -6,7 +6,6 @@
 (defn run
   [context]
   (do
-    (println "-- Module: colemak --")
     (let [src (<< "~(:modules-dir context)colemak/files/colemaknordic")
           dest "/usr/share/X11/xkb/symbols/colemaknordic"]
       (link (assoc context :sudo true) src dest)

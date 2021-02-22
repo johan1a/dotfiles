@@ -10,7 +10,6 @@
 (defn run
   [context]
   (do
-    (println "-- Module: fzf --")
     (let [fzf-dir (<< "~(:home context).fzf")]
       (when-not (dir-exists? context fzf-dir)
         (command "git" ["clone" "--depth" "1" "https://github.com/junegunn/fzf.git" fzf-dir] context)
