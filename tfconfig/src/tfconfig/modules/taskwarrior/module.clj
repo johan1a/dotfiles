@@ -7,7 +7,6 @@
   [context]
   (let [home (:home context)]
     (do
-      (println "-- Module: taskwarrior --")
       (pacman "task" (assoc context :state "present"))
       (dorun (file (<< "~{home}/ownCloud/task") (assoc context :state "dir")))
       (link context (<< "~{home}/ownCloud/task") (<< "~{home}/.task")))))

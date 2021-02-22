@@ -38,7 +38,6 @@
 (defn run
   [context]
   (do
-    (println "-- Module: neomutt --")
     (let [sudo-context (assoc context :sudo true)]
       (pacman "neomutt" (assoc sudo-context :state "present"))
       (pacman "notmuch" (assoc sudo-context :state "present"))

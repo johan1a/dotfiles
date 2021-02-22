@@ -1,10 +1,15 @@
 #!/bin/bash -e
 
 PASSWORD=$1
+CONFIG=$2
 
 if [ -z $PASSWORD ] ; then
   echo "Enter SUDO password: "
   read -s PASSWORD
+fi
+
+if [ -z $CONFIG ] ; then
+  export CONFIG=../config.yaml
 fi
 
 echo $PASSWORD | sudo -S pacman -Syu --noconfirm --needed
@@ -16,6 +21,8 @@ else
   export VERBOSE_FLAG=--verbose
 fi
 
+echo Using config: $CONFIG
+
 cd tfconfig
-lein run --password $PASSWORD --user $USER $VERBOSE_FLAG
+lein run --config $CONFIG --password $PASSWORD --user $USER $VERBOSE_FLAG
 cd ..

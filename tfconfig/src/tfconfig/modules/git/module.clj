@@ -6,7 +6,6 @@
 (defn run
   [context]
   (do
-    (println "-- Module: git --")
     ; We most likely have git installed already, but keeping this for good measure.
     (pacman "git" (assoc context :state "present"))
     (let [files-dir (<< "~(:modules-dir context)git/files")

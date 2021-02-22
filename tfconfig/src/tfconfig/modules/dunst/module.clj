@@ -9,7 +9,6 @@
 (defn run
   [context]
   (do
-    (println "-- Module: dunst --")
     (install-aur-package context "dunst")
     (directory context (<< "~(:home context).config/dunst"))
     (link context (<< "~(:modules-dir context)dunst/files/dunstrc") (<< "~(:home context).config/dunst/dunstrc"))))

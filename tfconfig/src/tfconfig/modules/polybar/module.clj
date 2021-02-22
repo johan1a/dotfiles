@@ -18,7 +18,6 @@
 (defn run
   [context]
   (do
-    (println "-- Module: polybar --")
     (file (str (:home context) ".config/polybar") (assoc context :state "dir" :owner (str (:username context) ":")))
     (install-aur-package context "polybar")
     (link-files context)))

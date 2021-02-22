@@ -18,7 +18,6 @@
 (defn run
   [context]
   (do
-    (println "-- Module: ctags --")
     (install-universal-ctags context)
     (let [config-dir (str (:home context) ".ctags.d")
           src-file (<< "~(:modules-dir context)ctags/files/main.ctags")

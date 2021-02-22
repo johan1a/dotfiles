@@ -7,7 +7,6 @@
   [context]
   (let [home (:home context)]
     (do
-      (println "-- Module: tmux --")
       (pacman "tmux" (assoc context :state "present"))
       (let [home (:home context)
             files-dir (<< "~(:modules-dir context)tmux/files")]

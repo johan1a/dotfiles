@@ -31,7 +31,6 @@
 (defn run
   [context]
   (do
-    (println "-- Module: i3-gaps --")
     (install-dependencies context)
     (setup-links context)
     (install-i3lock context)))

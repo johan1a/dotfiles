@@ -7,7 +7,6 @@
 (defn setup-xorg
   [context]
   (do
-    (println "-- Module: xorg --")
     (let [xresources-src (<< "~(:modules-dir context)xorg/files/Xresources")
           xresources-dest (str (:home context) ".Xresources")
           xinitrc-src (<< "~(:modules-dir context)xorg/files/xinitrc")

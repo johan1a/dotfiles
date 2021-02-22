@@ -119,7 +119,6 @@
   "Installs useful packages"
   [context]
   (do
-    (println "-- Module: packages --")
     (enable-multilib context)
     (config-makepkg context)
     (dorun (map #(pacman % (assoc context :state "present")) packages))
