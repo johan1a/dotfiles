@@ -50,8 +50,9 @@
   (first (filter #(= (get-parent-name %) module) all-modules)))
 
 (defn get-modules-to-run
-  [all-modules config]
-  (let [chosen-modules (:modules config)]
+  [all-modules config profile]
+  (let [ignored-modules (:ignored-modules profile)
+        chosen-modules (remove #(.contains ignored-modules %) (:modules config))]
     (remove nil? (map #(find-in-list all-modules %) chosen-modules))))
 
 (defn run-module
@@ -61,6 +62,16 @@
     (let [run-module (load-file (.getAbsolutePath file))]
           (run-module context))))
 
+(defn pattern-matches?
+  [pattern-str hostname]
+  (re-matches (re-pattern pattern-str) hostname))
+
+(defn get-profile
+  [config]
+  (let [hostname (first (:stdout (command "hostname" [] {})))
+        profiles (:profiles config)]
+    (first (filter #(pattern-matches? (:pattern %) hostname) profiles))))
+
 (defn -main
   [& args]
   (println "Setting up context")
@@ -69,12 +80,10 @@
         home (<< "/home/~{user}/")
         dotfiles-root (clojure.string/replace (System/getProperty "user.dir") #"/tfconfig" "")
         config (get-config args)
-
-        hostname (first (:stdout (command "hostname" [] {})))
-        profile (if (= hostname "PSSE307") "work" "home")
+        profile (get-profile config)
         modules-dir (str dotfiles-root "/tfconfig/src/tfconfig/modules/")
         all-modules (get-modules modules-dir)
-        modules-to-run (get-modules-to-run all-modules config)
+        modules-to-run (get-modules-to-run all-modules config profile)
         context {:home home
                  :root-dir dotfiles-root
                  :modules-dir modules-dir
