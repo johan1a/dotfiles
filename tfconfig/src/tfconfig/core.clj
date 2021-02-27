@@ -58,9 +58,14 @@
 (defn run-module
   [file context]
   (do
-    (println (<< "-- Module: ~(get-parent-name file) --"))
-    (let [run-module (load-file (.getAbsolutePath file))]
-          (run-module context))))
+    (let [module-name (get-parent-name file)
+          _ (println (<< "-- Module: ~{module-name} --"))
+          run-module (load-file (.getAbsolutePath file))
+          startTime (. System (currentTimeMillis))
+          result (run-module context)
+          elapsedMillis (- (. System (currentTimeMillis)) startTime)
+          elapsedSeconds (/ elapsedMillis 1000.0)]
+      {:elapsed elapsedSeconds :module module-name})))
 
 (defn pattern-matches?
   [pattern-str hostname]
@@ -71,6 +76,10 @@
   (let [hostname (first (:stdout (command "hostname" [] {})))
         profiles (:profiles config)]
     (first (filter #(pattern-matches? (:pattern %) hostname) profiles))))
+
+(defn result-string
+  [result]
+  (str (:module result) ": " (:elapsed result) "s"))
 
 (defn -main
   [& args]
@@ -101,7 +110,13 @@
       (if password
         (do
           (println (str "Root dir: " (:root-dir context)))
-          (dorun (map #(run-module % context) modules-to-run))
-          (println "Done!"))
+          (let [results (map #(run-module % context) modules-to-run)
+                result-strings (map result-string results)
+                summary (clojure.string/join "\n" result-strings)]
+            (do
+              (println "Done!")
+              (println "")
+              (println "Summary:")
+              (println summary))))
         (println "No password specified"))
       (shutdown-agents))))
