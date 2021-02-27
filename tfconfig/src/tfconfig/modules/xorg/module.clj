@@ -18,7 +18,7 @@
       (pacman "xorg-xinit" pacman-state-present)
       (link context xresources-src xresources-dest)
       (link context xinitrc-src xinitrc-dest)
-      (when-not (:ci context)
+      (when (:has-monitor (:profile context))
         (command "xrdb" ["-merge" xresources-dest] context)))))
 
 (defn run
