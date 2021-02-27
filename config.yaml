@@ -1,14 +1,22 @@
 profiles:
   - name: work
     pattern: ".*307.*"
+    has-monitor: true
     ignored-modules:
       - owncloud
   - name: server
     pattern: ".*urdatorn.*"
+    has-monitor: false
+    ignored-modules:
+      - owncloud
+  - name: ci
+    pattern: "runner-.*"
+    has-monitor: false
     ignored-modules:
       - owncloud
   - name: default
     pattern: ".*"
+    has-monitor: true
     ignored-modules:
       -
 modules:
