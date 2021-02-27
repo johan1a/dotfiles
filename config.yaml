@@ -1,6 +1,16 @@
 profiles:
   - name: work
-    hostname: tbd
+    pattern: ".*307.*"
+    ignored-modules:
+      - owncloud
+  - name: server
+    pattern: ".*urdatorn.*"
+    ignored-modules:
+      - owncloud
+  - name: default
+    pattern: ".*"
+    ignored-modules:
+      -
 modules:
   - dirs
   - packages
