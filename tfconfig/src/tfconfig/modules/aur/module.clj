@@ -28,6 +28,7 @@
                "carla"
                "qjackctl"
                "pulseaudio-jack"
+               "jdk11-graalvm-bin"
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
       ;       translate-shell
       ;  google-chrome

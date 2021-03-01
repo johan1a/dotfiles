@@ -6,6 +6,7 @@ set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set -x BROWSER google-chrome-stable
 set -x WINEARCH win64
 set -x WINEPREFIX /home/johan/.wine64
+set -x GRAALVM_HOME /usr/lib/jvm/java-11-graalvm/
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DESKTOP_DIR="$HOME/"
