@@ -7,10 +7,7 @@
             [tfconfig.common.has-executable :refer :all]))
 
 ; TODO is this important: COURSIER_CACHE: ".coursier-cache"
-(def packages ["grails"
-               "gradle"
-               "youtube-dl"
-               "fortune-mod"
+(def packages ["fortune-mod"
                "xclip"
                "neofetch"
                "time"
