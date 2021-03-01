@@ -54,6 +54,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'leafgarland/typescript-vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'scrooloose/nerdtree'
+Plug 'srcery-colors/srcery-vim'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
@@ -64,6 +65,16 @@ Plug 'vimwiki/vimwiki'
 call plug#end()
 
 let mapleader =  "\<Space>"
+
+
+" Colorscheme
+
+colorscheme srcery
+" if filereadable(expand('~/.vimrc_background'))
+"   let base16colorspace=256
+"   source ~/.vimrc_background
+" endif
+
 
  " ____  _             _                          __ _
 " |  _ \| |_   _  __ _(_)_ __     ___ ___  _ __  / _(_) __ _
@@ -336,11 +347,6 @@ augroup general_settings
     au FocusGained,BufEnter * :checktime
     au CursorHold * checktime
 augroup END
-
-if filereadable(expand('~/.vimrc_background'))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
 
 " =========== help ===========
 
