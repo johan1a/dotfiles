@@ -430,6 +430,10 @@ function gdd
   git diff --cached $argv
 end
 
+function gw
+  git diff --word-diff $argv
+end
+
 function gl
   git lg $argv
 end
