@@ -572,11 +572,6 @@ function x
   xdg-open $argv
 end
 
-function cljfmt
-  clojure -Sdeps '{:deps {cljfmt {:mvn/version "0.6.4"}}}' \
-    -m cljfmt.main $argv
-end
-
 function posix-source
   for i in (cat $argv)
     set arr (echo $i | string match -r "([^=]+)=(.*)")

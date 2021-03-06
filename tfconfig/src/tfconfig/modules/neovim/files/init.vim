@@ -39,7 +39,6 @@ Plug 'jreybert/vimagit'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fireplace'
 Plug 'udalov/kotlin-vim'
-Plug 'venantius/vim-cljfmt'
 Plug 'airblade/vim-gitgutter'
 Plug 'bkad/CamelCaseMotion'
 Plug 'chriskempson/base16-vim'
@@ -114,6 +113,7 @@ EOF
 " Python language server
 :lua << EOF
   require'lspconfig'.pyls.setup{}
+  require'lspconfig'.clojure_lsp.setup{}
 EOF
 
   augroup lsp
@@ -387,7 +387,7 @@ augroup filetypes
   autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
   autocmd FileType python                nnoremap <buffer> <leader>f :Format<cr>
   autocmd Filetype python                setlocal omnifunc=v:lua.vim.lsp.omnifunc
-  autocmd FileType clojure               nnoremap <buffer> <leader>f :!lein cljfmt fix %<cr>
+  autocmd FileType clojure               nnoremap <buffer> <leader>f :silent :!cljfmt fix %<cr>
   autocmd FileType fish compiler fish
   " Set this to have long lines wrap inside comments.
   autocmd FileType fish                  setlocal textwidth=79
