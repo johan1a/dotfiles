@@ -388,6 +388,7 @@ augroup filetypes
   autocmd FileType python                nnoremap <buffer> <leader>f :Format<cr>
   autocmd Filetype python                setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd FileType clojure               nnoremap <buffer> <leader>f :silent :!cljfmt fix %<cr>
+  autocmd FileType clojure               setlocal iskeyword-=. " Break words on dot
   autocmd FileType fish compiler fish
   " Set this to have long lines wrap inside comments.
   autocmd FileType fish                  setlocal textwidth=79
