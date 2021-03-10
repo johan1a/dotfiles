@@ -344,8 +344,8 @@ set gdefault
 " Trigger autoread when changing buffers while inside vim:
 augroup general_settings
     autocmd!
-    au FocusGained,BufEnter * :checktime
-    au CursorHold * checktime
+    au FocusGained,BufEnter * if !bufexists("[Command Line]") | :checktime
+    au CursorHold * if !bufexists("[Command Line]") | checktime
 augroup END
 
 " =========== help ===========
