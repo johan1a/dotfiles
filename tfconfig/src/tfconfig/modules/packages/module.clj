@@ -6,6 +6,7 @@
             [clojure.core.strint :refer [<<]]))
 
 (def packages ["base-devel"
+               "musl"
                "autoconf"
                "cronie"
                "kubectl"
