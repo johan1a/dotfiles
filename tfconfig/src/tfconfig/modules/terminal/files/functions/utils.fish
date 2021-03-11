@@ -572,6 +572,18 @@ function bluetooth-volume-down
   dbus-send --print-reply --system --dest=org.bluez /org/bluez/hci0/dev_38_18_4C_BC_F1_AA  org.bluez.MediaControl1.VolumeDown
 end
 
+function bluetooth-profile-a2dp
+  pactl set-card-profile bluez_card.38_18_4C_BC_F1_AA a2dp_sink
+end
+
+# Not sure if this is hfp or hsp. It sounds very weird in any case.
+# Why do I constantly hear myself?
+# Can I only change volumes in alsamixer?
+# ???
+function bluetooth-profile-hfp
+  pactl set-card-profile bluez_card.38_18_4C_BC_F1_AA headset_head_unit
+end
+
 function x
   xdg-open $argv
 end
@@ -597,13 +609,4 @@ function hard-reset-jack
   kill -9 jackdbus
   sleep 1
   stomp_start_jack
-end
-
-function bt-profile-a2dp
-  pactl set-card-profile bluez_card.38_18_4C_BC_F1_AA a2dp_sink
-end
-
-# Not sure if this is hfp or hsp. It sounds very weird in any case.
-function bt-profile-hfp
-  pactl set-card-profile bluez_card.38_18_4C_BC_F1_AA headset_head_unit
 end
