@@ -265,7 +265,6 @@ function preset-password
 end
 
 function neomutt
-  preset-password
   mbsync-launcher > /dev/null 2>&1 &
   command neomutt
 end

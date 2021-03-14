@@ -30,7 +30,8 @@ path=/home/johan/.mail
 #
 [user]
 name=Johan Andersson
-primary_email=johan.peter.andersson@gmail.com
+# The EMAIL env var should be set to your email in ~/.local.fish
+# primary_email=yourmail@mail.com
 
 # Configuration for "notmuch new"
 #

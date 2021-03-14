@@ -12,9 +12,8 @@
 
 (defn install-neovim
   [context]
-  (do
     (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim"] (assoc context pre-auth true :throw-errors false))
-    (install-aur-package context "neovim-nightly-bin")))
+    (install-aur-package (assoc context :throw-errors false) "neovim-nightly-bin"))
 
 (defn install-gems
   [context]

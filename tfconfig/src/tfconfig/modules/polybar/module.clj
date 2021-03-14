@@ -19,5 +19,5 @@
   [context]
   (do
     (file (str (:home context) ".config/polybar") (assoc context :state "dir" :owner (str (:username context) ":")))
-    (install-aur-package context "polybar")
+    (install-aur-package (assoc context :throw-errors false) "polybar")
     (link-files context)))

@@ -1,29 +1,32 @@
-IMAPAccount gmail
+IMAPAccount protonmail
 # Address to connect to
-Host imap.gmail.com
-User johan.peter.andersson@gmail.com
-# To store the password in an encrypted file use PassCmd instead of Pass
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
+Host 127.0.0.1
+Port 1143
+UserCmd "echo $EMAIL"
+# To update:
+# pass insert neomutt/password
+# then enter only the password, no imap_pass or similar
+PassCmd "pass neomutt/password"
+SSLType NONE
 #
 # Use SSL
-SSLType IMAPS
 # The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
 #CertificateFile ~/.cert/imap.gmail.com.pem
 #CertificateFile ~/.cert/Equifax_Secure_CA.pem
 
-IMAPStore gmail-remote
-Account gmail
+IMAPStore protonmail-remote
+Account protonmail
 
-MaildirStore gmail-local
+MaildirStore protonmail-local
 # The trailing "/" is important
-Path ~/.mail/gmail/
-Inbox ~/.mail/gmail/Inbox
+Path ~/.mail/protonmail/
+Inbox ~/.mail/protonmail/Inbox
 SubFolders Verbatim
 
-Channel gmail
-Master :gmail-remote:
-Slave :gmail-local:
+Channel protonmail
+Master :protonmail-remote:
+Slave :protonmail-local:
 # Exclude everything under the internal [Gmail] folder, except the interesting folders
 Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
 # Or include everything

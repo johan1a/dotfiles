@@ -1,8 +1,14 @@
-#!/bin/sh
+#!/usr/bin/env fish
+
+# Make sure $EMAIL is set
+[ -e $HOME/.local.fish ]; and source $HOME/.local.fish
+
 notmuch new
 # retag all "new" messages "inbox"
 notmuch tag +inbox -new -- tag:new
 # tag all messages from "me" as sent
+notmuch tag +sent -- from:$EMAIL
+
 notmuch tag +sent -- from:johan.peter.andersson@gmail.com
 # tag newsletters, but dont show them in inbox
 notmuch tag +newsletters +dk-dev -inbox -new -- to:build-dev@openjdk.java.net or to:valhalla-dev@openjdk.java.net or to:jigsaw-dev@openjdk.java.net

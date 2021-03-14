@@ -4,11 +4,13 @@ profiles:
     has-monitor: true
     ignored-modules:
       - owncloud
+      - mail
   - name: server
     pattern: ".*urdatorn.*"
     has-monitor: false
     ignored-modules:
       - owncloud
+      - mail
   - name: ci
     pattern: "runner-.*"
     has-monitor: false
@@ -22,7 +24,6 @@ profiles:
 modules:
   - dirs
   - packages
-  - neomutt
   - docker
   - cups
   - mlocate
@@ -33,6 +34,7 @@ modules:
   - taskwarrior
   - i3_gaps
   - aur
+  - mail
   - neovim
   - xorg
   - terminal

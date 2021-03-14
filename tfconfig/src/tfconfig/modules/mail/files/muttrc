@@ -1,8 +1,15 @@
 
-# Sets imap_pass and smtp_pass
-source "gpg --use-agent -dq $HOME/.mutt_pass.gpg |"
+# pass insert neomutt/password
+# thepassword
+# It should be the bridge-specific password from protonmail-bridge
+set imap_pass="`pass neomutt/password`"
+set smtp_pass="`pass neomutt/password`"
 
-set imap_user=johan.peter.andersson@gmail.com
+# Create this file manually if it doesn't exist.
+# It should contain:
+# set imap_user=yourmail@something.com
+# TODO use $EMAIL somehow
+source ~/.mutt/imap_user
 
 # Maildir
 set mbox_type=Maildir
@@ -51,8 +58,12 @@ set from = $imap_user
 set use_from = yes
 set send_charset="utf-8"
 
-set smtp_url=smtps://$imap_user@smtp.gmail.com:465/
-set ssl_force_tls = yes
+# Requires protonmail-bridge
+set smtp_url=smtp://$imap_user:$smtp_pass@127.0.0.1:1025
+
+# I think this unsets the following values
+set ssl_force_tls
+set ssl_starttls
 
 set sort = reverse-date-received
 
@@ -75,7 +86,13 @@ bind index,pager <right> sidebar-open
 bind index,pager <up> sidebar-prev
 bind index,pager c mail # Compose.
 
-macro index A "<modify-labels>+archive -unread -inbox -new\\n" "Archive message"
+macro index A "<modify-labels>+archive -unread -inbox -new\n" "Archive message"
 macro index C "<change-vfolder>?" "Change to vfolder overview"
 macro index S "<vfolder-from-query>" "Search mailbox"
 macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+
+# Address book / contacts
+set query_command = "khard email --parsable %s"
+bind editor <Tab> complete-query
+bind editor ^T    complete
+macro index,pager K "<pipe-message>khard add-email<return>" "Add the sender email address to khard"
