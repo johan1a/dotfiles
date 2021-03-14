@@ -610,3 +610,7 @@ function hard-reset-jack
   sleep 1
   stomp_start_jack
 end
+
+function vimdiff
+  nvim -d $argv
+end
