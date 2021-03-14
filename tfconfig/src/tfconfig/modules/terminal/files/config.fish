@@ -3,7 +3,7 @@ set -x VISUAL nvim
 set -x ANSIBLE_NOCOWS 1
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-set -x BROWSER google-chrome-stable
+set -x BROWSER firefox
 set -x WINEARCH win64
 set -x WINEPREFIX /home/johan/.wine64
 set -x GRAALVM_HOME /usr/lib/jvm/java-11-graalvm/

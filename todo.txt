@@ -6,10 +6,10 @@ https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 
 systemctl enable systemd-timesyncd
 
-xdg-mime default google-chrome.desktop text/html
-xdg-mime default google-chrome.desktop x-scheme-handler/http
-xdg-mime default google-chrome.desktop x-scheme-handler/https
-xdg-mime default google-chrome.desktop x-scheme-handler/about
+xdg-mime default firefox.desktop text/html
+xdg-mime default firefox.desktop x-scheme-handler/http
+xdg-mime default firefox.desktop x-scheme-handler/https
+xdg-mime default firefox.desktop x-scheme-handler/about
 
 instead of preset-password, use keyring, for neoumtt
 
