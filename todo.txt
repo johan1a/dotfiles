@@ -14,3 +14,14 @@ xdg-mime default firefox.desktop x-scheme-handler/about
 instead of preset-password, use keyring, for neoumtt
 
 fix autocommand messing with normal mode after <leader>mm<esc> and other places, mode specific autocmds?
+
+# For mail
+# Insert bridge specific password
+pass insert neomutt/password
+
+# Create ~/.local.fish
+#!/usr/bin/env fish
+set -x EMAIL themail@mail.com
+
+# For calendar sync
+pass insert owncloud/password

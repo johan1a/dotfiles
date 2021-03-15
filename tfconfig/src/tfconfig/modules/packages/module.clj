@@ -49,6 +49,7 @@
                "ethtool"
                "ttf-inconsolata"
                "lm_sensors"
+               "pass"
                "ntp"
                "moreutils"
                "elinks"
