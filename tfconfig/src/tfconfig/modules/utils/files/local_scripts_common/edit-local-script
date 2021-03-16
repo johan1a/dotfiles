@@ -15,10 +15,7 @@ end
 set cmd $argv[$index]
 set file $dir/$cmd
 
-echo "#!/usr/bin/fish" > $file
-echo "" >> $file
 $VISUAL $file
-chmod +x $file
 
 # Update completions
 fish $XDG_CONFIG_HOME/fish/completions/s.fish

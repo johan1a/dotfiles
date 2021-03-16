@@ -2,6 +2,8 @@
 function get-help-text
   if test -f "$argv".help
     cat "$argv".help
+  else if test -f $argv
+    grep help: $argv | sed 's/.*help: //' || echo ""
   else
     echo ""
   end
@@ -29,6 +31,7 @@ for dir in $all_commands
       set -l cmd "$base_dir/$dir/$subdir"
       if not string match '*.help' $cmd > /dev/null
         set -l help (get-help-text "$cmd")
+        echo $subdir $help
         complete -f --command s -n "__fish_seen_subcommand_from $dir; and not __fish_seen_subcommand_from $subdir" -a "$subdir" -d "$help"
       end
     end

@@ -17,6 +17,9 @@ while test $index -le (count $argv);
   else if test "$cmd" = "new";
     new-local-script $rest_of_args
     exit
+  else if test "$cmd" = "edit";
+    edit-local-script $rest_of_args
+    exit
   else if test -f $dir/$cmd;
     $dir/$cmd $rest_of_args
     break

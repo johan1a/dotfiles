@@ -1,0 +1,5 @@
+#!/usr/bin/fish
+
+# help: Opens Vimwiki
+
+nvim +VimwikiIndex
