@@ -33,3 +33,6 @@ set imap_user=yourmail@something.com
 
 # For calendar sync
 pass insert owncloud/password
+pass insert owncloud/caldav_url
+https://HOST:PORT/remote.php/dav/
+

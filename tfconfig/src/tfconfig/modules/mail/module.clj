@@ -32,6 +32,7 @@
       (link context (str files-dir "/mailboxes") (str home ".mutt/mailboxes"))
       (link context (str files-dir "/notmuch-config") (str home ".notmuch-config"))
       (link context (str files-dir "/khal-config") (str home ".config/khal/config"))
+      (link context (str files-dir "/vdirsyncer-config") (str home ".config/vdirsyncer/config"))
       (link context (str files-dir "/khard.conf") (str home ".config/khard/khard.conf"))))
 
 (defn run
@@ -46,5 +47,6 @@
       (install-aur-package context "khard")
       (link-files context)
       (when-not (:ci context)
-        (cron context "Sync mails" "*/3 * * * * ~/.local/bin/mbsync-launcher >> ~/.local/log/mbsync.log 2>&1"))))
+        (cron context "Sync mails" "*/3 * * * * ~/.local/bin/mbsync-launcher >> ~/.local/log/mbsync.log 2>&1")
+        (cron context "Sync calendar" "*/5 * * * * /usr/bin/vdirsyncer sync >> ~/.local/log/vdirsyncer.log 2>&1"))))
 

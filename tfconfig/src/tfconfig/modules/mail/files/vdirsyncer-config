@@ -1,0 +1,60 @@
+# This file doesn't document all available parameters, see
+# http://vdirsyncer.pimutils.org/ for the rest of them.
+
+[general]
+# A folder where vdirsyncer can store some metadata about each pair.
+status_path = "~/.vdirsyncer/status/"
+
+# CARDDAV
+[pair contacts]
+# A `[pair <name>]` block defines two storages `a` and `b` that should be
+# synchronized. The definition of these storages follows in `[storage <name>]`
+# blocks. This is similar to accounts in OfflineIMAP.
+a = "contacts_local"
+b = "contacts_remote"
+
+# Synchronize all collections that can be found.
+# You need to run `vdirsyncer discover` if new calendars/addressbooks are added
+# on the server.
+
+collections = ["from a", "from b"]
+
+# Synchronize the "display name" property into a local file (~/.contacts/displayname).
+metadata = ["displayname"]
+
+# To resolve a conflict the following values are possible:
+#   `null` - abort when collisions occur (default)
+#   `"a wins"` - assume a's items to be more up-to-date
+#   `"b wins"` - assume b's items to be more up-to-date
+#conflict_resolution = null
+
+[storage contacts_local]
+# A storage references actual data on a remote server or on the local disk.
+# Similar to repositories in OfflineIMAP.
+type = "filesystem"
+path = "~/.local/share/contacts"
+fileext = ".vcf"
+
+[storage contacts_remote]
+type = "carddav"
+url.fetch = ["command", "pass", "owncloud/caldav_url"]
+username = "admin"
+password.fetch = ["command", "pass", "owncloud/password"]
+
+[pair calendar]
+a = "calendar_local"
+b = "calendar_remote"
+collections = ["from a", "from b"]
+
+metadata = ["displayname", "color"]
+
+[storage calendar_local]
+type = "filesystem"
+path = "~/.local/share/calendars/"
+fileext = ".ics"
+
+[storage calendar_remote]
+type = "caldav"
+url.fetch = ["command", "pass", "owncloud/caldav_url"]
+username = "admin"
+password.fetch = ["command", "pass", "owncloud/password"]
