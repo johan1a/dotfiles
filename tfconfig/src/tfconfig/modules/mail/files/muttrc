@@ -5,11 +5,7 @@
 set imap_pass="`pass neomutt/password`"
 set smtp_pass="`pass neomutt/password`"
 
-# Create this file manually if it doesn't exist.
-# It should contain:
-# set imap_user=yourmail@something.com
-# TODO use $EMAIL somehow
-source ~/.mutt/imap_user
+set imap_user="`pass neomutt/email`"
 
 # Maildir
 set mbox_type=Maildir

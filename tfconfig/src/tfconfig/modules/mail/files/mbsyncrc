@@ -2,7 +2,7 @@ IMAPAccount protonmail
 # Address to connect to
 Host 127.0.0.1
 Port 1143
-UserCmd "echo $EMAIL"
+UserCmd "pass neomutt/email"
 # To update:
 # pass insert neomutt/password
 # then enter only the password, no imap_pass or similar
