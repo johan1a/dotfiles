@@ -13,6 +13,7 @@
       (directory owning-context (str home ".mutt/scripts"))
       (directory owning-context (str home ".mail/gmail"))
       (directory owning-context (str home ".config/khal"))
+      (directory owning-context (str home ".config/vdirsyncer"))
       (directory owning-context (str home ".config/khard"))))
 
 (defn link-files
@@ -40,7 +41,7 @@
       (pacman "notmuch" (assoc sudo-context :state "present"))
       (create-dirs context)
       (install-aur-package context "vdirsyncer")
-      (install-aur-package context "protonmail-bridge")
+      (install-aur-package (assoc context :throw-errors false) "protonmail-bridge")
       (install-aur-package context "khal")
       (install-aur-package context "khard")
       (link-files context)
