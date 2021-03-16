@@ -1,0 +1,6 @@
+#!/usr/bin/fish
+
+# help: Pulls dotfiles and installs them
+
+cd ~/dotfiles
+./install.sh

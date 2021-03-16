@@ -7,6 +7,26 @@ set dir $local_scripts_root
 
 set index 1
 
+function args-to-file
+  echo (string join "/" $argv)
+end
+
+function help
+  set -l file $dir/(args-to-file $argv)
+  if test -f "$file.help"
+    cat "$file.help"
+  else if test -f $file
+    grep help: $file | sed 's/.*help: //' || echo ""
+  else
+    echo "No help found."
+  end
+end
+
+if test (count $argv) -eq 0
+  echo "Usage: s CMD | s list | s help CMD | s new CMD | s edit CMD"
+  exit
+end
+
 while test $index -le (count $argv);
   set -l cmd $argv[$index]
   set -l rest_of_args $argv[(math $index + 1)..-1]
@@ -20,12 +40,15 @@ while test $index -le (count $argv);
   else if test "$cmd" = "edit";
     edit-local-script $rest_of_args
     exit
+  else if test "$cmd" = "help";
+    help $rest_of_args
+    exit
   else if test -f $dir/$cmd;
     $dir/$cmd $rest_of_args
     break
   else
     if test $index -eq (count $argv);
-      echo $cmd not found
+      echo command not found: $cmd
       exit 1
     end
 

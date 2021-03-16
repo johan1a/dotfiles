@@ -1,0 +1,5 @@
+#!/usr/bin/fish
+
+# help: Opens the diary file for today
+
+nvim +:VimwikiMakeDiaryNote
