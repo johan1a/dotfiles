@@ -1,0 +1,5 @@
+#!/usr/bin/fish
+
+set default_root "$HOME/dotfiles/tfconfig/src/tfconfig/modules/utils/files/local_scripts"
+set -q local_scripts_root || set local_scripts_root $default_root
+ls "$local_scripts_root/$argv"

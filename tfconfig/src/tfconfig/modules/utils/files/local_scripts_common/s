@@ -1,0 +1,32 @@
+#!/usr/bin/fish
+
+
+set default_root "$HOME/dotfiles/tfconfig/src/tfconfig/modules/utils/files/local_scripts"
+set -q local_scripts_root || set local_scripts_root $default_root
+set dir $local_scripts_root
+
+set index 1
+
+while test $index -le (count $argv);
+  set -l cmd $argv[$index]
+  set -l rest_of_args $argv[(math $index + 1)..-1]
+
+  if test "$cmd" = "list";
+    list-local-scripts $rest_of_args
+    exit
+  else if test "$cmd" = "new";
+    new-local-script $rest_of_args
+    exit
+  else if test -f $dir/$cmd;
+    $dir/$cmd $rest_of_args
+    break
+  else
+    if test $index -eq (count $argv);
+      echo $cmd not found
+      exit 1
+    end
+
+    set dir $dir/$cmd
+    set index (math $index + 1)
+  end
+end
