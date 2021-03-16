@@ -35,7 +35,8 @@ set header_cache = ~/.cache/mutt
 set message_cachedir = "~/.cache/mutt"
 
 # Specify where to save and/or look for postponed messages.
-set postponed = +[Gmail]/Drafts
+set postponed = +protonmail/Drafts
+set trash = "+protonmail/Trash"
 
 # Allow Mutt to open a new IMAP connection automatically.
 unset imap_passive
