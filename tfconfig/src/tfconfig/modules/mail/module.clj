@@ -11,7 +11,7 @@
         owning-context (assoc context :sudo true :owner (str (:username context) ":"))]
       (directory owning-context (str home ".mutt"))
       (directory owning-context (str home ".mutt/scripts"))
-      (directory owning-context (str home ".mail/gmail"))
+      (directory owning-context (str home ".mail/protonmail"))
       (directory owning-context (str home ".config/khal"))
       (directory owning-context (str home ".config/vdirsyncer"))
       (directory owning-context (str home ".config/khard"))))
