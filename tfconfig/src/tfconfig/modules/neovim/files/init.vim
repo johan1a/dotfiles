@@ -149,8 +149,14 @@ let g:gitgutter_max_signs = 1000
 " =========== fzf ===========
 
 set rtp+=~/.fzf
-nnoremap <leader>n :FZF<cr>
-nnoremap <leader>t :Tags<cr>
+nnoremap <leader>n :FZF!<cr>
+nnoremap <leader>g :Rg!<cr>
+nnoremap <leader>tb :Buffers!<cr>
+nnoremap <leader>tl :Lines!<cr>
+nnoremap <leader>th :History!<cr>
+nnoremap <leader>tc :Commits!<cr>
+nnoremap <leader>to :Commands!<cr>
+nnoremap <leader>te :Helptags!<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Customize fzf colors to match your color scheme
@@ -332,7 +338,6 @@ set completeopt=noinsert,menuone
 
 set grepprg=ag\ $*
 
-nnoremap <leader>g :Grep 
 
 " Fuzzy finding
 " :b <substring of open buffer> to jump to buffer
