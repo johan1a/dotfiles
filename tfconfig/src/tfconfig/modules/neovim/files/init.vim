@@ -46,6 +46,7 @@ Plug 'dag/vim-fish'
 Plug 'dkprice/vim-easygrep'
 Plug 'gurpreetatwal/vim-avro'
 Plug 'ianks/vim-tsx'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-sneak'

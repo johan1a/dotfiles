@@ -39,7 +39,6 @@ modules:
   - neovim
   - xorg
   - terminal
-  - fzf
   - tmux
   - colemak
   - dunst
