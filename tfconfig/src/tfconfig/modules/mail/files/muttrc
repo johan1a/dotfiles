@@ -32,7 +32,6 @@ set message_cachedir = "~/.cache/mutt"
 
 # Specify where to save and/or look for postponed messages.
 set postponed = +protonmail/Drafts
-set trash = "+protonmail/Trash"
 
 # Allow Mutt to open a new IMAP connection automatically.
 unset imap_passive
@@ -84,7 +83,6 @@ bind index,pager <up> sidebar-prev
 bind index,pager c mail # Compose.
 
 macro index A "<modify-labels-then-hide>+archive -unread -inbox -new\n<sync-mailbox>" "Archive message"
-macro index d "<modify-labels-then-hide>+trash -unread -inbox -new\n<sync-mailbox>" "Move message to trash"
 macro index C "<change-vfolder>?" "Change to vfolder overview"
 macro index S "<vfolder-from-query>" "Search mailbox"
 macro pager \cb <pipe-entry>'urlscan'<enter> 'Follow links with urlscan'
