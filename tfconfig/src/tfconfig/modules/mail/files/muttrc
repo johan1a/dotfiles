@@ -87,7 +87,7 @@ macro index A "<modify-labels-then-hide>+archive -unread -inbox -new\n<sync-mail
 macro index d "<modify-labels-then-hide>+trash -unread -inbox -new\n<sync-mailbox>" "Move message to trash"
 macro index C "<change-vfolder>?" "Change to vfolder overview"
 macro index S "<vfolder-from-query>" "Search mailbox"
-macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+macro pager \cb <pipe-entry>'urlscan'<enter> 'Follow links with urlscan'
 
 # Address book / contacts
 set query_command = "khard email --parsable %s"
