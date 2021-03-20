@@ -1,9 +1,8 @@
 #!/usr/bin/fish
 
-# help: Syncs and installs dotfiles
+# help: Installs dotfiles
 
 pushd .
 pushd /home/johan/dotfiles
-git pull
 ./install.sh
 popd

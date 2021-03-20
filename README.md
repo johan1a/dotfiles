@@ -11,6 +11,9 @@ Automated Arch Linux system configuration.
 chmod +x install.sh
 
 ./install.sh
+
+# After it has run at least once, you can install from any directory using:
+s dotfiles install
 ```
 
 ## Install Arch Linux from a Live CD
