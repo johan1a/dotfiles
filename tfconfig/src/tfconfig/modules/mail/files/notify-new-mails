@@ -3,7 +3,7 @@
 
 function send_notifications
   for mail in $argv
-    notify-send (echo $mail | sed 's/\t\t*/\n/g')
+    background-notify (echo $mail | sed 's/\t\t*/\n/g')
   end
 end
 
