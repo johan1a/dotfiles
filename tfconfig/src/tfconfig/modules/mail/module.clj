@@ -27,6 +27,7 @@
       (link executable-context (str files-dir "/view_attachment.sh") (str home ".mutt/scripts/view_attachment.sh"))
       (link executable-context (str files-dir "/open") (str bin-dir "/open"))
       (link executable-context (str files-dir "/notmuch-hook") (str bin-dir "/notmuch-hook"))
+      (link executable-context (str files-dir "/notify-new-mails") (str bin-dir "/notify-new-mails"))
       (link executable-context (str files-dir "/mbsync-launcher") (str bin-dir "/mbsync-launcher"))
       (link context (str files-dir "/mailcap") (str home ".mailcap"))
       (link context (str files-dir "/mailboxes") (str home ".mutt/mailboxes"))
