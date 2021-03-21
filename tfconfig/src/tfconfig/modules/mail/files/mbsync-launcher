@@ -1,4 +1,3 @@
 #!/bin/sh
 /usr/bin/mbsync -Va
 ~/.local/bin/notmuch-hook
-~/.local/bin/notify-new-mails

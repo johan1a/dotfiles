@@ -1,14 +1,11 @@
 #!/usr/bin/fish
 
-
 function send_notifications
   for mail in $argv
     background-notify (echo $mail | sed 's/\t\t*/\n/g')
   end
 end
 
-set new_mails (notmuch search --format=json --sort=newest-first --limit=20 'not tag:notified' | jq -r '.[] | [.authors, .subject] | @tsv')
+set new_mails (notmuch search --format=json --sort=newest-first --limit=20 'tag:new' | jq -r '.[] | [.authors, .subject] | @tsv')
 
 send_notifications $new_mails
-
-notmuch tag +notified -- 'not tag:notified'

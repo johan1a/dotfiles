@@ -4,6 +4,9 @@
 [ -e $HOME/.local.fish ]; and source $HOME/.local.fish
 
 notmuch new
+
+~/.local/bin/notify-new-mails
+
 # retag all "new" messages "inbox"
 notmuch tag +inbox -new -- tag:new
 # tag all messages from "me" as sent
