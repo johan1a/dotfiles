@@ -1,0 +1,4 @@
+#!/usr/bin/fish
+# help: reset faillock after too many failed password attempts
+
+faillock --user $USER --reset
