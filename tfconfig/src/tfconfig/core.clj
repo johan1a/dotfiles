@@ -55,6 +55,13 @@
         chosen-modules (remove #(.contains ignored-modules %) (:modules config))]
     (remove nil? (map #(find-in-list all-modules %) chosen-modules))))
 
+(defn get-forced-modules
+  [all-modules args]
+  (let [value (get-arg-value args "--modules")]
+    (if value
+      (remove nil? (map #(find-in-list all-modules %) (clojure.string/split value #",")))
+      nil)))
+
 (defn run-module
   [file context]
   (do
@@ -92,7 +99,8 @@
         profile (get-profile config)
         modules-dir (str dotfiles-root "/tfconfig/src/tfconfig/modules/")
         all-modules (get-modules modules-dir)
-        modules-to-run (get-modules-to-run all-modules config profile)
+        forced-modules (get-forced-modules all-modules args)
+        modules-to-run (or forced-modules (get-modules-to-run all-modules config profile))
         context {:home home
                  :root-dir dotfiles-root
                  :modules-dir modules-dir
