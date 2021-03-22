@@ -11,6 +11,7 @@ profiles:
     ignored-modules:
       - owncloud
       - mail
+      - ime
   - name: ci
     pattern: "runner-.*"
     has-monitor: false
@@ -38,6 +39,7 @@ modules:
   - mail
   - neovim
   - xorg
+  - ime
   - terminal
   - tmux
   - colemak

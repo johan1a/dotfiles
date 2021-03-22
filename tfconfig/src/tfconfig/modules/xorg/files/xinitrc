@@ -14,4 +14,6 @@ if [[ "$USER" -eq "vagrant" ]] ; then
   xrandr -s 1920x1080
 fi
 
+[[ -f ~/.config/fcitx/fcitx-env ]] && . ~/.config/fcitx/fcitx-env
+
 exec i3

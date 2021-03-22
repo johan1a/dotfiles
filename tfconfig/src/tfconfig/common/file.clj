@@ -40,6 +40,7 @@
           (notify context "created")))
       (when (= desired-state "link")
         (do
+          (println (str "Linking " src " to " path))
           (if is-link
             (command "rm" [path] force-sudo-context)
             (when (or is-dir is-file)
