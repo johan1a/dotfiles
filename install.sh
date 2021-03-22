@@ -24,5 +24,5 @@ fi
 echo Using config: $CONFIG
 
 cd tfconfig
-lein run --config $CONFIG --password $PASSWORD --user $USER $VERBOSE_FLAG
+lein run --config $CONFIG --password $PASSWORD --user $USER $VERBOSE_FLAG --modules $MODULES
 cd ..

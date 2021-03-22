@@ -8,7 +8,7 @@
   [args argname]
   (if args
     (let [i (.indexOf args argname)]
-      (if-not (= i -1)
+      (if-not (or (= i -1) (= i (- (count args) 1)))
         (nth args (+ i 1))))))
 
 (defn get-password

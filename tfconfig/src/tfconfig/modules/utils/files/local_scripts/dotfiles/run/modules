@@ -1,0 +1,8 @@
+#!/usr/bin/fish
+# help: runs the specified comma separated --modules
+pushd (pwd)
+cd ~/dotfiles
+set -x MODULES $argv
+./install.sh
+popd
+
