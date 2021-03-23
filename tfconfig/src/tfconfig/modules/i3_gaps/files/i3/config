@@ -33,12 +33,12 @@ exec --no-startup-id /home/johan/.local/bin/i3-after-hook &> /dev/null &
 
 
 # This disables all borders, which is mentioned to prevent issues with gaps in i3-gaps.
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 1
 #> for_window [class="^.*"] border pixel 5
 hide_edge_borders both
 
-gaps inner 20
-gaps outer 10
+gaps inner 0 #20
+gaps outer 0 #10
 smart_borders on
 
 
