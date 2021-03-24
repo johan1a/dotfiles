@@ -6,7 +6,7 @@
 (defn run
   "Sets up IME for Chinese"
   [context]
-  (install-aur-packages context ["fcitx-im" "fcitx-libpinyin" "fcitx-configtool"])
+  (install-aur-packages context ["fcitx-im" "fcitx-libpinyin" "fcitx-configtool" "fcitx-m17n"])
   (let [files-dir (<< "~(:modules-dir context)ime/files")
         home (:home context)]
     (directory context (<< "~{home}/.config/fcitx"))

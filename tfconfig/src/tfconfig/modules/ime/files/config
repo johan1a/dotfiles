@@ -37,7 +37,7 @@ TriggerKey=CTRL_]
 # Enable Hotkey to scroll Between Input Method
 # Available Value:
 # True False
-IMSwitchKey=False
+#IMSwitchKey=True
 # Include Inactivate when scrolling between Input Method
 # Available Value:
 # True False
