@@ -1,0 +1,5 @@
+#!/usr/bin/fish
+
+# help: Show the stroke order of a character in a browser
+
+xdg-open "http://www.strokeorder.info/mandarin.php?q=$argv" &
