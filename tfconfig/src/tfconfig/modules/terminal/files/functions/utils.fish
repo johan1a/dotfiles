@@ -405,8 +405,23 @@ function amend
   git commit --amend $argv
 end
 
+function colemaknordic
+  setxkbmap colemaknordic -option altwin:swap_lalt_lwin -option caps:super; background-notify  "Switched to Colemak Nordic."
+end
+
 function colemak
-  setxkbmap colemaknordic -option altwin:swap_lalt_lwin -option caps:super; echo "Switched to Colemak."
+  setxkbmap -layout us -variant colemak -option caps:super; background-notify "Switched to Colemak."
+end
+
+function toggle-colemak
+  set current (setxkbmap -print -verbose 10 | grep layout)
+  background-notify $current
+  switch $current
+  case '*colemaknordic'
+    colemak
+  case '*'
+    colemaknordic
+  end
 end
 
 function executable

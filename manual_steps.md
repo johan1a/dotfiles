@@ -1,5 +1,21 @@
 # Manual steps needed
 
+## Colemak nordic
+
+Fugly modded variant of colemak that replaces 7890- with åäöüß.
+
+```
+# add to /usr/share/X11/xkb/rules/base.list
+# under ! variants
+colemaknordic   us: English (Colemak Nordic)
+
+# Switch to colemak nordic
+colemaknordic
+
+# Switch to regular colemak
+colemak
+```
+
 ## pass
 
 ```

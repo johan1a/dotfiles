@@ -150,8 +150,6 @@ set $wp9 "9"
 set $wp10 "10"
 
 bindsym $mod+Shift+c exec fish -c colemak
-bindsym $mod+Shift+d exec fish -c danish
-#bindsym $mod+Shift+s exec fish -c swedish
 bindsym $mod+Shift+e exec termite -e 'fish -C edit-xclip-file'
 
 # workspace names
