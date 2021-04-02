@@ -257,5 +257,5 @@ for_window [class="Wfica_Seamless"] floating enable #, border normal
 
 # Assign Citrix windows to workspace 10
 assign [class="Wfica_Seamless"] 10
-assign [class="Firefox"] 9
+assign [class="ProtonMail Bridge"] 9
 
