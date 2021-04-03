@@ -26,8 +26,9 @@
                "alsa-firmware"
                "alsa-utils"
                "alsa-plugins"
-               "pulseaudio-alsa"
                "pulseaudio"
+               "pulseaudio-alsa"
+               "pulseaudio-bluetooth"
                "pavucontrol"
                "dmenu"
                "the_silver_searcher"
@@ -129,4 +130,6 @@
       (command "archlinux-java" ["set" "java-14-openjdk"] (assoc sudo-context :throw-errors false)) ; TODO move
       (when-not (:ci context)
         (command "systemctl" ["enable" "cronie"] sudo-context)
-        (command "systemctl" ["restart" "cronie"] sudo-context)))))
+        (command "systemctl" ["restart" "cronie"] sudo-context)
+        (command "systemctl" ["enable" "bluetooth"] sudo-context)
+        (command "systemctl" ["start" "bluetooth"] sudo-context)))))
