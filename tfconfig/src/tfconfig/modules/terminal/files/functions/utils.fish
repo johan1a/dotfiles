@@ -628,3 +628,7 @@ end
 function vimdiff
   nvim -d $argv
 end
+
+function weather --description "Show weather"
+  curl -s "wttr.in/$argv" | head -n 17
+end
