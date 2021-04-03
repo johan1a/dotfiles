@@ -168,6 +168,14 @@ function clone
   git clone git@gitlab.com:$argv.git
 end
 
+function gcl
+  git config -l $argv
+end
+
+function gb
+  git branch -v $argv
+end
+
 function pull-dir
   set dir $argv
   if test -d $dir
@@ -520,6 +528,34 @@ function tl
   tmux list-sessions
 end
 
+function td
+  tmux detach
+end
+
+function ti
+  tmux info
+end
+
+function tlc
+  tmux list-commands
+end
+
+function tlk
+  tmux list-keys
+end
+
+function trs
+  tmux rename-session
+end
+
+function trw
+  tmux rename-window
+end
+
+function ts
+  tmux switch -t
+end
+
 function locate
   command locate -d ~/.config/mlocate/mlocate.db $argv
 end
@@ -671,4 +707,48 @@ end
 
 function bak
   cp $argv $argv.bak
+end
+
+function serve
+  python -m SimpleHTTPServer $argv
+end
+
+function pj
+  python -m json.tool $argv
+end
+
+function printcert
+  keytool -printcert -v -file $argv
+end
+
+function list-jks
+  keytool -list -v -keystore $argv
+end
+
+function readram
+  sudo dd if=/dev/mem | cat | strings
+end
+
+function cf
+  vim ~/.config/fish
+end
+
+function ci3
+  vim ~/.config/i3/config
+end
+
+function c
+  cdh $argv
+end
+
+function youtube-mp3
+  youtube-dl -t --extract-audio --audio-format mp3 $argv
+end
+
+function xc
+  xclip -selection clipboard $argv
+end
+
+function nvim-debug
+  nvim -V9vim-debug.log $argv
 end
