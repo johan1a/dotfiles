@@ -632,3 +632,28 @@ end
 function weather --description "Show weather"
   curl -s "wttr.in/$argv" | head -n 17
 end
+
+function whereami
+  http ifconfig.co/json
+end
+
+# Stolen from https://github.com/dmi3/fish
+function search-contents --description "`ALT`+`CTRL`+`F` search (fuzzy) file by contents"
+  if type -q ag
+    ag --nobreak --no-numbers --noheading --max-count 100000 . 2>/dev/null \
+        | fzf \
+          -q "'" \
+          --header 'Searching file contents' \
+          --preview-window 'up:3:wrap' \
+          --preview 'echo {} | cut -d ":" -f2' \
+        | string split ':' | head -n 1 | read -l result
+    and commandline $result
+    and commandline -f repaint
+  else
+    echo "⚠ to speed up search install ag"
+    grep -I -H -n -v --line-buffered --color=never -r -e '^$' . | fzf | string split ":" | head -n 1 | read -l result
+    and commandline $result
+    and commandline -f repaint
+  end
+end
+
