@@ -657,3 +657,18 @@ function search-contents --description "`ALT`+`CTRL`+`F` search (fuzzy) file by 
   end
 end
 
+function path
+  readlink -e $argv
+end
+
+function untar
+  tar -xvzf $argv
+end
+
+function external-ip
+  curl ifconfig.co
+end
+
+function bak
+  cp $argv $argv.bak
+end
