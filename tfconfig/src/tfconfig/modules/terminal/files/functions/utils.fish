@@ -761,3 +761,7 @@ function get-recipe --description "Get recipe as markdown from an URL"
         echo 'usage: get-recipe URL'
     end
 end
+
+function ws
+  s wiki search
+end
