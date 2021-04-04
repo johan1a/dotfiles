@@ -81,7 +81,8 @@
                "dos2unix"
                "rsync"
                "figlet"
-               "cowsay"])
+               "cowsay"
+               "pandoc"])
         ; "dnsutils"
         ;  udiskie
         ; redshift
