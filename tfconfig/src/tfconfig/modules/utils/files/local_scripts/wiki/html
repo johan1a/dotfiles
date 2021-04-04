@@ -1,0 +1,21 @@
+#!/usr/bin/fish
+
+# help: Generate HTML from vimwiki
+
+pushd .
+
+cd ~/vimwiki
+set dest "$HOME/dev/vimwiki"
+mkdir -p $dest
+cd $dest
+rm -rf ./
+rsync --recursive $HOME/vimwiki/* $dest/
+
+for file in (ls ./*.md)
+  echo $file
+  set output_file (echo $file | sed 's/.md$//')
+  pandoc --standalone -f markdown -t html -o $output_file $file
+end
+echo $dest
+
+popd
