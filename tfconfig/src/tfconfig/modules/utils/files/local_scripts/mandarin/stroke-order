@@ -1,7 +1,15 @@
 #!/usr/bin/fish
 
-# help: Show the stroke order of a character in a browser
+# help: Show the stroke order of a character
 
-xdg-open "http://www.strokeorder.info/mandarin.php?q=$argv" &
-# set html (http http://www.strokeorder.info/mandarin.php?q=$argv)
-# set image-url = (echo $html | grep -o '<img[^>]*src="[^"]*"' | tail -n 1 |  sed -En '/<img/s/.*src="([^"]*)".*/\1/p')
+set cache_dir $HOME/.local/share/stroke_order
+mkdir -p $cache_dir
+set cached_file "$cache_dir/$argv.gif"
+
+if not test -f $cached_file
+  set html (http "http://www.strokeorder.info/mandarin.php?q=$argv")
+  set image_url (echo $html | grep -o '<img[^>]*src="[^"]*"' | tail -n 1 | sed -En '/<img/s/.*src="([^"]*)".*/\1/p')
+  http $image_url > $cached_file
+end
+
+sxiv -a $cached_file
