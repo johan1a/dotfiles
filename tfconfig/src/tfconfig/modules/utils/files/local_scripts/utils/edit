@@ -1,0 +1,3 @@
+#!/usr/bin/fish
+
+$VISUAL $HOME/.config/fish/functions/utils.fish

@@ -27,23 +27,26 @@ if test (count $argv) -eq 0
   exit
 end
 
-while test $index -le (count $argv);
-  set -l cmd $argv[$index]
-  set -l rest_of_args $argv[(math $index + 1)..-1]
+set -l cmd $argv[$index]
+set -l rest_of_args $argv[(math $index + 1)..-1]
 
-  if test "$cmd" = "list";
-    list-local-scripts $rest_of_args
-    exit
-  else if test "$cmd" = "new";
-    new-local-script $rest_of_args
-    exit
-  else if test "$cmd" = "edit";
-    edit-local-script $rest_of_args
-    exit
-  else if test "$cmd" = "help";
-    help $rest_of_args
-    exit
-  else if test -f $dir/$cmd;
+if test "$cmd" = "list";
+  list-local-scripts $rest_of_args
+  exit
+else if test "$cmd" = "new";
+  new-local-script $rest_of_args
+  exit
+else if test "$cmd" = "edit";
+  edit-local-script $rest_of_args
+  exit
+else if test "$cmd" = "help";
+  help $rest_of_args
+  exit
+end
+
+while test $index -le (count $argv);
+
+  if test -f $dir/$cmd;
     $dir/$cmd $rest_of_args
     break
   else
@@ -55,4 +58,7 @@ while test $index -le (count $argv);
     set dir $dir/$cmd
     set index (math $index + 1)
   end
+
+  set cmd $argv[$index]
+  set rest_of_args $argv[(math $index + 1)..-1]
 end

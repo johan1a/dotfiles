@@ -3,3 +3,5 @@
 # help: Show the stroke order of a character in a browser
 
 xdg-open "http://www.strokeorder.info/mandarin.php?q=$argv" &
+# set html (http http://www.strokeorder.info/mandarin.php?q=$argv)
+# set image-url = (echo $html | grep -o '<img[^>]*src="[^"]*"' | tail -n 1 |  sed -En '/<img/s/.*src="([^"]*)".*/\1/p')
