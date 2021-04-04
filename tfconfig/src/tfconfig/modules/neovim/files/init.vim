@@ -536,3 +536,12 @@ set cedit=<ESC>
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
+
+function! ToHtml()
+  call system('pandoc '. expand('%') . ' > ' . expand('%') . '.html')
+endfunction
+
+nnoremap <leader>hh :call ToHtml()<cr>
+
+" Make sure 0 works in normal mode when using colemaknordic layout
+nnoremap ü 0
