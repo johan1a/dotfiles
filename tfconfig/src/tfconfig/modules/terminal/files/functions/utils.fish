@@ -752,3 +752,12 @@ end
 function nvim-debug
   nvim -V9vim-debug.log $argv
 end
+
+function get-recipe --description "Get recipe as markdown from an URL"
+  if [ $argv[1] ]
+        curl -sG "https://plainoldrecipe.com/recipe" -d "url=$argv[1]" |\
+          pandoc -f html -t markdown-raw_html-native_divs-native_spans-fenced_divs-bracketed_spans
+    else
+        echo 'usage: get-recipe URL'
+    end
+end
