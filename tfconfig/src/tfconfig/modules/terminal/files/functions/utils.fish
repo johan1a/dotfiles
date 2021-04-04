@@ -765,3 +765,8 @@ end
 function ws
   s wiki search
 end
+
+function w3m
+  # Don't confirm quit
+  command w3m -o confirm_qq=false $argv
+end
