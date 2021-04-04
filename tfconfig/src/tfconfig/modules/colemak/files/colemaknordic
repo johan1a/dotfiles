@@ -11,9 +11,9 @@ xkb_symbols "colemaknordic" {
 
     key <TLDE> { [        grave,   asciitilde,      dead_tilde,       asciitilde ] };
     key <AE01> { [            1,       exclam,      exclamdown,      onesuperior ] };
-    key <AE02> { [            2,           at,       masculine,      twosuperior ] };
-    key <AE03> { [            3,   numbersign,     ordfeminine,    threesuperior ] };
-    key <AE04> { [            4,       dollar,            cent,         sterling ] };
+    key <AE02> { [        aring,        Aring,       masculine,      twosuperior ] };
+    key <AE03> { [   adiaeresis,   Adiaeresis,     ordfeminine,    threesuperior ] };
+    key <AE04> { [   odiaeresis,   Odiaeresis,            cent,         sterling ] };
     key <AE05> { [            5,      percent,        EuroSign,              yen ] };
     key <AE06> { [            6,  asciicircum,         hstroke,          Hstroke ] };
     key <AE07> { [        aring,        Aring,             eth,              ETH ] };
