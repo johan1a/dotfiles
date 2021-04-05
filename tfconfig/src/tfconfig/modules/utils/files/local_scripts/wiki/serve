@@ -1,7 +1,7 @@
 #!/usr/bin/fish
+# help: Serves wiki over http
 pushd .
 cd ~/dev/vimwiki_html
 echo serving wiki at: http://(s ip local):8000 \n
-
 serve
 popd

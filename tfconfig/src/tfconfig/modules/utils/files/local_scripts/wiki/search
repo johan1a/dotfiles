@@ -1,4 +1,5 @@
 #!/usr/bin/fish
+# help: Searches through wiki files
 
 pushd .
 cd ~/vimwiki

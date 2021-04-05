@@ -1,0 +1,6 @@
+#!/usr/bin/fish
+# help: Pull changes from origin
+pushd .
+cd ~/vimwiki
+git pull --rebase
+popd

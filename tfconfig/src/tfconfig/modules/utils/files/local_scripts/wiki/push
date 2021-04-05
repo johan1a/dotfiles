@@ -1,0 +1,6 @@
+#!/usr/bin/fish
+# help: Commit and push notes to origin
+pushd .
+cd ~/vimwiki
+./commit_and_push.sh
+popd

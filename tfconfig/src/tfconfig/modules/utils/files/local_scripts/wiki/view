@@ -1,2 +1,3 @@
 #!/usr/bin/fish
-$BROWSER "file:///home/johan/dev/vimwiki_html/index.html"
+# help: View wiki in a browser
+$BROWSER "file://$HOME/dev/vimwiki_html/index.html"
