@@ -1,2 +1,2 @@
 #!/usr/bin/fish
-$BROWSER "file:///home/johan/dev/vimwiki/index"
+$BROWSER "file:///home/johan/dev/vimwiki/index.html"

@@ -12,8 +12,8 @@ rm -rf ./
 rsync --recursive $HOME/vimwiki/* $dest/
 
 for file in (ls ./*.md)
-  echo $file
-  set output_file (echo $file | sed 's/.md$//')
+  sed -i -E 's/\\[([^\\[]+)\\]\\((.*)\\)/[\1](\2.html)/g' $file
+  set output_file (echo $file | sed 's/.md$/.html/')
   pandoc --standalone -f markdown -t html -o $output_file $file
 end
 echo $dest
