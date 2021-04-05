@@ -770,3 +770,7 @@ function w3m
   # Don't confirm quit
   command w3m -o confirm_qq=false $argv
 end
+
+function fzf-preview
+  fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'
+end
