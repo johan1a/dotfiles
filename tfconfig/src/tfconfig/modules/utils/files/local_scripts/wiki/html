@@ -11,7 +11,7 @@ end
 
 
 set source "$HOME/vimwiki"
-set dest "$HOME/dev/vimwiki"
+set dest "$HOME/dev/vimwiki_html"
 mkdir -p $dest
 
 rm -rf "$dest/*.md"

@@ -1,0 +1,2 @@
+#!/usr/bin/fish
+ip route get 1.2.3.4 | awk '{print $7}' | head -n 1
