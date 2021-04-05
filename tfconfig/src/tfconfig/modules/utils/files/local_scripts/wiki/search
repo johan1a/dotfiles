@@ -3,5 +3,5 @@
 
 pushd .
 cd ~/vimwiki
-$VISUAL (fzf)
+$VISUAL (fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}')
 popd

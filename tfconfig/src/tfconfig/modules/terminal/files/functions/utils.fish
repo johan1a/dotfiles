@@ -675,22 +675,14 @@ end
 
 # Stolen from https://github.com/dmi3/fish
 function search-contents --description "`ALT`+`CTRL`+`F` search (fuzzy) file by contents"
-  if type -q ag
-    ag --nobreak --no-numbers --noheading --max-count 100000 . 2>/dev/null \
-        | fzf \
-          -q "'" \
-          --header 'Searching file contents' \
-          --preview-window 'up:3:wrap' \
-          --preview 'echo {} | cut -d ":" -f2' \
-        | string split ':' | head -n 1 | read -l result
-    and commandline $result
-    and commandline -f repaint
-  else
-    echo "⚠ to speed up search install ag"
-    grep -I -H -n -v --line-buffered --color=never -r -e '^$' . | fzf | string split ":" | head -n 1 | read -l result
-    and commandline $result
-    and commandline -f repaint
-  end
+  ag --nobreak --no-numbers --noheading --max-count 100000 . 2>/dev/null \
+      | fzf \
+        -q "'" \
+        --header 'Searching file contents' \
+        --preview 'echo {} | cut -d ":" -f2 | bat --color=always --style=numbers --line-range=:500 ' \
+      | string split ':' | head -n 1 | read -l result
+  and commandline $result
+  and commandline -f repaint
 end
 
 function path
@@ -769,8 +761,4 @@ end
 function w3m
   # Don't confirm quit
   command w3m -o confirm_qq=false $argv
-end
-
-function fzf-preview
-  fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'
 end

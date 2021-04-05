@@ -3,6 +3,7 @@ set -x VISUAL nvim
 set -x ANSIBLE_NOCOWS 1
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+set -x FZF_CTRL_T_OPTS "--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 set -x BROWSER firefox
 set -x WINEARCH win64
 set -x WINEPREFIX /home/johan/.wine64
