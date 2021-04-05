@@ -149,7 +149,7 @@ let g:gitgutter_max_signs = 1000
 " =========== fzf ===========
 
 set rtp+=~/.fzf
-nnoremap <leader>n :FZF!<cr>
+nnoremap <leader>n :Files!<cr>
 nnoremap <leader>g :Rg!<cr>
 nnoremap <leader>tb :Buffers!<cr>
 nnoremap <leader>tl :Lines!<cr>
