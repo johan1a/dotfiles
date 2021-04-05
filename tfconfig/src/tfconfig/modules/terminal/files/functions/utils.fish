@@ -710,7 +710,7 @@ function bak
 end
 
 function serve
-  python -m SimpleHTTPServer $argv
+  python -m http.server $argv
 end
 
 function pj
