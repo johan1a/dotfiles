@@ -2,20 +2,34 @@
 
 # help: Generate HTML from vimwiki
 
-pushd .
+function should-update
+  set -l src $argv[1]
+  set -l dest $argv[2]
+  # dest does not exist, or src has changed
+  not test -f $dest; or not diff $src $dest > /dev/null
+end
 
-cd ~/vimwiki
+
+set source "$HOME/vimwiki"
 set dest "$HOME/dev/vimwiki"
 mkdir -p $dest
-cd $dest
-rm -rf ./
-rsync --recursive $HOME/vimwiki/* $dest/
 
-for file in (ls ./*.md)
-  sed -i -E 's/\\[([^\\[]+)\\]\\((.*)\\)/[\1](\2.html)/g' $file
-  set output_file (echo $file | sed 's/.md$/.html/')
-  pandoc --standalone -f markdown -t html -o $output_file $file
+rm -rf "$dest/*.md"
+rm -rf "$dest/*.html"
+
+
+for src_file in (ls $source/*.md)
+  set filename (basename $src_file)
+  set dest_file "$dest/$filename"
+
+  if should-update $src_file $dest_file
+    echo rendering html for: $src_file
+    rsync $src_file $dest_file
+    set dest_file_modified $dest_file.modified
+    sed -E 's/\\[([^\\[]+)\\]\\((.*)\\)/[\1](\2.html)/g' $dest_file > $dest_file_modified
+    set output_file (echo $dest_file | sed 's/.md$/.html/')
+    set title (echo $filename | sed 's/.md$//')
+    pandoc --standalone --metadata title="$title" -f markdown -t html -o $output_file $dest_file_modified
+  end
 end
-echo $dest
 
-popd
