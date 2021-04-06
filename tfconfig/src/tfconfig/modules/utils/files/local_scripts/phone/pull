@@ -1,0 +1,3 @@
+#!/usr/bin/fish
+# help: pull files from phone
+rsync --exclude .stfolder --recursive urdatorn2:/data2/dev/syncthing/data/ ~/vimwiki/phone/

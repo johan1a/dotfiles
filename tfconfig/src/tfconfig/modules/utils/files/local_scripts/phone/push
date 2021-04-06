@@ -1,0 +1,3 @@
+#!/usr/bin/fish
+# help: push files to phone
+rsync --recursive ~/vimwiki/phone/ urdatorn2:/data2/dev/syncthing/data/
