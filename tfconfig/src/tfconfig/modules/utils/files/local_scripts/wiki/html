@@ -2,6 +2,7 @@
 
 # help: Generate HTML from vimwiki
 
+pushd .
 
 function _not_identical
   # dest does not exist, or src has changed
@@ -27,6 +28,7 @@ mkdir -p $dest
 rm -rf "$dest/*.md"
 rm -rf "$dest/*.html"
 
+cd $source
 
 for src_file in (fd --full-path $source)
   set src_file_absolute $source/$src_file
@@ -47,3 +49,4 @@ for src_file in (fd --full-path $source)
   end
 end
 
+popd
