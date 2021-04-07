@@ -541,8 +541,19 @@ function! ToHtml()
   call system('pandoc '. expand('%') . ' > ' . expand('%') . '.html')
 endfunction
 
+function! SortShoppingList()
+  silent let result=system('s recipe sort ' . expand('%'))
+  " cleanup buffer
+  :%delete _
+  " insert result
+  call setline(1, split(result, '\n'))
+endfunction
+
 nnoremap <leader>hh :call ToHtml()<cr>
 nnoremap <leader>wm :!s wiki html<cr>
+
+nnoremap <leader>wl :call SortShoppingList()<cr>
+nnoremap <leader>we :e ~/dev/shoppinglist_sorter/reference.csv<cr>
 
 " Make sure 0 works in normal mode when using colemaknordic layout
 nnoremap ü 0
