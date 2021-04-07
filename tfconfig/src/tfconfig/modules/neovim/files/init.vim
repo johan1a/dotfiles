@@ -542,6 +542,7 @@ function! ToHtml()
 endfunction
 
 nnoremap <leader>hh :call ToHtml()<cr>
+nnoremap <leader>wm :!s wiki html<cr>
 
 " Make sure 0 works in normal mode when using colemaknordic layout
 nnoremap ü 0
