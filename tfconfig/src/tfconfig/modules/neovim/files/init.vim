@@ -542,7 +542,7 @@ function! ToHtml()
 endfunction
 
 function! SortShoppingList()
-  silent let result=system('s recipe sort ' . expand('%:p'))
+  silent let result=system('s shoppinglist sort ' . expand('%:p'))
   " cleanup buffer
   :%delete _
   " insert result
