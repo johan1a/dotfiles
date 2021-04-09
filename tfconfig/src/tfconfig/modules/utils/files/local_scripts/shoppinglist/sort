@@ -3,5 +3,5 @@ set file_to_sort $argv[1]
 pushd .
 cd ~/dev/shoppinglist_sorter
 set reference ./reference.csv
-./sorter.py $reference $file_to_sort
+./src/sorter.py $reference $file_to_sort
 popd
