@@ -331,6 +331,9 @@ augroup filetypes
   autocmd Filetype ts                    setlocal filetype=typescript
   autocmd Filetype tsx                   setlocal filetype=typescript.tsx
   autocmd BufRead,BufNewFile *.avdl      setlocal filetype=avdl
+
+  " Automatically remove trailing whitespace from markdown files on save
+  autocmd BufWritePre *.md               %s/\s\+$//e
 augroup END
 
 set completeopt=noinsert,menuone
@@ -539,6 +542,10 @@ endif
 
 function! ToHtml()
   call system('pandoc '. expand('%') . ' > ' . expand('%') . '.html')
+endfunction
+
+function! ToDoc()
+  call system('pandoc '. expand('%') . ' > ' . expand('%') . '.doc')
 endfunction
 
 function! SortShoppingList()
