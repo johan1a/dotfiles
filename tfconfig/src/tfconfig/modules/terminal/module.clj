@@ -45,6 +45,12 @@
     (when-not (has-executable? context "termite")
       (install-aur-package context "termite-git"))) ; TODO install community/termite instead?
 
+(defn setup-alacritty
+  [context]
+    (directory context (<< "~(:home context).config/alacritty"))
+    (link context (<< "~(:modules-dir context)terminal/files/alacritty.yml") (str (:home context) ".config/alacritty/alacritty.yml"))
+      (install-aur-package context "alacritty"))
+
 (defn setup-base16
   [context]
   (let [repo "https://github.com/johan1a/base16-shell.git"
@@ -71,6 +77,7 @@
   [context]
   (setup-fish context)
   (setup-termite context)
+  (setup-alacritty context)
   (setup-base16 context)
   (setup-gtk3 context)
   (setup-defaults context))
