@@ -4,20 +4,18 @@
 
 pushd .
 
-function _not_identical
+function should-update
   # dest does not exist, or src has changed
-
   set -l src $argv[1]
   set -l dest $argv[2]
 
   not test -f $dest; or not diff $src $dest > /dev/null
 end
 
-function should-update
+function should-generate-html
   set -l src $argv[1]
-  set -l dest $argv[2]
 
-  string match -qr '.md$' $src; and _not_identical $src $dest
+  string match -qr '.md$' $src
 end
 
 
@@ -38,14 +36,18 @@ for src_file in (fd --full-path $source)
   if test -d $src_file
     mkdir -p $dest_file
   else if should-update $src_file $dest_file
-    echo rendering html for: $src_file to $dest_file
     rsync $src_file $dest_file
-    set dest_file_modified $dest_file.modified
-    sed -E 's/\\[([^\\[]+)\\]\\((.*)\\)/[\1](\2.html)/g' $dest_file > $dest_file_modified
-    set output_file (echo $dest_file | sed 's/.md$/.html/')
-    set title (basename $filename | sed 's/.md$//')
-    pandoc --standalone --metadata title="$title" -f markdown -t html -o $output_file $dest_file_modified
-    rm $dest_file_modified
+    if should-generate-html $src_file $dest_file
+      echo rendering html for: $src_file to $dest_file
+      set dest_file_modified $dest_file.modified
+
+      sed -E 's/\\[([^\\[]+)\\]\\((.*)\\)/[\1](\2.html)/g' $dest_file > $dest_file_modified
+
+      set output_file (echo $dest_file | sed 's/.md$/.html/')
+      set title (basename $filename | sed 's/.md$//')
+      pandoc --standalone --metadata title="$title" -f markdown -t html -o $output_file $dest_file_modified
+      rm $dest_file_modified
+    end
   end
 end
 
