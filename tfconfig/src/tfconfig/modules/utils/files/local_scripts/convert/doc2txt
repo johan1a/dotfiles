@@ -1,0 +1,10 @@
+#!/usr/bin/fish
+set file $argv
+
+libreoffice --headless --convert-to txt $file
+
+set base_name (basename $file)
+set txt_file (echo $base_name | sed 's/.doc$/.txt/')
+
+cat $txt_file
+rm $txt_file
