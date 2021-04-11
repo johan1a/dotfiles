@@ -1,0 +1,33 @@
+#!/usr/bin/python
+import sys
+import re
+
+input_file = sys.argv[1]
+
+
+
+lines = []
+with open(input_file, 'r') as file:
+    lines = file.readlines()
+
+# link_regex = r'(.*)\[([^\[]+)\]\((.*)\)'
+
+# link_regex = r'([^\[]*)\[([^\[]+)\]\((.*)\)(.*)'
+
+link_regex = r'\[([^\[]+)\]\(([^)]*)\)'
+
+file_extension_regex = r'\..*|/$'
+
+for line in lines:
+    converted_line = line
+    for link_match in re.finditer(link_regex, line):
+        link = link_match[2]
+
+        extension_match = re.search(file_extension_regex, link)
+        if extension_match is None:
+            # It is an external link and should be converted to html
+            link_text = link_match[1]
+            converted_link = "[{}]({}.html)".format(link_text, link)
+            original_link = link_match[0]
+            converted_line = converted_line.replace(original_link, converted_link)
+    print(converted_line)

@@ -41,7 +41,7 @@ for src_file in (fd --full-path $source)
       echo rendering html for: $src_file to $dest_file
       set dest_file_modified $dest_file.modified
 
-      sed -E 's/\\[([^\\[]+)\\]\\((.*)\\)/[\1](\2.html)/g' $dest_file > $dest_file_modified
+      s convert mdlinks2htmllinks $dest_file > $dest_file_modified
 
       set output_file (echo $dest_file | sed 's/.md$/.html/')
       set title (basename $filename | sed 's/.md$//')
