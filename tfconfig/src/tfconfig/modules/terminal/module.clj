@@ -58,6 +58,11 @@
     (when-not (dir-exists? context dest-dir)
       (command "git" ["clone" repo dest-dir] context))))
 
+(defn setup-bat
+  [context]
+    (directory context (<< "~(:home context).config/bat"))
+    (link context (<< "~(:modules-dir context)terminal/files/config_bat") (str (:home context) ".config/bat/config")))
+
 (defn setup-gtk3
   [context]
     (let [base-dir (<< "~(:home context).config/gtk-3.0")
@@ -79,6 +84,7 @@
   (setup-termite context)
   (setup-alacritty context)
   (setup-base16 context)
+  (setup-bat context)
   (setup-gtk3 context)
   (setup-defaults context))
 
