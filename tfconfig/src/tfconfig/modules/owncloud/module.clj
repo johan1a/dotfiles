@@ -1,10 +1,8 @@
 (ns tfconfig.modules.owncloud.module
-  (:require [tfconfig.common.file :refer :all]
+  (:require [tfconfig.common.file :refer [link]]
             [clojure.core.strint :refer [<<]]))
 
 (defn run
   [context]
   (let [home (:home context)]
-    (do
-      (link context (<< "~{home}ownCloud/documents") (<< "~{home}documents"))
-      (link context (<< "~{home}ownCloud/vimwiki") (<< "~{home}vimwiki")))))
+    (link context (<< "~{home}ownCloud/documents") (<< "~{home}documents"))))
