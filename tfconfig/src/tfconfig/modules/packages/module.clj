@@ -82,7 +82,6 @@
                "rsync"
                "figlet"
                "cowsay"
-               "pandoc"
                "dictd"])
         ; "dnsutils"
         ;  udiskie
