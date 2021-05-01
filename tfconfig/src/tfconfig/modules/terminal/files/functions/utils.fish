@@ -572,6 +572,18 @@ function files-in-package
   pacman -Ql $argv
 end
 
+function dependencies-of
+  pactree -r $argv
+end
+
+function who-depends-on
+  pacman -Qi $argv | grep Required
+end
+
+function packages-without-dependencies
+  pacman -Qdtq
+end
+
 function kl
   if test (count $argv) -gt 1
     set n $argv[1]
