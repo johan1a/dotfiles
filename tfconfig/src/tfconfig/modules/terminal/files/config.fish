@@ -16,7 +16,7 @@ export XDG_DOWNLOAD_DIR="$HOME/downloads/"
 export XDG_MUSIC_DIR="$HOME/music"
 export XDG_PICTURES_DIR="$HOME/pictures"
 export XDG_VIDEOS_DIR="$HOME/videos"
-export COURSIER_CACHE="$XDG_DOWNLOAD_DIR/.couries-cache"
+export COURSIER_CACHE="$XDG_DOWNLOAD_DIR/.coursier-cache"
 
 contains /home/johan/.local/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/johan/.local/bin/
 
