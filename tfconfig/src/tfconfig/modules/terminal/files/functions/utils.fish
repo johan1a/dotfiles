@@ -418,7 +418,7 @@ function colemaknordic
 end
 
 function colemak
-  setxkbmap -layout us -variant colemak -option caps:super; background-notify "Switched to Colemak."
+  setxkbmap -layout us -variant colemak -option altwin:swap_lalt_lwin -option caps:super; background-notify "Switched to Colemak."
 end
 
 function toggle-colemak
