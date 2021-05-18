@@ -38,13 +38,6 @@
     (link-files context)
     (set-permissions context))
 
-(defn setup-termite
-  [context]
-    (directory context (<< "~(:home context).config/termite"))
-    (link context (<< "~(:modules-dir context)terminal/files/config_termite") (str (:home context) ".config/termite/config"))
-    (when-not (has-executable? context "termite")
-      (install-aur-package context "termite-git"))) ; TODO install community/termite instead?
-
 (defn setup-alacritty
   [context]
     (directory context (<< "~(:home context).config/alacritty"))
@@ -81,7 +74,6 @@
 (defn run
   [context]
   (setup-fish context)
-  (setup-termite context)
   (setup-alacritty context)
   (setup-base16 context)
   (setup-bat context)
