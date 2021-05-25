@@ -1,0 +1,16 @@
+#!/usr/bin/fish
+
+# Not sure if this exists anymore in wine-staging
+set -x WINEESYNC 1
+
+# Priority of wine server
+set -x STAGING_RT_PRIORITY_SERVER 85
+
+# Priority of programs running in wine
+# The documentation recommends against setting this
+# But let's try it anyway.
+# https://github.com/wine-compholio/wine-staging/wiki/Environment-Variables
+set -x STAGING_RT_PRIORITY_BASE 85
+
+reaper
+
