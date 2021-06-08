@@ -407,13 +407,12 @@ if has('nvim-0.5')
   " This is actually <c-7>
   nnoremap <silent>             <cmd>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> <leader>ce    <cmd>lua vim.lsp.buf.rename()<CR>
-  nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-  nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-  nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
+  nnoremap <silent> g0            <cmd>lua vim.lsp.buf.document_symbol()<CR>
+  nnoremap <silent> gW            <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+  nnoremap <silent> gD            <cmd>lua vim.lsp.buf.declaration()<CR>
   nnoremap <silent> <leader>ca    <cmd>lua vim.lsp.buf.code_action()<CR>
 
   nnoremap <silent> <leader>cn    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-  nnoremap <silent> <F2>    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 endif
 
 
