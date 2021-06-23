@@ -776,6 +776,8 @@ function w3m
 end
 
 function memorize
-  mkdir -p /home/johan/.local/share/memorize_docker
-  docker run --rm --name memorize -v /home/johan/.local/share/memorize_docker:/root/.local/share/memorize johan1a/memorize $argv
+  pushd .
+  cd ~/dev/memorize
+  lein run $argv
+  popd
 end
