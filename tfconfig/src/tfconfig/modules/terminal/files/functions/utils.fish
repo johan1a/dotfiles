@@ -774,3 +774,8 @@ function w3m
   # Don't confirm quit
   command w3m -o confirm_qq=false $argv
 end
+
+function memorize
+  mkdir -p /home/johan/.local/share/memorize_docker
+  docker run --rm --name memorize -v /home/johan/.local/share/memorize_docker:/root/.local/share/memorize johan1a/memorize $argv
+end
