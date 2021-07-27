@@ -30,10 +30,10 @@
                "kdeconnect"
                "fd"
                "bat"
-               "dict-freedict-swe-deu-bin"
-               "dict-freedict-deu-swe-bin"
-               "dict-freedict-eng-deu-bin"
-               "dict-freedict-deu-eng-bin"
+               ;"dict-freedict-swe-deu-bin" https://download.freedict.org cert expired
+               ;"dict-freedict-deu-swe-bin"
+               ;"dict-freedict-eng-deu-bin"
+               ;"dict-freedict-deu-eng-bin"
                "pandoc-bin"
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
       ;       translate-shell
