@@ -111,10 +111,10 @@ if has('nvim-0.5')
 EOF
 
 " Python language server
-:lua << EOF
-  require'lspconfig'.pyls.setup{}
-  require'lspconfig'.clojure_lsp.setup{}
-EOF
+":lua << EOF
+  " require'lspconfig'.pyls.setup{}
+ " require'lspconfig'.clojure_lsp.setup{}
+"EOF
 
   augroup lsp
     au!
