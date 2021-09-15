@@ -312,12 +312,12 @@ augroup filetypes
   autocmd FileType xml                   nnoremap <buffer> <leader>f :%!xmllint --format -<cr>
 
  " uses nvim-metals
-  autocmd FileType scala                 nnoremap <buffer> <leader>f :Format<cr>
+  autocmd FileType scala                 nnoremap <buffer> <leader>f :Neoformat<cr>
   autocmd Filetype scala                 setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd Filetype scala                 inoremap <silent> <BS> <BS><ESC>:call TryOmnicomplete()<CR>
   autocmd FileType typescript            nnoremap <buffer> <leader>f :Neoformat<cr>
   autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
-  autocmd FileType python                nnoremap <buffer> <leader>f :Format<cr>
+  autocmd FileType python                nnoremap <buffer> <leader>f :Neoformat<cr>
   autocmd Filetype python                setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd FileType clojure               nnoremap <buffer> <leader>f :silent :!cljfmt fix %:p<cr>:edit<cr>
   autocmd FileType clojure               setlocal iskeyword-=. " Break words on .
@@ -411,8 +411,11 @@ if has('nvim-0.5')
   nnoremap <silent> gW            <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
   nnoremap <silent> gD            <cmd>lua vim.lsp.buf.declaration()<CR>
   nnoremap <silent> <leader>ca    <cmd>lua vim.lsp.buf.code_action()<CR>
+  nnoremap <silent> <c-a>    <cmd>lua vim.lsp.buf.code_action()<CR>
 
   nnoremap <silent> <leader>cn    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+  nnoremap <silent> <c-n>         <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+  nnoremap <silent> <c-p>         <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 endif
 
 
@@ -441,8 +444,6 @@ nnoremap <leader>i <C-]>zz
 
 " Jump back up the tag stack
 nnoremap <leader>u <C-t>zz
-nnoremap <c-p> :lprev<cr>
-nnoremap <c-n> :lnext<cr>
 
 " Go to alternate file
 nnoremap <leader><leader> <C-^>
