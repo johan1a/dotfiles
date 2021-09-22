@@ -52,7 +52,9 @@
 (defn get-modules-to-run
   [all-modules config profile]
   (let [ignored-modules (:ignored-modules profile)
-        chosen-modules (remove #(.contains ignored-modules %) (:modules config))]
+        additional-modules (:additional-modules profile)
+        without-ignored (remove #(.contains ignored-modules %) (:modules config))
+        chosen-modules (concat without-ignored additional-modules)]
     (remove nil? (map #(find-in-list all-modules %) chosen-modules))))
 
 (defn get-forced-modules

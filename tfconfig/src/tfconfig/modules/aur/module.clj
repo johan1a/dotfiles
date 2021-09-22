@@ -24,7 +24,6 @@
                "python-dbus"
                "carla"
                "qjackctl"
-               "pulseaudio-jack"
                "fzf"
                "vimv"
                "kdeconnect"
