@@ -411,7 +411,9 @@ if has('nvim-0.5')
   nnoremap <silent> gW            <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
   nnoremap <silent> gD            <cmd>lua vim.lsp.buf.declaration()<CR>
   nnoremap <silent> <leader>ca    <cmd>lua vim.lsp.buf.code_action()<CR>
-  nnoremap <silent> <c-a>    <cmd>lua vim.lsp.buf.code_action()<CR>
+  nnoremap <silent> <c-a>         <cmd>lua vim.lsp.buf.code_action()<CR>
+  " '' is shift + enter
+  nnoremap <silent>             <cmd>lua vim.lsp.buf.code_action()<CR>
 
   nnoremap <silent> <leader>cn    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
   nnoremap <silent> <c-n>         <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
