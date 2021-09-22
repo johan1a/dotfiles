@@ -14,6 +14,9 @@ chmod +x install.sh
 
 # After it has run at least once, you can install from any directory using:
 s dotfiles install
+
+# Run specific modules only:
+s dotfiles run modules pipewire,neovim
 ```
 
 ## Install Arch Linux from a Live CD
