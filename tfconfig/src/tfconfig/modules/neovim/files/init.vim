@@ -465,7 +465,7 @@ nnoremap gs :%s//<Left>
 vnoremap gs :s/\%V/<Left>
 
 " Git
-nnoremap <leader>0 :Gblame<CR>
+nnoremap <leader>0 :Git blame<CR>
 
 " Live preview of :%s/
 if has('nvim')
