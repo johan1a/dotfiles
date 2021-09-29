@@ -6,6 +6,7 @@ profiles:
       - owncloud
       - mail
       - pulseaudio
+      - ime
     additional-modules:
       - pipewire
   - name: server
