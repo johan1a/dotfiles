@@ -27,6 +27,7 @@ if has('nvim')
   Plug 'sbdchd/neoformat'
   Plug 'scalameta/nvim-metals'
   Plug 'neovim/nvim-lspconfig' " Not sure what this does specifically
+  Plug 'nvim-lua/plenary.nvim'
 endif
 
 " Only run auto omnicomplete for languages where we are likely of having a
