@@ -122,7 +122,7 @@ EOF
     au FileType scala,sbt lua require('metals').initialize_or_attach(metals_config)
   augroup end
 
-  :set statusline=%{metals#status()} " TODO check this. Does it work with gutentags statusline below etc.
+  :set statusline=%{luaeval('vim.g[\"metals_status\"]or\"\"')} " wtf
 
 endif
 
