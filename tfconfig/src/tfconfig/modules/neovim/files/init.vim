@@ -395,6 +395,13 @@ set showcmd
  "          |___/                  |_|
 
  " TODO c-enter compile & RUN
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
 
  " lsp
 if has('nvim-0.5')
