@@ -79,7 +79,8 @@
                "rsync"
                "figlet"
                "cowsay"
-               "dictd"])
+               "dictd"
+               "bdf-unifont"])
         ; "dnsutils"
         ;  udiskie
         ; redshift
