@@ -80,7 +80,8 @@
                "figlet"
                "cowsay"
                "dictd"
-               "bdf-unifont"])
+               "bdf-unifont"
+               "hexedit"])
         ; "dnsutils"
         ;  udiskie
         ; redshift
