@@ -17,6 +17,7 @@ profiles:
       - mail
       - ime
       - polybar
+      - gnome_keyring
   - name: ci
     pattern: "runner-.*"
     has-monitor: false
@@ -55,3 +56,4 @@ modules:
   - dunst
   - polybar
   - gpg
+  - gnome_keyring
