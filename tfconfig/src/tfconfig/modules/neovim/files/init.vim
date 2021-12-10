@@ -25,6 +25,9 @@ if has('nvim')
   Plug 'SirVer/ultisnips'
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'sbdchd/neoformat'
+  Plug 'prettier/vim-prettier', {
+    \ 'do': 'yarn install',
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
   Plug 'scalameta/nvim-metals'
   Plug 'neovim/nvim-lspconfig' " Not sure what this does specifically
   Plug 'nvim-lua/plenary.nvim'
@@ -316,8 +319,6 @@ augroup filetypes
   autocmd FileType scala                 nnoremap <buffer> <leader>f :Neoformat<cr>
   autocmd Filetype scala                 setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd Filetype scala                 inoremap <silent> <BS> <BS><ESC>:call TryOmnicomplete()<CR>
-  autocmd FileType typescript            nnoremap <buffer> <leader>f :Neoformat<cr>
-  autocmd FileType typescript            setlocal tabstop=4 shiftwidth=4
   autocmd FileType python                nnoremap <buffer> <leader>f :Neoformat<cr>
   autocmd Filetype python                setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd FileType clojure               nnoremap <buffer> <leader>f :silent :!cljfmt fix %:p<cr>:edit<cr>
@@ -331,8 +332,14 @@ augroup filetypes
   autocmd Filetype groovy                setlocal tabstop=4 shiftwidth=4
   autocmd FileType haskell               setlocal tabstop=4
   autocmd Filetype yaml                  setlocal cursorcolumn
+
+  autocmd FileType typescript            nnoremap <buffer> <leader>f :Prettier<cr>
+  autocmd FileType typescript            setlocal tabstop=2 shiftwidth=2
+  autocmd Filetype ts                    setlocal tabstop=2 shiftwidth=2
   autocmd Filetype ts                    setlocal filetype=typescript
   autocmd Filetype tsx                   setlocal filetype=typescript.tsx
+  autocmd FileType vue                   nnoremap <buffer> <leader>f :Prettier<cr>
+  autocmd FileType vue                   nnoremap <buffer> <leader>f :Prettier<cr>
   autocmd BufRead,BufNewFile *.avdl      setlocal filetype=avdl
 
   " Automatically remove trailing whitespace from markdown files on save
