@@ -110,7 +110,7 @@ if has('nvim-0.5')
   " Enable nvim-metals statusBarProvider
   " This doesn't work when indented
 :lua << EOF
-  metals_config = require('metals').bare_config()
+  metals_config = require('metals').bare_config
   metals_config.init_options.statusBarProvider = 'on'
 EOF
 
