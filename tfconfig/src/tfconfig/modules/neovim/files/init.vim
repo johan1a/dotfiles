@@ -8,7 +8,7 @@
 if &shell =~# 'fish$'
     set shell=bash
 endif
-
+let g:python3_host_prog = '/usr/bin/python3'
 set nocompatible              " Don't emulate vi
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -22,7 +22,6 @@ call plug#begin()
 if has('nvim')
   Plug 'Shougo/deoplete.nvim'
   Plug 'zchee/deoplete-jedi'
-  Plug 'SirVer/ultisnips'
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'sbdchd/neoformat'
   Plug 'prettier/vim-prettier', {
