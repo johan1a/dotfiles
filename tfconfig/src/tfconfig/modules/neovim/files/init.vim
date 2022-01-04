@@ -227,9 +227,9 @@ let g:tmux_navigator_disable_when_zoomed = 1 " Disable tmux auto zoom out
 
 " =========== vim-fireplace ===========
 
-nnoremap <leader>w :Eval<CR>
-vnoremap <leader>w :Eval<CR>
-nnoremap <a-r> :Require<CR>
+nnoremap <leader>e :Eval<CR>
+vnoremap <leader>e :Eval<CR>
+nnoremap <leader>y :Require<CR>
 
 " =========== CamelCaseMotion ===========
 
