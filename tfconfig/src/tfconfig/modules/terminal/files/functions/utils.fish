@@ -564,6 +564,14 @@ function init-base16
   source $HOME/.config/base16-shell/profile_helper.fish
 end
 
+function light
+  init-base16; base16-gruvbox-light-medium
+end
+
+function dark
+  init-base16; base16-gruvbox-dark-medium
+end
+
 function owning-package
   pacman -Qo $argv
 end
