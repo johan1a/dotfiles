@@ -400,6 +400,16 @@ set showcmd
 " |_|\_\___|\__, | |_| |_| |_|\__,_| .__/|___/
  "          |___/                  |_|
 
+
+function! ShowMappings()
+  :redir @a
+  :silent map
+  :redir END
+  :vnew
+  :put a
+endfunction
+
+
  " TODO c-enter compile & RUN
 inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
@@ -426,8 +436,18 @@ if has('nvim-0.5')
   nnoremap <silent> gD            <cmd>lua vim.lsp.buf.declaration()<CR>
   nnoremap <silent> <leader>ca    <cmd>lua vim.lsp.buf.code_action()<CR>
   nnoremap <silent> <c-a>         <cmd>lua vim.lsp.buf.code_action()<CR>
+
+  " Execute code_action() if not in quickfix
+  function! CodeAction()
+    if &buftype ==# 'quickfix'
+      execute "normal! \<CR>"
+    else
+      :lua vim.lsp.buf.code_action()
+    endif
+  endfunction
+
   " '' is shift + enter
-  nnoremap <silent>             <cmd>lua vim.lsp.buf.code_action()<CR>
+  nnoremap <silent>  :call CodeAction()<CR>
 
   nnoremap <silent> <leader>cn    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
   nnoremap <silent> <c-n>         <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
