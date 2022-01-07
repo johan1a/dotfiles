@@ -46,7 +46,7 @@
 ; These packages seem to fail when already present?
 (def failing-packages ["gotop-bin"
                        "metals"
-                       "scalafmt-native-bin"
+                       "scalafmt"
                        "jdk11-graalvm-bin"
                        "clojure-lsp-bin"
                        ])
