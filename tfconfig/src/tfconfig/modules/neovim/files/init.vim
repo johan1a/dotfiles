@@ -552,7 +552,9 @@ nnoremap <leader>bl :ls<cr>
 nnoremap <leader>bs :sp<cr>
 nnoremap <leader>bt :vs<cr>
 nnoremap <tab> :tabn<cr>
-" the tab mapping avove ruins <c-i>, why?
+
+" the tab mapping avove ruins <c-i>, <tab> since they are the same thing
+" apparently https://stackoverflow.com/questions/24967213/vim-mapping-of-c-i-in-insert-mode
 nnoremap <c-i> <c-i>
 nnoremap <s-tab> :tabp<cr>
 
