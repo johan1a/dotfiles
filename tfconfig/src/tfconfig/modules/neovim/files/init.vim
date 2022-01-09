@@ -493,7 +493,7 @@ nnoremap <leader>u <C-t>zz
 " Go to alternate file
 nnoremap <leader><leader> <C-^>
 
-nnoremap <C-W> :w<CR>
+"nnoremap <C-W> :w<CR>
 
 inoremap <C-Space> <C-x><C-o>
 
@@ -531,10 +531,11 @@ set clipboard+=unnamed,unnamedplus
 
 nnoremap <leader>cp           olog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
 
-" noremap <d>   <c-w>+
-" noremap <up>     <c-w>-
-noremap <left>  5<c-w><
-noremap <right> 5<c-w>>
+noremap <down>   <c-w>J
+noremap <up>     <c-w>K
+noremap <left>   <c-w>H
+noremap <right>  <c-w>L
+
 
 " neovim term
 tnoremap <C-o> <C-\><C-n>
