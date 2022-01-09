@@ -22,6 +22,7 @@ call plug#begin()
 if has('nvim')
   Plug 'Shougo/deoplete.nvim'
   Plug 'zchee/deoplete-jedi'
+  Plug 'SirVer/ultisnips'
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'sbdchd/neoformat'
   Plug 'prettier/vim-prettier', {
