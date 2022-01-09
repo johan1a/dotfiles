@@ -588,7 +588,7 @@ nnoremap <C-c> <C-x>
 set cedit=<ESC>
 
 if filereadable(glob("~/.vimrc.local"))
-    source ~/.vimrc.local
+  source ~/.vimrc.local
 endif
 
 function! ToHtml()
