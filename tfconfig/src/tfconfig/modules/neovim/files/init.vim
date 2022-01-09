@@ -164,6 +164,7 @@ nnoremap <leader>n :Files!<cr>
 nnoremap <leader>g :Rg!<cr>
 vnoremap <leader>g :call GrepSelection()<cr>
 nnoremap <leader>tb :Buffers!<cr>
+nnoremap <leader>o :Buffers!<cr>
 nnoremap <leader>tl :Lines!<cr>
 nnoremap <leader>th :History!<cr>
 nnoremap <leader>tc :Commits!<cr>
