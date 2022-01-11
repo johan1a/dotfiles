@@ -114,11 +114,11 @@ if has('nvim-0.5')
   metals_config.init_options.statusBarProvider = 'on'
 EOF
 
-" Python language server
-":lua << EOF
-  " require'lspconfig'.pyls.setup{}
- " require'lspconfig'.clojure_lsp.setup{}
-"EOF
+" Language servers
+:lua << EOF
+  require'lspconfig'.clojure_lsp.setup{}
+  require'lspconfig'.vuels.setup{}
+EOF
 
   augroup lsp
     au!
@@ -347,9 +347,12 @@ augroup filetypes
   autocmd FileType typescript            setlocal tabstop=2 shiftwidth=2
   autocmd Filetype ts                    setlocal tabstop=2 shiftwidth=2
   autocmd Filetype ts                    setlocal filetype=typescript
+  autocmd Filetype ts                    setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd Filetype tsx                   setlocal filetype=typescript.tsx
+  autocmd Filetype tsx                   setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd FileType vue                   nnoremap <buffer> <leader>f :Prettier<cr>
   autocmd FileType vue                   nnoremap <buffer> <leader>f :Prettier<cr>
+  autocmd Filetype vue                   setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd BufRead,BufNewFile *.avdl      setlocal filetype=avdl
 
   " Automatically remove trailing whitespace from markdown files on save

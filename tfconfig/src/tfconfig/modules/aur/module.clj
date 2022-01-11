@@ -35,6 +35,7 @@
                ;"dict-freedict-deu-eng-bin"
                "pandoc-bin"
                "siji-ng"
+               "nodejs-vls"
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
       ;       translate-shell
       ;  google-chrome
