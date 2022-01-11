@@ -25,7 +25,6 @@
                "carla"
                "qjackctl"
                "fzf"
-               "vimv"
                "kdeconnect"
                "fd"
                "bat"
@@ -50,6 +49,7 @@
                        "scalafmt"
                        "jdk11-graalvm-bin"
                        "clojure-lsp-bin"
+                       "vimv"
                        ])
 
 (def paru-dependencies ["fakeroot" "coreutils" "pkgconf"])
