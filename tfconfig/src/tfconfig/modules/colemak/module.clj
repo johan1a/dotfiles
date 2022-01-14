@@ -12,4 +12,4 @@
     (link (assoc context :sudo true) src dest)
     (link (assoc context :sudo true) vconsole-src vconsole-dest)
     (when (:has-monitor (:profile context))
-      (command "setxkbmap" ["colemaknordic" "-option" "altwin:swap_lalt_lwin" "-option" "caps:super"] context))))
+      (command "setxkbmap" ["colemak" "-option" "altwin:swap_lalt_lwin" "-option" "caps:super"] context))))
