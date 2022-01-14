@@ -1,14 +1,17 @@
 (ns tfconfig.core
-  (:require [tfconfig.common.command :refer :all]
-            [clojure.core.strint :refer [<<]]
-            [clj-yaml.core :as yaml])
+  (:require
+   [clj-yaml.core :as yaml]
+   [clojure.core.strint :refer [<<]]
+   [tfconfig.common.command :refer [command]]
+   [clojure.string :as string]
+   [clojure.java.io :as io])
   (:gen-class))
 
 (defn get-arg-value
   [args argname]
-  (if args
+  (when args
     (let [i (.indexOf args argname)]
-      (if-not (or (= i -1) (= i (- (count args) 1)))
+      (when-not (or (= i -2) (= i (- (count args) 1)))
         (nth args (+ i 1))))))
 
 (defn get-password
@@ -38,7 +41,7 @@
 
 (defn get-modules
   [dir-name]
-  (filter is-module (file-seq (clojure.java.io/file dir-name))))
+  (filter is-module (file-seq (io/file dir-name))))
 
 (defn get-parent-name
   [file]
@@ -66,15 +69,14 @@
 
 (defn run-module
   [file context]
-  (do
-    (let [module-name (get-parent-name file)
-          _ (println (<< "-- Module: ~{module-name} --"))
-          run-module (load-file (.getAbsolutePath file))
-          startTime (. System (currentTimeMillis))
-          result (run-module context)
-          elapsedMillis (- (. System (currentTimeMillis)) startTime)
-          elapsedSeconds (/ elapsedMillis 1000.0)]
-      {:elapsed elapsedSeconds :module module-name})))
+  (let [module-name (get-parent-name file)
+        _ (println (<< "-- Module: ~{module-name} --"))
+        run-module (load-file (.getAbsolutePath file))
+        startTime (. System (currentTimeMillis))
+        _ (run-module context)
+        elapsedMillis (- (. System (currentTimeMillis)) startTime)
+        elapsedSeconds (/ elapsedMillis 1000.0)]
+    {:elapsed elapsedSeconds :module module-name}))
 
 (defn pattern-matches?
   [pattern-str hostname]
@@ -116,17 +118,15 @@
                  :managed-str "# The following line is managed by tfconfig, do not edit. Description: "
                  :profile profile
                  :ci (System/getenv "CI")}]
-    (do
-      (if password
-        (do
-          (println (str "Root dir: " (:root-dir context)))
-          (let [results (map #(run-module % context) modules-to-run)
-                result-strings (map result-string results)
-                summary (clojure.string/join "\n" result-strings)]
-            (do
-              (println "Done!")
-              (println "")
-              (println "Summary:")
-              (println summary))))
-        (println "No password specified"))
-      (shutdown-agents))))
+    (if password
+      (do
+        (println (str "Root dir: " (:root-dir context)))
+        (let [results (map #(run-module % context) modules-to-run)
+              result-strings (map result-string results)
+              summary (string/join "\n" result-strings)]
+          (println "Done!")
+          (println "")
+          (println "Summary:")
+          (println summary)))
+      (println "No password specified"))
+    (shutdown-agents)))

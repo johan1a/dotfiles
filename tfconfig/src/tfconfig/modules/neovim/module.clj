@@ -1,19 +1,18 @@
 (ns tfconfig.modules.neovim.module
-  (:require [tfconfig.common.command :refer :all]
-            [tfconfig.common.file :refer :all]
-            [tfconfig.common.pacman :refer :all]
-            [tfconfig.common.aur :refer :all]
-            [tfconfig.common.has-executable :refer :all]
-            [tfconfig.common.handler :refer :all]
-            [tfconfig.common.gem :refer :all]
-            [tfconfig.common.pip :refer :all]))
+  (:require
+   [tfconfig.common.aur :refer [install-aur-package]]
+   [tfconfig.common.command :refer [command pre-auth]]
+   [tfconfig.common.file :refer [file link]]
+   [tfconfig.common.gem :refer [gem]]
+   [tfconfig.common.pacman :refer [pacman]]
+   [tfconfig.common.pip :refer [pip]]))
 
 (def required-gems ["msgpack" "rdoc" "neovim" "multi_json"])
 
 (defn install-neovim
   [context]
-    (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim"] (assoc context pre-auth true :throw-errors false))
-    (install-aur-package (assoc context :throw-errors false) "neovim-nightly-bin"))
+  (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim"] (assoc context pre-auth true :throw-errors false))
+  (install-aur-package (assoc context :throw-errors false) "neovim-nightly-bin"))
 
 (defn install-gems
   [context]
@@ -21,9 +20,8 @@
 
 (defn install-neovim-pip-packages
   [context]
-  (do
-    (pip context "neovim" "present")
-    (pip context "python-language-server[all]" "present")))
+  (pip context "neovim" "present")
+  (pip context "python-language-server[all]" "present"))
 
 (defn install-make
   "Make is required for the msgpack gem"
@@ -49,10 +47,9 @@
 
 (defn install-plugins
   [context]
-  (do
-    (when-not (:ci context)
-      (command "nvim" ["+PlugInstall" "+qall"] context)
-      (command "nvim" ["+UpdateRemotePlugins" "+qall"] context))))
+  (when-not (:ci context)
+    (command "nvim" ["+PlugInstall" "+qall"] context)
+    (command "nvim" ["+UpdateRemotePlugins" "+qall"] context)))
 
 (defn link-custom-snippets
   [context nvim-dir]
@@ -62,13 +59,12 @@
 
 (defn run
   [context]
-  (do
-    (install-neovim context)
-    (install-make context)
-    (install-gems context)
-    (install-neovim-pip-packages context)
-    (let [nvim-dir (str (:home context) ".config/nvim/")]
-      (create-vim-dir context nvim-dir)
-      (link-configs context nvim-dir)
-      (install-plugins context)
-      (link-custom-snippets context nvim-dir))))
+  (install-neovim context)
+  (install-make context)
+  (install-gems context)
+  (install-neovim-pip-packages context)
+  (let [nvim-dir (str (:home context) ".config/nvim/")]
+    (create-vim-dir context nvim-dir)
+    (link-configs context nvim-dir)
+    (install-plugins context)
+    (link-custom-snippets context nvim-dir)))

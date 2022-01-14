@@ -1,9 +1,8 @@
 (ns tfconfig.modules.ctags.module
-  (:require [tfconfig.common.file :refer :all]
-            [tfconfig.common.pacman :refer :all]
-            [tfconfig.common.command :refer :all]
-            [tfconfig.common.aur :refer :all]
-            [clojure.core.strint :refer [<<]]))
+  (:require
+   [clojure.core.strint :refer [<<]]
+   [tfconfig.common.command :refer [command]]
+   [tfconfig.common.file :refer [dir-exists? directory link]]))
 
 (defn install-universal-ctags
   [context]
@@ -17,10 +16,9 @@
 
 (defn run
   [context]
-  (do
-    (install-universal-ctags context)
-    (let [config-dir (str (:home context) ".ctags.d")
-          src-file (<< "~(:modules-dir context)ctags/files/main.ctags")
-          dest-file (str config-dir "/main.ctags")]
-      (directory context config-dir)
-      (link context src-file dest-file))))
+  (install-universal-ctags context)
+  (let [config-dir (str (:home context) ".ctags.d")
+        src-file (<< "~(:modules-dir context)ctags/files/main.ctags")
+        dest-file (str config-dir "/main.ctags")]
+    (directory context config-dir)
+    (link context src-file dest-file)))

@@ -1,7 +1,5 @@
 (ns tfconfig.common.command
-  (:require [clojure.java.shell :as shell]
-            [clojure.java.io :as io])
-  (:import (java.io InputStreamReader OutputStreamWriter)))
+  (:require [clojure.java.io :as io]))
 
 (defn log
   [options & args]
@@ -22,16 +20,14 @@
       (with-open [stderr (clojure.java.io/reader (.getErrorStream process))]
         (with-open [stdin (clojure.java.io/writer (.getOutputStream process))]
           (when input
-            (do
-              (.write stdin (str input "\n"))
-              (.flush stdin)))
+            (.write stdin (str input "\n"))
+            (.flush stdin))
           (let [stderr-future (future (stderr-callback stderr stdin))
                 stdout-future (future (stdout-callback stdout stdin))
                 stderr-result (deref stderr-future)
                 stdout-result (deref stdout-future)]
-            (do
-              (.waitFor process)
-              {:code (.exitValue process) :stdout stdout-result :stderr stderr-result})))))))
+            (.waitFor process)
+            {:code (.exitValue process) :stdout stdout-result :stderr stderr-result}))))))
 
 (defn out-callback
   [context stdout stdin]
@@ -68,7 +64,7 @@
         new-options (assoc options :sudo-prompt sudo-prompt :input (if sudo password nil))
         new-cmd (if sudo "sudo" cmd)
         new-args (if sudo (concat ["-S" cmd] args) args)]
-    (if (:pre-auth options)
+    (when (:pre-auth options)
       (pre-auth new-options))
     (let [result (run-proc new-options new-cmd new-args (partial out-callback options) (partial err-callback options sudo-prompt password))]
       (if (or (= 0 (:code result)) (not (:throw-errors options)))
