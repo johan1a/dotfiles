@@ -1,10 +1,9 @@
 (ns tfconfig.modules.i3-gaps.module
-  (:require [tfconfig.common.command :refer :all]
-            [tfconfig.common.file :refer :all]
-            [tfconfig.common.pacman :refer :all]
-            [tfconfig.common.has-executable :refer :all]
-            [tfconfig.common.handler :refer :all]
-            [clojure.core.strint :refer [<<]]))
+  (:require
+   [clojure.core.strint :refer [<<]]
+   [tfconfig.common.command :refer [command]]
+   [tfconfig.common.file :refer [dir-exists? file link]]
+   [tfconfig.common.pacman :refer [pacman]]))
 
 (def dependencies ["i3-gaps" "i3status" "i3lock" "imagemagick"])
 
@@ -16,10 +15,10 @@
   [context]
   (let [home (:home context)
         files-dir (<< "~(:modules-dir context)i3_gaps/files")]
-    (link context (<< "~{files-dir}/logind.conf") "/etc/systemd/logind.conf" {:sudo true})
-    (link context (<< "~{files-dir}/is-tmux") (<< "~{home}.local/bin/is-tmux"))
-    (link context (<< "~{files-dir}/i3") (<< "~{home}.config/i3"))
-    (link (assoc context :executable true) (<< "~(:modules-dir context)packages/files/bin/i3-after-hook") (str (:home context) ".local/bin/i3-after-hook"))))
+  (link context (<< "~{files-dir}/logind.conf") "/etc/systemd/logind.conf" {:sudo true})
+  (link context (<< "~{files-dir}/is-tmux") (<< "~{home}.local/bin/is-tmux"))
+  (link context (<< "~{files-dir}/i3") (<< "~{home}.config/i3"))
+  (link (assoc context :executable true) (<< "~(:modules-dir context)packages/files/bin/i3-after-hook") (str (:home context) ".local/bin/i3-after-hook"))))
 
 (defn install-i3lock
   [context]
@@ -30,7 +29,6 @@
 
 (defn run
   [context]
-  (do
-    (install-dependencies context)
-    (setup-links context)
-    (install-i3lock context)))
+  (install-dependencies context)
+  (setup-links context)
+  (install-i3lock context))

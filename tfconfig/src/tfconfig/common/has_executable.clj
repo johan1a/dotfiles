@@ -1,5 +1,5 @@
 (ns tfconfig.common.has-executable
-  (:require [tfconfig.common.command :refer :all]))
+  (:require [tfconfig.common.command :refer [command]]))
 
 (defn has-executable?
   [context executable]

@@ -6,11 +6,10 @@
   ["pipewire-pulse" ; For more bluetooth headset codecs
    "pipewire-alsa" ; Not sure if needed
    "libldac" ; Not sure if needed
-  ])
+   ])
 
 (defn run
   "Installs Pipewire"
   [context]
-  (do
-    (install-aur-packages context packages)
-    (command "systemctl" ["--user" "enable" "pipewire.service" "pipewire-pulse.service"] context)))
+  (install-aur-packages context packages)
+  (command "systemctl" ["--user" "enable" "pipewire.service" "pipewire-pulse.service"] context))

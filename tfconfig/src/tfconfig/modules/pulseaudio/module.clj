@@ -5,11 +5,9 @@
   ["pulseaudio"
    "pulseaudio-alsa"
    "pulseaudio-bluetooth"
-   "pulseaudio-jack"
-  ])
+   "pulseaudio-jack"])
 
 (defn run
   "Installs Pulseaudio"
   [context]
-  (do
-    (install-aur-packages context packages)))
+  (install-aur-packages context packages))

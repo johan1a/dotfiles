@@ -1,5 +1,5 @@
 (ns tfconfig.common.aur
-  (:require [tfconfig.common.command :refer :all]))
+  (:require [tfconfig.common.command :refer [command pre-auth]]))
 
 (defn install-aur-package
   [context package]

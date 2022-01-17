@@ -5,9 +5,6 @@
 " |_|   |_|\__,_|\__, |_|_| |_| |___/\___|\__|\__,_| .__/
  "               |___/                             |_|
 
-if &shell =~# 'fish$'
-    set shell=bash
-endif
 let g:python3_host_prog = '/usr/bin/python3'
 set nocompatible              " Don't emulate vi
 
@@ -60,7 +57,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'srcery-colors/srcery-vim'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'

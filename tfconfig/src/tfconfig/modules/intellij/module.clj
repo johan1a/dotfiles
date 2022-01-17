@@ -1,5 +1,5 @@
 (ns tfconfig.modules.intellij.module
-  (:require [tfconfig.common.file :refer :all]))
+  (:require [tfconfig.common.file :refer [link]]))
 
 (defn run
   [context]

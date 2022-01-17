@@ -1,12 +1,12 @@
 (ns tfconfig.modules.taskwarrior.module
-  (:require [tfconfig.common.file :refer :all]
-            [tfconfig.common.pacman :refer :all]
-            [clojure.core.strint :refer [<<]]))
+  (:require
+   [clojure.core.strint :refer [<<]]
+   [tfconfig.common.file :refer [file link]]
+   [tfconfig.common.pacman :refer [pacman]]))
 
 (defn run
   [context]
   (let [home (:home context)]
-    (do
       (pacman "task" (assoc context :state "present"))
       (dorun (file (<< "~{home}/ownCloud/task") (assoc context :state "dir")))
-      (link context (<< "~{home}/ownCloud/task") (<< "~{home}/.task")))))
+      (link context (<< "~{home}/ownCloud/task") (<< "~{home}/.task"))))

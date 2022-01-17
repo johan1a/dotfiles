@@ -1,0 +1,6 @@
+#!/usr/bin/fish
+
+set input $argv
+set image_file (mktemp --suff .png)
+echo -e "$argv" | convert -background none -density 400 -unsharp 0x.5 -font "Inconsolata" text:- -trim +repage -bordercolor white -border 3 -pointsize 16 $image_file
+echo $image_file

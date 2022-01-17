@@ -1,9 +1,10 @@
 (ns tfconfig.modules.packages.module
-  (:require [tfconfig.common.command :refer :all]
-            [tfconfig.common.file :refer :all]
-            [tfconfig.common.pacman :refer :all]
-            [tfconfig.common.handler :refer :all]
-            [clojure.core.strint :refer [<<]]))
+  (:require
+   [clojure.core.strint :refer [<<]]
+   [tfconfig.common.command :refer [command]]
+   [tfconfig.common.file :refer [directory file-content link]]
+   [tfconfig.common.handler :refer [handler]]
+   [tfconfig.common.pacman :refer [pacman]]))
 
 (def packages ["base-devel"
                "musl"
@@ -88,24 +89,21 @@
 
 (defn sync-packages
   [context changes]
-  (do
-    (when changes
-      (command "pacman" ["-Syu" "--noconfirm"] (assoc context :sudo true)))))
+  (when changes
+    (command "pacman" ["-Syu" "--noconfirm"] (assoc context :sudo true))))
 
 (defn enable-multilib
   [context]
-  (do
     (handler context :multilib-enabled sync-packages)
     ; TODO don't think this works properly
-    (file-content (assoc context :handler-ref :multilib-enabled) "/etc/pacman.conf" "Activate multilib" ["[multilib]" "Include = /etc/pacman.d/mirrorlist"])))
+    (file-content (assoc context :handler-ref :multilib-enabled) "/etc/pacman.conf" "Activate multilib" ["[multilib]" "Include = /etc/pacman.d/mirrorlist"]))
 
 (defn config-makepkg
   [context]
-  (do
     (let [home (:home context)
           owning-context (assoc context :sudo true :owner (str (:username context) ":"))]
       (directory owning-context (str home ".config/pacman"))
-      (link context (<< "~(:modules-dir context)packages/files/makepkg.conf") (str home ".config/pacman/makepkg.conf")))))
+      (link context (<< "~(:modules-dir context)packages/files/makepkg.conf") (str home ".config/pacman/makepkg.conf"))))
 
 ; TODO fix, move and refactor
 ; (defn enable-wallpaper
@@ -121,15 +119,13 @@
 (defn run
   "Installs useful packages"
   [context]
-  (do
     (enable-multilib context)
     (config-makepkg context)
     (dorun (map #(pacman % (assoc context :state "present")) packages))
-    (let [sudo-context (assoc context :sudo true)
-          executable-context (assoc context :executable true)]
+    (let [sudo-context (assoc context :sudo true)]
       (command "archlinux-java" ["set" "java-14-openjdk"] (assoc sudo-context :throw-errors false)) ; TODO move
       (when-not (:ci context)
         (command "systemctl" ["enable" "cronie"] sudo-context)
         (command "systemctl" ["restart" "cronie"] sudo-context)
         (command "systemctl" ["enable" "bluetooth"] sudo-context)
-        (command "systemctl" ["start" "bluetooth"] sudo-context)))))
+        (command "systemctl" ["start" "bluetooth"] sudo-context))))

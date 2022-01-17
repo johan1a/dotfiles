@@ -1,0 +1,3 @@
+#!/usr/bin/fish
+set -x WINEESYNC 1
+wine .wine64/drive_c/Program\ Files\ \(x86\)/Arobas\ Music/Guitar\ Pro\ 7/GuitarPro7.exe

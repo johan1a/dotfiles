@@ -1,6 +1,6 @@
 (ns tfconfig.modules.dirs.module
-  (:require [tfconfig.common.file :refer :all])
-  (:require [tfconfig.common.command :refer :all]))
+  (:require
+   [tfconfig.common.file :refer [file]]))
 
 (defn run
   "Create standard directories"

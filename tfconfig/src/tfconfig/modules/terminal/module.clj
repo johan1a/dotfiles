@@ -2,8 +2,6 @@
   (:require [tfconfig.common.command :refer [command]]
             [tfconfig.common.file :refer [link file directory file-exists? dir-exists?]]
             [tfconfig.common.pacman :refer [pacman]]
-            [tfconfig.common.has-executable :refer [has-executable?]]
-            [tfconfig.common.handler :refer [handler]]
             [tfconfig.common.aur :refer [install-aur-package]]
             [clojure.core.strint :refer [<<]]))
 
