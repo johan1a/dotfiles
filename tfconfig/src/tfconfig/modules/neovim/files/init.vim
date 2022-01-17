@@ -118,6 +118,7 @@ EOF
 :lua << EOF
   require'lspconfig'.clojure_lsp.setup{}
   require'lspconfig'.vuels.setup{}
+  require'lspconfig'.tsserver.setup{}
 EOF
 
   augroup lsp
@@ -350,6 +351,8 @@ augroup filetypes
   autocmd Filetype ts                    setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd Filetype tsx                   setlocal filetype=typescript.tsx
   autocmd Filetype tsx                   setlocal omnifunc=v:lua.vim.lsp.omnifunc
+  autocmd Filetype typescript.tsx        setlocal filetype=typescript.tsx
+  autocmd Filetype typescript.tsx        setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd FileType vue                   nnoremap <buffer> <leader>f :Prettier<cr>
   autocmd FileType vue                   nnoremap <buffer> <leader>f :Prettier<cr>
   autocmd Filetype vue                   setlocal omnifunc=v:lua.vim.lsp.omnifunc
