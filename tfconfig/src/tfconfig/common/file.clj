@@ -70,13 +70,13 @@
   [context path description lines-to-add]
   (let [managed-str (str (:managed-str context) description)
         tmp-file (str "/tmp/tfconfig-" (rand))]
-      (command "cp" [path tmp-file] (assoc context :preauth true))
-      (with-open [reader (io/reader tmp-file)]
-        (let [lines (line-seq reader)
-              index (.indexOf (or lines []) managed-str)
-              new-lines (update-content lines index managed-str lines-to-add)]
-          (when (= index -1)
-              (with-open [writer (io/writer tmp-file)]
-                (dorun (map #(.write writer (str % "\n")) new-lines)))
-              (command "mv" [tmp-file path] (assoc context :sudo true :preauth true))
-              (notify context "lines"))))))
+    (command "cp" [path tmp-file] (assoc context :preauth true))
+    (with-open [reader (io/reader tmp-file)]
+      (let [lines (line-seq reader)
+            index (.indexOf (or lines []) managed-str)
+            new-lines (update-content lines index managed-str lines-to-add)]
+        (when (= index -1)
+          (with-open [writer (io/writer tmp-file)]
+            (dorun (map #(.write writer (str % "\n")) new-lines)))
+          (command "mv" [tmp-file path] (assoc context :sudo true :preauth true))
+          (notify context "lines"))))))

@@ -20,13 +20,15 @@ if has('nvim')
   Plug 'Shougo/deoplete.nvim'
   Plug 'zchee/deoplete-jedi'
   Plug 'SirVer/ultisnips'
-  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'sbdchd/neoformat'
-  Plug 'prettier/vim-prettier', {
-    \ 'do': 'yarn install',
-    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-  Plug 'scalameta/nvim-metals'
-  Plug 'neovim/nvim-lspconfig' " Not sure what this does specifically
+  if has('nvim-0.5')
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+    Plug 'prettier/vim-prettier', {
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+    Plug 'scalameta/nvim-metals'
+    Plug 'neovim/nvim-lspconfig'
+  endif
   Plug 'nvim-lua/plenary.nvim'
 endif
 
@@ -53,12 +55,14 @@ Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-sneak'
 Plug 'leafgarland/typescript-vim'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'preservim/vimux' " Dependency of vim-test
 Plug 'scrooloose/nerdtree'
 Plug 'srcery-colors/srcery-vim'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'vim-test/vim-test'
 Plug 'vimwiki/vimwiki'
 
 call plug#end()
@@ -68,7 +72,8 @@ let mapleader =  "\<Space>"
 
 " Colorscheme
 
-"colorscheme srcery
+" colorscheme srcery
+" TODO if file contains light
 if filereadable(expand('~/.vimrc_background'))
   let base16colorspace=256
   source ~/.vimrc_background
@@ -142,6 +147,16 @@ inoremap <silent> <c-e> <C-R>=UltiSnips#ExpandSnippetOrJump()<cr>
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="~/.vim/custom_snippets" " Custom snips dir
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
+
+
+" =========== vim-test ===========
+
+let test#strategy = "vimux"
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
 
 " =========== gitgutter ===========
 
@@ -349,7 +364,7 @@ augroup filetypes
   autocmd Filetype tsx                   setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd Filetype typescript.tsx        setlocal filetype=typescript.tsx
   autocmd Filetype typescript.tsx        setlocal omnifunc=v:lua.vim.lsp.omnifunc
-  autocmd FileType vue                   nnoremap <buffer> <leader>f :Prettier<cr>
+  autocmd FileType typescript.tsx        nnoremap <buffer> <leader>f :Prettier<cr>
   autocmd FileType vue                   nnoremap <buffer> <leader>f :Prettier<cr>
   autocmd Filetype vue                   setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd BufRead,BufNewFile *.avdl      setlocal filetype=avdl

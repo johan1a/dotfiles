@@ -341,6 +341,18 @@ function nuke-docker
   docker rm (docker ps -aq)
 end
 
+function up
+  docker-compose up -d $argv
+end
+
+function down
+  docker-compose down --volumes $argv
+end
+
+function dl
+  docker-compose logs -f $argv
+end
+
 function os-name
   set NAME_STR (head -n 1 /etc/os-release)
   set OS (echo $NAME_STR | sed 's/NAME=//g')

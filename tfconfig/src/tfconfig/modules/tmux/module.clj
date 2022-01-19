@@ -6,8 +6,9 @@
 
 (defn run
   [context]
-      (pacman "tmux" (assoc context :state "present"))
-      (let [home (:home context)
-            files-dir (<< "~(:modules-dir context)tmux/files")]
-        (link context (str files-dir "/tmux.conf") (str home ".tmux.conf"))
-        (link context (str files-dir "/tmux.reset.conf") (str home ".tmux.reset.conf"))))
+  (when (= (:os context) "archlinux")
+    (pacman "tmux" (assoc context :state "present")))
+  (let [home (:home context)
+        files-dir (<< "~(:modules-dir context)tmux/files")]
+    (link context (str files-dir "/tmux.conf") (str home ".tmux.conf"))
+    (link context (str files-dir "/tmux.reset.conf") (str home ".tmux.reset.conf"))))

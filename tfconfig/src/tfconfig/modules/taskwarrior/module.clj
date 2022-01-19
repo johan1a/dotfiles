@@ -7,6 +7,6 @@
 (defn run
   [context]
   (let [home (:home context)]
-      (pacman "task" (assoc context :state "present"))
-      (dorun (file (<< "~{home}/ownCloud/task") (assoc context :state "dir")))
-      (link context (<< "~{home}/ownCloud/task") (<< "~{home}/.task"))))
+    (pacman "task" (assoc context :state "present"))
+    (dorun (file (<< "~{home}/ownCloud/task") (assoc context :state "dir")))
+    (link context (<< "~{home}/ownCloud/task") (<< "~{home}/.task"))))

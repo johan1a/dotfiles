@@ -15,10 +15,10 @@
   [context]
   (let [home (:home context)
         files-dir (<< "~(:modules-dir context)i3_gaps/files")]
-  (link context (<< "~{files-dir}/logind.conf") "/etc/systemd/logind.conf" {:sudo true})
-  (link context (<< "~{files-dir}/is-tmux") (<< "~{home}.local/bin/is-tmux"))
-  (link context (<< "~{files-dir}/i3") (<< "~{home}.config/i3"))
-  (link (assoc context :executable true) (<< "~(:modules-dir context)packages/files/bin/i3-after-hook") (str (:home context) ".local/bin/i3-after-hook"))))
+    (link context (<< "~{files-dir}/logind.conf") "/etc/systemd/logind.conf" {:sudo true})
+    (link context (<< "~{files-dir}/is-tmux") (<< "~{home}.local/bin/is-tmux"))
+    (link context (<< "~{files-dir}/i3") (<< "~{home}.config/i3"))
+    (link (assoc context :executable true) (<< "~(:modules-dir context)packages/files/bin/i3-after-hook") (str (:home context) ".local/bin/i3-after-hook"))))
 
 (defn install-i3lock
   [context]

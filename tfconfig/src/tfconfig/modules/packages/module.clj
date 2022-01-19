@@ -94,16 +94,16 @@
 
 (defn enable-multilib
   [context]
-    (handler context :multilib-enabled sync-packages)
+  (handler context :multilib-enabled sync-packages)
     ; TODO don't think this works properly
-    (file-content (assoc context :handler-ref :multilib-enabled) "/etc/pacman.conf" "Activate multilib" ["[multilib]" "Include = /etc/pacman.d/mirrorlist"]))
+  (file-content (assoc context :handler-ref :multilib-enabled) "/etc/pacman.conf" "Activate multilib" ["[multilib]" "Include = /etc/pacman.d/mirrorlist"]))
 
 (defn config-makepkg
   [context]
-    (let [home (:home context)
-          owning-context (assoc context :sudo true :owner (str (:username context) ":"))]
-      (directory owning-context (str home ".config/pacman"))
-      (link context (<< "~(:modules-dir context)packages/files/makepkg.conf") (str home ".config/pacman/makepkg.conf"))))
+  (let [home (:home context)
+        owning-context (assoc context :sudo true :owner (str (:username context) ":"))]
+    (directory owning-context (str home ".config/pacman"))
+    (link context (<< "~(:modules-dir context)packages/files/makepkg.conf") (str home ".config/pacman/makepkg.conf"))))
 
 ; TODO fix, move and refactor
 ; (defn enable-wallpaper
@@ -119,13 +119,13 @@
 (defn run
   "Installs useful packages"
   [context]
-    (enable-multilib context)
-    (config-makepkg context)
-    (dorun (map #(pacman % (assoc context :state "present")) packages))
-    (let [sudo-context (assoc context :sudo true)]
-      (command "archlinux-java" ["set" "java-14-openjdk"] (assoc sudo-context :throw-errors false)) ; TODO move
-      (when-not (:ci context)
-        (command "systemctl" ["enable" "cronie"] sudo-context)
-        (command "systemctl" ["restart" "cronie"] sudo-context)
-        (command "systemctl" ["enable" "bluetooth"] sudo-context)
-        (command "systemctl" ["start" "bluetooth"] sudo-context))))
+  (enable-multilib context)
+  (config-makepkg context)
+  (dorun (map #(pacman % (assoc context :state "present")) packages))
+  (let [sudo-context (assoc context :sudo true)]
+    (command "archlinux-java" ["set" "java-14-openjdk"] (assoc sudo-context :throw-errors false)) ; TODO move
+    (when-not (:ci context)
+      (command "systemctl" ["enable" "cronie"] sudo-context)
+      (command "systemctl" ["restart" "cronie"] sudo-context)
+      (command "systemctl" ["enable" "bluetooth"] sudo-context)
+      (command "systemctl" ["start" "bluetooth"] sudo-context))))

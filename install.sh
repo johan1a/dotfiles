@@ -12,8 +12,20 @@ if [ -z $CONFIG ] ; then
   export CONFIG=../config.yaml
 fi
 
-echo $PASSWORD | sudo -S pacman -Syu --noconfirm --needed
-echo $PASSWORD | sudo -S pacman -S inetutils which leiningen --noconfirm --needed
+if command -v pacman &> /dev/null
+then
+  echo $PASSWORD | sudo -S pacman -Syu --noconfirm --needed
+  echo $PASSWORD | sudo -S pacman -S inetutils which leiningen --noconfirm --needed
+fi
+
+if command -v apt &> /dev/null
+then
+  echo $PASSWORD | sudo -S apt-get update -y
+  if ! command -v lein &> /dev/null
+  then
+    echo $PASSWORD | sudo -S apt-get install leiningen -y
+  fi
+fi
 
 if [ -z $CI ] ; then
   export VERBOSE_FLAG=

@@ -1,5 +1,6 @@
 (ns tfconfig.modules.neovim.module
   (:require
+   [tfconfig.common.apt :as apt]
    [tfconfig.common.aur :refer [install-aur-package]]
    [tfconfig.common.command :refer [command pre-auth]]
    [tfconfig.common.file :refer [file link]]
@@ -11,8 +12,13 @@
 
 (defn install-neovim
   [context]
-  (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim"] (assoc context pre-auth true :throw-errors false))
-  (install-aur-package (assoc context :throw-errors false) "neovim-nightly-bin"))
+  (let [os (:os context)]
+    (println os)
+    (when (= os "archlinux")
+      (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim"] (assoc context pre-auth true :throw-errors false))
+      (install-aur-package (assoc context :throw-errors false) "neovim-nightly-bin"))
+    (when (= os "raspbian")
+      (apt/install (assoc context :throw-errors false) ["neovim"]))))
 
 (defn install-gems
   [context]
@@ -26,7 +32,11 @@
 (defn install-make
   "Make is required for the msgpack gem"
   [context]
-  (pacman "make" (assoc context :state "present")))
+  (let [os (:os context)]
+    (when (= os "archlinux")
+      (pacman "make" (assoc context :state "present")))
+    (when (= os "raspbian")
+      (apt/install context ["make"]))))
 
 (defn create-vim-dir
   [context base-dir]
@@ -59,12 +69,15 @@
 
 (defn run
   [context]
-  (install-neovim context)
-  (install-make context)
-  (install-gems context)
-  (install-neovim-pip-packages context)
-  (let [nvim-dir (str (:home context) ".config/nvim/")]
-    (create-vim-dir context nvim-dir)
-    (link-configs context nvim-dir)
-    (install-plugins context)
-    (link-custom-snippets context nvim-dir)))
+  (let [os (:os context)]
+    (install-neovim context)
+    (install-make context)
+    (when (= os "archlinux")
+      (install-gems context)
+      (install-neovim-pip-packages context))
+    (let [nvim-dir (str (:home context) ".config/nvim/")]
+      (create-vim-dir context nvim-dir)
+      (link-configs context nvim-dir)
+      (when (= os "archlinux")
+        (install-plugins context))
+      (link-custom-snippets context nvim-dir))))

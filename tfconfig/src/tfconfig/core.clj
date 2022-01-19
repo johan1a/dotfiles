@@ -70,7 +70,6 @@
 (defn run-module
   [file context]
   (let [module-name (get-parent-name file)
-        _ (println (<< "-- Module: ~{module-name} --"))
         run-module (load-file (.getAbsolutePath file))
         startTime (. System (currentTimeMillis))
         _ (run-module context)
@@ -117,6 +116,7 @@
                  :throw-errors true
                  :managed-str "# The following line is managed by tfconfig, do not edit. Description: "
                  :profile profile
+                 :os (or (:os profile) "archlinux")
                  :ci (System/getenv "CI")}]
     (if password
       (do

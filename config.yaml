@@ -18,6 +18,38 @@ profiles:
       - ime
       - polybar
       - gnome_keyring
+  - name: rpi
+    os: raspbian
+    pattern: "tiltpi"
+    has-monitor: false
+    additional-modules:
+      - packages_apt
+    ignored-modules:
+      # - dirs
+      - packages
+      - pulseaudio
+      # - utils
+      - docker
+      - cups
+      - mlocate
+      # - git
+      # - ctags
+      - intellij
+      - owncloud
+      - taskwarrior
+      - i3_gaps
+      - aur
+      - mail
+      # - neovim
+      - xorg
+      - ime
+      # - terminal
+      # - tmux
+      - colemak
+      - dunst
+      - polybar
+      - gpg
+      - gnome_keyring
   - name: ci
     pattern: "runner-.*"
     has-monitor: false
