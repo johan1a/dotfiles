@@ -62,7 +62,7 @@ profiles:
     pattern: ".*"
     has-monitor: true
     ignored-modules:
-      -
+      - ime
 modules:
   - dirs
   - packages
