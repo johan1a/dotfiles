@@ -87,6 +87,15 @@ endif
 " |_|   |_|\__,_|\__, |_|_| |_|  \___\___/|_| |_|_| |_|\__, |
  "               |___/                                 |___/
 
+if exists('g:started_by_firenvim')
+
+  let fc = g:firenvim_config['localSettings']
+  let fc['https://www.messenger.com'] = { 'takeover': 'never', 'priority': 1 }
+  let fc['https://discord.com'] = { 'takeover': 'never', 'priority': 1 }
+
+endif
+
+
 " =========== auto-omni ===========
 " Keys that trigger omnicomplete.
 " I added '.' to the default.
