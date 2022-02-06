@@ -90,8 +90,8 @@ endif
 if exists('g:started_by_firenvim')
 
   let fc = g:firenvim_config['localSettings']
-  let fc['https://www.messenger.com'] = { 'takeover': 'never', 'priority': 1 }
-  let fc['https://discord.com'] = { 'takeover': 'never', 'priority': 1 }
+  let fc['https://www\.messenger\.com'] = { 'takeover': 'never', 'priority': 1 }
+  let fc['https://discord\.com'] = { 'takeover': 'never', 'priority': 1 }
 
 endif
 
