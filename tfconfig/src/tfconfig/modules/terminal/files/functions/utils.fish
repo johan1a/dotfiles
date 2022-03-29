@@ -353,6 +353,10 @@ function dl
   docker-compose logs -f $argv
 end
 
+function dps
+  docker ps $argv
+end
+
 function os-name
   set NAME_STR (head -n 1 /etc/os-release)
   set OS (echo $NAME_STR | sed 's/NAME=//g')
