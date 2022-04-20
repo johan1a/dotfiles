@@ -82,7 +82,8 @@
                "cowsay"
                "dictd"
                "bdf-unifont"
-               "hexedit"])
+               "hexedit"
+               "rmlint"])
         ; "dnsutils"
         ;  udiskie
         ; redshift
