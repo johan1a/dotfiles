@@ -80,7 +80,6 @@
                "figlet"
                "cowsay"
                "dictd"
-               "bdf-unifont"
                "hexedit"
                "rmlint"])
         ; "dnsutils"
