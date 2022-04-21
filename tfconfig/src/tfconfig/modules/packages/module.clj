@@ -23,7 +23,6 @@
                "arandr"
                "ttf-dejavu"
                "ttf-inconsolata"
-               "udevil"
                "alsa-firmware"
                "alsa-utils"
                "alsa-plugins"
