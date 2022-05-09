@@ -354,7 +354,11 @@ function dl
 end
 
 function dps
-  docker ps $argv
+  if test -e docker-compose.yaml -o -e docker-compose.yml
+    docker-compose ps $argv
+  else
+    docker ps $argv
+  end
 end
 
 function os-name
