@@ -16,9 +16,12 @@ set -x PASSWORD $PASSWORD # or export PASSWORD=$PASSWORD
 lein run
 ```
 
-## Options
+## Development
 
-FIXME: listing of options this app accepts.
+Linting:
+```
+lein cljfmt fix
+```
 
 ## Examples
 
