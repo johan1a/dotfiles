@@ -58,7 +58,7 @@
                "rlwrap"
                "sxiv"
                "lib32-glibc"
-               "nodejs"
+               "nodejs-lts-gallium"
                "ncdu"
                "arp-scan"
                "xdotool"
