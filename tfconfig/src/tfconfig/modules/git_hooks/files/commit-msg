@@ -1,0 +1,9 @@
+#!/bin/bash
+
+title=$(cat $1 | head -n 1)
+
+if ! echo "$title" | grep -qE '^(feat|fix|docs|style|refactor|perf|test|chore|ci)(\(.+\))?:\s.+'; then
+  echo "Invalid commit title: $itle"
+  echo "Please see https://www.conventionalcommits.org/en/v1.0.0/"
+  exit 1
+fi

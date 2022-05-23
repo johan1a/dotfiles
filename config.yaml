@@ -65,6 +65,7 @@ profiles:
       - ime
 modules:
   - dirs
+  - git_hooks
   - packages
   - pulseaudio
   - utils
