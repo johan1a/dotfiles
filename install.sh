@@ -12,7 +12,7 @@ if [ -z $CONFIG ] ; then
   export CONFIG=../config.yaml
 fi
 
-if command -v pacman &> /dev/null
+if not pacman --query --quiet inetutils which leiningen &> /dev/null
 then
   echo $PASSWORD | sudo -S pacman -Syu --noconfirm --needed
   echo $PASSWORD | sudo -S pacman -S inetutils which leiningen --noconfirm --needed
