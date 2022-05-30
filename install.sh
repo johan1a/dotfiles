@@ -18,15 +18,6 @@ then
   echo $PASSWORD | sudo -S pacman -S inetutils which leiningen --noconfirm --needed
 fi
 
-if command -v apt &> /dev/null
-then
-  echo $PASSWORD | sudo -S apt-get update -y
-  if ! command -v lein &> /dev/null
-  then
-    echo $PASSWORD | sudo -S apt-get install leiningen -y
-  fi
-fi
-
 if [ -z $CI ] ; then
   export VERBOSE_FLAG=
 else
