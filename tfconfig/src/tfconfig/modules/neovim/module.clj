@@ -1,7 +1,6 @@
 (ns tfconfig.modules.neovim.module
   (:require
    [tfconfig.common.apt :as apt]
-   [tfconfig.common.aur :refer [install-aur-package]]
    [tfconfig.common.command :refer [command pre-auth]]
    [tfconfig.common.file :refer [file link]]
    [tfconfig.common.gem :refer [gem]]
@@ -15,8 +14,9 @@
   (let [os (:os context)]
     (println os)
     (when (= os "archlinux")
-      (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim"] (assoc context pre-auth true :throw-errors false))
-      (install-aur-package (assoc context :throw-errors false) "neovim-nightly-bin"))
+      (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim-nightly-bin"] (assoc context pre-auth true :throw-errors false))
+      (pacman "neovim" (assoc context :state "present"))
+      (pacman "python-neovim" (assoc context :state "present")))
     (when (= os "raspbian")
       (apt/install (assoc context :throw-errors false) ["neovim"]))))
 
