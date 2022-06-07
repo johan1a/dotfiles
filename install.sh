@@ -20,9 +20,9 @@ fi
 
 if command -v apt &> /dev/null
 then
-  echo $PASSWORD | sudo -S apt-get update -y
   if ! command -v lein &> /dev/null
   then
+    echo $PASSWORD | sudo -S apt-get update -y
     echo $PASSWORD | sudo -S apt-get install leiningen -y
   fi
 fi
