@@ -1,18 +1,19 @@
-(ns tfconfig.modules.packages.module
+(ns tfconfig.modules.utils.module
   (:require [tfconfig.common.file :refer [link directory]]
-            [clojure.core.strint :refer [<<]]))
+            [clojure.core.strint :refer [<<]]
+            [clojure.java.io :refer [file]]))
 
 (defn run
   "Installs useful utility scripts"
   [context]
   (let [executable-context (assoc context :executable true)
-        home (:home context)]
-    (link executable-context
-          (<< "~(:modules-dir context)packages/files/bin/background-notify")
-          (str home ".local/bin/background-notify"))
-    (link executable-context
-          (<< "~(:modules-dir context)packages/files/bin/stomp_start_jack")
-          (str home ".local/bin/stomp_start_jack"))
+        home (:home context)
+        bin-dir (<< "~(:modules-dir context)utils/files/bin")]
+    (doseq [script (.list (file bin-dir))]
+      (when script
+        (link executable-context
+              (<< "~{bin-dir}/~{script}")
+              (str home ".local/bin/" script))))
     (link executable-context
           (<< "~(:modules-dir context)utils/files/local_scripts_common/s")
           (str home ".local/bin/s"))
