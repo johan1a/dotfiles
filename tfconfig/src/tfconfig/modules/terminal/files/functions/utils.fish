@@ -540,6 +540,10 @@ function ds
   trans da:sv $argv
 end
 
+function de
+  dict -d deu-eng $argv
+end
+
 function ta
   tmux attach -t $argv
 end
