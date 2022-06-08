@@ -437,6 +437,9 @@ set showcmd
 " |_|\_\___|\__, | |_| |_| |_|\__,_| .__/|___/
  "          |___/                  |_|
 
+" completion / omnifunc
+inoremap <expr> <s-tab>       pumvisible() ? "\<C-p>" : "\<s-tab>"
+inoremap <expr> <cr>       pumvisible() ? "\<C-y>" : "\<cr>"
 
 function! ShowMappings()
   :redir @a
