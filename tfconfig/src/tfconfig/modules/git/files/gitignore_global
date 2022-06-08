@@ -1,1 +1,4 @@
 tags
+.metals/
+.bloop/
+metals.sbt
