@@ -35,6 +35,7 @@ endif
 " Only run auto omnicomplete for languages where we are likely of having a
 " language server running to avoid annoying error messages.
 Plug 'BrandonRoehl/auto-omni', { 'for': 'scala'} " Trigger automatic omnicompletion
+Plug 'Pocco81/AutoSave.nvim'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'honza/vim-snippets'
 Plug 'jreybert/vimagit'
@@ -87,6 +88,34 @@ endif
 " |_|   |_|\__,_|\__, |_|_| |_|  \___\___/|_| |_|_| |_|\__, |
  "               |___/                                 |___/
 
+" =========== autosave ===========
+lua << EOF
+local autosave = require("autosave")
+
+autosave.setup(
+    {
+        enabled = true,
+        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+        events = {"InsertLeave", "TextChanged"}, --"TextChanged", "TextChangedP"},
+        conditions = {
+            exists = true,
+            filename_is_not = {},
+            filetype_is_not = {},
+            modifiable = true
+        },
+        write_all_buffers = false,
+        on_off_commands = true,
+        clean_command_line_interval = 0,
+        debounce_delay = 235
+    }
+)
+
+autosave.hook_before_saving = function ()
+  if vim.bo.filetype ~= "scala" then
+      vim.g.auto_save_abort = true
+  end
+end
+EOF
 if exists('g:started_by_firenvim')
 
   let fc = g:firenvim_config['localSettings']
@@ -462,19 +491,22 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
  " lsp
 if has('nvim-0.5')
   nnoremap <silent> <leader>cc    <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> K             <cmd>lua vim.lsp.buf.hover()<CR>
   nnoremap <silent> <leader>ci    <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> <c-b>    <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> <s-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+  nnoremap <silent> <c-b>         <cmd>lua vim.lsp.buf.implementation()<CR>
+  nnoremap <silent> <s-k>         <cmd>lua vim.lsp.buf.signature_help()<CR>
   nnoremap <silent> <leader>ct    <cmd>lua vim.lsp.buf.type_definition()<CR>
   nnoremap <silent> <leader>cr    <cmd>lua vim.lsp.buf.references()<CR>
 
   " This is actually <c-7>
   nnoremap <silent>             <cmd>lua vim.lsp.buf.references()<CR>
+  nnoremap <silent> <F7>          <cmd>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> <leader>ce    <cmd>lua vim.lsp.buf.rename()<CR>
+  nnoremap <silent> <F8>          <cmd>lua vim.lsp.buf.rename()<CR>
   nnoremap <silent> g0            <cmd>lua vim.lsp.buf.document_symbol()<CR>
   nnoremap <silent> gW            <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-  nnoremap <silent> gD            <cmd>lua vim.lsp.buf.declaration()<CR>
+  nnoremap <silent> gD            <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> gd            <cmd>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> <leader>ca    <cmd>lua vim.lsp.buf.code_action()<CR>
   nnoremap <silent> <c-a>         <cmd>lua vim.lsp.buf.code_action()<CR>
 
