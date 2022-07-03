@@ -5,6 +5,7 @@
 --exclude=build
 --exclude=dist
 --exclude=node_modules
+--exclude=.nuxt
 --exclude=out
 --exclude=target
 --exclude=bundle.js
