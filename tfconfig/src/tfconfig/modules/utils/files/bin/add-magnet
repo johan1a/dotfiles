@@ -2,3 +2,5 @@
 # Set this script as default application to use for magnet links in your browser
 set -l magnet_link $argv
 deluge-console -P deluge "connect urdatorn2:58846 remoteclient $DELUGE_REMOTE_PASSWORD; add $magnet_link; exit"
+notify-send "Added magnet link
+$magnet_link"
