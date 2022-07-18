@@ -1,0 +1,4 @@
+#!/usr/bin/fish
+
+rsync --progress --recursive /data/.local/share/Steam/userdata/$STEAM_USER_ID/892970 urdatorn2:/data/backup/valheim_manual_backup/
+
