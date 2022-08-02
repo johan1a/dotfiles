@@ -1,0 +1,4 @@
+#!/bin/bash
+timestamp_ms=$1
+
+date -d @$(  echo "($timestamp_ms + 500) / 1000" | bc)  --rfc-3339=seconds
