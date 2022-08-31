@@ -353,6 +353,10 @@ function dl
   docker-compose logs -f $argv
 end
 
+function dr
+  docker-compose restart $argv
+end
+
 function dps
   if test -e docker-compose.yaml -o -e docker-compose.yml
     docker-compose ps $argv
@@ -633,6 +637,23 @@ function take_screenshot
   mkdir -p ~/pictures/screenshots/
   scrot -e 'mv $f ~/pictures/screenshots/'
   notify-send "Took a screenshot!"
+end
+
+function take_and_edit_screenshot
+  take_screenshot
+  edit_last_screenshot
+end
+
+function edit_last_screenshot
+  pushd .
+  cd ~/pictures/screenshots
+  set image_file (last_edited_file .)
+  gimp $image_file
+  popd
+end
+
+function last_edited_file
+  ls -ltr $argv | tail -1 | awk '{print $9;}'
 end
 
 function generate_application_secret

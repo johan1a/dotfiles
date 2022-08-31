@@ -79,6 +79,7 @@ bindsym $mod+i exec /home/johan/source/i3lock-fancy-multimonitor/lock -n -p #-- 
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+c --release exec "fish -c take_screenshot"
+bindsym $mod+x --release exec "fish -c take_and_edit_screenshot"
 
 # change focus
 bindsym $mod+h focus left
