@@ -1,0 +1,4 @@
+#!/bin/bash
+timestamp_seconds=$1
+
+date -d @$timestamp_seconds --rfc-3339=seconds
