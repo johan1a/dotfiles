@@ -522,9 +522,9 @@ if has('nvim-0.5')
   " '' is shift + enter
   nnoremap <silent>  :call CodeAction()<CR>
 
-  nnoremap <silent> <leader>cn    <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-  nnoremap <silent> <c-n>         <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-  nnoremap <silent> <c-p>         <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+  nnoremap <silent> <leader>cn    <cmd>lua vim.diagnostic.goto_next()<CR>
+  nnoremap <silent> <c-n>         <cmd>lua vim.diagnostic.goto_next()<CR>
+  nnoremap <silent> <c-p>         <cmd>lua vim.diagnostic.goto_prev()<CR>
 endif
 
 
