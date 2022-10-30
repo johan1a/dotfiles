@@ -26,7 +26,7 @@ if has('nvim')
     Plug 'prettier/vim-prettier', {
       \ 'do': 'yarn install',
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-    Plug 'scalameta/nvim-metals'
+    Plug 'scalameta/nvim-metals', { 'branch': 'main' }
     Plug 'neovim/nvim-lspconfig'
   endif
   Plug 'nvim-lua/plenary.nvim'
@@ -35,7 +35,7 @@ endif
 " Only run auto omnicomplete for languages where we are likely of having a
 " language server running to avoid annoying error messages.
 Plug 'BrandonRoehl/auto-omni', { 'for': 'scala'} " Trigger automatic omnicompletion
-Plug 'Pocco81/AutoSave.nvim'
+Plug 'pocco81/auto-save.nvim', { 'branch': 'main' }
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'honza/vim-snippets'
 Plug 'jreybert/vimagit'
@@ -90,32 +90,32 @@ endif
 
 " =========== autosave ===========
 lua << EOF
-local autosave = require("autosave")
-
-autosave.setup(
-    {
+require("auto-save").setup {
         enabled = true,
-        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
-        events = {"InsertLeave", "TextChanged"}, --"TextChanged", "TextChangedP"},
-        conditions = {
-            exists = true,
-            filename_is_not = {},
-            filetype_is_not = {},
-            modifiable = true
+        execution_message = {
+          message = function()
+            return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
+          end,
+          dim = 0.18,
+          cleaning_interval = 1250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
         },
-        write_all_buffers = false,
-        on_off_commands = true,
-        clean_command_line_interval = 0,
-        debounce_delay = 235
-    }
-)
+        trigger_events = {"InsertLeave", "TextChanged"},
+        condition = function(buf)
+          local fn = vim.fn
+          local utils = require("auto-save.utils.data")
 
-autosave.hook_before_saving = function ()
-  if vim.bo.filetype ~= "scala" then
-      vim.g.auto_save_abort = true
-  end
-end
+          if
+            fn.getbufvar(buf, "&modifiable") ~= 1 or
+            utils.not_in(fn.getbufvar(buf, "&filetype"), {"scala"}) then
+            return false -- can't save
+          end
+          return true -- can save
+        end,
+        write_all_buffers = false,
+        debounce_delay = 235,
+}
 EOF
+
 if exists('g:started_by_firenvim')
 
   let fc = g:firenvim_config['localSettings']
