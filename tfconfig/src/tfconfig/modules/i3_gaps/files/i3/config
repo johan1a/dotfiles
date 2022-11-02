@@ -148,7 +148,7 @@ set $wp9 "9"
 set $wp10 "10"
 
 bindsym $mod+Shift+c exec fish -c colemak
-bindsym $mod+Shift+e exec termite -e 'fish -C edit-xclip-file'
+bindsym $mod+Shift+e exec alacritty -e 'fish -C edit-xclip-file'
 
 # workspace names
 workspace $wp1 output DVI-I-1
