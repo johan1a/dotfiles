@@ -40,6 +40,7 @@
                "miscfiles"
                "sharutils" ; uudecode
                "sleuthkit"
+               "zsteg"
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
       ;       translate-shell
       ;  google-chrome
