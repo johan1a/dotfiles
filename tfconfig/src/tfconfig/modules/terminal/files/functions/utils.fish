@@ -391,6 +391,10 @@ function bd
   echo $decoded | xclip
 end
 
+function bdc
+  echo $argv | base64 -d | hexdump -C
+end
+
 # Aliases
 
 function ..
