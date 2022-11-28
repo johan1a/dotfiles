@@ -81,7 +81,8 @@
                "cowsay"
                "dictd"
                "hexedit"
-               "rmlint"])
+               "rmlint"
+               "sassc"])
         ; "dnsutils"
         ;  udiskie
         ; redshift
