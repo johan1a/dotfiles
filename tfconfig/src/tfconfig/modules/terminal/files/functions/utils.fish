@@ -345,6 +345,14 @@ function up
   docker-compose up -d $argv
 end
 
+function stop
+  if test -e docker-compose.yaml -o -e docker-compose.yml
+    docker-compose stop $argv
+  else
+    docker stop $argv
+  end
+end
+
 function down
   docker-compose down --volumes $argv
 end
