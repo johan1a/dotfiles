@@ -106,7 +106,8 @@ require("auto-save").setup {
 
           if
             fn.getbufvar(buf, "&modifiable") ~= 1 or
-            utils.not_in(fn.getbufvar(buf, "&filetype"), {"scala"}) then
+            utils.not_in(fn.getbufvar(buf, "&filetype"), {"scala"}) or
+            vim.fn.expand("%:e") == "sbt"  then
             return false -- can't save
           end
           return true -- can save
