@@ -41,6 +41,7 @@
                "sharutils" ; uudecode
                "sleuthkit"
                "zsteg"
+               "ttf-unifont" ; more unicode symbols
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
       ;       translate-shell
       ;  google-chrome
