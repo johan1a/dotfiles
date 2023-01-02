@@ -42,6 +42,7 @@
                "sleuthkit"
                "zsteg"
                "noto-fonts-extra" ; more unicode symbols, ⛧
+               "gke-gcloud-auth-plugin"
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
       ;       translate-shell
       ;  google-chrome
