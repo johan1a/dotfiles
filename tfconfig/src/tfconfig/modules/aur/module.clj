@@ -10,12 +10,10 @@
                "xclip"
                "neofetch"
                "time"
-      ; inxi
                "ipcalc"
                "tig"
                "remind"
                "light"
-      ;nodejs-lumo-cljs
                "msr-tools"
                "libffado"
                "cadence"
@@ -27,10 +25,6 @@
                "kdeconnect"
                "fd"
                "bat"
-               ;"dict-freedict-swe-deu-bin" https://download.freedict.org cert expired
-               ;"dict-freedict-deu-swe-bin"
-               ;"dict-freedict-eng-deu-bin"
-               ;"dict-freedict-deu-eng-bin"
                "pandoc-bin"
                "siji-ng"
                "nodejs-vls"
@@ -44,18 +38,13 @@
                "noto-fonts-extra" ; more unicode symbols, ⛧
                "gke-gcloud-auth-plugin"
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
-      ;       translate-shell
-      ;  google-chrome
-        ;       stack-bin
         ; httpie
-      ;  python-cheat
                ])
 
 ; These packages seem to fail when already present?
 (def failing-packages ["gotop-bin"
                        "metals"
                        "scalafmt"
-                       "jdk11-graalvm-bin"
                        "clojure-lsp-bin"
                        "vimv"])
 
