@@ -37,6 +37,7 @@
                "zsteg"
                "noto-fonts-extra" ; more unicode symbols, ⛧
                "gke-gcloud-auth-plugin"
+               "cnijfilter-common" ; For cups and the Canon pixma iP2850 printer
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
         ; httpie
                ])
