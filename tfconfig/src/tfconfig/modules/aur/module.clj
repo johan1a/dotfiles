@@ -28,6 +28,7 @@
                "pandoc-bin"
                "siji-ng"
                "nodejs-vls"
+               "nodejs-lts-hydrogen"
                "typescript-language-server"
                "bdf-unifont"
                "stegsolve"
@@ -36,7 +37,8 @@
                "sleuthkit"
                "zsteg"
                "noto-fonts-extra" ; more unicode symbols, ⛧
-               "gke-gcloud-auth-plugin"
+               "google-cloud-cli"
+               "google-cloud-cli-gke-gcloud-auth-plugin"
                "cnijfilter-common" ; For cups and the Canon pixma iP2850 printer
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
         ; httpie
