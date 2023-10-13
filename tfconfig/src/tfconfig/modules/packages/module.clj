@@ -68,7 +68,6 @@
                "mlocate"
                "fdupes"
                "fail2ban"
-               "java-openjfx"
                "task"
                "ledger"
                "parallel"
