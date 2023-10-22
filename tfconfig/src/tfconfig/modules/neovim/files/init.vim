@@ -271,6 +271,10 @@ let g:EasyGrepCommand=1
 
 :set statusline+=%{gutentags#statusline('[Generating...]')}
 
+if executable('rg')
+  let g:gutentags_file_list_command = 'rg --files'
+endif
+
 " =========== vim-dispatch ===========
 
 augroup vim_dispatch
