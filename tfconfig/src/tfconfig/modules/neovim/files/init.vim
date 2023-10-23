@@ -159,8 +159,9 @@ EOF
   require'lspconfig'.clojure_lsp.setup{}
   -- Install with:
   -- sudo npm install -g @vue/language-server
-  require'lspconfig'.volar.setup{}
-  require'lspconfig'.tsserver.setup{}
+  require'lspconfig'.volar.setup {
+    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+  }
 EOF
 
   augroup lsp
