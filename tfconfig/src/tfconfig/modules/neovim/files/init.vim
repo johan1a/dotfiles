@@ -157,7 +157,9 @@ EOF
 " Language servers
 :lua << EOF
   require'lspconfig'.clojure_lsp.setup{}
-  require'lspconfig'.vuels.setup{}
+  -- Install with:
+  -- sudo npm install -g @vue/language-server
+  require'lspconfig'.volar.setup{}
   require'lspconfig'.tsserver.setup{}
 EOF
 
