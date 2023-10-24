@@ -421,6 +421,10 @@ augroup END
 
 set completeopt=noinsert,menuone
 
+" =========== vim-prettier ===========
+" Use .prettierrc, don't use custom settings from vim-prettieri
+let g:prettier#config#config_precedence = 'prefer-file'
+
 " =========== search ===========
 
 set grepprg=ag\ $*
