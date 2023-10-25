@@ -442,7 +442,7 @@ function ..4
 end
 
 function a
-  ag --path-to-ignore ~/dotfiles/ansible/roles/terminal/files/grepignore $argv
+  ag --path-to-ignore ~/dotfiles/tfconfig/src/tfconfig/modules/terminal/files/grepignore $argv
 end
 
 function amend
