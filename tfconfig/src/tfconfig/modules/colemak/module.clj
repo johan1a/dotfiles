@@ -15,4 +15,4 @@
     (link (assoc context :sudo true) vconsole-src vconsole-dest)
     (link (assoc context :sudo true) xorg-config-src xorg-config-dest)
     (when (:has-monitor (:profile context))
-      (command "setxkbmap" ["-layout" "us" "-variant" "colemak" "-option" "altwin:swap_lalt_lwin" "-option" "caps:super"] context))))
+      (command "setxkbmap" ["-layout" "us" "-variant" "colemak" "-option" "altwin:swap_lalt_lwin" "-option" "ctrl:swapcaps"] context))))
