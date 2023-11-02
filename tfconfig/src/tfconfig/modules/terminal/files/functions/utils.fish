@@ -450,11 +450,11 @@ function amend
 end
 
 function colemaknordic
-  setxkbmap colemaknordic -option altwin:swap_lalt_lwin -option caps:super; background-notify  "Switched to Colemak Nordic."
+  setxkbmap colemaknordic -option altwin:swap_lalt_lwin -option ctrl:swapcaps; background-notify  "Switched to Colemak Nordic."
 end
 
 function colemak
-  setxkbmap -layout us -variant colemak -option altwin:swap_lalt_lwin -option caps:super; background-notify "Switched to Colemak."
+  setxkbmap -layout us -variant colemak -option altwin:swap_lalt_lwin -option ctrl:swapcaps; background-notify "Switched to Colemak."
 end
 
 function toggle-colemak
