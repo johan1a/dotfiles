@@ -3,6 +3,14 @@ function get_git_branch
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 end
 
+function get_kube_context
+  if [ (cat ~/.kube/config | grep current-context | grep prd) ]
+    set_color $fish_color_error
+    echo -n "prd"
+    set_color normal
+  end
+end
+
 function git_is_dirty
     git status > /dev/null
     git diff-index --quiet HEAD --;
