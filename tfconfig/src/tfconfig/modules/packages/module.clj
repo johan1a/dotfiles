@@ -32,7 +32,7 @@
                "strace"
                "fish"
                "blueman"
-               "nodejs-lts-gallium"
+               "nodejs"
                "npm"
                "w3m"
                "isync"
@@ -81,7 +81,8 @@
                "dictd"
                "hexedit"
                "rmlint"
-               "sassc"])
+               "sassc"
+               ])
         ; "dnsutils"
         ;  udiskie
         ; redshift

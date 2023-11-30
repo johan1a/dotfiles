@@ -28,7 +28,6 @@
                "pandoc-bin"
                "siji-ng"
                "nodejs-vls"
-               "nodejs-lts-hydrogen"
                "typescript-language-server"
                "bdf-unifont"
                "stegsolve"
