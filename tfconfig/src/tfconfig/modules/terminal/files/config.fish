@@ -23,6 +23,7 @@ export CLOUDSDK_PYTHON=/usr/bin/python3
 contains /home/$USER/.local/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/.local/bin/
 contains /home/$USER/go/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/go/bin/
 contains /opt/google-cloud-cli/bin/ $fish_user_paths; or set -Ua fish_user_paths /opt/google-cloud-cli/bin/
+contains /home/$USER/.local/share/coursier/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/.local/share/coursier/bin/
 
 source ~/.config/fish/functions/utils.fish
 
