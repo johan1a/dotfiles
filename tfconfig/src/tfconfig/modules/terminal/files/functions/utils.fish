@@ -1,4 +1,13 @@
 
+# Example: take 5 | do rsync --progress {} destination:
+function do
+  while read line
+    set cmd (echo $argv | sed "s/{}/$line/g")
+    eval $cmd
+  end
+end
+
+# list n last changed files
 function take
   set n $argv
   ls -t | head -n $n
