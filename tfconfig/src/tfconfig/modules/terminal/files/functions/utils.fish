@@ -215,6 +215,10 @@ function pull-dir
   end
 end
 
+function kill-jobs
+  jobs -p | head -n +1 | xargs kill -9
+end
+
 function wait-for-jobs
   while fg | grep -qv "There are no suitable jobs"; end
 end
