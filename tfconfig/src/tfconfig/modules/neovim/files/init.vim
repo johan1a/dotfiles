@@ -288,8 +288,6 @@ augroup vim_dispatch
     autocmd FileType python     let b:dispatch = 'python -m unittest discover'
 augroup END
 
-nnoremap <leader>d :Dispatch<CR>
-
 " =========== tmux-navigator ===========
 
 let g:tmux_navigator_disable_when_zoomed = 1 " Disable tmux auto zoom out
@@ -577,6 +575,7 @@ nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>k :NERDTreeFind<CR>
 nnoremap <leader>q :NERDTreeClose<CR>:q<CR>
 nnoremap <leader>bd :bdelete<CR>
+nnoremap <leader>d :bd<CR>
 
 " replace and jump
 nnoremap c* *Ncgn
