@@ -175,6 +175,8 @@ endif
 
 
 " =========== ultisnips ===========
+" After editing, reload changes with:
+" :call UltiSnips#RefreshSnippets()
 
 set rtp^=$HOME/.vim/bundle/ultisnips
 
@@ -412,6 +414,8 @@ augroup filetypes
   autocmd FileType vue                   nnoremap <buffer> <leader>f :Prettier<cr>
   autocmd Filetype vue                   setlocal omnifunc=v:lua.vim.lsp.omnifunc
   autocmd BufRead,BufNewFile *.avdl      setlocal filetype=avdl
+
+  autocmd Filetype snippets              setlocal expandtab
 
   " Automatically remove trailing whitespace from markdown files on save
   autocmd BufWritePre *.md               %s/\s\+$//e
