@@ -44,7 +44,7 @@
 (defn setup-alacritty
   [context]
   (directory context (<< "~(:home context).config/alacritty"))
-  (link context (<< "~(:modules-dir context)terminal/files/alacritty.yml") (str (:home context) ".config/alacritty/alacritty.yml"))
+  (link context (<< "~(:modules-dir context)terminal/files/alacritty.toml") (str (:home context) ".config/alacritty/alacritty.toml"))
   (install-aur-package context "alacritty"))
 
 (defn setup-base16
