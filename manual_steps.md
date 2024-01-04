@@ -42,6 +42,14 @@ pass insert owncloud/caldav_url
 #https://HOST:PORT/remote.php/dav/
 ```
 
+## Monitor
+
+```
+To automatically enable the Dell monitor, add this udev rule to:
+
+#/etc/udev/rules.d/95-monitor-hotplug.rules
+KERNEL=="1-7", SUBSYSTEM=="usb", ATTRS{idVendor}=="413c", ATTRS{idProduct}=="8442", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/johan/.Xauthority", RUN+="/usr/bin/autorandr -c"
+```
 
 ## TODO
 ```
