@@ -1,0 +1,9 @@
+[font]
+size = 16.0
+
+[font.normal]
+family = "inconsolata"
+
+[window.padding]
+x = 30
+y = 30
