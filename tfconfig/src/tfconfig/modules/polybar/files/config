@@ -47,7 +47,6 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm i3
-modules-center = mpd
 modules-right = cpu memory filesystem xbacklight volume wlan eth battery temperature powermenu  xkeyboard date
 
 tray-position = right
@@ -181,19 +180,6 @@ label-visible-padding = ${self.label-focused-padding}
 label-urgent = %index%
 ; label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
 
 [module/xbacklight]
 type = internal/xbacklight
