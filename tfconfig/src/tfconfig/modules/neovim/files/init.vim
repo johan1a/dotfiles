@@ -484,6 +484,9 @@ set showcmd
 inoremap <expr> <s-tab>       pumvisible() ? "\<C-p>" : "\<s-tab>"
 inoremap <expr> <cr>       pumvisible() ? "\<C-y>" : "\<cr>"
 
+" Fix error which freezes UI: https://github.com/neovim/neovim/issues/14433 "
+let g:omni_sql_default_compl_type = 'syntax'
+
 function! ShowMappings()
   :redir @a
   :silent map
