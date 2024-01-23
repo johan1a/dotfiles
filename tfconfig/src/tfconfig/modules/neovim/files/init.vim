@@ -38,7 +38,6 @@ Plug 'BrandonRoehl/auto-omni', { 'for': 'scala'} " Trigger automatic omnicomplet
 Plug 'pocco81/auto-save.nvim', { 'branch': 'main' }
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'honza/vim-snippets'
-Plug 'jreybert/vimagit'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fireplace'
 Plug 'udalov/kotlin-vim'
@@ -321,10 +320,6 @@ vmap <c-up>   [egv
 " =========== vim-sneak ===========
 
 let g:sneak#label = 1
-
-" =========== Magit ===========
-
-" nnoremap <leader>ma :Magit<cr>
 
   " ____                           _            _   _   _
  " / ___| ___ _ __   ___ _ __ __ _| |  ___  ___| |_| |_(_)_ __   __ _ ___
