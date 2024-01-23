@@ -38,7 +38,6 @@ Plug 'BrandonRoehl/auto-omni', { 'for': 'scala'} " Trigger automatic omnicomplet
 Plug 'pocco81/auto-save.nvim', { 'branch': 'main' }
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'honza/vim-snippets'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fireplace'
 Plug 'udalov/kotlin-vim'
 Plug 'airblade/vim-gitgutter'
@@ -278,16 +277,6 @@ let g:EasyGrepCommand=1
 if executable('rg')
   let g:gutentags_file_list_command = 'rg --files'
 endif
-
-" =========== vim-dispatch ===========
-
-augroup vim_dispatch
-    autocmd!
-    autocmd FileType java       let b:dispatch = 'javac %'
-    autocmd FileType groovy     let b:dispatch = './gradlew build'
-    autocmd FileType typescript let b:dispatch = 'ng test && ng lint'
-    autocmd FileType python     let b:dispatch = 'python -m unittest discover'
-augroup END
 
 " =========== tmux-navigator ===========
 
