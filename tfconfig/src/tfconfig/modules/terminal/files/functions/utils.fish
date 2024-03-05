@@ -658,6 +658,10 @@ function packages-without-dependencies
   pacman -Qdtq
 end
 
+function installed-aur-packages
+  pacman -Qm
+end
+
 function kl
   if test (count $argv) -gt 1
     set n $argv[1]
