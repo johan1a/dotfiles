@@ -54,14 +54,12 @@ Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-sneak'
 Plug 'leafgarland/typescript-vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'preservim/vimux' " Dependency of vim-test
 Plug 'scrooloose/nerdtree'
 Plug 'srcery-colors/srcery-vim'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'vim-test/vim-test'
 Plug 'vimwiki/vimwiki'
 
 call plug#end()
@@ -189,16 +187,6 @@ inoremap <silent> <c-e> <C-R>=UltiSnips#ExpandSnippetOrJump()<cr>
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="~/.vim/custom_snippets" " Custom snips dir
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
-
-
-" =========== vim-test ===========
-
-let test#strategy = "vimux"
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
 
 " =========== gitgutter ===========
 
