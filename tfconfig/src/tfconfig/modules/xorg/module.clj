@@ -18,6 +18,7 @@
     (pacman "xorg-xinit" pacman-state-present)
     (link context xresources-src xresources-dest)
     (link context xinitrc-src xinitrc-dest)
+    (link (assoc context :sudo true) (<< "~(:modules-dir context)xorg/files/10-serverflags.conf") "/etc/X11/xorg.conf.d/10-serverflags.conf")
     (when (:has-monitor (:profile context))
       (command "xrdb" ["-merge" xresources-dest] context))))
 
