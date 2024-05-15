@@ -10,7 +10,7 @@ lua << EOF
 vim.g.python3_host_prog = '/usr/bin/python3'
 
 -- Install vim-plug if not installed
-if vim.fn.empty(vim.fn.glob('~/.local/share/nvim/site/autoload/plug.vim')) then
+if vim.fn.glob('~/.local/share/nvim/site/autoload/plug.vim') == '' then
   vim.cmd('silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
   vim.cmd('autocmd VimEnter * PlugInstall --sync | source $MYVIMRC')
 end
@@ -23,10 +23,9 @@ Plug 'zchee/deoplete-jedi'
 Plug 'SirVer/ultisnips'
 Plug 'sbdchd/neoformat'
 
-local install_firenvim = function()
-    vim.cmd("call firenvim#install(0)")
-end
-Plug('glacambre/firenvim', { on= { install_firenvim } })
+Plug('glacambre/firenvim', { ['do']=  function()
+  vim.cmd("call firenvim#install(0)")
+end })
 Plug('prettier/vim-prettier', { ['do']='yarn install', ['for']={'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'}})
 Plug('scalameta/nvim-metals', { branch='main' })
 Plug 'neovim/nvim-lspconfig'
@@ -47,11 +46,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'dag/vim-fish'
 Plug 'gurpreetatwal/vim-avro'
 Plug 'ianks/vim-tsx'
-
-local install_fzf = function()
+Plug('junegunn/fzf', { ['do'] = function()
     vim.cmd("call fzf#install()")
-end
-Plug('junegunn/fzf', { ['do'] = install_fzf })
+end })
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-sneak'
