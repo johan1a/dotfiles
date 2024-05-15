@@ -45,7 +45,6 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dag/vim-fish'
-Plug 'dkprice/vim-easygrep'
 Plug 'gurpreetatwal/vim-avro'
 Plug 'ianks/vim-tsx'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
