@@ -63,30 +63,22 @@ Plug 'vimwiki/vimwiki'
 
 vim.call('plug#end')
 
-EOF
+vim.g.mapleader = " "
 
-let mapleader =  "\<Space>"
+if vim.fn.filereadable(vim.fn.expand('~/.vimrc_background')) == 1 then
+    vim.g.base16colorspace = 256
+    vim.cmd('source ~/.vimrc_background')
+end
 
+--  ____  _             _                          __ _
+-- |  _ \| |_   _  __ _(_)_ __     ___ ___  _ __  / _(_) __ _
+-- | |_) | | | | |/ _` | | '_ \   / __/ _ \| '_ \| |_| |/ _` |
+-- |  __/| | |_| | (_| | | | | | | (_| (_) | | | |  _| | (_| |
+-- |_|   |_|\__,_|\__, |_|_| |_|  \___\___/|_| |_|_| |_|\__, |
+--                |___/                                 |___/
 
-" Colorscheme
+-- =========== autosave ===========
 
-" colorscheme srcery
-" TODO if file contains light
-if filereadable(expand('~/.vimrc_background'))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
-
- " ____  _             _                          __ _
-" |  _ \| |_   _  __ _(_)_ __     ___ ___  _ __  / _(_) __ _
-" | |_) | | | | |/ _` | | '_ \   / __/ _ \| '_ \| |_| |/ _` |
-" |  __/| | |_| | (_| | | | | | | (_| (_) | | | |  _| | (_| |
-" |_|   |_|\__,_|\__, |_|_| |_|  \___\___/|_| |_|_| |_|\__, |
- "               |___/                                 |___/
-
-" =========== autosave ===========
-lua << EOF
 require("auto-save").setup {
         enabled = true,
         execution_message = {
@@ -112,70 +104,61 @@ require("auto-save").setup {
         write_all_buffers = false,
         debounce_delay = 235,
 }
-EOF
 
-if exists('g:started_by_firenvim')
+if vim.g.started_by_firenvim then
+    local fc = vim.g.firenvim_config['localSettings']
+    fc['https://www.messenger.com'] = { takeover = 'never', priority = 1 }
+    fc['https://discord.com'] = { takeover = 'never', priority = 1 }
+end
 
-  let fc = g:firenvim_config['localSettings']
-  let fc['https://www\.messenger\.com'] = { 'takeover': 'never', 'priority': 1 }
-  let fc['https://discord\.com'] = { 'takeover': 'never', 'priority': 1 }
+-- =========== auto-omni ===========
+-- Keys that trigger omnicomplete.
+-- I added '.' to the default.
+vim.g.auto_omnicomplete_key = 'period . a b c d e f g h i j k l m n o p q r s t u v w x y z ' ..
+                                'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'
 
-endif
+-- =========== nvim-metals ===========
+
+-- Remove F from shortmess. set shortmess-=F NOTE: Without doing this, autocommands that deal with filetypes prohibit messages from being shown... and since we heavily rely on this, this must be set.
+vim.opt.shortmess:remove("F")
+
+--" NOTE: It's higly recommened to set your `statusBarProvider` to `on`. This
+--" enables `metals/status` and also other helpful messages that are shown to you.
+--" However, to enable this you _must_ have the metals status shown in your status
+--" bar somehow. This can be by using the provided |metals#status()| function, or
+--" by just accessing it with Lua via `vim.g['metals_status']`. Everything will
+--" still work without this, but the status messages and feedback that you will
+--" Enable nvim-metals statusBarProvider
+--" This doesn't work when indented
+metals_config = require('metals').bare_config()
+metals_config.init_options.statusBarProvider = 'on'
 
 
-" =========== auto-omni ===========
-" Keys that trigger omnicomplete.
-" I added '.' to the default.
-let g:auto_omnicomplete_key =
-            \ 'period . a b c d e f g h i j k l m n o p q r s t u v w x y z ' .
-            \ 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'
+-- Language servers
+require'lspconfig'.clojure_lsp.setup{}
+-- Install with:
+-- sudo npm install -g @vue/language-server
+require'lspconfig'.volar.setup {
+  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+}
 
-" =========== nvim-metals ===========
-
-" Remove F from shortmess. set shortmess-=F NOTE: Without doing this, autocommands that deal with filetypes prohibit messages from being shown... and since we heavily rely on this, this must be set.
-set shortmess-=F
-
-if has('nvim-0.5')
-
-  " NOTE: It's higly recommened to set your `statusBarProvider` to `on`. This
-  " enables `metals/status` and also other helpful messages that are shown to you.
-  " However, to enable this you _must_ have the metals status shown in your status
-  " bar somehow. This can be by using the provided |metals#status()| function, or
-  " by just accessing it with Lua via `vim.g['metals_status']`. Everything will
-  " still work without this, but the status messages and feedback that you will
-  "
-  " Enable nvim-metals statusBarProvider
-  " This doesn't work when indented
-:lua << EOF
-  metals_config = require('metals').bare_config()
-  metals_config.init_options.statusBarProvider = 'on'
-EOF
-
-" Language servers
-:lua << EOF
-  require'lspconfig'.clojure_lsp.setup{}
-  -- Install with:
-  -- sudo npm install -g @vue/language-server
-  require'lspconfig'.volar.setup {
-    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
-  }
-EOF
-
+vim.cmd([[
   augroup lsp
-    au!
-    au FileType scala,sbt lua require('metals').initialize_or_attach(metals_config)
+    autocmd!
+    autocmd FileType scala,sbt lua require('metals').initialize_or_attach(metals_config)
   augroup end
+]])
+vim.o.statusline = vim.g.metals_status or ''
 
-  :set statusline=%{luaeval('vim.g[\"metals_status\"]or\"\"')} " wtf
+-- =========== ultisnips ===========
+-- After editing, reload changes with:
+-- :call UltiSnips#RefreshSnippets()
 
-endif
+if not string.find(vim.o.runtimepath, '~/.vim/bundle/ultisnips') then
+  vim.o.runtimepath = vim.o.runtimepath .. ',~/.vim/bundle/ultisnips'
+end
+EOF
 
-
-" =========== ultisnips ===========
-" After editing, reload changes with:
-" :call UltiSnips#RefreshSnippets()
-
-set rtp^=$HOME/.vim/bundle/ultisnips
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-e>"
