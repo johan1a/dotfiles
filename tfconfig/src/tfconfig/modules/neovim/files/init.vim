@@ -6,7 +6,6 @@
  "               |___/                             |_|
 
 let g:python3_host_prog = '/usr/bin/python3'
-set nocompatible              " Don't emulate vi
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
