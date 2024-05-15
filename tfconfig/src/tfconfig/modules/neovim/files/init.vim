@@ -5,36 +5,37 @@
 " |_|   |_|\__,_|\__, |_|_| |_| |___/\___|\__|\__,_| .__/
  "               |___/                             |_|
 
-let g:python3_host_prog = '/usr/bin/python3'
+lua << EOF
 
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+vim.g.python3_host_prog = '/usr/bin/python3'
 
-call plug#begin()
+-- Install vim-plug if not installed
+if vim.fn.empty(vim.fn.glob('~/.local/share/nvim/site/autoload/plug.vim')) then
+  vim.cmd('silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+  vim.cmd('autocmd VimEnter * PlugInstall --sync | source $MYVIMRC')
+end
+local Plug = vim.fn['plug#']
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'zchee/deoplete-jedi'
-  Plug 'SirVer/ultisnips'
-  Plug 'sbdchd/neoformat'
-  if has('nvim-0.5')
-    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-    Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install',
-      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-    Plug 'scalameta/nvim-metals', { 'branch': 'main' }
-    Plug 'neovim/nvim-lspconfig'
-  endif
-  Plug 'nvim-lua/plenary.nvim'
-endif
+vim.call('plug#begin')
 
-" Only run auto omnicomplete for languages where we are likely of having a
-" language server running to avoid annoying error messages.
-Plug 'BrandonRoehl/auto-omni', { 'for': 'scala'} " Trigger automatic omnicompletion
-Plug 'pocco81/auto-save.nvim', { 'branch': 'main' }
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-jedi'
+Plug 'SirVer/ultisnips'
+Plug 'sbdchd/neoformat'
+
+local install_firenvim = function()
+    vim.cmd("call firenvim#install(0)")
+end
+Plug('glacambre/firenvim', { on= { install_firenvim } })
+Plug('prettier/vim-prettier', { ['do']='yarn install', ['for']={'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'}})
+Plug('scalameta/nvim-metals', { branch='main' })
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
+
+-- Only run auto omnicomplete for languages where we are likely of having a
+-- language server running to avoid annoying error messages.
+Plug('BrandonRoehl/auto-omni', { ['for']='scala'}) -- Trigger automatic omnicompletion
+Plug('pocco81/auto-save.nvim', { branch='main' })
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fireplace'
@@ -46,7 +47,11 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'dag/vim-fish'
 Plug 'gurpreetatwal/vim-avro'
 Plug 'ianks/vim-tsx'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+local install_fzf = function()
+    vim.cmd("call fzf#install()")
+end
+Plug('junegunn/fzf', { ['do'] = install_fzf })
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-sneak'
@@ -59,7 +64,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 
-call plug#end()
+vim.call('plug#end')
+
+EOF
 
 let mapleader =  "\<Space>"
 
