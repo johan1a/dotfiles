@@ -1,11 +1,11 @@
- " ____  _             _                  _
-" |  _ \| |_   _  __ _(_)_ __    ___  ___| |_ _   _ _ __
-" | |_) | | | | |/ _` | | '_ \  / __|/ _ \ __| | | | '_ \
-" |  __/| | |_| | (_| | | | | | \__ \  __/ |_| |_| | |_) |
-" |_|   |_|\__,_|\__, |_|_| |_| |___/\___|\__|\__,_| .__/
- "               |___/                             |_|
-
 lua << EOF
+--  ____  _             _                  _
+-- |  _ \| |_   _  __ _(_)_ __    ___  ___| |_ _   _ _ __
+-- | |_) | | | | |/ _` | | '_ \  / __|/ _ \ __| | | | '_ \
+-- |  __/| | |_| | (_| | | | | | \__ \  __/ |_| |_| | |_) |
+-- |_|   |_|\__,_|\__, |_|_| |_| |___/\___|\__|\__,_| .__/
+--                |___/                             |_|
+
 
 vim.g.python3_host_prog = '/usr/bin/python3'
 
@@ -157,171 +157,172 @@ vim.o.statusline = vim.g.metals_status or ''
 if not string.find(vim.o.runtimepath, '~/.vim/bundle/ultisnips') then
   vim.o.runtimepath = vim.o.runtimepath .. ',~/.vim/bundle/ultisnips'
 end
-EOF
+
+-- Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+vim.g.UltiSnipsExpandTrigger = "<c-e>"
+vim.g.UltiSnipsJumpForwardTrigger = "<c-e>"
+vim.g.UltiSnipsJumpBackwardTrigger = "<c-i>"
+vim.g.UltiSnipsListSnippets = "<c-p>"
+
+vim.api.nvim_set_keymap('i', '<silent> <c-e> <c-R>', '<cmd>lua UltiSnips#ExpandSnippetOrJump()<cr>', {silent = true})
+
+vim.g.UltiSnipsEditSplit = "vertical"
+vim.g.UltiSnipsSnippetsDir = "~/.vim/custom_snippets"
+vim.g.UltiSnipsSnippetDirectories = {"UltiSnips", "custom_snippets"}
+
+-- =========== gitgutter ===========
+vim.g.gitgutter_max_signs = 1000
+
+-- =========== fzf ===========
+
+vim.cmd('set rtp+=~/.fzf')
+
+vim.api.nvim_set_keymap('n', '<leader>n', ':Files!<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>g', ':Rg!<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>tb', ':Buffers!<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>o', ':Buffers!<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>tl', ':Lines!<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>th', ':History!<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>tc', ':Commits!<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>to', ':Commands!<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>te', ':Helptags!<CR>', { noremap = true })
+
+vim.env.FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+-- Customize FZF colors to match your color scheme
+vim.g.fzf_colors = {
+  fg = {'fg', 'Normal'},
+  bg = {'bg', 'Normal'},
+  hl = {'fg', 'Comment'},
+  ['fg+'] = {'fg', 'CursorLine', 'CursorColumn', 'Normal'},
+  ['bg+'] = {'bg', 'CursorLine', 'CursorColumn'},
+  ['hl+'] = {'fg', 'Statement'},
+  info = {'fg', 'PreProc'},
+  border = {'fg', 'Ignore'},
+  prompt = {'fg', 'Conditional'},
+  pointer = {'fg', 'Exception'},
+  marker = {'fg', 'Keyword'},
+  spinner = {'fg', 'Label'},
+  header = {'fg', 'Comment'}
+}
+
+-- Set smaller updatetime for CursorHold & CursorHoldI
+vim.o.updatetime = 300
+
+-- Don't give ins-completion-menu messages
+vim.o.shortmess = vim.o.shortmess .. 'c'
+
+-- Better display for messages
+vim.o.cmdheight = 2
 
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-e>"
-let g:UltiSnipsJumpBackwardTrigger="<c-i>"
-let g:UltiSnipsListSnippets="<c-p>"
 
-inoremap <silent> <c-e> <C-R>=UltiSnips#ExpandSnippetOrJump()<cr>
-
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetsDir="~/.vim/custom_snippets" " Custom snips dir
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
-
-" =========== gitgutter ===========
-
-let g:gitgutter_max_signs = 1000
-
-" =========== fzf ===========
+vim.g.vimwiki_list = {{
+    path = '~/vimwiki/',
+    syntax = 'markdown',
+    ext = '.md'
+}}
 
 
-set rtp+=~/.fzf
-nnoremap <leader>n :Files!<cr>
-nnoremap <leader>g :Rg!<cr>
-nnoremap <leader>tb :Buffers!<cr>
-nnoremap <leader>o :Buffers!<cr>
-nnoremap <leader>tl :Lines!<cr>
-nnoremap <leader>th :History!<cr>
-nnoremap <leader>tc :Commits!<cr>
-nnoremap <leader>to :Commands!<cr>
-nnoremap <leader>te :Helptags!<cr>
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+-- =========== EasyGrep ===========
+vim.g.EasyGrepFilesToExclude = '*.log,tags,.git,external_documentation,documentation,build,classes'
+vim.g.EasyGrepRecursive = 1
+vim.g.EasyGrepCommand = 1
 
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
+vim.o.statusline = vim.o.statusline .. '%{gutentags#statusline("[Generating...]")}'
 
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
+if vim.fn.executable('rg') then
+    vim.g.gutentags_file_list_command = 'rg --files'
+end
 
-" always show signcolumns
-set signcolumn=yes
+-- =========== tmux-navigator ===========
+vim.g.tmux_navigator_disable_when_zoomed = 1
 
-" Some server have issues with backup files, see #649
-" set nobackup
-" set nowritebackup
 
-" Better display for messages
-set cmdheight=2
+-- =========== vim-fireplace ===========
 
-" =========== Vimwiki ===========
+vim.api.nvim_set_keymap('n', '<leader>e', ':Eval<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>y', ':Require<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<leader>e', ':Eval<CR>', { noremap = true })
 
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                     \ 'syntax': 'markdown', 'ext': '.md'}]
+-- =========== CamelCaseMotion ===========
 
-" =========== EasyGrep ===========
+vim.api.nvim_set_keymap('n', '<silent> w', '<Plug>CamelCaseMotion_w', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> b', '<Plug>CamelCaseMotion_b', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> e', '<Plug>CamelCaseMotion_e', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> ge', '<Plug>CamelCaseMotion_ge', { silent = true })
 
-let g:EasyGrepFilesToExclude='*.log,tags,.git,external_documentation,documentation,build,classes'
-let g:EasyGrepRecursive=1
-let g:EasyGrepCommand=1
+-- =========== vim-sneak ===========
 
-" =========== Gutentags =========
+vim.g['sneak#label'] = 1
 
-:set statusline+=%{gutentags#statusline('[Generating...]')}
+--   ____                           _            _   _   _
+--  / ___| ___ _ __   ___ _ __ __ _| |  ___  ___| |_| |_(_)_ __   __ _ ___
+-- | |  _ / _ \ '_ \ / _ \ '__/ _` | | / __|/ _ \ __| __| | '_ \ / _` / __|
+-- | |_| |  __/ | | |  __/ | | (_| | | \__ \  __/ |_| |_| | | | | (_| \__ \
+--  \____|\___|_| |_|\___|_|  \__,_|_| |___/\___|\__|\__|_|_| |_|\__, |___/
+--                                                               |___/
 
-if executable('rg')
-  let g:gutentags_file_list_command = 'rg --files'
-endif
 
-" =========== tmux-navigator ===========
+vim.cmd('syntax enable')
+vim.o.autoindent = true
+vim.o.smartindent = true
+vim.o.autoread = true -- Automatically read external changes
+vim.o.scrolloff = 1 -- Leave margin when scrolling
+vim.o.sidescrolloff = 5
 
-let g:tmux_navigator_disable_when_zoomed = 1 " Disable tmux auto zoom out
+if not string.find(vim.o.display, 'lastline') then
+  vim.o.display = vim.o.display .. 'lastline'
+end
 
-" =========== vim-fireplace ===========
+-- Allow buffer switching without saving
+vim.o.hidden = true
+-- Substitute commands to substitute all occurrences by default
+vim.o.gdefault = true
 
-nnoremap <leader>e :Eval<CR>
-vnoremap <leader>e :Eval<CR>
-nnoremap <leader>y :Require<CR>
-
-" =========== CamelCaseMotion ===========
-
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
-
-" =========== unimpaired-vim ===========
-
-nmap <c-up>   [e
-" nmap <c-d> ]e
-vmap <c-up>   [egv
-" vmap <c-d> ]egv
-
-" =========== vim-sneak ===========
-
-let g:sneak#label = 1
-
-  " ____                           _            _   _   _
- " / ___| ___ _ __   ___ _ __ __ _| |  ___  ___| |_| |_(_)_ __   __ _ ___
-" | |  _ / _ \ '_ \ / _ \ '__/ _` | | / __|/ _ \ __| __| | '_ \ / _` / __|
-" | |_| |  __/ | | |  __/ | | (_| | | \__ \  __/ |_| |_| | | | | (_| \__ \
- " \____|\___|_| |_|\___|_|  \__,_|_| |___/\___|\__|\__|_|_| |_|\__, |___/
-  "                                                             |___/
-
-syntax enable
-set autoindent
-set smartindent
-set autoread    " Automatically read external changes
-set scrolloff=1 " Leave margin when scrolling
-set sidescrolloff=5
-set display+=lastline
-set hidden
-set gdefault
-" set fileformat=unix
-
-" Magic to make autoread actually work
-" Trigger autoread when changing buffers while inside vim:
-augroup general_settings
+-- Magic to make autoread actually work
+-- Trigger autoread when changing buffers while inside vim:
+vim.cmd([[
+  augroup general_settings
     autocmd!
-    au FocusGained,BufEnter * if !bufexists("[Command Line]") | :checktime
-    au CursorHold * if !bufexists("[Command Line]") | checktime
-augroup END
+    autocmd FocusGained,BufEnter * if !bufexists("[Command Line]") | :checktime | endif
+    autocmd CursorHold * if !bufexists("[Command Line]") | checktime | endif
+  augroup END
+]])
 
-" =========== help ===========
+function TryOmnicomplete()
+  -- Simulate pressing 'a' to trigger omnicompletion
+  vim.api.nvim_feedkeys('a', 'n', true)
+  
+  -- Check if omnifunc is set
+  if vim.api.nvim_eval('&omnifunc') == '' then
+    -- If omnifunc is not set, do nothing
+  else
+    -- If omnifunc is set, trigger omnicompletion
+    vim.api.nvim_feedkeys('<C-x><C-o>', 'n', true)
+  end
+end
 
-augroup helpfiles
-  au!
-  au BufRead,BufEnter */doc/* wincmd L
-augroup END
+vim.cmd([[
+  augroup scala_filetype
+    autocmd!
+    autocmd BufRead,BufNewFile *.sbt set filetype=scala
+  augroup END
+]])
 
-" =========== filetypes ===========
 
-function! TryOmnicomplete()
-  call feedkeys("a")
-  if &omnifunc ==# ""
-   else
-     call feedkeys("\<C-x>\<C-o>")
-  endif
-endfunction
+-- jsoc comment syntax highlighting support
+vim.cmd([[
+  augroup json_syntax
+    autocmd!
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+  augroup END
+]])
 
-au BufRead,BufNewFile *.sbt set filetype=scala
+-- =========== filetypes ===========
 
-" jsoc comment syntax highlighting support
-autocmd FileType json syntax match Comment +\/\/.\+$+
-
+vim.cmd([[
 augroup filetypes
   autocmd BufNewFile,BufRead *.gson      setlocal ft=groovy
   autocmd BufNewFile,BufRead *.ts        setlocal ft=typescript
@@ -368,58 +369,67 @@ augroup filetypes
   " Automatically remove trailing whitespace from markdown files on save
   autocmd BufWritePre *.md               %s/\s\+$//e
 augroup END
+]])
 
-set completeopt=noinsert,menuone
+vim.o.completeopt = 'noinsert,menuone'
 
-" =========== vim-prettier ===========
-" Use .prettierrc, don't use custom settings from vim-prettieri
-let g:prettier#config#config_precedence = 'prefer-file'
+-- =========== vim-prettier ===========
+-- Use .prettierrc, don't use custom settings from vim-prettieri
+vim.g['prettier#config#config_precedence'] = 'prefer-file'
 
-" =========== search ===========
+-- =========== search ===========
+vim.o.grepprg = 'ag\\ $*'
 
-set grepprg=ag\ $*
+-- Fuzzy finding
+-- :b <substring of open buffer> to jump to buffer
+-- :find <substring of open buffer>
+vim.o.path = vim.o.path .. ',**'
+
+-- Tab completion behavior
+vim.o.wildmode = 'longest,list,full'
+
+vim.o.wildmenu = true
 
 
-" Fuzzy finding
-" :b <substring of open buffer> to jump to buffer
-" :find <substring of open buffer>
-set path+=**
+-- =========== Splits ===========
+vim.cmd([[
 
-" Tab completion behavior
-set wildmode=longest,list,full
-
-" Display all matches when tab completing
-set wildmenu
-
-" =========== Splits ===========
 augroup splits
     autocmd!
     autocmd VimResized * wincmd =
 augroup END
+]])
 
-set splitbelow
-set splitright
+vim.o.splitbelow=true
+vim.o.splitright=true
 
-" =========== Tabs and spaces  ===========
-set expandtab                          " insert space characters whenever the tab key is pressed,
-set tabstop=2                          " the number of space characters that will be inserted when the tab key is pressed
-set shiftwidth=2                       " the number of space characters inserted for indentation with the reindent operations (<< and >>)
-set softtabstop=0
-set list                               " Display tabs and trailing spaces
-set listchars=tab:▸–,trail:·
-set listchars+=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
-set nojoinspaces                       " don't autoinsert two spaces after '.', '?', '!' for join command
+-- =========== Tabs and spaces  ===========
+vim.o.expandtab=true                          -- insert space characters whenever the tab key is pressed,
+vim.o.tabstop=2                          -- the number of space characters that will be inserted when the tab key is pressed
+vim.o.shiftwidth=2                       -- the number of space characters inserted for indentation with the reindent operations (<< and >>)
+vim.o.softtabstop=0
+vim.o.list=true                               -- Display tabs and trailing spaces
+vim.o.listchars='tab:▸–,trail:·'
 
-" Set color of listchars
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
 
-" =========== Numbering  ===========
+-- TODO convert to lua
+vim.cmd([[
+  set listchars=tab:▸–,trail:·
+  set listchars+=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+]])
 
-set number
-set relativenumber
-set ruler
-set showcmd
+vim.o.joinspaces=false                       -- don't autoinsert two spaces after '.', '?', '!' for join command
+
+-- Set color of listchars
+vim.cmd('highlight ExtraWhitespace ctermbg=red guibg=red')
+vim.cmd('match ExtraWhitespace /\\s\\+$/')
+
+-- =========== Numbering  ===========
+vim.o.number=true
+vim.o.relativenumber=true
+vim.o.ruler=true
+vim.o.showcmd=true
+EOF
 
  " _  __
 " | |/ /___ _   _   _ __ ___   __ _ _ __  ___
