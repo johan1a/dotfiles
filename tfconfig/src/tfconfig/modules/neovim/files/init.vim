@@ -178,18 +178,10 @@ let g:gitgutter_max_signs = 1000
 
 " =========== fzf ===========
 
-function! GrepSelection()
-  let temp = @a
-  normal! gv"ay
-  echo @a
-  :execute ":Rg! " . @a
-  let @a = temp
-endfunction
 
 set rtp+=~/.fzf
 nnoremap <leader>n :Files!<cr>
 nnoremap <leader>g :Rg!<cr>
-vnoremap <leader>g :call GrepSelection()<cr>
 nnoremap <leader>tb :Buffers!<cr>
 nnoremap <leader>o :Buffers!<cr>
 nnoremap <leader>tl :Lines!<cr>
