@@ -4,8 +4,7 @@
    [tfconfig.common.command :refer [command pre-auth]]
    [tfconfig.common.file :refer [file link]]
    [tfconfig.common.gem :refer [gem]]
-   [tfconfig.common.pacman :refer [pacman]]
-   [tfconfig.common.pip :refer [pip]]))
+   [tfconfig.common.pacman :refer [pacman]]))
 
 (def required-gems ["msgpack" "rdoc" "neovim" "multi_json"])
 
@@ -24,11 +23,6 @@
   [context]
   (dorun (map #(gem context % "present") required-gems)))
 
-(defn install-neovim-pip-packages
-  [context]
-  (pip context "neovim" "present")
-  (pip context "python-language-server[all]" "present"))
-
 (defn install-make
   "Make is required for the msgpack gem"
   [context]
@@ -46,14 +40,11 @@
   "Symlink init.vim and .vimrc"
   [context nvim-base-dir]
   (let [module-files-dir (str (:modules-dir context) "neovim/files/")
-        init-vim-src (str module-files-dir "init.vim")
-        init-vim-dest (str nvim-base-dir "init.vim")
-        vimrc-dest (str (:home context) ".vimrc")
-        coc-settings-src (str module-files-dir "coc-settings.json")
-        coc-settings-dest (str nvim-base-dir "coc-settings.json")]
+        init-vim-dest (str nvim-base-dir "init.lua")
+        init-vim-src (str module-files-dir "init.lua")
+        vimrc-dest (str (:home context) ".vimrc")]
     (link context init-vim-src init-vim-dest)
-    (link context init-vim-src vimrc-dest)
-    (link context coc-settings-src coc-settings-dest)))
+    (link context init-vim-src vimrc-dest)))
 
 (defn install-plugins
   [context]
@@ -73,8 +64,7 @@
     (install-neovim context)
     (install-make context)
     (when (= os "archlinux")
-      (install-gems context)
-      (install-neovim-pip-packages context))
+      (install-gems context))
     (let [nvim-dir (str (:home context) ".config/nvim/")]
       (create-vim-dir context nvim-dir)
       (link-configs context nvim-dir)

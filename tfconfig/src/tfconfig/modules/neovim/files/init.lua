@@ -1,4 +1,3 @@
-lua << EOF
 --  ____  _             _                  _
 -- |  _ \| |_   _  __ _(_)_ __    ___  ___| |_ _   _ _ __
 -- | |_) | | | | |/ _` | | '_ \  / __|/ _ \ __| | | | '_ \
@@ -429,228 +428,225 @@ vim.o.number=true
 vim.o.relativenumber=true
 vim.o.ruler=true
 vim.o.showcmd=true
-EOF
 
- " _  __
-" | |/ /___ _   _   _ __ ___   __ _ _ __  ___
-" | ' // _ \ | | | | '_ ` _ \ / _` | '_ \/ __|
-" | . \  __/ |_| | | | | | | | (_| | |_) \__ \
-" |_|\_\___|\__, | |_| |_| |_|\__,_| .__/|___/
- "          |___/                  |_|
+--  _  __
+-- | |/ /___ _   _   _ __ ___   __ _ _ __  ___
+-- | ' // _ \ | | | | '_ ` _ \ / _` | '_ \/ __|
+-- | . \  __/ |_| | | | | | | | (_| | |_) \__ \
+-- |_|\_\___|\__, | |_| |_| |_|\__,_| .__/|___/
+--           |___/                  |_|
 
-" completion / omnifunc
-inoremap <expr> <s-tab>       pumvisible() ? "\<C-p>" : "\<s-tab>"
-inoremap <expr> <cr>       pumvisible() ? "\<C-y>" : "\<cr>"
+-- completion / omnifunc
+vim.api.nvim_set_keymap('i', '<silent><expr> <S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<s-tab>"', { expr = true })
+vim.api.nvim_set_keymap('i', '<silent><expr> <CR>', 'pumvisible() ? "\\<C-y>" : "\\<CR>"', { expr = true })
 
-" Fix error which freezes UI: https://github.com/neovim/neovim/issues/14433 "
-let g:omni_sql_default_compl_type = 'syntax'
+-- Fix error which freezes UI: https://github.com/neovim/neovim/issues/14433 "
+vim.g.omni_sql_default_compl_type = 'syntax'
 
-function! ShowMappings()
-  :redir @a
-  :silent map
-  :redir END
-  :vnew
-  :put a
-endfunction
+function ShowMappings()
+    vim.cmd('redir @a')
+    vim.cmd('silent map')
+    vim.cmd('redir END')
+    vim.cmd('vnew')
+    vim.cmd('put a')
+end
 
+-- Move lines around
+vim.api.nvim_set_keymap('i', '<A-j>', '<Esc>:m .+1<CR>==gi', { noremap = true })
+vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', { noremap = true })
+vim.api.nvim_set_keymap('n', '<A-j>', ':m .+1<CR>==', { noremap = true })
+vim.api.nvim_set_keymap('n', '<A-k>', ':m .-2<CR>==', { noremap = true })
+vim.api.nvim_set_keymap('v', '<A-j>', ':m \'>+1<CR>gv=gv', { noremap = true })
+vim.api.nvim_set_keymap('v', '<A-k>', ':m \'<-2<CR>gv=gv', { noremap = true })
 
- " TODO c-enter compile & RUN
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+-- lsp
+vim.api.nvim_set_keymap('n', '<silent> <leader>cc', '<cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> K', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <leader>ci', '<cmd>lua vim.lsp.buf.implementation()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <c-b>', '<cmd>lua vim.lsp.buf.implementation()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <s-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <leader>ct', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <leader>cr', '<cmd>lua vim.lsp.buf.references()<CR>', { silent = true })
 
+-- This is actually <c-7>
+vim.api.nvim_set_keymap('n', '<silent> <C-^>', '<cmd>lua vim.lsp.buf.references()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <F7>', '<cmd>lua vim.lsp.buf.references()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <leader>ce', '<cmd>lua vim.lsp.buf.rename()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <F8>', '<cmd>lua vim.lsp.buf.rename()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> gD', '<cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <c-a>', '<cmd>lua vim.lsp.buf.code_action()<CR>', { silent = true })
 
- " lsp
-if has('nvim-0.5')
-  nnoremap <silent> <leader>cc    <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> K             <cmd>lua vim.lsp.buf.hover()<CR>
-  nnoremap <silent> <leader>ci    <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> <c-b>         <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> <s-k>         <cmd>lua vim.lsp.buf.signature_help()<CR>
-  nnoremap <silent> <leader>ct    <cmd>lua vim.lsp.buf.type_definition()<CR>
-  nnoremap <silent> <leader>cr    <cmd>lua vim.lsp.buf.references()<CR>
+-- Execute code_action() if not in quickfix
+function CodeAction()
 
-  " This is actually <c-7>
-  nnoremap <silent>             <cmd>lua vim.lsp.buf.references()<CR>
-  nnoremap <silent> <F7>          <cmd>lua vim.lsp.buf.references()<CR>
-  nnoremap <silent> <leader>ce    <cmd>lua vim.lsp.buf.rename()<CR>
-  nnoremap <silent> <F8>          <cmd>lua vim.lsp.buf.rename()<CR>
-  nnoremap <silent> g0            <cmd>lua vim.lsp.buf.document_symbol()<CR>
-  nnoremap <silent> gW            <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-  nnoremap <silent> gD            <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> gd            <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> <leader>ca    <cmd>lua vim.lsp.buf.code_action()<CR>
-  nnoremap <silent> <c-a>         <cmd>lua vim.lsp.buf.code_action()<CR>
-
-  " Execute code_action() if not in quickfix
-  function! CodeAction()
-    if &buftype ==# 'quickfix'
-      execute "normal! \<CR>"
+    if vim.bo.buftype == 'quickfix' then
+        vim.api.nvim_feedkeys('<CR>', 'n', true)
     else
-      :lua vim.lsp.buf.code_action()
-    endif
-  endfunction
+        vim.lsp.buf.code_action()
+    end
+end
 
-  " '' is shift + enter
-  nnoremap <silent>  :call CodeAction()<CR>
+vim.api.nvim_set_keymap('n', '<silent> <space><cr>', ':call CodeAction()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <leader>cn', '<cmd>lua vim.diagnostic.goto_next()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <c-n>', '<cmd>lua vim.diagnostic.goto_next()<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<silent> <c-p>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { silent = true })
 
-  nnoremap <silent> <leader>cn    <cmd>lua vim.diagnostic.goto_next()<CR>
-  nnoremap <silent> <c-n>         <cmd>lua vim.diagnostic.goto_next()<CR>
-  nnoremap <silent> <c-p>         <cmd>lua vim.diagnostic.goto_prev()<CR>
-endif
+-- Copy buffer
+vim.api.nvim_set_keymap('n', '<leader>x', ':!xclip -selection clipboard %:p<CR>', { silent = true })
 
+function PrintBuffers()
+    local clipboardContent = vim.fn.system('xclip -o --selection clipboard')
+    vim.api.nvim_feedkeys('acliboard content:<esc>o', 'n', true)
+    vim.api.nvim_feedkeys(clipboardContent, 'n', true)
 
-" Copy buffer
-nnoremap <leader>x :!xclip -selection clipboard %:p<cr>
+    local primaryContent = vim.fn.system('xclip -o --selection primary')
+    vim.api.nvim_feedkeys('<cr>primary content:<esc>o', 'n', true)
+    vim.api.nvim_feedkeys(primaryContent, 'n', true)
 
-function! PrintBuffers()
-  let clipboardContent = system('xclip -o --selection clipboard')
-  call feedkeys("acliboard content:\<esc>o")
-  call feedkeys(clipboardContent)
+    local secondaryContent = vim.fn.system('xclip -o --selection secondary')
+    vim.api.nvim_feedkeys('<cr>secondary content:<esc>o', 'n', true)
+    vim.api.nvim_feedkeys(secondaryContent, 'n', true)
 
-  let primaryContent = system('xclip -o --selection primary')
-  call feedkeys("\<cr>primary content:\<esc>o")
-  call feedkeys(primaryContent)
+    vim.api.nvim_feedkeys('<esc>', 'n', true)
+end
 
-  let secondaryContent = system('xclip -o --selection secondary')
-  call feedkeys("\<cr>secondary content:\<esc>o")
-  call feedkeys(secondaryContent)
-  call feedkeys("\<esc>")
-endfunction
+vim.api.nvim_set_keymap('n', '<leader>p', ':call PrintBuffers()<CR>', { silent = true })
 
-nnoremap <leader>p :call PrintBuffers()<cr>
+-- Jump to tag under cursor
+vim.api.nvim_set_keymap('n', '<leader>i', '<C-]>zz', { silent = true })
 
-" Jump to tag under cursor
-nnoremap <leader>i <C-]>zz
+-- Jump back up the tag stack
+vim.api.nvim_set_keymap('n', '<leader>u', '<C-t>zz', { silent = true })
 
-" Jump back up the tag stack
-nnoremap <leader>u <C-t>zz
+-- Go to alternate file
+vim.api.nvim_set_keymap('n', '<leader><leader>', '<C-^>', { silent = true })
 
-" Go to alternate file
-nnoremap <leader><leader> <C-^>
+vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { silent = true })
 
-"nnoremap <C-W> :w<CR>
+vim.api.nvim_set_keymap('n', '<leader>r', ':source ~/.vimrc<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>k', ':NERDTreeFind<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>q', ':NERDTreeClose<CR>:q<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>d', ':bd<CR>', { silent = true })
 
-inoremap <C-Space> <C-x><C-o>
+-- Replace and jump
+vim.api.nvim_set_keymap('n', 'c*', '*Ncgn', { silent = true })
+vim.api.nvim_set_keymap('v', 'gs', ':s/\\%V/<Left>', { silent = true })
 
-nnoremap <leader>r :source ~/.vimrc<CR>
-nnoremap <leader>k :NERDTreeFind<CR>
-nnoremap <leader>q :NERDTreeClose<CR>:q<CR>
-nnoremap <leader>bd :bdelete<CR>
-nnoremap <leader>d :bd<CR>
+-- Git
+vim.api.nvim_set_keymap('n', '<leader>0', ':Git blame<CR>', { silent = true })
 
-" replace and jump
-nnoremap c* *Ncgn
-nnoremap gs :%s//<Left>
-vnoremap gs :s/\%V/<Left>
-
-" Git
-nnoremap <leader>0 :Git blame<CR>
-
-" Live preview of :%s/
-if has('nvim')
-  set inccommand=split
-endif
-
-" Copy / Paste
-
-" Yank from cursor to end of line
-map Y y$
-
-" Search using copy buffer
-nnoremap <leader>7 /<C-R>0<CR>
-nnoremap <leader>' ?<C-R>0<CR>
-
-" ALWAYS use the clipboard for ALL operations (as opposed
-" to interacting with the '+' and/or '*' registers explicitly):
-" unnamedplus is for the <C-c> <C-v> mappings used in many GUI programs
-set clipboard+=unnamed,unnamedplus
-
-nnoremap <leader>cp           olog.info("<esc>"*pa: ${<esc>"*pa}")<esc>
-
-noremap <down>   <c-w>J
-noremap <up>     <c-w>K
-noremap <left>   <c-w>H
-noremap <right>  <c-w>L
+-- Live preview of :%s/
+vim.opt.inccommand = 'split'
 
 
-" neovim term
-tnoremap <C-o> <C-\><C-n>
-tnoremap <leader><esc> <C-\><esc>
+-- Copy / Paste
 
-" Execute a shell command and read in the results
-noremap Q yyp!!$SHELL<CR>
-nnoremap <leader>Qr :!./%<CR>
+-- Yank from cursor to end of line
+vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
 
-" Tabs and splits
+-- Search using copy buffer
+vim.api.nvim_set_keymap('n', '<leader>7', '/<C-R>0<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>\'', '?<C-R>0<CR>', { silent = true })
 
-nnoremap <s-l> :bnext<cr>
-nnoremap <s-h> :bprevious<cr>
-nnoremap <leader>bl :ls<cr>
-nnoremap <leader>bs :sp<cr>
-nnoremap <leader>bt :vs<cr>
-noremap <tab>    <C-W>w
-noremap <s-tab>    <C-W>W
 
-" the tab mapping above ruins <c-i>, <tab> since they are the same thing
-" apparently https://stackoverflow.com/questions/24967213/vim-mapping-of-c-i-in-insert-mode
-nnoremap <c-i> <c-i>
 
-" Holy shell, Batman!!!
-function! Fish_open()
-  set shell=fish
-  :tabe fish
-  term
-  set shell=bash
-endfunction
+-- ALWAYS use the clipboard for ALL operations (as opposed
+-- to interacting with the '+' and/or '*' registers explicitly):
+-- unnamedplus is for the <C-c> <C-v> mappings used in many GUI programs
+vim.opt.clipboard:append("unnamed", "unnamedplus")
 
-nnoremap <leader>j :call Fish_open()<cr>a
 
-" Change to the directory of the current file
-nnoremap <silent> cd :<c-u>cd %:h \| pwd<cr>
+vim.api.nvim_set_keymap('n', '<leader>cp', 'olog.info("<esc>"*pa: ${<esc>"*pa}")<esc>', { noremap = true })
 
-nnoremap <leader>aa :e ~/.vimrc<cr>
-nnoremap <leader>ai :e ~/.config/i3/config<cr>
+vim.api.nvim_set_keymap('n', '<Down>', '<C-w>J', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Up>', '<C-w>K', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Left>', '<C-w>H', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Right>', '<C-w>L', { noremap = true })
 
-nnoremap <leader>mr :Rename 
-nnoremap <leader>mm :Move 
-nnoremap <leader>ms :SudoWrite<cr>
 
-nnoremap <leader>1 :!
+-- neovim term
+vim.api.nvim_set_keymap('t', '<C-o>', '<C-\\><C-n>', { noremap = true })
+vim.api.nvim_set_keymap('t', '<leader><esc>', '<C-\\><esc>', { noremap = true })
 
- "Decrease number
-nnoremap <C-c> <C-x>
+-- Execute a shell command and read in the results
+vim.api.nvim_set_keymap('n', 'Q', 'yyp!!$SHELL<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>Qr', ':!./%<CR>', { noremap = true })
 
-set cedit=<ESC>
+-- Tabs and splits
+vim.api.nvim_set_keymap('n', '<s-l>', ':bnext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<s-h>', ':bprevious<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>bl', ':ls<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>bs', ':sp<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>bt', ':vs<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Tab>', '<C-W>w', { noremap = true })
+vim.api.nvim_set_keymap('n', '<S-Tab>', '<C-W>W', { noremap = true })
 
-if filereadable(glob("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
+-- the tab mapping above ruins <c-i>, <tab> since they are the same thing
+-- apparently https://stackoverflow.com/questions/24967213/vim-mapping-of-c-i-in-insert-mode
+vim.api.nvim_set_keymap('n', '<c-i>', '<c-i>', {})
 
-function! ToHtml()
-  call system('pandoc '. expand('%') . ' > ' . expand('%') . '.html')
-endfunction
+-- Holy shell, Batman!!!
+function Fish_open()
+    vim.opt.shell = 'fish'
+    vim.cmd('tabe fish')
+    vim.cmd('term')
+    vim.opt.shell = 'bash'
+end
 
-function! ToDoc()
-  call system('pandoc '. expand('%') . ' > ' . expand('%') . '.doc')
-endfunction
+-- Normal mode mapping for <leader>j
+vim.api.nvim_set_keymap('n', '<leader>j', ':call Fish_open()<CR>a', { noremap = true })
 
-function! SortShoppingList()
-  silent let result=system('s shoppinglist sort ' . expand('%:p'))
-  " cleanup buffer
-  :%delete _
-  " insert result
-  call setline(1, split(result, '\n'))
-endfunction
+-- Change to the directory of the current file
+vim.api.nvim_set_keymap('n', '<silent> cd', ':<C-u>cd %:h | pwd<CR>', { noremap = true })
 
-nnoremap <leader>hh :call ToHtml()<cr>
-nnoremap <leader>wm :!s wiki html<cr>
+vim.api.nvim_set_keymap('n', '<leader>aa', ':e ~/.config/nvim/init.lua<CR>', { noremap = true })
 
-nnoremap <leader>wl :call SortShoppingList()<cr>
-nnoremap <leader>we :e ~/dev/shoppinglist_sorter/reference.csv<cr>
+vim.api.nvim_set_keymap('n', '<leader>ai', ':e ~/.config/i3/config<CR>', { noremap = true })
 
-" Make sure 0 works in normal mode when using colemaknordic layout
-nnoremap ü 0
+vim.api.nvim_set_keymap('n', '<leader>mr', ':Rename<Space>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>mm', ':Move<Space>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ms', ':SudoWrite<CR>', { noremap = true })
+
+-- Execute a shell command
+vim.api.nvim_set_keymap('n', '<leader>1', ':!', { noremap = true })
+
+-- Decrease number
+vim.api.nvim_set_keymap('n', '<C-c>', '<C-x>', { noremap = true })
+
+vim.opt.cedit = '<ESC>'
+
+if vim.fn.filereadable(vim.fn.glob("~/.vimrc.local")) == 1 then
+    vim.cmd('source ~/.vimrc.local')
+end
+
+-- Convert current file to .html
+function ToHtml()
+    vim.fn.system('pandoc ' .. vim.fn.expand('%') .. ' > ' .. vim.fn.expand('%') .. '.html')
+end
+
+-- Convert current file to .doc
+function ToDoc()
+    vim.fn.system('pandoc ' .. vim.fn.expand('%') .. ' > ' .. vim.fn.expand('%') .. '.doc')
+end
+
+function SortShoppingList()
+    local result = vim.fn.system('s shoppinglist sort ' .. vim.fn.expand('%:p'))
+    -- Cleanup buffer
+    vim.cmd('%delete _')
+    -- Insert result
+    vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.fn.split(result, '\n'))
+end
+
+vim.api.nvim_set_keymap('n', '<leader>hh', ':call ToHtml()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>wm', ':!s wiki html<CR>', { noremap = true })
+
+vim.api.nvim_set_keymap('n', '<leader>wl', ':call SortShoppingList()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>we', ':e ~/dev/shoppinglist_sorter/reference.csv<CR>', { noremap = true })
+
+-- Make sure '0' works in normal mode when using colemaknordic layout
+vim.api.nvim_set_keymap('n', 'ü', '0', { noremap = true })
