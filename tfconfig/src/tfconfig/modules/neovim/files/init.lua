@@ -527,7 +527,7 @@ vim.api.nvim_set_keymap('n', '<leader><leader>', '<C-^>', { silent = true })
 
 vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>r', ':source ~/.vimrc<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>r', ':source ~/.config/nvim/init.lua<CR>', { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>k', ':NERDTreeFind<CR>', { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>q', ':NERDTreeClose<CR>:q<CR>', { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<CR>', { silent = true })
@@ -558,7 +558,8 @@ vim.api.nvim_set_keymap('n', '<leader>\'', '?<C-R>0<CR>', { silent = true })
 -- ALWAYS use the clipboard for ALL operations (as opposed
 -- to interacting with the '+' and/or '*' registers explicitly):
 -- unnamedplus is for the <C-c> <C-v> mappings used in many GUI programs
-vim.opt.clipboard:append("unnamed", "unnamedplus")
+vim.opt.clipboard:append("unnamed")
+vim.opt.clipboard:append("unnamedplus")
 
 
 vim.api.nvim_set_keymap('n', '<leader>cp', 'olog.info("<esc>"*pa: ${<esc>"*pa}")<esc>', { noremap = true })
