@@ -22,10 +22,10 @@
 
 (defn install-i3lock
   [context]
-  (let [source-dir (str (:sources-dir context "i3lock-fancy-multimonitor"))]
+  (let [source-dir (<< "~(:sources-dir context)i3lock-fancy-multimonitor")]
     (when-not (dir-exists? context source-dir)
       (command "git" ["clone" "https://github.com/guimeira/i3lock-fancy-multimonitor.git" source-dir] context)
-      (file (str source-dir "i3lock-fancy-multimonitor/lock") (assoc context :executable true)))))
+      (file (str source-dir "/lock") (assoc context :executable true)))))
 
 (defn run
   [context]
