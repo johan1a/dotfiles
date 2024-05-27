@@ -38,6 +38,7 @@
                "noto-fonts-extra" ; more unicode symbols, ⛧
                "google-cloud-cli"
                "google-cloud-cli-gke-gcloud-auth-plugin"
+               "grpcurl-bin"
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
         ; httpie
                ])
