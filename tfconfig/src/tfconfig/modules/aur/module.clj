@@ -38,7 +38,6 @@
                "noto-fonts-extra" ; more unicode symbols, ⛧
                "google-cloud-cli"
                "google-cloud-cli-gke-gcloud-auth-plugin"
-               "cnijfilter-common" ; For cups and the Canon pixma iP2850 printer
       ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
         ; httpie
                ])
@@ -46,7 +45,10 @@
 ; These packages seem to fail when already present?
 (def failing-packages ["scalafmt"
                        "clojure-lsp-bin"
-                       "vimv"])
+                       "vimv"
+                       "cnijfilter-common" ; For cups and the Canon pixma iP2850 printer
+                       ])
+
 
 (def paru-dependencies ["fakeroot" "coreutils" "pkgconf"])
 
