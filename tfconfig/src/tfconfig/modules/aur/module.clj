@@ -44,8 +44,7 @@
                ])
 
 ; These packages seem to fail when already present?
-(def failing-packages ["gotop-bin"
-                       "scalafmt"
+(def failing-packages ["scalafmt"
                        "clojure-lsp-bin"
                        "vimv"])
 
