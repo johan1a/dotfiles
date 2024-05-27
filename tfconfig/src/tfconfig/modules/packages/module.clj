@@ -82,6 +82,9 @@
                "hexedit"
                "rmlint"
                "sassc"
+               "bluez-utils" ; for bluetooth-ctl
+               "libnotify" ; for notify-send
+               "dbeaver"
                ])
         ; "dnsutils"
         ;  udiskie
