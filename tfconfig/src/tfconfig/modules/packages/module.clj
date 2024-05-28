@@ -86,6 +86,7 @@
                "libnotify" ; for notify-send
                "dbeaver"
                "pulseaudio-bluetooth" ; For bluetooth headset support
+               "visualvm" ; JVM monitoring tool
                ])
         ; "dnsutils"
         ;  udiskie
