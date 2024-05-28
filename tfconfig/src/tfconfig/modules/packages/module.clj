@@ -85,6 +85,7 @@
                "bluez-utils" ; for bluetooth-ctl
                "libnotify" ; for notify-send
                "dbeaver"
+               "pulseaudio-bluetooth" ; For bluetooth headset support
                ])
         ; "dnsutils"
         ;  udiskie
