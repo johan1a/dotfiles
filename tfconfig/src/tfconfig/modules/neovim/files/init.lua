@@ -69,6 +69,12 @@ if vim.fn.filereadable(vim.fn.expand('~/.vimrc_background')) == 1 then
     vim.cmd('source ~/.vimrc_background')
 end
 
+function has_executable(executable_name)
+    local command = "type " .. executable_name .. " > /dev/null 2>&1"
+    local result = os.execute(command)
+    return result == 0
+end
+
 --  ____  _             _                          __ _
 -- |  _ \| |_   _  __ _(_)_ __     ___ ___  _ __  / _(_) __ _
 -- | |_) | | | | |/ _` | | '_ \   / __/ _ \| '_ \| |_| |/ _` |
@@ -135,11 +141,14 @@ metals_config.init_options.statusBarProvider = 'on'
 
 -- Language servers
 require'lspconfig'.clojure_lsp.setup{}
--- Install with:
+
+-- Install vue-language-server with:
 -- sudo npm install -g @vue/language-server
-require'lspconfig'.volar.setup {
-  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
-}
+if has_executable("vue-language-server") then
+  require'lspconfig'.volar.setup {
+    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+  }
+end
 
 vim.cmd([[
   augroup lsp
