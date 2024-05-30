@@ -11,11 +11,11 @@
 (defn install-neovim
   [context]
   (let [os (:os context)]
-    (println os)
     (when (= os "archlinux")
       (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim-nightly-bin"] (assoc context pre-auth true :throw-errors false))
       (pacman "neovim" (assoc context :state "present"))
-      (pacman "python-neovim" (assoc context :state "present")))
+      (pacman "python-neovim" (assoc context :state "present"))
+      (command "npm" ["install" "-g" "vue-language-server"] (assoc context :sudo true)))
     (when (= os "raspbian")
       (apt/install (assoc context :throw-errors false) ["neovim"]))))
 
