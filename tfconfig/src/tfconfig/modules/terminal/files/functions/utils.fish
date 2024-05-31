@@ -792,7 +792,7 @@ function search-contents --description "`ALT`+`CTRL`+`F` search (fuzzy) file by 
   and commandline -f repaint
 end
 
-function path
+function path-of
   readlink -e $argv
 end
 
