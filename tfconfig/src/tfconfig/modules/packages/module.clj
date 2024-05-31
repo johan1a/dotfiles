@@ -87,6 +87,7 @@
                "dbeaver"
                "pulseaudio-bluetooth" ; For bluetooth headset support
                "visualvm" ; JVM monitoring tool
+               "jq"
                ])
         ; "dnsutils"
         ;  udiskie
