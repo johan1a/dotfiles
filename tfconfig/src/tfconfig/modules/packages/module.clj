@@ -88,8 +88,8 @@
                "pulseaudio-bluetooth" ; For bluetooth headset support
                "visualvm" ; JVM monitoring tool
                "jq"
+               "bind" ; for nslookup
                ])
-        ; "dnsutils"
         ;  udiskie
         ; redshift
 
