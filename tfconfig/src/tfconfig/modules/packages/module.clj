@@ -130,7 +130,6 @@
   (config-makepkg context)
   (dorun (map #(pacman % (assoc context :state "present")) packages))
   (let [sudo-context (assoc context :sudo true)]
-    (command "archlinux-java" ["set" "java-14-openjdk"] (assoc sudo-context :throw-errors false)) ; TODO move
     (when-not (:ci context)
       (command "systemctl" ["enable" "cronie"] sudo-context)
       (command "systemctl" ["restart" "cronie"] sudo-context)
