@@ -89,6 +89,7 @@
                "visualvm" ; JVM monitoring tool
                "jq"
                "bind" ; for nslookup
+               "pacman-contrib" ; for paccache
                ])
         ;  udiskie
         ; redshift
@@ -134,4 +135,5 @@
       (command "systemctl" ["enable" "cronie"] sudo-context)
       (command "systemctl" ["restart" "cronie"] sudo-context)
       (command "systemctl" ["enable" "bluetooth"] sudo-context)
-      (command "systemctl" ["start" "bluetooth"] sudo-context))))
+      (command "systemctl" ["start" "bluetooth"] sudo-context)
+      (command "systemctl" ["enable" "paccache.timer"] sudo-context))))
