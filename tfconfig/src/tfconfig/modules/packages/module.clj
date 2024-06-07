@@ -90,6 +90,7 @@
                "jq"
                "bind" ; for nslookup
                "pacman-contrib" ; for paccache
+               "httpie"
                ])
         ;  udiskie
         ; redshift
