@@ -91,6 +91,7 @@
                "bind" ; for nslookup
                "pacman-contrib" ; for paccache
                "httpie"
+               "net-tools" ; for netstat
                ])
         ;  udiskie
         ; redshift
