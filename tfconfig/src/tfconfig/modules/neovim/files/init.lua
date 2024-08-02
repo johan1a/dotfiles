@@ -146,7 +146,7 @@ require'lspconfig'.clojure_lsp.setup{}
 -- sudo npm install -g @vue/language-server
 if has_executable("vue-language-server") then
   require'lspconfig'.volar.setup {
-    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue'}
   }
 end
 
