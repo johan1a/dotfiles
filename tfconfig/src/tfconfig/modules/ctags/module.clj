@@ -15,7 +15,7 @@
         (command "./autogen.sh" [] (assoc context :dir source-dir))
         (command "./configure" [] (assoc context :dir source-dir))
         (command "make" [] (assoc context :dir source-dir))
-        (command "make" ["install"] (assoc context :dir source-dir :sudo true))))))
+        (command "make" ["install"] (assoc context :dir source-dir) :sudo)))))
 
 (defn run
   [context]
