@@ -6,7 +6,6 @@ profiles:
       - owncloud
       - mail
       - pulseaudio
-      - ime
     additional-modules:
       - pipewire
   - name: server
@@ -15,7 +14,6 @@ profiles:
     ignored-modules:
       - owncloud
       - mail
-      - ime
       - polybar
       - gnome_keyring
   - name: rpi
@@ -42,7 +40,6 @@ profiles:
       - mail
       # - neovim
       - xorg
-      - ime
       # - terminal
       # - tmux
       - colemak
@@ -61,8 +58,6 @@ profiles:
   - name: default
     pattern: ".*"
     has-monitor: true
-    ignored-modules:
-      - ime
 modules:
   - dirs
   - git_hooks
@@ -82,7 +77,6 @@ modules:
   - mail
   - neovim
   - xorg
-  - ime
   - terminal
   - tmux
   - colemak
