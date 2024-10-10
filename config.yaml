@@ -5,7 +5,6 @@ profiles:
     ignored-modules:
       - owncloud
       - pulseaudio
-    additional-modules:
       - pipewire
   - name: server
     pattern: ".*urdatorn.*"
@@ -14,6 +13,7 @@ profiles:
       - owncloud
       - polybar
       - gnome_keyring
+      - pipewire
   - name: rpi
     os: raspbian
     pattern: "tiltpi"
@@ -21,24 +21,18 @@ profiles:
     additional-modules:
       - packages_apt
     ignored-modules:
-      # - dirs
       - packages
       - pulseaudio
-      # - utils
+      - pipewire
       - docker
       - cups
       - mlocate
-      # - git
-      # - ctags
       - intellij
       - owncloud
       - taskwarrior
       - i3_gaps
       - aur
-      # - neovim
       - xorg
-      # - terminal
-      # - tmux
       - colemak
       - dunst
       - polybar
@@ -50,7 +44,6 @@ profiles:
     ignored-modules:
       - owncloud
       - pulseaudio
-    additional-modules:
       - pipewire
   - name: default
     pattern: ".*"
@@ -76,6 +69,7 @@ modules:
   - terminal
   - tmux
   - colemak
+  - pipewire
   - dunst
   - polybar
   - gpg
