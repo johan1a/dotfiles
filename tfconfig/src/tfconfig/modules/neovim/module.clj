@@ -1,7 +1,7 @@
 (ns tfconfig.modules.neovim.module
   (:require
    [tfconfig.common.apt :as apt]
-   [tfconfig.common.command :refer [command pre-auth]]
+   [tfconfig.common.command :refer [command]]
    [tfconfig.common.file :refer [file link]]
    [tfconfig.common.gem :refer [gem]]
    [tfconfig.common.pacman :refer [pacman]]))
@@ -12,7 +12,7 @@
   [context]
   (let [os (:os context)]
     (when (= os "archlinux")
-      (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim-nightly-bin"] (assoc context pre-auth true :throw-errors false))
+      (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim-nightly-bin"] (assoc context :pre-auth true :throw-errors false))
       (pacman "neovim" (assoc context :state "present"))
       (pacman "python-neovim" (assoc context :state "present"))
       (command "npm" ["install" "-g" "vue-language-server"] (assoc context :sudo true)))
@@ -21,7 +21,7 @@
 
 (defn install-gems
   [context]
-  (dorun (map #(gem context % "present") required-gems)))
+  (dorun (map #(gem (assoc context :throw-errors false) % "present") required-gems)))
 
 (defn install-make
   "Make is required for the msgpack gem"
@@ -68,6 +68,4 @@
     (let [nvim-dir (str (:home context) ".config/nvim/")]
       (create-vim-dir context nvim-dir)
       (link-configs context nvim-dir)
-      (when (= os "archlinux")
-        (install-plugins context))
       (link-custom-snippets context nvim-dir))))
