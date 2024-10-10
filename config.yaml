@@ -4,7 +4,6 @@ profiles:
     has-monitor: true
     ignored-modules:
       - owncloud
-      - mail
       - pulseaudio
     additional-modules:
       - pipewire
@@ -13,7 +12,6 @@ profiles:
     has-monitor: false
     ignored-modules:
       - owncloud
-      - mail
       - polybar
       - gnome_keyring
   - name: rpi
@@ -37,7 +35,6 @@ profiles:
       - taskwarrior
       - i3_gaps
       - aur
-      - mail
       # - neovim
       - xorg
       # - terminal
@@ -74,7 +71,6 @@ modules:
   - taskwarrior
   - i3_gaps
   - aur
-  - mail
   - neovim
   - xorg
   - terminal
