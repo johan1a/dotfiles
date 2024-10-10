@@ -7,7 +7,7 @@
 (defn run
   [context]
   (when (= (:os context) "archlinux")
-    (pacman "tmux" (assoc context :state "present")))
+    (pacman "tmux" context :present))
   (let [home (:home context)
         files-dir (<< "~(:modules-dir context)tmux/files")]
     (link context (str files-dir "/tmux.conf") (str home ".tmux.conf"))

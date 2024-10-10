@@ -9,7 +9,7 @@
 
 (defn install-dependencies
   [context]
-  (dorun (map #(pacman % (assoc context :state "present")) dependencies)))
+  (dorun (map #(pacman % context :present) dependencies)))
 
 (defn setup-links
   [context]

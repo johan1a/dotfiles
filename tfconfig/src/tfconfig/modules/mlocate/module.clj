@@ -6,6 +6,6 @@
 
 (defn run
   [context]
-  (pacman "mlocate" (assoc context :state "present"))
+  (pacman "mlocate" context :present)
   (directory context (str (:home context) ".config/mlocate"))
   (cron context "Run updatedb" "*/15 * * * * updatedb -l 0 -o ~/.config/mlocate/mlocate.db >> ~/.local/log/updatedb.log 2>&1"))

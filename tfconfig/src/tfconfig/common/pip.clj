@@ -11,7 +11,7 @@
   (let [os (:os context)]
     (when-not (has-executable? context "pip")
       (when (= os "archlinux")
-        (pacman "python-pip" (assoc context :state "present")))
+        (pacman "python-pip" context))
       (when (= os "raspbian")
         (apt/install context ["python-pip"])))
     (let [disabled-errors-context (assoc context :throw-errors false)

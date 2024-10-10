@@ -55,7 +55,7 @@
 
 (defn install-dependencies
   [context]
-  (dorun (map #(pacman % (assoc context :state "present")) paru-dependencies)))
+  (dorun (map #(pacman % context :present) paru-dependencies)))
 
 (defn install-paru
   [context]

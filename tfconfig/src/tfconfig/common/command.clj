@@ -2,6 +2,8 @@
   (:require [clojure.java.io :as io]
             [clojure.string :as str]))
 
+(def sudo-prompt "Enter SUDO password (WIP): ")
+
 (defn log
   [options & args]
   (when (:verbose options) (println (str/join " " args))))
@@ -51,23 +53,22 @@
           (recur (conj lines line)))))))
 
 (defn pre-auth
-  [options]
-  (let [new-options (assoc options :input (:password options))
-        stderr-callback (partial err-callback options (:sudo-prompt options) (:password options))]
+  [options password]
+  (let [new-options (assoc options :input password)
+        stderr-callback (partial err-callback options sudo-prompt password)]
     (run-proc new-options "sudo" ["-S" "true"] (partial out-callback options) stderr-callback)))
 
 (defn command
-  [cmd args options]
-  (log options cmd args)
-  (let [sudo-prompt "thesudoprompt"
-        sudo (:sudo options)
-        password (:password options)
-        new-options (assoc options :sudo-prompt sudo-prompt :input (if sudo password nil))
+  [cmd args context & rest]
+  (log context cmd args)
+  (let [sudo (some #(= % :sudo) rest)
+        password (:password context)
+        new-options (assoc context :input (if sudo password nil))
         new-cmd (if sudo "sudo" cmd)
         new-args (if sudo (concat ["-S" cmd] args) args)]
-    (when (:pre-auth options)
-      (pre-auth new-options))
-    (let [result (run-proc new-options new-cmd new-args (partial out-callback options) (partial err-callback options sudo-prompt password))]
-      (if (or (= 0 (:code result)) (not (:throw-errors options)))
+    (when (:pre-auth context)
+      (pre-auth context password))
+    (let [result (run-proc new-options new-cmd new-args (partial out-callback context) (partial err-callback context sudo-prompt password))]
+      (if (or (= 0 (:code result)) (not (:throw-errors context)))
         result
         (throw (ex-info (str "Error: command failed: " cmd " " args) result))))))

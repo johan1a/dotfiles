@@ -1,7 +1,6 @@
 (ns tfconfig.common.gem
   (:require
    [clojure.string :as string]
-   [tfconfig.common.apt :as apt]
    [tfconfig.common.command :refer [command]]
    [tfconfig.common.has-executable :refer [has-executable?]]
    [tfconfig.common.pacman :refer [pacman]]))
@@ -15,7 +14,7 @@
   (when-not (has-executable? context "gem")
     (let [os (:os context)]
       (when (= os "archlinux")
-        (pacman "rubygems" (assoc context :state "present")))))
+        (pacman "rubygems" context :present))))
   (let [disabled-errors-context (assoc context :throw-errors false)
         cmd-result (command "gem" ["list" gem-name] disabled-errors-context)
         is-present (string/includes? (:stdout cmd-result) gem-name)]

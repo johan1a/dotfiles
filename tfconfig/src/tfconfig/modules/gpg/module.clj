@@ -17,6 +17,6 @@
   (let [base-dir (str (:home context) ".gnupg/")
         src-file (str (:modules-dir context) "gpg/files/gpg-agent.conf")
         dest-file (str base-dir "gpg-agent.conf")]
-    (pacman "gnupg" (assoc context :state "present"))
+    (pacman "gnupg" context :present)
     (file base-dir (assoc context :state "dir" :handler-ref :create-gpg-dir))
     (link context src-file dest-file)))

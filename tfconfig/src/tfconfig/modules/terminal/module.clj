@@ -31,7 +31,7 @@
     ; (handler context :installed-fish set-default-shell) ; FIXME it does not enter the password correctly, just hangs
   (let [os (:os context)]
     (when (= os "archlinux")
-      (pacman "fish" (assoc context :state "present")))
+      (pacman "fish" context :present))
     (when (= os "raspbian")
       (apt/install context ["fish"]))
     (link context (<< "~(:modules-dir context)terminal/files/bashrc") (str (:home context) ".bashrc"))

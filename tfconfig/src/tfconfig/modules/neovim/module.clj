@@ -13,8 +13,8 @@
   (let [os (:os context)]
     (when (= os "archlinux")
       (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim-nightly-bin"] (assoc context :pre-auth true :throw-errors false))
-      (pacman "neovim" (assoc context :state "present"))
-      (pacman "python-neovim" (assoc context :state "present"))
+      (pacman "neovim" context :present)
+      (pacman "python-neovim" context :present)
       (command "npm" ["install" "-g" "vue-language-server"] (assoc context :sudo true)))
     (when (= os "raspbian")
       (apt/install (assoc context :throw-errors false) ["neovim"]))))
@@ -28,7 +28,7 @@
   [context]
   (let [os (:os context)]
     (when (= os "archlinux")
-      (pacman "make" (assoc context :state "present")))
+      (pacman "make" context :present))
     (when (= os "raspbian")
       (apt/install context ["make"]))))
 

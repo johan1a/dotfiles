@@ -5,10 +5,9 @@
 
 (defn run
   [context]
-  (let [sudo-context (assoc context :sudo true)]
-    (pacman "docker" (assoc sudo-context :state "present"))
-    (pacman "docker-compose" (assoc sudo-context :state "present"))
-    (when-not (:ci context)
-      (command "systemctl" ["enable" "docker"] sudo-context)
-      (command "systemctl" ["start" "docker"] sudo-context))
-    (command "usermod" ["-a" "-G" "docker" (:username context)] sudo-context)))
+  (pacman "docker" context :present)
+  (pacman "docker-compose" context :present)
+  (when-not (:ci context)
+    (command "systemctl" ["enable" "docker"] context :sudo)
+    (command "systemctl" ["start" "docker"] context :sudo))
+  (command "usermod" ["-a" "-G" "docker" (:username context)] context :sudo))
