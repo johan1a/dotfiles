@@ -25,7 +25,7 @@ Plug 'sbdchd/neoformat'
 Plug('glacambre/firenvim', { ['do']=  function()
   vim.cmd("call firenvim#install(0)")
 end })
-Plug('prettier/vim-prettier', { ['do']='yarn install', ['for']={'javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'}})
+Plug('prettier/vim-prettier', { ['do']='yarn install', ['for']={'javascript', 'typescript', 'typescript.tsx', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'}})
 Plug('scalameta/nvim-metals', { branch='main' })
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
