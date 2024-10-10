@@ -19,7 +19,7 @@
     (= 0 (:code (command "test" ["-L" path] opts)))))
 
 (defn file
-  [context path {:keys [owner state src]}]
+  [context path {:keys [owner state src sudo]}]
   (let [is-dir (dir-exists? context path)
         is-file (file-exists? context path)
         is-link (link-exists? context path)]
@@ -38,7 +38,7 @@
         (command "rm" [path] context :sudo)
         (when (or is-dir is-file)
           (command "mv" [path (:backup-dir context)] context :sudo)))
-      (command "ln" ["-s" src path] context))
+      (command "ln" ["-s" src path] context (when sudo :sudo)))
     (when (:executable context)
       (command "chmod" ["+x" path] context))
     (when owner
