@@ -1,15 +1,36 @@
 #!/bin/bash -e
 
-PASSWORD=$1
-CONFIG=$2
+usage() {
+  echo "Usage: $0 --password <password> --config <config-file>"
+  exit 1
+}
+
+CONFIG="../config.yaml"
+
+while [[ "$#" -gt 0 ]]; do
+  case $1 in
+    --password)
+      PASSWORD="$2"
+      shift 2
+      ;;
+    --config)
+      CONFIG="$2"
+      shift 2
+      ;;
+    --modules)
+      MODULES="$2"
+      shift 2
+      ;;
+    *)
+      echo "Unknown parameter: $1"
+      usage
+      ;;
+  esac
+done
 
 if [ -z $PASSWORD ] ; then
   echo "Enter SUDO password: "
   read -s PASSWORD
-fi
-
-if [ -z $CONFIG ] ; then
-  export CONFIG=../config.yaml
 fi
 
 if ! command -v lein &> /dev/null

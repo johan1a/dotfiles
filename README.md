@@ -12,6 +12,10 @@ chmod +x install.sh
 
 ./install.sh
 
+# Run specific modules
+./install.sh --modules pipewire,neovim
+
+
 # After it has run at least once, you can install from any directory using:
 s dotfiles install
 
