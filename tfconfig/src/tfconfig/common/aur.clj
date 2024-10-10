@@ -4,7 +4,7 @@
 (defn install-aur-package
   [context package]
   (println (str "Installing " package))
-  (command "paru" ["-S" "--noconfirm" "--needed" "--sudoloop" package] (assoc context pre-auth true)))
+  (command "paru" ["-S" "--noconfirm" "--needed" "--sudoloop" package] (assoc context pre-auth true) :sudo))
 
 (defn install-aur-packages
   [context packages]

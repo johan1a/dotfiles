@@ -1,7 +1,7 @@
 (ns tfconfig.modules.terminal.module
   (:require [tfconfig.common.apt :as apt]
             [tfconfig.common.command :refer [command]]
-            [tfconfig.common.file :refer [link file directory file-exists? dir-exists?]]
+            [tfconfig.common.file :refer [link directory file-exists? dir-exists?]]
             [tfconfig.common.pacman :refer [pacman]]
             [tfconfig.common.aur :refer [install-aur-package]]
             [clojure.core.strint :refer [<<]]))
@@ -24,7 +24,7 @@
 
 (defn set-permissions
   [context]
-  (file (<< "~(:home context).config/fish") (assoc context :owner (str (:username context) ":"))))
+  (directory (<< "~(:home context).config/fish") context {:owner (str (:username context) ":")}))
 
 (defn setup-fish
   [context]

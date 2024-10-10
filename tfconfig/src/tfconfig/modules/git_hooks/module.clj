@@ -1,7 +1,7 @@
 (ns tfconfig.modules.git-hooks.module
   (:require
    [clojure.core.strint :refer [<<]]
-   [tfconfig.common.file :refer [link, file]]))
+   [tfconfig.common.file :refer [link directory]]))
 
 (defn run
   [context]
@@ -9,5 +9,5 @@
         src-file (str files-dir "/commit-msg")
         dest-dir (str (:root-dir context) "/.git/hooks")
         dest-file (str dest-dir "/commit-msg")]
-    (file dest-dir (assoc context :state "dir"))
+    (directory context dest-dir)
     (link context src-file dest-file)))

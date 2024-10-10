@@ -1,6 +1,6 @@
 (ns tfconfig.modules.aur.module
   (:require [tfconfig.common.command :refer [command]]
-            [tfconfig.common.file :refer [file]]
+            [tfconfig.common.file :refer [directory]]
             [tfconfig.common.pacman :refer [pacman]]
             [tfconfig.common.aur :refer [install-aur-package]]
             [tfconfig.common.has-executable :refer [has-executable?]]))
@@ -64,7 +64,7 @@
     (let [sources-dir (:sources-dir context)
           base-dir (str sources-dir "paru")]
       (dorun (install-dependencies context))
-      (dorun (file sources-dir (assoc context :state "dir" :owner (str (:username context) ":"))))
+      (dorun (directory context sources-dir {:owner (str (:username context) ":")}))
       (command "rm" ["-rf" base-dir] context)
       (command "git" ["clone" "https://aur.archlinux.org/paru-bin.git" base-dir] context)
       (command "makepkg" ["-si" "--noconfirm"] (assoc context :dir base-dir :pre-auth true)))))

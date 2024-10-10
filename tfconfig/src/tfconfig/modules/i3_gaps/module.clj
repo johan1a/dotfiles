@@ -25,7 +25,7 @@
   (let [source-dir (<< "~(:sources-dir context)i3lock-fancy-multimonitor")]
     (when-not (dir-exists? context source-dir)
       (command "git" ["clone" "https://github.com/guimeira/i3lock-fancy-multimonitor.git" source-dir] context)
-      (file (str source-dir "/lock") (assoc context :executable true)))))
+      (file context (str source-dir "/lock") {:executable true}))))
 
 (defn run
   [context]

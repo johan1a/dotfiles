@@ -19,29 +19,28 @@
     (= 0 (:code (command "test" ["-L" path] opts)))))
 
 (defn file
-  [path context]
-  (let [desired-state (:state context)
-        owner (:owner context)
-        src (:src context)
-        force-sudo-context (assoc context :sudo true)
+  [context path opts]
+  (let [owner (:owner opts)
+        desired-state (or (:state opts) :file)
+        src (:src opts)
         is-dir (dir-exists? context path)
         is-file (file-exists? context path)
         is-link (link-exists? context path)]
-    (when (and (= desired-state "absent") (or is-file is-dir is-link))
+    (when (and (= desired-state :absent) (or is-file is-dir is-link))
       (command "rm" ["-rf" path] context))
-    (when (and (= desired-state "file") (not is-file) (not is-dir))
+    (when (and (= desired-state :file) (not is-file) (not is-dir))
       (command "touch" [path] context))
-    (when (and (= desired-state "dir") (not is-dir))
+    (when (and (= desired-state :dir) (not is-dir))
       (println (str "Creating directory: " path))
-      (command "mkdir" ["-p" path] (assoc context :sudo true))
-      (command "chown" [(str (:username context) ":") path] (assoc context :sudo true))
+      (command "mkdir" ["-p" path] context :sudo)
+      (command "chown" [(str (:username context) ":") path] context :sudo)
       (notify context "created"))
-    (when (= desired-state "link")
+    (when (= desired-state :link)
       (println (str "Linking " src " to " path))
       (if is-link
-        (command "rm" [path] force-sudo-context)
+        (command "rm" [path] context :sudo)
         (when (or is-dir is-file)
-          (command "mv" [path (:backup-dir context)] force-sudo-context)))
+          (command "mv" [path (:backup-dir context)] context :sudo)))
       (command "ln" ["-s" src path] context))
     (when (:executable context)
       (command "chmod" ["+x" path] context))
@@ -52,13 +51,13 @@
   ([context src dest]
    (link context src dest {}))
   ([context src dest opts]
-   (file dest (merge opts (assoc context :src src :state "link")))))
+   (file context dest (merge opts {:state :link :src src}))))
 
 (defn directory
   ([context path]
    (directory context path {}))
   ([context path opts]
-   (file path (merge opts (assoc context :state "dir")))))
+   (file context path (assoc opts :state :dir))))
 
 (defn update-content
   [lines index managed-str lines-to-add]

@@ -2,7 +2,7 @@
   (:require
    [tfconfig.common.apt :as apt]
    [tfconfig.common.command :refer [command]]
-   [tfconfig.common.file :refer [file link]]
+   [tfconfig.common.file :refer [directory link]]
    [tfconfig.common.gem :refer [gem]]
    [tfconfig.common.pacman :refer [pacman]]))
 
@@ -15,7 +15,7 @@
       (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim-nightly-bin"] (assoc context :pre-auth true :throw-errors false))
       (pacman "neovim" context :present)
       (pacman "python-neovim" context :present)
-      (command "npm" ["install" "-g" "vue-language-server"] (assoc context :sudo true)))
+      (command "npm" ["install" "-g" "vue-language-server"] context :sudo))
     (when (= os "raspbian")
       (apt/install (assoc context :throw-errors false) ["neovim"]))))
 
@@ -34,7 +34,7 @@
 
 (defn create-vim-dir
   [context base-dir]
-  (file base-dir (assoc context :state "dir")))
+  (directory context base-dir))
 
 (defn link-configs
   "Symlink init.vim and .vimrc"

@@ -1,6 +1,6 @@
 (ns tfconfig.modules.dirs.module
   (:require
-   [tfconfig.common.file :refer [file]]))
+   [tfconfig.common.file :refer [directory]]))
 
 (defn run
   "Create standard directories"
@@ -18,4 +18,4 @@
               (str home ".local/lib")
               (str home ".local/log")
               (str home ".config")]]
-    (dorun (map #(file % (assoc context :state "dir" :owner owner)) dirs))))
+    (dorun (map #(directory context % {:owner owner}) dirs))))

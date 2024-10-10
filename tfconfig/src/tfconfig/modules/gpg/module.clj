@@ -1,7 +1,7 @@
 (ns tfconfig.modules.gpg.module
   (:require
    [tfconfig.common.command :refer [command]])
-  (:require [tfconfig.common.file :refer [file link]])
+  (:require [tfconfig.common.file :refer [directory link]])
   (:require [tfconfig.common.pacman :refer [pacman]])
   (:require [tfconfig.common.handler :refer [handler]]))
 
@@ -18,5 +18,5 @@
         src-file (str (:modules-dir context) "gpg/files/gpg-agent.conf")
         dest-file (str base-dir "gpg-agent.conf")]
     (pacman "gnupg" context :present)
-    (file base-dir (assoc context :state "dir" :handler-ref :create-gpg-dir))
+    (directory (assoc context :handler-ref :create-gpg-dir) base-dir)
     (link context src-file dest-file)))
