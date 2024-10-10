@@ -79,4 +79,3 @@ modules:
   - dunst
   - polybar
   - gpg
-  - gnome_keyring
