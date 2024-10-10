@@ -6,6 +6,7 @@ usage() {
 }
 
 CONFIG="../config.yaml"
+VERBOSE="true"
 
 while [[ "$#" -gt 0 ]]; do
   case $1 in
@@ -19,6 +20,10 @@ while [[ "$#" -gt 0 ]]; do
       ;;
     --modules)
       MODULES="$2"
+      shift 2
+      ;;
+    --verbose)
+      VERBOSE="$2"
       shift 2
       ;;
     *)
@@ -48,9 +53,7 @@ then
   fi
 fi
 
-if [ -z $CI ] ; then
-  export VERBOSE_FLAG=
-else
+if [ "$VERBOSE" = "true" -o -n "$CI" ] ; then
   export VERBOSE_FLAG=--verbose
 fi
 

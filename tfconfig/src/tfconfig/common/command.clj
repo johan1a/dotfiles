@@ -1,9 +1,10 @@
 (ns tfconfig.common.command
-  (:require [clojure.java.io :as io]))
+  (:require [clojure.java.io :as io]
+            [clojure.string :as str]))
 
 (defn log
   [options & args]
-  (when (:verbose options) (println args)))
+  (when (:verbose options) (println (str/join " " args))))
 
 ; from https://stackoverflow.com/a/45293277
 (defn run-proc
