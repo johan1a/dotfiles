@@ -7,4 +7,4 @@
   (let [src-file (str (:modules-dir context) "gnome_keyring/files/login")
         dest-file "/etc/pam.d/login"]
     (pacman "gnome-keyring" context :present)
-    (link (assoc context :sudo true) src-file dest-file)))
+    (link context src-file dest-file {:sudo true})))
