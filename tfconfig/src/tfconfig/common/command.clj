@@ -56,9 +56,9 @@
     (run-proc context "sudo" ["-S" "true"] (partial out-callback context) stderr-callback password)))
 
 (defn command
-  [cmd args context & rest]
+  [cmd args context & opts]
   (log context cmd args)
-  (let [sudo (some #(= % :sudo) rest)
+  (let [sudo (some #(= % :sudo) opts)
         password (:password context)
         input (if sudo password nil)
         new-cmd (if sudo "sudo" cmd)

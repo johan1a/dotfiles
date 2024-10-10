@@ -19,23 +19,20 @@
     (= 0 (:code (command "test" ["-L" path] opts)))))
 
 (defn file
-  [context path opts]
-  (let [owner (:owner opts)
-        desired-state (or (:state opts) :file)
-        src (:src opts)
-        is-dir (dir-exists? context path)
+  [context path {:keys [owner state src]}]
+  (let [is-dir (dir-exists? context path)
         is-file (file-exists? context path)
         is-link (link-exists? context path)]
-    (when (and (= desired-state :absent) (or is-file is-dir is-link))
+    (when (and (= state :absent) (or is-file is-dir is-link))
       (command "rm" ["-rf" path] context))
-    (when (and (= desired-state :file) (not is-file) (not is-dir))
+    (when (and (= state :file) (not is-file) (not is-dir))
       (command "touch" [path] context))
-    (when (and (= desired-state :dir) (not is-dir))
+    (when (and (= state :dir) (not is-dir))
       (println (str "Creating directory: " path))
       (command "mkdir" ["-p" path] context :sudo)
       (command "chown" [(str (:username context) ":") path] context :sudo)
       (notify context "created"))
-    (when (= desired-state :link)
+    (when (= state :link)
       (println (str "Linking " src " to " path))
       (if is-link
         (command "rm" [path] context :sudo)
