@@ -20,19 +20,20 @@
 
 (defn file
   [context path {:keys [owner state src sudo]}]
-  (let [is-dir (dir-exists? context path)
+  (let [desired-state (or state :file)
+        is-dir (dir-exists? context path)
         is-file (file-exists? context path)
         is-link (link-exists? context path)]
-    (when (and (= state :absent) (or is-file is-dir is-link))
+    (when (and (= desired-state :absent) (or is-file is-dir is-link))
       (command "rm" ["-rf" path] context))
-    (when (and (= state :file) (not is-file) (not is-dir))
-      (command "touch" [path] context))
-    (when (and (= state :dir) (not is-dir))
+    (when (and (= desired-state :file) (not is-file) (not is-dir))
+      (command "touch" [path] context (when :sudo)))
+    (when (and (= desired-state :dir) (not is-dir))
       (println (str "Creating directory: " path))
       (command "mkdir" ["-p" path] context :sudo)
       (command "chown" [(str (:username context) ":") path] context :sudo)
       (notify context "created"))
-    (when (= state :link)
+    (when (= desired-state :link)
       (println (str "Linking " src " to " path))
       (if is-link
         (command "rm" [path] context :sudo)
@@ -40,9 +41,9 @@
           (command "mv" [path (:backup-dir context)] context :sudo)))
       (command "ln" ["-s" src path] context (when sudo :sudo)))
     (when (:executable context)
-      (command "chmod" ["+x" path] context))
+      (command "chmod" ["+x" path] context :sudo))
     (when owner
-      (command "chown" [owner path] context))))
+      (command "chown" [owner path] context :sudo))))
 
 (defn link
   ([context src dest]
