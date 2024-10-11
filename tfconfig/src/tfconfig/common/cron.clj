@@ -14,7 +14,7 @@
   [context name job]
   (let [managed-str (str (:managed-str context) name)
         cron-file (<< "/var/spool/cron/~(:username context)")]
-    (directory (assoc context :sudo true) "/var/spool/cron")
+    (directory context "/var/spool/cron" {:sudo true})
     (file context cron-file {:sudo true :owner (str (:username context) ":")})
     (with-open [reader (io/reader cron-file)]
       (let [lines (line-seq reader)
