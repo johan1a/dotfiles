@@ -52,7 +52,6 @@ modules:
   - dirs
   - git_hooks
   - packages
-  - pulseaudio
   - utils
   - docker
   - cups
