@@ -41,6 +41,8 @@
                "openjdk8-src"
                "jdk-openjdk"
                "openjdk-doc"
+               "less"
+               "firefox"
                "openjdk-src"
                "dialog"
                "ripgrep"
