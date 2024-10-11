@@ -24,7 +24,7 @@
 
 (defn set-permissions
   [context]
-  (directory (<< "~(:home context).config/fish") context {:owner (str (:username context) ":")}))
+  (directory context (<< "~(:home context).config/fish") {:owner (str (:username context) ":")}))
 
 (defn setup-fish
   [context]
