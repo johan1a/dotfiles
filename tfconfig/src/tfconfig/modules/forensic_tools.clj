@@ -3,7 +3,7 @@
 
 (defn run
   [context]
-  (aur-packages ["zsteg"
+  (aur-packages context ["zsteg"
                  "arp-scan"
                  "sleuthkit"
-                 "stegsolve"] context))
+                 "stegsolve"]))
