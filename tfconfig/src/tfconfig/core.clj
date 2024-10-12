@@ -3,6 +3,7 @@
    [clj-yaml.core :as yaml]
    [clojure.core.strint :refer [<<]]
    [tfconfig.common.command :refer [command]]
+   [tfconfig.common.module :refer [discover-modules]]
    [clojure.string :as string]
    [clojure.java.io :as io])
   (:gen-class))
@@ -34,29 +35,6 @@
     (if path (yaml/parse-string (slurp path)) {})))
 
 (def changes (atom {}))
-
-(defn is-module
-  [file]
-  (clojure.string/includes? (.getAbsolutePath file) "module.clj"))
-
-(defn get-parent-name
-  [file]
-  (let [parent (.getParent file)]
-    (last (clojure.string/split parent #"/"))))
-
-(defn discover-single-file-modules
-  [modules-dir]
-  (let [files (file-seq (io/file modules-dir))
-        top-level-files (filter #(= modules-dir (str (.getParent %) "/")) files)
-        module-files (filter #(.endsWith (.getName %) ".clj") top-level-files)]
-    (map #(hash-map :file % :name (.replace (.getName %) ".clj" "")) module-files)))
-
-(defn discover-modules
-  [modules-dir]
-  (let [module-files (filter is-module (file-seq (io/file modules-dir)))
-        modules (map #(hash-map :name (get-parent-name %) :file %) module-files)
-        single-file-modules (discover-single-file-modules modules-dir)]
-    (concat modules single-file-modules)))
 
 (defn find-in-list
   [all-modules module]
