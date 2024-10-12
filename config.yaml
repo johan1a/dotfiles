@@ -60,11 +60,11 @@ modules:
   - mlocate
   - git
   - ctags
-  - intellij
   - owncloud
   - taskwarrior
   - i3_gaps
   - aur
+  - intellij
   - neovim
   - xorg
   - terminal
