@@ -1,9 +1,9 @@
 (ns tfconfig.modules.forensic-tools
-  (:require [tfconfig.common.pacman :refer [pacman]]))
+  (:require [tfconfig.common.aur :refer [aur-packages]]))
 
 (defn run
   [context]
-  (pacman ["zsteg"
-           "arp-scan"
-           "sleuthkit"
-           "stegsolve"] context))
+  (aur-packages ["zsteg"
+                 "arp-scan"
+                 "sleuthkit"
+                 "stegsolve"] context))
