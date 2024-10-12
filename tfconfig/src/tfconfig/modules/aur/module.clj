@@ -50,7 +50,6 @@
                        "cnijfilter-common" ; For cups and the Canon pixma iP2850 printer
                        ])
 
-
 (def paru-dependencies ["fakeroot" "coreutils" "pkgconf"])
 
 (defn install-dependencies
