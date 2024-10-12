@@ -27,13 +27,11 @@
                "siji-ng"
                "typescript-language-server"
                "bdf-unifont"
-               "stegsolve"
                "miscfiles"
                "sharutils" ; uudecode
-               "sleuthkit"
-               "zsteg"
                "noto-fonts-extra" ; more unicode symbols, ⛧
-               "grpcurl-bin"])
+               "grpcurl-bin"
+               "cljfmt-bin"])
 
 ; These packages seem to fail when already present?
 

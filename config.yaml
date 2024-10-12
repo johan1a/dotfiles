@@ -6,6 +6,7 @@ profiles:
       - owncloud
       - pulseaudio
       - pipewire
+      - forensic_tools
   - name: server
     pattern: ".*urdatorn.*"
     has-monitor: false
@@ -73,3 +74,4 @@ modules:
   - dunst
   - polybar
   - gpg
+  - forensic_tools

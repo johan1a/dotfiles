@@ -62,7 +62,6 @@
                "sxiv"
                "lib32-glibc"
                "ncdu"
-               "arp-scan"
                "xdotool"
                "nfs-utils"
                "gnome-keyring"
