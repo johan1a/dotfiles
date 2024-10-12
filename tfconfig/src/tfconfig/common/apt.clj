@@ -4,7 +4,7 @@
 (defn install-single
   [context package]
   (println (str "Installing " package))
-  (command "sudo" ["apt-get" "install" "-y" package] (assoc context pre-auth true)))
+  (command "sudo" ["apt-get" "install" "-y" package] (assoc context :pre-auth true)))
 
 (defn install
   [context packages]
