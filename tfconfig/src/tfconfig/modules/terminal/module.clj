@@ -3,7 +3,7 @@
             [tfconfig.common.command :refer [command]]
             [tfconfig.common.file :refer [link directory file-exists? dir-exists?]]
             [tfconfig.common.pacman :refer [pacman]]
-            [tfconfig.common.aur :refer [install-aur-package]]
+            [tfconfig.common.aur :refer [aur-packages]]
             [clojure.core.strint :refer [<<]]))
 
 (defn set-default-shell
@@ -45,7 +45,7 @@
   [context]
   (directory context (<< "~(:home context).config/alacritty"))
   (link context (<< "~(:modules-dir context)terminal/files/alacritty.toml") (str (:home context) ".config/alacritty/alacritty.toml"))
-  (install-aur-package context "alacritty"))
+  (aur-packages context "alacritty"))
 
 (defn setup-base16
   [context]
