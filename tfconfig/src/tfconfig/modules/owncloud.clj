@@ -5,4 +5,5 @@
 (defn run
   [context]
   (let [home (:home context)]
-    (link context (<< "~{home}ownCloud/documents") (<< "~{home}documents"))))
+    (link context (<< "~{home}ownCloud/documents") (<< "~{home}documents"))
+    (link context (<< "~{home}ownCloud/pictures") (<< "~{home}pictures"))))
