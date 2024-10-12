@@ -22,6 +22,10 @@ while [[ "$#" -gt 0 ]]; do
       MODULES="$2"
       shift 2
       ;;
+    -m)
+      MODULES="$2"
+      shift 2
+      ;;
     --verbose)
       VERBOSE="$2"
       shift 2
