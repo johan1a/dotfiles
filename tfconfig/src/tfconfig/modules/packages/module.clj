@@ -18,8 +18,8 @@
                "iotop"
                "tree"
                "ranger"
-               "jack2"
                "vlc"
+               "unzip"
                "arandr"
                "ttf-dejavu"
                "ttf-inconsolata"
@@ -102,6 +102,7 @@
   (when changes
     (command "pacman" ["-Syu" "--noconfirm"] (assoc context :sudo true))))
 
+; TODO not working, access denied
 (defn enable-multilib
   [context]
   (handler context :multilib-enabled sync-packages)
