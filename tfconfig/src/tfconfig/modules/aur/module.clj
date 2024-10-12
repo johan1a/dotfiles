@@ -5,7 +5,6 @@
             [tfconfig.common.aur :refer [install-aur-package]]
             [tfconfig.common.has-executable :refer [has-executable?]]))
 
-; TODO is this important: COURSIER_CACHE: ".coursier-cache"
 (def packages ["fortune-mod"
                "xclip"
                "neofetch"
@@ -35,8 +34,6 @@
                "zsteg"
                "noto-fonts-extra" ; more unicode symbols, ⛧
                "grpcurl-bin"
-      ;       linvst-stable #The dummy 'linvst.so' file is located at /usr/share/linvst
-        ; httpie
                ])
 
 ; These packages seem to fail when already present?
