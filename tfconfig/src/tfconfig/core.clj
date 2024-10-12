@@ -42,7 +42,7 @@
 
 (defn get-modules-to-run
   [all-modules config profile]
-  (let [ignored-modules (:ignored-modules profile)
+  (let [ignored-modules (or (:ignored-modules profile) '())
         additional-modules (:additional-modules profile)
         without-ignored (remove #(.contains ignored-modules %) (:modules config))
         chosen-modules (concat without-ignored additional-modules)]
