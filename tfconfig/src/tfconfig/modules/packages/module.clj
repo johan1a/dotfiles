@@ -92,9 +92,9 @@
                "pacman-contrib" ; for paccache
                "httpie"
                "net-tools" ; for netstat
-               ])
+               "redshift"
         ;  udiskie
-        ; redshift
+               ])
 
 (defn sync-packages
   [context changes]
