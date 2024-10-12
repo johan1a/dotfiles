@@ -17,8 +17,6 @@
                "libffado"
                "lib32-libpulse"
                "python-dbus"
-               "carla"
-               "qjackctl"
                "fzf"
                "kdeconnect"
                "fd"
