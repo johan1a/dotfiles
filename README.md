@@ -15,6 +15,8 @@ chmod +x install.sh
 # Run specific modules
 ./install.sh --modules pipewire,neovim
 
+# or
+./install.sh -m pipewire,neovim
 
 # After it has run at least once, you can install from any directory using:
 s dotfiles install
@@ -22,13 +24,3 @@ s dotfiles install
 # Run specific modules only:
 s dotfiles run modules pipewire,neovim
 ```
-
-## Install Arch Linux from a Live CD
-
-```
-wget https://gitlab.com/johan1a/dotfiles/raw/master/install.sh
-sh install.sh
-```
-
-
-

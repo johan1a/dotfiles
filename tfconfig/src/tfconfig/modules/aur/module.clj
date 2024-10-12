@@ -40,7 +40,6 @@
 (def failing-packages ["scalafmt"
                        "clojure-lsp-bin"
                        "vimv"
-                       "cnijfilter-common" ; For cups and the Canon pixma iP2850 printer
                        ])
 
 (def paru-dependencies ["fakeroot" "coreutils" "pkgconf"])
