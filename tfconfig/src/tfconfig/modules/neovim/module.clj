@@ -4,7 +4,8 @@
    [tfconfig.common.command :refer [command]]
    [tfconfig.common.file :refer [directory link]]
    [tfconfig.common.gem :refer [gem]]
-   [tfconfig.common.pacman :refer [pacman]]))
+   [tfconfig.common.pacman :refer [pacman]]
+   [tfconfig.common.has-executable :refer [has-executable?]]))
 
 (def required-gems ["msgpack" "rdoc" "neovim" "multi_json"])
 
@@ -15,7 +16,8 @@
       (command "paru" ["-R" "--noconfirm" "--sudoloop" "neovim-nightly-bin"] (assoc context :pre-auth true :throw-errors false))
       (pacman "neovim" context :present)
       (pacman "python-neovim" context :present)
-      (command "npm" ["install" "-g" "vue-language-server"] context :sudo))
+      (when-not (has-executable? context "vls")
+        (command "npm" ["install" "-g" "vue-language-server"] context :sudo)))
     (when (= os "raspbian")
       (apt/install (assoc context :throw-errors false) ["neovim"]))))
 
