@@ -30,7 +30,7 @@
       (command "touch" [path] context (when sudo :sudo)))
     (when (and (= desired-state :dir) (not is-dir))
       (println (str "Creating directory: " path))
-      (command "mkdir" ["-p" path] context :sudo)
+      (command "mkdir" ["-p" path] context (when sudo :sudo))
       (command "chown" [(str (:username context) ":") path] context :sudo)
       (notify context "created"))
     (when (= desired-state :link)
@@ -38,7 +38,7 @@
       (if is-link
         (command "rm" [path] context :sudo)
         (when (or is-dir is-file)
-          (command "mv" [path (:backup-dir context)] context :sudo)))
+          (command "mv" [path (:backup-dir context)] context (when sudo :sudo))))
       (command "ln" ["-s" src path] context (when sudo :sudo)))
     (when (:executable context)
       (command "chmod" ["+x" path] context :sudo))
