@@ -33,14 +33,14 @@
                "sleuthkit"
                "zsteg"
                "noto-fonts-extra" ; more unicode symbols, ⛧
-               "grpcurl-bin"
-               ])
+               "grpcurl-bin"])
 
 ; These packages seem to fail when already present?
+
+
 (def failing-packages ["scalafmt"
                        "clojure-lsp-bin"
-                       "vimv"
-                       ])
+                       "vimv"])
 
 (def paru-dependencies ["fakeroot" "coreutils" "pkgconf"])
 

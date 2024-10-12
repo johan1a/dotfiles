@@ -1,4 +1,4 @@
-(ns tfconfig.modules.owncloud.module
+(ns tfconfig.modules.owncloud
   (:require [tfconfig.common.file :refer [link]]
             [clojure.core.strint :refer [<<]]))
 

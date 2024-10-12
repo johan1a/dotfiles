@@ -39,18 +39,28 @@
   [file]
   (clojure.string/includes? (.getAbsolutePath file) "module.clj"))
 
-(defn get-modules
-  [dir-name]
-  (filter is-module (file-seq (io/file dir-name))))
-
 (defn get-parent-name
   [file]
   (let [parent (.getParent file)]
     (last (clojure.string/split parent #"/"))))
 
+(defn discover-single-file-modules
+  [modules-dir]
+  (let [files (file-seq (io/file modules-dir))
+        top-level-files (filter #(= modules-dir (str (.getParent %) "/")) files)
+        module-files (filter #(.endsWith (.getName %) ".clj") top-level-files)]
+    (map #(hash-map :file % :name (.replace (.getName %) ".clj" "")) module-files)))
+
+(defn discover-modules
+  [modules-dir]
+  (let [module-files (filter is-module (file-seq (io/file modules-dir)))
+        modules (map #(hash-map :name (get-parent-name %) :file %) module-files)
+        single-file-modules (discover-single-file-modules modules-dir)]
+    (concat modules single-file-modules)))
+
 (defn find-in-list
   [all-modules module]
-  (first (filter #(= (get-parent-name %) module) all-modules)))
+  (first (filter #(= (:name %) module) all-modules)))
 
 (defn get-modules-to-run
   [all-modules config profile]
@@ -68,9 +78,9 @@
       nil)))
 
 (defn run-module
-  [file context]
-  (let [module-name (get-parent-name file)
-        run-module (load-file (.getAbsolutePath file))
+  [module context]
+  (let [module-name (:name module)
+        run-module (load-file (.getAbsolutePath (:file module)))
         startTime (. System (currentTimeMillis))
         _ (run-module context)
         elapsedMillis (- (. System (currentTimeMillis)) startTime)
@@ -101,7 +111,7 @@
         config (get-config args)
         profile (get-profile config)
         modules-dir (str dotfiles-root "/tfconfig/src/tfconfig/modules/")
-        all-modules (get-modules modules-dir)
+        all-modules (discover-modules modules-dir)
         forced-modules (get-forced-modules all-modules args)
         modules-to-run (or forced-modules (get-modules-to-run all-modules config profile))
         context {:home home
