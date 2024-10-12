@@ -26,7 +26,6 @@
                "bat"
                "pandoc-bin"
                "siji-ng"
-               "nodejs-vls"
                "typescript-language-server"
                "bdf-unifont"
                "stegsolve"
