@@ -1,6 +1,6 @@
 (ns tfconfig.modules.pipewire.module
   (:require [tfconfig.common.command :refer [command]]
-            [tfconfig.common.aur :refer [install-aur-packages]]))
+            [tfconfig.common.aur :refer [aur-packages]]))
 
 (def packages
   ["pipewire-pulse" ; For more bluetooth headset codecs
@@ -11,5 +11,5 @@
 (defn run
   "Installs Pipewire"
   [context]
-  (install-aur-packages context packages)
+  (aur-packages context packages)
   (command "systemctl" ["--user" "enable" "pipewire.service" "pipewire-pulse.service"] context))

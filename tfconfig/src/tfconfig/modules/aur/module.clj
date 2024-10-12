@@ -2,7 +2,7 @@
   (:require [tfconfig.common.command :refer [command]]
             [tfconfig.common.file :refer [directory]]
             [tfconfig.common.pacman :refer [pacman]]
-            [tfconfig.common.aur :refer [install-aur-package]]
+            [tfconfig.common.aur :refer [aur-packages]]
             [tfconfig.common.has-executable :refer [has-executable?]]))
 
 (def packages ["fortune-mod"
@@ -64,5 +64,5 @@
   "Install an AUR helper and useful packages"
   [context]
   (install-paru context)
-  (dorun (map (partial install-aur-package context) packages))
-  (dorun (map (partial install-aur-package (assoc context :throw-errors false)) failing-packages)))
+  (aur-packages context packages)
+  (aur-packages (assoc context :throw-errors false) failing-packages))

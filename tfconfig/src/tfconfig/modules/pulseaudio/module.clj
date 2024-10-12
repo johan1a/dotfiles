@@ -1,5 +1,5 @@
 (ns tfconfig.modules.pulseaudio.module
-  (:require [tfconfig.common.aur :refer [install-aur-packages]]))
+  (:require [tfconfig.common.aur :refer [aur-packages]]))
 
 (def packages
   ["pulseaudio"
@@ -10,4 +10,4 @@
 (defn run
   "Installs Pulseaudio"
   [context]
-  (install-aur-packages context packages))
+  (aur-packages context packages))

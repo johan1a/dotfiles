@@ -1,11 +1,7 @@
 (ns tfconfig.common.aur
-  (:require [tfconfig.common.command :refer [command pre-auth]]))
+  (:require [tfconfig.common.command :refer [command]]))
 
-(defn install-aur-package
-  [context package]
-  (println (str "Installing " package))
-  (command "paru" ["-S" "--noconfirm" "--needed" "--sudoloop" package] (assoc context :pre-auth true)))
-
-(defn install-aur-packages
+(defn aur-packages
   [context packages]
-  (dorun (map #(install-aur-package context %) packages)))
+  (let [packages (if (seqable? packages) packages [packages])]
+    (command "paru" ["-S" "--noconfirm" "--needed" "--sudoloop" packages] (assoc context :pre-auth true))))

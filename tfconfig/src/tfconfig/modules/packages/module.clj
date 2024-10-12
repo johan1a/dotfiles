@@ -132,7 +132,7 @@
   [context]
   (enable-multilib context)
   (config-makepkg context)
-  (dorun (map #(pacman % context :present) packages))
+  (pacman packages context)
   (when-not (:ci context)
     (command "systemctl" ["enable" "cronie"] context :sudo)
     (command "systemctl" ["restart" "cronie"] context :sudo)

@@ -1,7 +1,7 @@
 (ns tfconfig.modules.polybar.module
   (:require
    [clojure.core.strint :refer [<<]]
-   [tfconfig.common.aur :refer [install-aur-package]]
+   [tfconfig.common.aur :refer [aur-packages]]
    [tfconfig.common.file :refer [directory link]]))
 
 (defn link-files
@@ -18,5 +18,5 @@
 (defn run
   [context]
   (directory context (str (:home context) ".config/polybar") {:owner (str (:username context) ":")})
-  (install-aur-package (assoc context :throw-errors false) "polybar")
+  (aur-packages (assoc context :throw-errors false) "polybar")
   (link-files context))
