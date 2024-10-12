@@ -75,5 +75,5 @@
         (when (= index -1)
           (with-open [writer (io/writer tmp-file)]
             (dorun (map #(.write writer (str % "\n")) new-lines)))
-          (command "mv" [tmp-file path] (assoc context :sudo true :preauth true))
+          (command "mv" [tmp-file path] (assoc context :preauth true) :sudo)
           (notify context "lines"))))))

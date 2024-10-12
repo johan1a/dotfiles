@@ -3,9 +3,8 @@
    [clj-yaml.core :as yaml]
    [clojure.core.strint :refer [<<]]
    [tfconfig.common.command :refer [command]]
-   [tfconfig.common.module :refer [discover-modules]]
-   [clojure.string :as string]
-   [clojure.java.io :as io])
+   [tfconfig.common.module :refer [discover-modules run-module]]
+   [clojure.string :as string])
   (:gen-class))
 
 (defn get-arg-value
@@ -55,16 +54,6 @@
       (remove nil? (map #(find-in-list all-modules %) (clojure.string/split value #",")))
       nil)))
 
-(defn run-module
-  [module context]
-  (let [module-name (:name module)
-        run-module (load-file (.getAbsolutePath (:file module)))
-        startTime (. System (currentTimeMillis))
-        _ (run-module context)
-        elapsedMillis (- (. System (currentTimeMillis)) startTime)
-        elapsedSeconds (/ elapsedMillis 1000.0)]
-    {:elapsed elapsedSeconds :module module-name}))
-
 (defn pattern-matches?
   [pattern-str hostname]
   (re-matches (re-pattern pattern-str) hostname))
@@ -88,10 +77,12 @@
         dotfiles-root (clojure.string/replace (System/getProperty "user.dir") #"/tfconfig" "")
         config (get-config args)
         profile (get-profile config)
+        _ (println (str "profile: " profile))
         modules-dir (str dotfiles-root "/tfconfig/src/tfconfig/modules/")
         all-modules (discover-modules modules-dir)
         forced-modules (get-forced-modules all-modules args)
         modules-to-run (or forced-modules (get-modules-to-run all-modules config profile))
+        _ (println "will run modules: " modules-to-run)
         context {:home home
                  :root-dir dotfiles-root
                  :modules-dir modules-dir

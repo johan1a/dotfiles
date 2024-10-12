@@ -100,7 +100,7 @@
 (defn sync-packages
   [context changes]
   (when changes
-    (command "pacman" ["-Syu" "--noconfirm"] (assoc context :sudo true))))
+    (command "pacman" ["-Syu" "--noconfirm"] context :sudo)))
 
 ; TODO not working, access denied
 (defn enable-multilib

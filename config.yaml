@@ -39,12 +39,13 @@ profiles:
       - gpg
       - gnome_keyring
   - name: ci
-    pattern: "runner-.*"
+    pattern: "ci|runner-.*"
     has-monitor: false
     ignored-modules:
       - owncloud
       - pulseaudio
       - pipewire
+      - cups
   - name: default
     pattern: ".*"
     has-monitor: true
