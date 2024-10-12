@@ -77,12 +77,12 @@
         dotfiles-root (clojure.string/replace (System/getProperty "user.dir") #"/tfconfig" "")
         config (get-config args)
         profile (get-profile config)
-        _ (println (str "profile: " profile))
+        _ (println (str "profile: " (:name profile)))
         modules-dir (str dotfiles-root "/tfconfig/src/tfconfig/modules/")
         all-modules (discover-modules modules-dir)
         forced-modules (get-forced-modules all-modules args)
         modules-to-run (or forced-modules (get-modules-to-run all-modules config profile))
-        _ (println "will run modules: " modules-to-run)
+        _ (println "will run modules: " (map #(:name %) modules-to-run))
         context {:home home
                  :root-dir dotfiles-root
                  :modules-dir modules-dir
