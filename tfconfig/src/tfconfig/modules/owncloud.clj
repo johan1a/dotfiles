@@ -8,4 +8,4 @@
   (let [home (:home context)]
     (link context (<< "~{home}ownCloud/documents") (<< "~{home}documents"))
     (link context (<< "~{home}ownCloud/pictures") (<< "~{home}pictures"))
-    (pacman "owncloud" context)))
+    (pacman "owncloud-client" context)))
