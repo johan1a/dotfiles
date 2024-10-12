@@ -27,7 +27,7 @@
     (when (and (= desired-state :absent) (or is-file is-dir is-link))
       (command "rm" ["-rf" path] context))
     (when (and (= desired-state :file) (not is-file) (not is-dir))
-      (command "touch" [path] context (when :sudo)))
+      (command "touch" [path] context (when sudo :sudo)))
     (when (and (= desired-state :dir) (not is-dir))
       (println (str "Creating directory: " path))
       (command "mkdir" ["-p" path] context :sudo)
