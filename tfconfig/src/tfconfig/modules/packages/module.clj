@@ -6,7 +6,8 @@
    [tfconfig.common.handler :refer [handler]]
    [tfconfig.common.pacman :refer [pacman]]))
 
-(def packages ["base-devel"
+(def packages ["autorandr"
+               "base-devel"
                "musl"
                "autoconf"
                "cronie"
