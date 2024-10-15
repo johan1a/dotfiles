@@ -1,0 +1,9 @@
+/etc/systemd/network/50-wired.link
+
+[Match]
+MACAddress=MAC_ADDRESS
+
+[Link]
+NamePolicy=kernel database onboard slot path
+MACAddressPolicy=persistent
+WakeOnLan=magic

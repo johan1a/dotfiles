@@ -7,6 +7,7 @@ profiles:
       - pulseaudio
       - pipewire
       - forensic_tools
+      - wake_on_lan
   - name: server
     pattern: ".*urdatorn.*"
     has-monitor: false
@@ -75,3 +76,4 @@ modules:
   - polybar
   - gpg
   - forensic_tools
+  - wake_on_lan
