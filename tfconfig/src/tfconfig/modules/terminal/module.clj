@@ -38,6 +38,8 @@
     (link context (<< "~(:modules-dir context)terminal/files/inputrc") (str (:home context) ".inputrc"))
     (link context (<< "~(:modules-dir context)terminal/files/aliases.sh") (str (:home context) ".aliases.sh"))
     (directory context (<< "~(:home context).config/fish/functions"))
+    (directory context (<< "~(:home context).kube"))
+    (command "touch" (<< "~(:home context).kube/config") context)
     (link-files context)
     (set-permissions context)))
 
