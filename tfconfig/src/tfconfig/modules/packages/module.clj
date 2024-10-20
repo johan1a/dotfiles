@@ -8,6 +8,7 @@
 
 (def packages ["autorandr"
                "base-devel"
+               "lua-language-server"
                "musl"
                "autoconf"
                "cronie"
