@@ -39,12 +39,12 @@
   (directory context base-dir))
 
 (defn link-configs
-  "Symlink init.vim"
+  "Symlink init.lua"
   [context nvim-base-dir]
-  (let [module-files-dir (str (:modules-dir context) "neovim/files/")
-        init-vim-dest (str nvim-base-dir "init.lua")
-        init-vim-src (str module-files-dir "init.lua")]
-    (link context init-vim-src init-vim-dest)))
+  (let [module-files-dir (str (:modules-dir context) "neovim/files/")]
+    (link context (str module-files-dir "init.lua") (str nvim-base-dir "init.lua"))
+    (directory context (str nvim-base-dir "/lua"))
+    (link context (str module-files-dir "filetypes.lua") (str nvim-base-dir "/lua/filetypes.lua"))))
 
 (defn install-plugins
   [context]
