@@ -150,12 +150,14 @@ if has_executable("vue-language-server") then
   }
 end
 
-vim.cmd([[
-  augroup lsp
-    autocmd!
-    autocmd FileType scala,sbt lua require('metals').initialize_or_attach(metals_config)
-  augroup end
-]])
+vim.api.nvim_create_autocmd(
+  { "FileType" },
+  { pattern = "scala,sbt",
+    callback = function()
+      require('metals').initialize_or_attach(metals_config)
+    end
+  }
+)
 vim.o.statusline = vim.g.metals_status or ''
 
 -- =========== ultisnips ===========
@@ -291,93 +293,33 @@ vim.o.gdefault = true
 
 -- Magic to make autoread actually work
 -- Trigger autoread when changing buffers while inside vim:
-vim.cmd([[
-  augroup general_settings
-    autocmd!
-    autocmd FocusGained,BufEnter * if !bufexists("[Command Line]") | :checktime | endif
-    autocmd CursorHold * if !bufexists("[Command Line]") | checktime | endif
-  augroup END
-]])
+--
+local general_settings_group = vim.api.nvim_create_augroup("general_settings", { clear = true } )
 
-function TryOmnicomplete()
-  -- Simulate pressing 'a' to trigger omnicompletion
-  vim.api.nvim_feedkeys('a', 'n', true)
-  
-  -- Check if omnifunc is set
-  if vim.api.nvim_eval('&omnifunc') == '' then
-    -- If omnifunc is not set, do nothing
-  else
-    -- If omnifunc is set, trigger omnicompletion
-    vim.api.nvim_feedkeys('<C-x><C-o>', 'n', true)
+checktime = function()
+  if not vim.fn.bufexists("[Command Line]") then
+    vim.cmd("checktime")
   end
 end
 
-vim.cmd([[
-  augroup scala_filetype
-    autocmd!
-    autocmd BufRead,BufNewFile *.sbt set filetype=scala
-  augroup END
-]])
+vim.api.nvim_create_autocmd(
+  { "FocusGained", "BufEnter" },
+  {
+    pattern = "*",
+    callback = checktime,
+    group = general_settings_group
+  }
+)
+vim.api.nvim_create_autocmd(
+  { "CursorHold" },
+  {
+    pattern = "*",
+    callback = checktime,
+    group = general_settings_group
+  }
+)
 
-
--- jsoc comment syntax highlighting support
-vim.cmd([[
-  augroup json_syntax
-    autocmd!
-    autocmd FileType json syntax match Comment +\/\/.\+$+
-  augroup END
-]])
-
--- =========== filetypes ===========
-
-vim.cmd([[
-augroup filetypes
-  autocmd BufNewFile,BufRead *.gson      setlocal ft=groovy
-  autocmd BufNewFile,BufRead *.ts        setlocal ft=typescript
-  autocmd Filetype groovy                setlocal makeprg=./gradlew\ test
-  autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
-  autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
-  autocmd FileType json                  nnoremap <buffer> <leader>f :%!python -m json.tool<cr>
-  autocmd FileType xml                   nnoremap <buffer> <leader>f :%!xmllint --format -<cr>
-
- " uses nvim-metals
-  autocmd FileType scala                 nnoremap <buffer> <leader>f :Neoformat<cr>
-  autocmd Filetype scala                 setlocal omnifunc=v:lua.vim.lsp.omnifunc
-  autocmd Filetype scala                 inoremap <silent> <BS> <BS><ESC>:call TryOmnicomplete()<CR>
-  autocmd FileType python                nnoremap <buffer> <leader>f :Neoformat<cr>
-  autocmd Filetype python                setlocal omnifunc=v:lua.vim.lsp.omnifunc
-  autocmd FileType clojure               nnoremap <buffer> <leader>f :silent :!cljfmt fix %:p<cr>:edit<cr>
-  autocmd FileType clojure               setlocal iskeyword-=. " Break words on .
-  autocmd FileType clojure               setlocal iskeyword-=/ " Break words on /
-  autocmd BufWritePre *.clj              %s/\s\+$//e
-
-  autocmd FileType fish compiler fish
-  " Set this to have long lines wrap inside comments.
-  autocmd FileType fish                  setlocal textwidth=79
-  autocmd Filetype groovy                setlocal tabstop=4 shiftwidth=4
-  autocmd FileType haskell               setlocal tabstop=4
-  autocmd Filetype yaml                  setlocal cursorcolumn
-
-  autocmd FileType typescript            nnoremap <buffer> <leader>f :Prettier<cr>
-  autocmd FileType typescript            setlocal tabstop=2 shiftwidth=2
-  autocmd Filetype ts                    setlocal tabstop=2 shiftwidth=2
-  autocmd Filetype ts                    setlocal filetype=typescript
-  autocmd Filetype ts                    setlocal omnifunc=v:lua.vim.lsp.omnifunc
-  autocmd Filetype tsx                   setlocal filetype=typescript.tsx
-  autocmd Filetype tsx                   setlocal omnifunc=v:lua.vim.lsp.omnifunc
-  autocmd Filetype typescript.tsx        setlocal filetype=typescript.tsx
-  autocmd Filetype typescript.tsx        setlocal omnifunc=v:lua.vim.lsp.omnifunc
-  autocmd FileType typescript.tsx        nnoremap <buffer> <leader>f :Prettier<cr>
-  autocmd FileType vue                   nnoremap <buffer> <leader>f :Prettier<cr>
-  autocmd Filetype vue                   setlocal omnifunc=v:lua.vim.lsp.omnifunc
-  autocmd BufRead,BufNewFile *.avdl      setlocal filetype=avdl
-
-  autocmd Filetype snippets              setlocal expandtab
-
-  " Automatically remove trailing whitespace from markdown files on save
-  autocmd BufWritePre *.md               %s/\s\+$//e
-augroup END
-]])
+require("filetypes")
 
 vim.o.completeopt = 'noinsert,menuone'
 
@@ -400,14 +342,16 @@ vim.o.wildmenu = true
 
 
 -- =========== Splits ===========
-vim.cmd([[
 
-augroup splits
-    autocmd!
-    autocmd VimResized * wincmd =
-augroup END
-]])
-
+local splits_group = vim.api.nvim_create_augroup("splits", { clear = true } )
+vim.api.nvim_create_autocmd(
+  { "VimResized" },
+  {
+    pattern = "*",
+    callback = function() vim.cmd("wincmd =") end,
+    group = splits_group
+  }
+)
 vim.o.splitbelow=true
 vim.o.splitright=true
 
