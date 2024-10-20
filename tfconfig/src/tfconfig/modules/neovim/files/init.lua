@@ -122,6 +122,15 @@ end
 vim.g.auto_omnicomplete_key = 'period . a b c d e f g h i j k l m n o p q r s t u v w x y z ' ..
                                 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'
 
+
+-- =========== neoformat ===========
+
+vim.g.neoformat_lua_stylua = {
+  exe= 'stylua',
+  args= {'--indent-type', 'Spaces'},
+  replace = 1, --" replace the file, instead of updating buffer (default: 0)
+}
+
 -- =========== nvim-metals ===========
 
 -- Remove F from shortmess. set shortmess-=F NOTE: Without doing this, autocommands that deal with filetypes prohibit messages from being shown... and since we heavily rely on this, this must be set.
