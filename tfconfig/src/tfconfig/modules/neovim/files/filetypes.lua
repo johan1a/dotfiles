@@ -2,7 +2,7 @@ local filetypes_group = vim.api.nvim_create_augroup("filetypes", { clear = true 
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.gson",
-  callback = function()
+    callback = function()
         vim.bo.filetype = "groovy"
     end,
     group = filetypes_group,
