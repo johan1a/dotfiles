@@ -173,14 +173,20 @@ metals_config = require("metals").bare_config()
 metals_config.init_options.statusBarProvider = "on"
 
 -- Language servers
-require("lspconfig").clojure_lsp.setup({})
+local lspconfig = require('lspconfig')
+lspconfig.clojure_lsp.setup({})
 
 -- Install vue-language-server with:
 -- sudo npm install -g @vue/language-server
 if has_executable("vue-language-server") then
-    require("lspconfig").volar.setup({
-        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-    })
+  lspconfig.volar.setup {
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    init_options = {
+      vue = {
+        hybridMode = false,
+      },
+    },
+  }
 end
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
