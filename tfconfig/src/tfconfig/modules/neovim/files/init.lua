@@ -458,10 +458,9 @@ function CodeAction()
     end
 end
 
-vim.api.nvim_set_keymap("n", "<silent> <space><cr>", ":call CodeAction()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <leader>cn", "<cmd>lua vim.diagnostic.goto_next()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <c-n>", "<cmd>lua vim.diagnostic.goto_next()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <c-p>", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { silent = true })
+vim.keymap.set("n", "<space><cr>", CodeAction, { silent = true })
+vim.keymap.set("n", "<c-n>", vim.diagnostic.goto_next, { silent = true })
+vim.keymap.set("n", "<c-p>", vim.diagnostic.goto_prev, { silent = true })
 
 -- Copy buffer
 vim.api.nvim_set_keymap("n", "<leader>x", ":!xclip -selection clipboard %:p<CR>", { silent = true })
