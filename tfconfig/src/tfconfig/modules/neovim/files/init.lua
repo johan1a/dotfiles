@@ -501,9 +501,9 @@ vim.api.nvim_set_keymap("n", "<leader>bd", ":bdelete<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<leader>d", ":bd<CR>", { silent = true })
 
 -- Replace and jump
-vim.api.nvim_set_keymap("n", "c*", "*Ncgn", { silent = true })
+vim.api.nvim_set_keymap("n", "c*", "*cgn", { silent = true })
 vim.api.nvim_set_keymap("v", "gs", ":s/\\%V/<Left>", { silent = true })
-vim.api.nvim_set_keymap("n", "gs", ":%s/<Left>", { silent = true })
+vim.api.nvim_set_keymap("n", "gs", ":%s//<Left>", { silent = true })
 
 -- Git
 vim.api.nvim_set_keymap("n", "<leader>0", ":Git blame<CR>", { silent = true })
