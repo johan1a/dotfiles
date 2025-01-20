@@ -8,6 +8,7 @@ profiles:
       - git
       - terminal
       - neovim
+      - tmux
   - name: server
     pattern: ".*urdatorn.*"
     has-monitor: false
