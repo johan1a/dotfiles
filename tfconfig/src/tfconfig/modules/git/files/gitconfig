@@ -1,6 +1,11 @@
-[user]
-	email = johan.peter.andersson@gmail.com
-	name = Johan Andersson
+# Manually create ~/.gitconfig.local containing:
+# [user]
+# 	email = email@email.com
+# 	name = Firstname Lastname
+
+[include]
+    path = ~/.gitconfig.local
+
 [push]
 	default = simple
 
@@ -12,7 +17,7 @@ unstage=reset HEAD
 untrack=rm -r --cached
 [core]
 	editor = nvim
-	excludesfile = /home/johan/.gitignore_global
+	excludesfile = ${HOME}/.gitignore_global
 	autocrlf = false
 	eof = lf
 [filter "lfs"]

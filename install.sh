@@ -37,25 +37,24 @@ while [[ "$#" -gt 0 ]]; do
   esac
 done
 
+if command -v pacman &> /dev/null && ! command -v lein &> /dev/null;
+then
+  echo $PASSWORD | sudo -S pacman -Syu --noconfirm --needed
+  echo $PASSWORD | sudo -S pacman -S inetutils which leiningen --noconfirm --needed
+elif command -v brew &> /dev/null && ! command -v lein &> /dev/null;
+then
+    brew install leiningen
+elif command -v apt &> /dev/null && ! command -v lein &> /dev/null;
+then
+  echo $PASSWORD | sudo -S apt-get update -y
+  echo $PASSWORD | sudo -S apt-get install leiningen -y
+fi
+
 if [ -z $PASSWORD ] ; then
   echo "Enter SUDO password: "
   read -s PASSWORD
 fi
 
-if ! command -v lein &> /dev/null
-then
-  echo $PASSWORD | sudo -S pacman -Syu --noconfirm --needed
-  echo $PASSWORD | sudo -S pacman -S inetutils which leiningen --noconfirm --needed
-fi
-
-if command -v apt &> /dev/null
-then
-  if ! command -v lein &> /dev/null
-  then
-    echo $PASSWORD | sudo -S apt-get update -y
-    echo $PASSWORD | sudo -S apt-get install leiningen -y
-  fi
-fi
 
 if [ "$VERBOSE" = "true" -o -n "$CI" ] ; then
   export VERBOSE_FLAG=--verbose

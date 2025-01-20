@@ -880,3 +880,7 @@ end
 function create-local-kafka-topic
   kafka-topics.sh --bootstrap-server 0.0.0.0:9092 --topic $argv --create --partitions 1 --replication-factor 1
 end
+
+function bak
+  mv $argv $argv.bak
+end
