@@ -33,7 +33,7 @@ source ~/.config/fish/functions/utils.fish
 alias vim=nvim
 
 if status --is-interactive; and [ "$SSH_CLIENT" = "" ]
-  #  eval sh '"'(realpath ~/.base16_theme)'"'
+   eval sh '"'(realpath ~/.base16_theme)'"'
 end
 
 alias sf="source ~/.config/fish/config.fish"
