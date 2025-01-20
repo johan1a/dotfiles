@@ -276,7 +276,9 @@ vim.g.EasyGrepCommand = 1
 vim.o.statusline = vim.o.statusline .. '%{gutentags#statusline("[Generating...]")}'
 
 
-vim.g.gutentags_ctags_executable = '/opt/homebrew/bin/ctags'
+if vim.fn.has('macunix') then
+  vim.g.gutentags_ctags_executable = '/opt/homebrew/bin/ctags'
+end
 
 if vim.fn.executable("rg") then
     vim.g.gutentags_file_list_command = "rg --files"
