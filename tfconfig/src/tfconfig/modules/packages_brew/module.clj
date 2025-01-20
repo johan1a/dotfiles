@@ -5,6 +5,7 @@
 ; brew leaves --installed-on-request
 
 (def packages ["colima"
+               "clojure-lsp"
                "docker"
                "docker-compose"
                "fish"
