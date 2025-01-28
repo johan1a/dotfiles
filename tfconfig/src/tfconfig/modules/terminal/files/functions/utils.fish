@@ -18,7 +18,7 @@ function get_git_branch
 end
 
 function get_kube_context
-  if [ (cat ~/.kube/config | grep current-context | grep prd) ]
+  if [ (cat ~/.kube/config | grep current-context | grep eu1-eks001) ]
     set_color $fish_color_error
     echo -n "prd"
     set_color normal
@@ -368,6 +368,10 @@ function nuke-docker
 end
 
 function up
+  docker-compose up -d $argv
+end
+
+function upl
   docker-compose up -d $argv
   docker-compose logs -f $argv
 end
