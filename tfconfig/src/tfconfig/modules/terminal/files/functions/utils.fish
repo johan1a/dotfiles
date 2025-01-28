@@ -369,6 +369,7 @@ end
 
 function up
   docker-compose up -d $argv
+  docker-compose logs -f $argv
 end
 
 function stop
