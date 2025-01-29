@@ -378,7 +378,7 @@ end
 
 function rup
   docker-compose stop $argv
-  docker-compose rm $argv
+  docker-compose rm -f $argv
   docker-compose up -d $argv
 end
 
