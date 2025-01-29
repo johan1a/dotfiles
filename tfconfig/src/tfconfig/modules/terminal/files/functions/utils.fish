@@ -376,6 +376,12 @@ function upl
   docker-compose logs -f $argv
 end
 
+function rup
+  docker-compose stop $argv
+  docker-compose rm $argv
+  docker-compose up -d $argv
+end
+
 function stop
   if test -e docker-compose.yaml -o -e docker-compose.yml
     docker-compose stop $argv
