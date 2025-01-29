@@ -427,7 +427,9 @@ end
 function bd
   set decoded (echo -n $argv[1] | base64 -d)
   echo $decoded
-  echo $decoded | xclip
+  if type xclip 2>/dev/null
+    echo $decoded | xclip
+  end
 end
 
 function bdc
