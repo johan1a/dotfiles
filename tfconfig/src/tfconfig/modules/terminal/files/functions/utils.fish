@@ -382,6 +382,11 @@ function rup
   docker-compose up -d $argv
 end
 
+function drm
+  docker-compose stop $argv
+  docker-compose rm -f $argv
+end
+
 function stop
   if test -e docker-compose.yaml -o -e docker-compose.yml
     docker-compose stop $argv
