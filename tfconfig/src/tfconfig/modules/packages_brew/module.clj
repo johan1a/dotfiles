@@ -27,6 +27,7 @@
                "universal-ctags"
                "watch"
                "yq"
+               "yapf"
               ])
 
 (defn run
