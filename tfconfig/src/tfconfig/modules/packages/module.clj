@@ -92,6 +92,8 @@
                "httpie"
                "net-tools" ; for netstat
                "redshift"
+               "sops"
+               "age"
         ;  udiskie
                ])
 
