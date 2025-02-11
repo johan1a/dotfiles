@@ -1,0 +1,5 @@
+systemctl enable avahi-daemon
+systemctl start avahi-daemon
+
+add mdns_minimal [NOTFOUND=return] to /etc/nsswitch.conf
+hosts: mymachines mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] files myhostname dns

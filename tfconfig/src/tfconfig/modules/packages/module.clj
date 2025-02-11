@@ -94,6 +94,8 @@
                "redshift"
                "sops"
                "age"
+               "nss-mdns"
+               "avahi"
         ;  udiskie
                ])
 
