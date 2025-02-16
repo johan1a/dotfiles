@@ -1,6 +1,8 @@
 #!/usr/bin/env fish
 # Set this script as default application to use for magnet links in your browser
 set -l magnet_link $argv
-deluge-console -P deluge "connect urdatorn2:58846 remoteclient $DELUGE_REMOTE_PASSWORD; add $magnet_link; exit"
+
+echo "{\"type\": \"add_magnet\", \"magnet_link\": \"$magnet_link\"}" | http http://192.168.1.221:30000/api/internal/events
+
 notify-send "Added magnet link
 $magnet_link"
