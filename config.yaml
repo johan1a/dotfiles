@@ -19,7 +19,7 @@ profiles:
       - pipewire
   - name: rpi
     os: raspbian
-    pattern: "tiltpi"
+    pattern: "rpi3"
     has-monitor: false
     additional-modules:
       - packages_apt
