@@ -2,3 +2,4 @@ tags
 .metals/
 .bloop/
 metals.sbt
+.gitconfig.local

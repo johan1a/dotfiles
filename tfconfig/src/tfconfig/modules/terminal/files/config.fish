@@ -8,6 +8,7 @@ set -x BROWSER firefox
 set -x WINEARCH win64
 set -x WINEPREFIX /home/$USER/.wine64
 set -x GRAALVM_HOME /usr/lib/jvm/java-11-graalvm/
+ulimit -S -n 6000
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DESKTOP_DIR="$HOME/"
@@ -29,9 +30,7 @@ source ~/.config/fish/functions/utils.fish
 
 [ -e $HOME/.local.fish ]; and source $HOME/.local.fish
 
-if command -v nvim > /dev/null 2>&1;
-  alias vim=nvim
-end
+alias vim=nvim
 
 if status --is-interactive; and [ "$SSH_CLIENT" = "" ]
   eval sh '"'(realpath ~/.base16_theme)'"'
@@ -45,7 +44,6 @@ if status is-login
         exec startx -- -keeptty
     end
 end
-
 
 # pnpm
 set -gx PNPM_HOME "/home/johan/.local/share/pnpm"

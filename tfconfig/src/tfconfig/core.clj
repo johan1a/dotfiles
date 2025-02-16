@@ -43,7 +43,8 @@
   [all-modules config profile]
   (let [ignored-modules (or (:ignored-modules profile) '())
         additional-modules (:additional-modules profile)
-        without-ignored (remove #(.contains ignored-modules %) (:modules config))
+        specified-modules (or (:modules profile) (:modules config))
+        without-ignored (remove #(.contains ignored-modules %) specified-modules)
         chosen-modules (concat without-ignored additional-modules)]
     (remove nil? (map #(find-in-list all-modules %) chosen-modules))))
 
@@ -73,7 +74,7 @@
   (println "Setting up context")
   (let [password (get-password args)
         user (get-user args)
-        home (<< "/home/~{user}/")
+        home (str (System/getenv "HOME") "/")
         dotfiles-root (clojure.string/replace (System/getProperty "user.dir") #"/tfconfig" "")
         config (get-config args)
         profile (get-profile config)

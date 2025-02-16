@@ -16,3 +16,5 @@ ansible/roles/terminal/files/functions/fzf_key_bindings.fish
 secret.txt
 tfconfig/.clj-kondo/.cache/
 tfconfig/.lsp/.cache
+tfconfig/tfconfig.iml
+tfconfig/.idea
