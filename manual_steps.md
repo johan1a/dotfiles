@@ -1,5 +1,13 @@
 # Manual steps needed
 
+## Git config
+Manually create ~/.gitconfig.local containing:
+```
+[user]
+  email = email@email.com
+  name = Firstname Lastname
+```
+
 ## Colemak nordic
 
 Fugly modded variant of colemak that replaces 7890- with åäöüß.

@@ -18,7 +18,7 @@ function get_git_branch
 end
 
 function get_kube_context
-  if [ (cat ~/.kube/config | grep current-context | grep prd) ]
+  if [ (cat ~/.kube/config | grep current-context | grep prod) ]
     set_color $fish_color_error
     echo -n "prd"
     set_color normal
@@ -371,6 +371,22 @@ function up
   docker-compose up -d $argv
 end
 
+function upl
+  docker-compose up -d $argv
+  docker-compose logs -f $argv
+end
+
+function rup
+  docker-compose stop $argv
+  docker-compose rm -f $argv
+  docker-compose up -d $argv
+end
+
+function drm
+  docker-compose stop $argv
+  docker-compose rm -f $argv
+end
+
 function stop
   if test -e docker-compose.yaml -o -e docker-compose.yml
     docker-compose stop $argv
@@ -422,7 +438,9 @@ end
 function bd
   set decoded (echo -n $argv[1] | base64 -d)
   echo $decoded
-  echo $decoded | xclip
+  if type xclip 2>/dev/null
+    echo $decoded | xclip
+  end
 end
 
 function bdc
@@ -879,4 +897,8 @@ end
 
 function create-local-kafka-topic
   kafka-topics.sh --bootstrap-server 0.0.0.0:9092 --topic $argv --create --partitions 1 --replication-factor 1
+end
+
+function bak
+  mv $argv $argv.bak
 end

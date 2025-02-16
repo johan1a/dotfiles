@@ -1,13 +1,14 @@
 profiles:
-  - name: work
-    pattern: ".*307.*"
+  - name: mac
+    os: mac
+    pattern: "mac-.*"
     has-monitor: true
-    ignored-modules:
-      - owncloud
-      - pulseaudio
-      - pipewire
-      - forensic_tools
-      - wake_on_lan
+    modules:
+      - packages_brew
+      - git
+      - terminal
+      - neovim
+      - tmux
   - name: server
     pattern: ".*urdatorn.*"
     has-monitor: false

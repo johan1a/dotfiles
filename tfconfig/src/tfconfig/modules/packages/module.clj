@@ -92,10 +92,6 @@
                "httpie"
                "net-tools" ; for netstat
                "redshift"
-               "sops"
-               "age"
-               "nss-mdns"
-               "avahi"
         ;  udiskie
                ])
 

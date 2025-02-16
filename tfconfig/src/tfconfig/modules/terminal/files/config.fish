@@ -8,6 +8,7 @@ set -x BROWSER firefox
 set -x WINEARCH win64
 set -x WINEPREFIX /home/$USER/.wine64
 set -x GRAALVM_HOME /usr/lib/jvm/java-11-graalvm/
+ulimit -S -n 6000
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DESKTOP_DIR="$HOME/"
@@ -20,21 +21,19 @@ export COURSIER_CACHE="$XDG_DOWNLOAD_DIR/.coursier-cache"
 export CLOUDSDK_PYTHON=/usr/bin/python3
 
 
-contains /home/$USER/.local/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/.local/bin/
-contains /home/$USER/go/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/go/bin/
-contains /opt/google-cloud-cli/bin/ $fish_user_paths; or set -Ua fish_user_paths /opt/google-cloud-cli/bin/
-contains /home/$USER/.local/share/coursier/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/.local/share/coursier/bin/
+# contains /home/$USER/.local/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/.local/bin/
+# contains /home/$USER/go/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/go/bin/
+# contains /opt/google-cloud-cli/bin/ $fish_user_paths; or set -Ua fish_user_paths /opt/google-cloud-cli/bin/
+# contains /home/$USER/.local/share/coursier/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/.local/share/coursier/bin/
 
 source ~/.config/fish/functions/utils.fish
 
 [ -e $HOME/.local.fish ]; and source $HOME/.local.fish
 
-if command -v nvim > /dev/null 2>&1;
-  alias vim=nvim
-end
+alias vim=nvim
 
 if status --is-interactive; and [ "$SSH_CLIENT" = "" ]
-  eval sh '"'(realpath ~/.base16_theme)'"'
+   eval sh '"'(realpath ~/.base16_theme)'"'
 end
 
 alias sf="source ~/.config/fish/config.fish"
@@ -46,10 +45,3 @@ if status is-login
     end
 end
 
-
-# pnpm
-set -gx PNPM_HOME "/home/johan/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end

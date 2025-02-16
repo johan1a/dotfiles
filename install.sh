@@ -42,19 +42,17 @@ if [ -z $PASSWORD ] ; then
   read -s PASSWORD
 fi
 
-if ! command -v lein &> /dev/null
+if command -v pacman &> /dev/null && ! command -v lein &> /dev/null;
 then
   echo $PASSWORD | sudo -S pacman -Syu --noconfirm --needed
   echo $PASSWORD | sudo -S pacman -S inetutils which leiningen --noconfirm --needed
-fi
-
-if command -v apt &> /dev/null
+elif command -v brew &> /dev/null && ! command -v lein &> /dev/null;
 then
-  if ! command -v lein &> /dev/null
-  then
-    echo $PASSWORD | sudo -S apt-get update -y
-    echo $PASSWORD | sudo -S apt-get install leiningen -y
-  fi
+    brew install leiningen
+elif command -v apt &> /dev/null && ! command -v lein &> /dev/null;
+then
+  echo $PASSWORD | sudo -S apt-get update -y
+  echo $PASSWORD | sudo -S apt-get install leiningen -y
 fi
 
 if [ "$VERBOSE" = "true" -o -n "$CI" ] ; then
