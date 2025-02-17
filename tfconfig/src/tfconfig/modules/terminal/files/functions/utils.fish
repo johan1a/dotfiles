@@ -395,6 +395,10 @@ function stop
   end
 end
 
+function ds
+  stop $argv
+end
+
 function down
   docker-compose down --volumes $argv
 end
@@ -594,10 +598,6 @@ end
 
 function sd
   trans sv:da $argv
-end
-
-function ds
-  trans da:sv $argv
 end
 
 function de
