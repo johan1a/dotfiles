@@ -28,6 +28,7 @@
                "watch"
                "yq"
                "yapf"
+               "mysql-client"
               ])
 
 (defn run
