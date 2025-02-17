@@ -29,6 +29,7 @@
                "yq"
                "yapf"
                "mysql-client"
+               "grpcurl"
               ])
 
 (defn run
