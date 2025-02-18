@@ -276,7 +276,7 @@ vim.g.EasyGrepCommand = 1
 vim.o.statusline = vim.o.statusline .. '%{gutentags#statusline("[Generating...]")}'
 
 
-if vim.fn.has('macunix') then
+if vim.fn.has('macunix') == 1 then
   vim.g.gutentags_ctags_executable = '/opt/homebrew/bin/ctags'
 end
 
