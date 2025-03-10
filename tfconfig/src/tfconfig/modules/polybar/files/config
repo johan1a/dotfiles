@@ -13,15 +13,15 @@ background = #222
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
-foreground-alt = #555
+foreground-alt = #ffb52a
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
 [bar/base]
-;monitor = ${env:MONITOR:HDMI-1}
+
 width = 100%
-height = 27
+height = 35
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 1.0
@@ -39,10 +39,10 @@ border-color = #00000000
 padding-left = 0
 padding-right = 2
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 0
+module-margin-right = 5
 
-font-0 = fixed:pixelsize=10;1
+font-0 = fixed:pixelsize=12;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
@@ -98,7 +98,7 @@ mount-2 = /data
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%% of %total%
 
-label-unmounted = %mountpoint% not mounted
+label-unmounted =
 label-unmounted-foreground = ${colors.foreground-alt}
 
 ; Available tags:
@@ -238,43 +238,21 @@ bar-used-fill = ▐
 bar-used-empty = ▐
 bar-used-empty-foreground = #444444
 
-[module/wlan]
+[network-base]
 type = internal/network
-interface = net1
-interval = 3.0
+interval = 5
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
 
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+[module/wlan]
+inherit = network-base
+interface-type = wireless
+label-connected = %ifname% %essid% %local_ip%
 
 [module/eth]
-type = internal/network
-interface = enp3s0
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+inherit = network-base
+interface-type = wired
+label-connected = %ifname% %local_ip%
 
 [module/date]
 type = internal/date
@@ -293,32 +271,16 @@ format-underline = #0a6cf5
 label = %date% %time%
 
 [module/volume]
-type = internal/volume
+type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
+format-volume-prefix = "vol: "
+#format-volume-prefix-foreground = ${colors.primary}
+format-volume = <label-volume>
 
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-volume = %percentage%%
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = o
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+label-muted = muted
+label-muted-foreground = ${colors.disabled}
 
 [module/battery]
 type = internal/battery
