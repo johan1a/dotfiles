@@ -30,6 +30,7 @@
                "yapf"
                "mysql-client"
                "grpcurl"
+               "kubeseal"
               ])
 
 (defn run
