@@ -31,6 +31,8 @@
                "mysql-client"
                "grpcurl"
                "kubeseal"
+               "reattach-to-user-namespace" ; for tmux copy past in macos
+               "mysql-client"
               ])
 
 (defn run
