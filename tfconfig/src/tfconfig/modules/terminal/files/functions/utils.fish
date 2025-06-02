@@ -198,6 +198,10 @@ function gb
   git branch -v $argv
 end
 
+function git-search
+  git log -i -p -G $argv
+end
+
 function pull-dir
   set dir $argv
   if test -d $dir
