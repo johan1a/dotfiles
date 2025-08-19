@@ -10,11 +10,18 @@ end
 
 set sid (cat $sid_path)
 
-http --form POST http://192.168.1.221:30000/api/v2/torrents/add \
-  Cookie:SID=$sid \
+set -l response (http --ignore-stdin --headers --form POST http://192.168.1.221:30000/api/v2/torrents/add \
+  Cookie:SID="$sid" \
   urls="$magnet_link" \
   savepath="/downloads" \
-  paused:=false
+  paused:=false \
+  2>&1) # Send stderr to stdout
 
-notify-send "Added magnet link
-$magnet_link"
+if string match -q '*200 OK*' $response
+  notify-send "Added magnet link
+  $magnet_link"
+else
+  notify-send "Failed to add magnet link:
+  $response"
+end
+
