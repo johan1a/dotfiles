@@ -514,6 +514,7 @@ vim.api.nvim_set_keymap("n", "<leader>d", ":bd<CR>", { silent = true })
 -- Replace and jump
 vim.api.nvim_set_keymap("n", "c*", "*cgn", { silent = true })
 vim.api.nvim_set_keymap("v", "gs", ":s/\\%V/<Left>", { silent = true })
+vim.keymap.set("v", "gf", "y:%s/<C-r>0//gc<left><left><left>", { desc = "Replace selection with input", silent = true })
 vim.api.nvim_set_keymap("n", "gs", ":%s//<Left>", { silent = true })
 
 -- Git
