@@ -626,3 +626,6 @@ vim.api.nvim_set_keymap("n", "<leader>we", ":e ~/dev/shoppinglist_sorter/referen
 
 -- Make sure '0' works in normal mode when using colemaknordic layout
 vim.api.nvim_set_keymap("n", "ü", "0", { noremap = true })
+
+-- Don't copy overwritten text when pasting
+vim.keymap.set("v", "p", '"_dP')
