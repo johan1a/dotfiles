@@ -492,7 +492,7 @@ function PrintBuffers()
     vim.api.nvim_feedkeys("<esc>", "n", true)
 end
 
-vim.api.nvim_set_keymap("n", "<leader>p", ":call PrintBuffers()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>p", PrintBuffers, { silent = true })
 
 -- Jump to tag under cursor
 vim.api.nvim_set_keymap("n", "<leader>i", "<C-]>zz", { silent = true })
