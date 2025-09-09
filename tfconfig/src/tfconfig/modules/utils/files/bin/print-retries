@@ -1,0 +1,45 @@
+#!/usr/bin/env fish
+
+if test (count $argv) -ne 4
+    echo "Usage: print-retries <retries> <factor> <initial_delay_ms> <max_delay_ms>"
+    exit 1
+end
+
+set retries $argv[1]
+set factor $argv[2]
+set initial_delay $argv[3]
+set max_delay $argv[4]
+
+set total_delay 0
+
+function format_time --argument-names ms
+    set total_seconds (math "floor($ms / 1000)")
+    set milliseconds (math "$ms % 1000")
+
+    set minutes (math "floor($total_seconds / 60)")
+    set seconds (math "$total_seconds % 60")
+
+    set output ""
+
+    if test $minutes -gt 0
+        set output "$output$minutes"m" "
+    end
+    if test $seconds -gt 0 -o $minutes -gt 0
+        set output "$output$seconds"s" "
+    end
+
+    set output "$output$milliseconds"ms
+    echo $output
+end
+
+for i in (seq 1 $retries)
+    set power (math "pow($factor, $i - 1)")
+    set delay (math "min($initial_delay * $power, $max_delay)")
+    set total_delay (math "$total_delay + $delay")
+
+    set delay_fmt (format_time $delay)
+    set total_fmt (format_time $total_delay)
+
+    printf "Retry %d: Delay = %s, Total = %s\n" $i $delay_fmt $total_fmt
+end
+
