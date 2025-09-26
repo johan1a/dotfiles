@@ -189,6 +189,16 @@ if has_executable("vue-language-server") then
   }
 end
 
+-- npm install -g @vtsls/language-server
+-- it might be necessary to install for each specific node version
+-- make sure you have node installed and active:
+-- nvm list
+if has_executable("vtsls") then
+  lspconfig.vtsls.setup({
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+  })
+end
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = "scala,sbt",
     callback = function()
