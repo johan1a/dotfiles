@@ -1,17 +1,18 @@
 #!/usr/bin/env fish
 # Set this script as default application to use for magnet links in your browser
 set -l magnet_link $argv
-set -l sid_path ~/.local/bin/sid.qbittorrent
+set -l password_path ~/.qbittorrent
 
 if not test -f $sid_path
     notify-send "Error: $sid_path does not exist"
     exit 1
 end
 
-set sid (cat $sid_path)
+set password (cat $password_path)
 
-set -l response (http --ignore-stdin --headers --form POST http://192.168.1.221:30000/api/v2/torrents/add \
-  Cookie:SID="$sid" \
+http --session qbittorrent --form POST http://192.168.1.221:30000/api/v2/auth/login username=admin password=$password 2>&1
+
+set -l response (http --session qbittorrent --ignore-stdin --headers --form POST http://192.168.1.221:30000/api/v2/torrents/add \
   urls="$magnet_link" \
   savepath="/downloads" \
   paused:=false \
