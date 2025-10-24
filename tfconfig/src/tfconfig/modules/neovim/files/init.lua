@@ -177,8 +177,8 @@ metals_config.init_options.statusBarProvider = "on"
 -- Install vue-language-server with:
 -- sudo npm install -g @vue/language-server
 if has_executable("vue-language-server") then
-  vim.lsp.enable('volar')
-  vim.lsp.config('volar', {
+  vim.lsp.enable('vue_ls')
+  vim.lsp.config('vue_ls', {
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     init_options = {
       vue = {
