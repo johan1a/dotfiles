@@ -906,3 +906,9 @@ end
 function bak
   mv $argv $argv.bak
 end
+
+# additions a b
+# Prints occurences in b that are not in a
+function additions $argv
+  grep -Fvx -f $argv
+end
