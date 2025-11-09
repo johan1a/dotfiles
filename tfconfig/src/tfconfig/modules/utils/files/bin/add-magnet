@@ -10,9 +10,11 @@ end
 
 set password (cat $password_path)
 
-http --session qbittorrent --form POST http://192.168.1.221:30000/api/v2/auth/login username=admin password=$password 2>&1
+set -l host http://192.168.0.221:30000
 
-set -l response (http --session qbittorrent --ignore-stdin --headers --form POST http://192.168.1.221:30000/api/v2/torrents/add \
+http --session qbittorrent --form POST $host/api/v2/auth/login username=admin password=$password 2>&1
+
+set -l response (http --session qbittorrent --ignore-stdin --headers --form POST $host/api/v2/torrents/add \
   urls="$magnet_link" \
   savepath="/downloads" \
   paused:=false \
