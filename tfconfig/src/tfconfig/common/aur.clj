@@ -4,4 +4,4 @@
 (defn aur-packages
   [context packages]
   (let [packages (if (seqable? packages) packages [packages])]
-    (command "paru" ["-S" "--noconfirm" "--needed" "--sudoloop" packages] (assoc context :pre-auth true))))
+    (command "yay" ["-S" "--noconfirm" "--needed" "--sudoloop" packages] (assoc context :pre-auth true))))
