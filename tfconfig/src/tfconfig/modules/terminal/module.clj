@@ -19,6 +19,7 @@
     (link context (<< "~{functions-dir}/fish_mode_prompt.fish") (<< "~{dest-dir}/functions/fish_mode_prompt.fish"))
     (link context (<< "~{functions-dir}/fish_prompt.fish") (<< "~{dest-dir}/functions/fish_prompt.fish"))
     (link context (<< "~{functions-dir}/utils.fish") (<< "~{dest-dir}/functions/utils.fish"))
+    (link context (<< "~{functions-dir}/fzf.fish") (<< "~{dest-dir}/functions/fzf.fish"))
     (link context (<< "~{functions-dir}/fish_user_key_bindings.fish") (<< "~{dest-dir}/functions/fish_user_key_bindings.fish"))
     (link context (<< "~{src-dir}/config.fish") (<< "~{dest-dir}/config.fish"))))
 
