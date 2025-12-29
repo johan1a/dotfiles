@@ -29,6 +29,7 @@ if not test (uname) = "Darwin"
   contains /home/$USER/.local/share/coursier/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/.local/share/coursier/bin/
 end
 
+source ~/.config/fish/functions/fzf.fish
 source ~/.config/fish/functions/utils.fish
 
 [ -e $HOME/.local.fish ]; and source $HOME/.local.fish
