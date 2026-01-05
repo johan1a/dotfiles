@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
 
 
 set default_root "$HOME/dotfiles/tfconfig/src/tfconfig/modules/utils/files/local_scripts"

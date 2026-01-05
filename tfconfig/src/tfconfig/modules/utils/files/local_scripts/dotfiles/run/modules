@@ -1,4 +1,5 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
+#
 # help: runs the specified comma separated --modules
 pushd (pwd)
 cd ~/dotfiles
