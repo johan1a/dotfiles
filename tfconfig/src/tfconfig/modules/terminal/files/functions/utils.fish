@@ -175,11 +175,11 @@ function current-theme
 end
 
 function base16
-  set SCRIPT_DIR $XDG_CONFIG_HOME/base16-shell/scripts
-  if [ $argv = "ls" ]
-    ls $SCRIPT_DIR
-    return
+  if test (count $argv) -ne 1
+      echo "Error: Expected exactly 1 argument, got "(count $argv) >&2
+      return 1
   end
+  set SCRIPT_DIR $XDG_CONFIG_HOME/base16-shell/scripts
   set theme $argv
   set script $SCRIPT_DIR/base16-$theme.sh
   eval sh '"'$script'"'

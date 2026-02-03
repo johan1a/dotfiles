@@ -14,13 +14,16 @@
   [context]
   (let [src-dir (<< "~(:modules-dir context)terminal/files")
         functions-dir (str src-dir "/functions")
+        completions-dir (str src-dir "/completions")
         dest-dir (str (:home context) ".config/fish")]
     (directory (assoc context :owner (str (:username context) ":") :sudo true) dest-dir)
+    ; idea, create function that links each file in a dir to a dest dir
     (link context (<< "~{functions-dir}/fish_mode_prompt.fish") (<< "~{dest-dir}/functions/fish_mode_prompt.fish"))
     (link context (<< "~{functions-dir}/fish_prompt.fish") (<< "~{dest-dir}/functions/fish_prompt.fish"))
     (link context (<< "~{functions-dir}/utils.fish") (<< "~{dest-dir}/functions/utils.fish"))
     (link context (<< "~{functions-dir}/fzf.fish") (<< "~{dest-dir}/functions/fzf.fish"))
     (link context (<< "~{functions-dir}/fish_user_key_bindings.fish") (<< "~{dest-dir}/functions/fish_user_key_bindings.fish"))
+    (link context (<< "~{completions-dir}/base16.fish") (<< "~{dest-dir}/completions/base16.fish"))
     (link context (<< "~{src-dir}/config.fish") (<< "~{dest-dir}/config.fish"))))
 
 (defn set-permissions
