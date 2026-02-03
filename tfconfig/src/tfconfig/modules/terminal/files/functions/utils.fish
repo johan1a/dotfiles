@@ -174,6 +174,21 @@ function current-theme
     readlink ~/.base16_theme
 end
 
+function base16
+  set SCRIPT_DIR $XDG_CONFIG_HOME/base16-shell/scripts
+  if [ $argv = "ls" ]
+    ls $SCRIPT_DIR
+    return
+  end
+  set theme $argv
+  set script $SCRIPT_DIR/base16-$theme.sh
+  eval sh '"'$script'"'
+  ln -sf $script ~/.base16_theme
+  set -x BASE16_THEME $theme
+  set vim_theme base16-$theme
+  echo -e "if !exists('g:colors_name') || g:colors_name != '$vim_theme'\n  colorscheme $vim_theme\nendif" >  ~/.vimrc_background
+end
+
 function sdk
     bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk $argv"
 
