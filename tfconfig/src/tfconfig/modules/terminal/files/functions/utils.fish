@@ -668,11 +668,11 @@ function init-base16
 end
 
 function light
-  init-base16; base16-gruvbox-light-medium
+  base16 gruvbox-light-medium
 end
 
 function dark
-  init-base16; base16-gruvbox-dark-medium
+  base16 gruvbox-dark-medium
 end
 
 function owning-package
