@@ -305,10 +305,10 @@ vim.api.nvim_set_keymap("v", "<leader>e", ":Eval<CR>", { noremap = true })
 
 -- =========== CamelCaseMotion ===========
 
-vim.api.nvim_set_keymap("n", "<silent> w", "<Plug>CamelCaseMotion_w", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> b", "<Plug>CamelCaseMotion_b", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> e", "<Plug>CamelCaseMotion_e", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> ge", "<Plug>CamelCaseMotion_ge", { silent = true })
+vim.api.nvim_set_keymap("n", "w", "<Plug>CamelCaseMotion_w", { silent = true })
+vim.api.nvim_set_keymap("n", "b", "<Plug>CamelCaseMotion_b", { silent = true })
+vim.api.nvim_set_keymap("n", "e", "<Plug>CamelCaseMotion_e", { silent = true })
+vim.api.nvim_set_keymap("n", "ge", "<Plug>CamelCaseMotion_ge", { silent = true })
 
 -- =========== vim-sneak ===========
 
