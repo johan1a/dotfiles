@@ -98,7 +98,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = "lua",
     callback = function()
-        require("lspconfig").lua_ls.setup({})
+        vim.lsp.enable('lua_ls')
         vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
         vim.api.nvim_set_keymap("n", "<leader>f", ":Neoformat<cr>", { noremap = true })
     end,
