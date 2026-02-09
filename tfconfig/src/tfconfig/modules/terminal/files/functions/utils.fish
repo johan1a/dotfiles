@@ -927,3 +927,10 @@ end
 function additions $argv
   grep -Fvx -f $argv
 end
+
+function jwt
+  set parts (string split "." $argv)
+  set payload "$parts[2]="
+  echo $parts[1] | base64 -d | jq
+  echo $payload | base64 -d | jq
+end
