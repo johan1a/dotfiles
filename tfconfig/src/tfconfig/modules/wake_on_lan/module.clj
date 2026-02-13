@@ -7,8 +7,7 @@
   (let [output (command "sh" [(<< "~(:modules-dir context)wake_on_lan/files/get_mac_address.sh")] context)
         mac-address (first (:stdout output))
         src (<< "~(:modules-dir context)wake_on_lan/files/50-wired.link")
-        dest "/etc/systemd/network/50-wired.link"
-        ]
-        (do
-          (command "cp" [src dest] context :sudo)
-          (command "sed" ["-i" (<< "s/MAC_ADDRESS/~{mac-address}/g") dest] context :sudo))))
+        dest "/etc/systemd/network/50-wired.link"]
+    (do
+      (command "cp" [src dest] context :sudo)
+      (command "sed" ["-i" (<< "s/MAC_ADDRESS/~{mac-address}/g") dest] context :sudo))))

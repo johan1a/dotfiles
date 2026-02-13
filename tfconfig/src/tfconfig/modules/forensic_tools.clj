@@ -4,6 +4,6 @@
 (defn run
   [context]
   (aur-packages context ["zsteg"
-                 "arp-scan"
-                 "sleuthkit"
-                 "stegsolve"]))
+                         "arp-scan"
+                         "sleuthkit"
+                         "stegsolve"]))

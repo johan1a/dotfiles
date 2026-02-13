@@ -33,10 +33,9 @@
                "kubeseal"
                "reattach-to-user-namespace" ; for tmux copy past in macos
                "mysql-client"
-               "stern"
-              ])
+               "stern"])
 
 (defn run
   "Installs useful packages"
   [context]
-    (brew/install context packages))
+  (brew/install context packages))
