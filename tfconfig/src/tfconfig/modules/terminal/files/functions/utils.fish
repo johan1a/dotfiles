@@ -2,7 +2,7 @@
 # Example: take 5 | do rsync --progress {} destination:
 function do
   while read line
-    set cmd (echo $argv | sed "s/{}/$line/g")
+    set cmd (echo $argv | sed "s/{}/'$line'/g")
     eval $cmd
   end
 end
