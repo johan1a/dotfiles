@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
 # help: Commit and push notes to origin
 pushd .
 cd ~/vimwiki
