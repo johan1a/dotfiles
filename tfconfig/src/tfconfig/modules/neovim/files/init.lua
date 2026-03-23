@@ -195,7 +195,7 @@ end
 if has_executable("vtsls") then
   vim.lsp.enable('vtsls')
   vim.lsp.config('vtsls', {
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    filetypes = { 'typescript', 'typescript.tsx', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
   })
 end
 
@@ -454,25 +454,34 @@ vim.api.nvim_set_keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true })
 vim.api.nvim_set_keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true })
 
 -- lsp
-vim.api.nvim_set_keymap("n", "<silent> <leader>cc", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> K", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <leader>ci", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <c-b>", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <s-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <leader>ct", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <leader>cr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>cc", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ci", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<c-b>", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<s-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ct", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true })
 
 -- This is actually <c-7>
-vim.api.nvim_set_keymap("n", "<silent> <C-^>", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <F7>", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <leader>ce", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <F8>", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> g0", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> gD", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<F7>", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "ce", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<F8>", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "g0", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<silent> gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> <c-a>", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<c-a>", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
+
+local map = vim.keymap.set
+
+map("n", "K", vim.lsp.buf.hover)
+map("n", "gd", vim.lsp.buf.definition)
+map("n", "gD", vim.lsp.buf.definition)
+map("n", "gr", vim.lsp.buf.references)
+map("n", "gi", vim.lsp.buf.implementation)
+map("n", "<leader>rn", vim.lsp.buf.rename)
+map("n", "<leader>ca", vim.lsp.buf.code_action)
 
 -- Execute code_action() if not in quickfix
 function CodeAction()
