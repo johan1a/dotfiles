@@ -321,9 +321,7 @@ vim.g.tmux_navigator_disable_when_zoomed = 1
 
 -- =========== vim-fireplace ===========
 
-vim.api.nvim_set_keymap("n", "<leader>e", ":Eval<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>y", ":Require<CR>", { noremap = true })
-vim.api.nvim_set_keymap("v", "<leader>e", ":Eval<CR>", { noremap = true })
 
 -- =========== CamelCaseMotion ===========
 
@@ -505,6 +503,8 @@ map("n", "gn", vim.lsp.buf.rename)
 map("n", "g0", vim.lsp.buf.document_symbol)
 map("n", "gw", vim.lsp.buf.workspace_symbol)
 map("n", "<leader>ca", vim.lsp.buf.code_action)
+map("n", "<leader>e", vim.lsp.buf.code_action)
+map("v", "<leader>e", vim.lsp.buf.code_action)
 
 vim.keymap.set("n", "gr", telescope_builtin.lsp_references)
 vim.keymap.set("n", "gd", telescope_builtin.lsp_definitions)
