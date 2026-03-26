@@ -75,6 +75,12 @@ Plug("junegunn/fzf", {
 Plug("junegunn/fzf.vim")
 Plug("junegunn/vim-slash")
 Plug("justinmk/vim-sneak")
+Plug("nvim-telescope/telescope.nvim")
+Plug("nvim-telescope/telescope-fzf-native.nvim", {
+    ["do"] = function()
+        vim.cmd("!make")
+    end,
+})
 Plug("leafgarland/typescript-vim")
 Plug("ludovicchabant/vim-gutentags")
 Plug("scrooloose/nerdtree")
@@ -261,6 +267,23 @@ vim.g.fzf_colors = {
     spinner = { "fg", "Label" },
     header = { "fg", "Comment" },
 }
+
+-- =========== telescope ===========
+
+local telescope = require("telescope")
+
+telescope.setup({
+  defaults = {
+    sorting_strategy = "ascending",
+    layout_config = {
+      prompt_position = "top",
+    },
+    initial_mode = "normal",
+  },
+})
+
+pcall(telescope.load_extension, "fzf")
+
 
 -- Set smaller updatetime for CursorHold & CursorHoldI
 vim.o.updatetime = 300
@@ -454,34 +477,42 @@ vim.api.nvim_set_keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true })
 vim.api.nvim_set_keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true })
 
 -- lsp
-vim.api.nvim_set_keymap("n", "<leader>cc", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ci", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<c-b>", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<s-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ct", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true })
 
--- This is actually <c-7>
-vim.api.nvim_set_keymap("n", "<F7>", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "ce", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<F8>", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "g0", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<c-a>", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
+-- Unset some mappings that slow down other mappings
+-- vim.api.nvim_del_keymap("n", "grr")
+pcall(vim.api.nvim_del_keymap, "n", "grr")
+pcall(vim.api.nvim_del_keymap, "n", "gri")
+pcall(vim.api.nvim_del_keymap, "n", "grt")
+pcall(vim.api.nvim_del_keymap, "n", "gra")
+pcall(vim.api.nvim_del_keymap, "n", "grn")
+pcall(vim.api.nvim_del_keymap, "n", "<leader>rn")
 
 local map = vim.keymap.set
+
+local telescope_builtin = require("telescope.builtin")
 
 map("n", "K", vim.lsp.buf.hover)
 map("n", "gd", vim.lsp.buf.definition)
 map("n", "gD", vim.lsp.buf.definition)
+map("n", "gt", vim.lsp.buf.type_definition)
 map("n", "gr", vim.lsp.buf.references)
+-- This is actually <c-7>
+map("n", "<C-_>", telescope_builtin.lsp_references)
 map("n", "gi", vim.lsp.buf.implementation)
-map("n", "<leader>rn", vim.lsp.buf.rename)
+map("n", "<c-b>", vim.lsp.buf.implementation)
+map("n", "<s-k>", vim.lsp.buf.signature_help)
+map("n", "gn", vim.lsp.buf.rename)
+map("n", "g0", vim.lsp.buf.document_symbol)
+map("n", "gw", vim.lsp.buf.workspace_symbol)
 map("n", "<leader>ca", vim.lsp.buf.code_action)
+
+vim.keymap.set("n", "gr", telescope_builtin.lsp_references)
+vim.keymap.set("n", "gd", telescope_builtin.lsp_definitions)
+vim.keymap.set("n", "gi", telescope_builtin.lsp_implementations)
+vim.keymap.set("n", "gt", telescope_builtin.lsp_type_definitions)
+
+map("n", "]q", "<cmd>cnext<CR>")
+map("n", "[q", "<cmd>cprev<CR>")
 
 -- Execute code_action() if not in quickfix
 function CodeAction()
