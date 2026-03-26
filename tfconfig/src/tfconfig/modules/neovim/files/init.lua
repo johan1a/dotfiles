@@ -533,6 +533,12 @@ vim.api.nvim_set_keymap("n", "<leader>k", ":NERDTreeFind<CR>", { silent = true }
 vim.api.nvim_set_keymap("n", "<leader>q", ":NERDTreeClose<CR>:q<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bd", ":bdelete<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<leader>d", ":bd<CR>", { silent = true })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "nerdtree",
+  callback = function()
+    vim.keymap.set("n", "<leader>k", ":NERDTreeClose<CR>", { buffer = true })
+  end,
+})
 
 -- Replace and jump
 vim.api.nvim_set_keymap("n", "c*", "*cgn", { silent = true })
