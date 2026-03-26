@@ -131,7 +131,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "typescript", "typescript.tsx", "vue" },
+    pattern = { "typescript", "typescriptreact", "vue" },
     callback = function()
         vim.api.nvim_set_keymap("n", "<leader>f", ":Prettier<cr>", { noremap = true })
         vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -142,7 +142,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = "tsx",
     callback = function()
-        vim.bo.filetype = "typescript.tsx"
+        vim.bo.filetype = "typescriptreact"
     end,
     group = filetypes_group,
 })

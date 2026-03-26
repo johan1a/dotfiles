@@ -35,7 +35,7 @@ Plug(
         ["for"] = {
             "javascript",
             "typescript",
-            "typescript.tsx",
+            "typescriptreact",
             "css",
             "less",
             "scss",
@@ -67,7 +67,6 @@ Plug("chriskempson/base16-vim")
 Plug("christoomey/vim-tmux-navigator")
 Plug("dag/vim-fish")
 Plug("gurpreetatwal/vim-avro")
-Plug("ianks/vim-tsx")
 Plug("junegunn/fzf", {
     ["do"] = function()
         vim.cmd("call fzf#install()")
@@ -195,7 +194,7 @@ end
 if has_executable("vtsls") then
   vim.lsp.enable('vtsls')
   vim.lsp.config('vtsls', {
-    filetypes = { 'typescript', 'typescript.tsx', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
   })
 end
 
@@ -437,6 +436,7 @@ vim.api.nvim_set_keymap("i", "<silent><expr> <CR>", 'pumvisible() ? "\\<C-y>" : 
 -- Fix error which freezes UI: https://github.com/neovim/neovim/issues/14433 "
 vim.g.omni_sql_default_compl_type = "syntax"
 
+-- Or use :Maps to search mappings using fzf
 function ShowMappings()
     vim.cmd("redir @a")
     vim.cmd("silent map")
@@ -469,7 +469,7 @@ vim.api.nvim_set_keymap("n", "<F8>", "<cmd>lua vim.lsp.buf.rename()<CR>", { sile
 vim.api.nvim_set_keymap("n", "g0", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<silent> gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<c-a>", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
 
@@ -658,3 +658,4 @@ vim.api.nvim_set_keymap("n", "ü", "0", { noremap = true })
 
 -- Don't copy overwritten text when pasting
 vim.keymap.set("v", "p", '"_dP')
+
