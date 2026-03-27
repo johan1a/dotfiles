@@ -57,7 +57,6 @@ Plug("nvim-lua/plenary.nvim")
 -- language server running to avoid annoying error messages.
 Plug("BrandonRoehl/auto-omni", { ["for"] = "scala" }) -- Trigger automatic omnicompletion
 Plug("pocco81/auto-save.nvim", { branch = "main" })
-Plug("artur-shaik/vim-javacomplete2")
 Plug("honza/vim-snippets")
 Plug("tpope/vim-fireplace")
 Plug("udalov/kotlin-vim")
