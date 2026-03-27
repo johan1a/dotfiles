@@ -76,10 +76,8 @@ Plug("nvim-telescope/telescope-fzf-native.nvim", {
         vim.cmd("!make")
     end,
 })
-Plug("leafgarland/typescript-vim")
 Plug("ludovicchabant/vim-gutentags")
 Plug("scrooloose/nerdtree")
-Plug("tommcdo/vim-lion")
 Plug("tpope/vim-commentary")
 Plug("tpope/vim-fugitive")
 Plug("tpope/vim-surround")
