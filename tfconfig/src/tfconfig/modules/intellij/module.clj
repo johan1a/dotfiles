@@ -1,14 +1,9 @@
 (ns tfconfig.modules.intellij.module
   (:require [tfconfig.common.file :refer [link]]
-            [tfconfig.common.aur :refer [aur-packages]]
-            [tfconfig.common.file :refer [directory]]))
+            [tfconfig.common.aur :refer [aur-packages]]))
 
 (defn run
   [context]
-  (let [intellij-dir (str (:home context) ".config/github-copilot/intellij")]
-    (link context (str (:modules-dir context) "intellij/files/ideavimrc") (str (:home context) ".ideavimrc"))
-    (directory context intellij-dir)
-    (link context (str (:modules-dir context) "intellij/files/global-copilot-instructions.md") (str intellij-dir "/global-copilot-instructions.md"))
-    (link context (str (:modules-dir context) "intellij/files/global-copilot-instructions.md") (str (:home context) ".copilot/copilot-instructions.md"))
-    (when (= (:os context) "archlinux")
-      (aur-packages context "jetbrains-toolbox"))))
+  (link context (str (:modules-dir context) "intellij/files/ideavimrc") (str (:home context) ".ideavimrc"))
+  (when (= (:os context) "archlinux")
+    (aur-packages context "jetbrains-toolbox")))
