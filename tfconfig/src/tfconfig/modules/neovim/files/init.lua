@@ -18,8 +18,6 @@ local Plug = vim.fn["plug#"]
 
 vim.call("plug#begin")
 
-Plug("Shougo/deoplete.nvim")
-Plug("zchee/deoplete-jedi")
 Plug("SirVer/ultisnips")
 Plug("sbdchd/neoformat")
 
@@ -77,6 +75,7 @@ Plug("nvim-telescope/telescope-fzf-native.nvim", {
     end,
 })
 Plug("ludovicchabant/vim-gutentags")
+Plug("saghen/blink.cmp", { tag = "*" })
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-commentary")
 Plug("tpope/vim-fugitive")
@@ -254,6 +253,21 @@ vim.g.fzf_colors = {
     spinner = { "fg", "Label" },
     header = { "fg", "Comment" },
 }
+
+-- =========== completion ===========
+
+
+
+require("blink.cmp").setup({
+  keymap = {
+    preset = "super-tab",
+    ["<C-Space>"] = { "show", "fallback" },         -- trigger
+    ["<Tab>"]     = { "select_next", "snippet_forward", "fallback" },  -- cycle (only when open)
+    ["<S-Tab>"]   = { "select_prev", "snippet_backward", "fallback" },
+    ["<CR>"]      = { "accept", "fallback" },
+  },
+  sources = { default = { "lsp", "path", "snippets", "buffer" } },
+})
 
 -- =========== telescope ===========
 
@@ -437,9 +451,6 @@ vim.o.showcmd = true
 -- |_|\_\___|\__, | |_| |_| |_|\__,_| .__/|___/
 --           |___/                  |_|
 
--- completion / omnifunc
-vim.api.nvim_set_keymap("i", "<silent><expr> <S-Tab>", 'pumvisible() ? "\\<C-p>" : "\\<s-tab>"', { expr = true })
-vim.api.nvim_set_keymap("i", "<silent><expr> <CR>", 'pumvisible() ? "\\<C-y>" : "\\<CR>"', { expr = true })
 
 -- Fix error which freezes UI: https://github.com/neovim/neovim/issues/14433 "
 vim.g.omni_sql_default_compl_type = "syntax"
