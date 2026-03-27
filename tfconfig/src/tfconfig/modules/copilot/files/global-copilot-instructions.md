@@ -6,9 +6,11 @@ When running in chat mode, you don't need to ask for permission before posting c
 
 # Don't write redundant code comments
 like this:
+```
 /** @Return product **/
 public Product getProduct() {
 ...
+```
 
 # Commit messages
 
