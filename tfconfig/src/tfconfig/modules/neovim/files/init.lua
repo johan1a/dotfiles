@@ -62,7 +62,6 @@ Plug("bkad/CamelCaseMotion")
 Plug("chriskempson/base16-vim")
 Plug("christoomey/vim-tmux-navigator")
 Plug("dag/vim-fish")
-Plug("gurpreetatwal/vim-avro")
 Plug("junegunn/fzf", {
     ["do"] = function()
         vim.cmd("call fzf#install()")
