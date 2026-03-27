@@ -535,8 +535,14 @@ end
 
 vim.keymap.set("n", "<leader>p", PrintBuffers, { silent = true })
 
--- Jump to tag under cursor
-vim.api.nvim_set_keymap("n", "<leader>i", "<C-]>zz", { silent = true })
+-- Go to definition via LSP if available, otherwise jump to tag under cursor
+vim.keymap.set("n", "<leader>i", function()
+  if #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
+    vim.lsp.buf.definition()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-]>zz", true, false, true), "n", false)
+  end
+end, { silent = true })
 
 -- Jump back up the tag stack
 vim.api.nvim_set_keymap("n", "<leader>u", "<C-t>zz", { silent = true })
