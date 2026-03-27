@@ -53,9 +53,6 @@ Plug("scalameta/nvim-metals", { branch = "main" })
 Plug("neovim/nvim-lspconfig")
 Plug("nvim-lua/plenary.nvim")
 
--- Only run auto omnicomplete for languages where we are likely of having a
--- language server running to avoid annoying error messages.
-Plug("BrandonRoehl/auto-omni", { ["for"] = "scala" }) -- Trigger automatic omnicompletion
 Plug("pocco81/auto-save.nvim", { branch = "main" })
 Plug("honza/vim-snippets")
 Plug("tpope/vim-fireplace")
@@ -145,12 +142,6 @@ if vim.g.started_by_firenvim then
     fc["https://www.messenger.com"] = { takeover = "never", priority = 1 }
     fc["https://discord.com"] = { takeover = "never", priority = 1 }
 end
-
--- =========== auto-omni ===========
--- Keys that trigger omnicomplete.
--- I added '.' to the default.
-vim.g.auto_omnicomplete_key = "period . a b c d e f g h i j k l m n o p q r s t u v w x y z "
-    .. "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
 
 -- =========== neoformat ===========
 
