@@ -2,7 +2,7 @@
 You can post code in the chat, but never start making code changes on your own initiative.
 The only time you are allowed to do so is if I have explicitly approved your plan.
 
-When running in chat mode, you don't need to ask for permission before posting code in the chat.
+When running in chat mode in intellij, you don't need to ask for permission before posting code in the chat.
 
 # Don't write redundant code comments
 like this:
