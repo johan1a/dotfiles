@@ -392,6 +392,9 @@ vim.o.completeopt = "noinsert,menuone"
 -- Use .prettierrc, don't use custom settings from vim-prettieri
 vim.g["prettier#config#config_precedence"] = "prefer-file"
 
+-- Suppress Node warnings for prettier to avoid --localstorage-file warning
+vim.env.NODE_NO_WARNINGS = '1'
+
 -- =========== search ===========
 vim.o.grepprg = "ag\\ $*"
 
