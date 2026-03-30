@@ -13,6 +13,7 @@ profiles:
     pattern: ".*urdatorn.*"
     has-monitor: false
     ignored-modules:
+      - copilot
       - owncloud
       - polybar
       - gnome_keyring
@@ -24,6 +25,7 @@ profiles:
     additional-modules:
       - packages_apt
     ignored-modules:
+      - copilot
       - packages
       - pulseaudio
       - pipewire
@@ -45,6 +47,7 @@ profiles:
     pattern: "ci|runner-.*"
     has-monitor: false
     ignored-modules:
+      - copilot
       - owncloud
       - pulseaudio
       - pipewire
@@ -53,6 +56,7 @@ profiles:
     pattern: ".*"
     has-monitor: true
 modules:
+  - copilot
   - dirs
   - git_hooks
   - packages

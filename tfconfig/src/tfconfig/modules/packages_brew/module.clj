@@ -35,7 +35,10 @@
                "mysql-client"
                "stern"])
 
+(def packages-cask ["alt-tab" "font-jetbrains-mono-nerd-font"])
+
 (defn run
   "Installs useful packages"
   [context]
-  (brew/install context packages))
+  (brew/install context packages)
+  (brew/install-cask context packages-cask))

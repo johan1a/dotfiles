@@ -4,3 +4,7 @@
 (defn install
   [context packages]
   (command "brew" (into [] ["install" packages]) context))
+
+(defn install-cask
+  [context packages]
+  (command "brew" (into [] ["install" "--cask" packages]) context))
