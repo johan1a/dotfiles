@@ -56,7 +56,6 @@ Plug("honza/vim-snippets")
 Plug("tpope/vim-fireplace")
 Plug("udalov/kotlin-vim")
 Plug("airblade/vim-gitgutter")
-Plug("bkad/CamelCaseMotion")
 Plug("chriskempson/base16-vim")
 Plug("christoomey/vim-tmux-navigator")
 Plug("dag/vim-fish")
@@ -323,13 +322,6 @@ vim.g.tmux_navigator_disable_when_zoomed = 1
 -- =========== vim-fireplace ===========
 
 vim.api.nvim_set_keymap("n", "<leader>y", ":Require<CR>", { noremap = true })
-
--- =========== CamelCaseMotion ===========
-
-vim.api.nvim_set_keymap("n", "w", "<Plug>CamelCaseMotion_w", { silent = true })
-vim.api.nvim_set_keymap("n", "b", "<Plug>CamelCaseMotion_b", { silent = true })
-vim.api.nvim_set_keymap("n", "e", "<Plug>CamelCaseMotion_e", { silent = true })
-vim.api.nvim_set_keymap("n", "ge", "<Plug>CamelCaseMotion_ge", { silent = true })
 
 -- =========== vim-sneak ===========
 
