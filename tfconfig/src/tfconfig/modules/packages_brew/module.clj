@@ -19,6 +19,8 @@
                "neovim"
                "openjdk@11"
                "openjdk@17"
+               "openjdk@21"
+               "openjdk@25"
                "rectangle"
                "ripgrep"
                "the_silver_searcher"
