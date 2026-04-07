@@ -169,8 +169,11 @@ metals_config.init_options.statusBarProvider = "on"
 if has_executable("vue-language-server") then
   vim.lsp.enable('vue_ls')
   vim.lsp.config('vue_ls', {
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    filetypes = { 'typescript', 'javascript', 'vue' },
     init_options = {
+      typescript = {
+        tsdk = vim.fn.getcwd() .. "/node_modules/typescript/lib"
+      },
       vue = {
         hybridMode = false,
       },
