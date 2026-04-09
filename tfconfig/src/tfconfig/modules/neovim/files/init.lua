@@ -263,7 +263,7 @@ require("blink.cmp").setup({
     ["<C-Space>"] = { "show", "fallback" },         -- trigger
     ["<Tab>"]     = { "select_next", "snippet_forward", "fallback" },  -- cycle (only when open)
     ["<S-Tab>"]   = { "select_prev", "snippet_backward", "fallback" },
-    ["<CR>"]      = { "accept", "fallback" },
+    ["<CR>"]      = { function(cmp) return cmp.accept({ callback = function() cmp.hide() end }) end, "fallback" },
   },
   sources = { default = { "lsp", "path", "snippets", "buffer" } },
 })
