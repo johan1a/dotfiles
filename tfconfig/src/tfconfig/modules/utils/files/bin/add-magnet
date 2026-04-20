@@ -12,7 +12,7 @@ set password (cat $password_path)
 
 set -l host http://192.168.0.221:30000
 
-http --session qbittorrent --form POST $host/api/v2/auth/login username=admin password=$password 2>&1
+http --session qbittorrent --ignore-stdin --form POST $host/api/v2/auth/login username=admin "password=$password" 2>&1
 
 set -l response (http --session qbittorrent --ignore-stdin --headers --form POST $host/api/v2/torrents/add \
   urls="$magnet_link" \
