@@ -11,6 +11,7 @@ like this:
 public Product getProduct() {
 ...
 ```
+Also do not write comments like // given // when // then
 
 # Commit messages
 
