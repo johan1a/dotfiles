@@ -571,6 +571,18 @@ function gs
   git status -s $argv
 end
 
+function show-deployed-image
+    set namespace $argv[1]
+    set name $argv[2]
+    set sha (kubectl -n $namespace get deploy $name -o=yaml | grep -i "$name:" | sed "s/.*$name://")
+    if test -z "$sha"
+        echo "Could not find deployed image for $name"
+        return 1
+    end
+    echo "Deployed commit: $sha"
+    git -C ~/dev/$name show $sha
+end
+
 function k
   kubectl $argv
 end
