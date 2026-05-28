@@ -4,6 +4,10 @@ The only time you are allowed to do so is if I have explicitly approved your pla
 
 When running in chat mode in intellij, you don't need to ask for permission before posting code in the chat.
 
+# Formatting
+
+Format the code with ```./gradlew spotlessApply```
+
 # Don't write redundant code comments
 like this:
 ```
