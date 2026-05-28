@@ -20,3 +20,7 @@ Use conventional commit messages. Don't include co-autherd by copilot in commit 
 # Use README:s
 
 Read README.md if it exist, and use it, to know how to build, run tests, etc.
+
+# Tests
+
+Use randomized ID:s instead of hard-coded ones.
