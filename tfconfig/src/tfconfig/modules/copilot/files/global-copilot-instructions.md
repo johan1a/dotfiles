@@ -6,7 +6,9 @@ When running in chat mode in intellij, you don't need to ask for permission befo
 
 # Formatting
 
-Format the code with ```./gradlew spotlessApply```
+Place private methods below public ones.
+
+After making changes, format the code with ```./gradlew spotlessApply```.
 
 # Don't write redundant code comments
 like this:
