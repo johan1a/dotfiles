@@ -1,35 +1,13 @@
-# Be terse
-Please save tokens by being terse, and avoid long winded explanations.
+Be terse. Save tokens.
 
-# Always plan first
-You can post code in the chat, but never start making code changes on your own initiative.
-The only time you are allowed to do so is if I have explicitly approved your plan.
+Never make code changes without explicit plan approval. In IntelliJ chat mode, posting code is fine without approval.
 
-When running in chat mode in intellij, you don't need to ask for permission before posting code in the chat.
+After changes, run `./gradlew spotlessApply`. Place private methods below public ones.
 
-# Formatting
+No redundant comments (e.g. `/** @Return product **/`, `// given/when/then`).
 
-Place private methods below public ones.
+Commit messages: conventional format, no co-authored-by.
 
-After making changes, format the code with ```./gradlew spotlessApply```.
+Read README.md for build/test instructions.
 
-# Don't write redundant code comments
-like this:
-```
-/** @Return product **/
-public Product getProduct() {
-...
-```
-Also do not write comments like // given // when // then
-
-# Commit messages
-
-Use conventional commit messages. Don't include co-autherd by copilot in commit messages.
-
-# Use README:s
-
-Read README.md if it exist, and use it, to know how to build, run tests, etc.
-
-# Tests
-
-Use randomized ID:s instead of hard-coded ones.
+Tests: use randomized IDs, not hard-coded ones.
