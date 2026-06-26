@@ -15,4 +15,10 @@ fi
 
 [[ -f ~/.config/fcitx/fcitx-env ]] && . ~/.config/fcitx/fcitx-env
 
+# Make screen go dark after an hour
+xset dpms 3600 3600 3600
+
+# 60 minute screensaver delay
+xset s 3600
+
 exec i3
