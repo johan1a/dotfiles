@@ -8,6 +8,10 @@ No redundant comments (e.g. `/** @Return product **/`, `// given/when/then`).
 
 Commit messages: conventional format, no co-authored-by.
 
+Try to avoid early returns.
+
 Read README.md for build/test instructions.
 
 Tests: use randomized IDs, not hard-coded ones.
+
+Check under ./ first: When user mentions a file, it is likely somewhere in the current dir or its subdirs.
