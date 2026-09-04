@@ -6,6 +6,8 @@ After changes, run `./gradlew spotlessApply`. Place private methods below public
 
 No redundant comments (e.g. `/** @Return product **/`, `// given/when/then`).
 
+Avoid numbered lists in comments.
+
 Commit messages: conventional format, no co-authored-by.
 
 Try to avoid early returns.
