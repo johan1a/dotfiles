@@ -934,6 +934,10 @@ function bak
   mv $argv $argv.bak
 end
 
+function mv-last
+  ls -rt | tail -n 1 | do mv {} $argv
+end
+
 # additions a b
 # Prints occurences in b that are not in a
 function additions $argv
