@@ -217,6 +217,10 @@ function git-search
   git log -i -p -G $argv
 end
 
+function gcon
+  git rebase --continue
+end
+
 function pull-dir
   set dir $argv
   if test -d $dir
