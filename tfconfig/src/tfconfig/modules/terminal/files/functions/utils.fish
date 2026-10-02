@@ -578,7 +578,8 @@ end
 function show-deployed-image
     set namespace $argv[1]
     set name $argv[2]
-    set sha (kubectl -n $namespace get deploy $name -o=yaml | grep -i "$name:" | sed "s/.*$name://")
+    set image (kubectl -n $namespace get deploy $name -o jsonpath='{.spec.template.spec.containers[0].image}')
+    set sha (string split -r -m1 ":" $image)[2]
     if test -z "$sha"
         echo "Could not find deployed image for $name"
         return 1
