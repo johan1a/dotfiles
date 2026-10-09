@@ -217,7 +217,7 @@ function git-search
   git log -i -p -G $argv
 end
 
-function gcon
+function rcon
   git rebase --continue
 end
 
