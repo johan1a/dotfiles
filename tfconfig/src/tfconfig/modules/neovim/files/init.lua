@@ -269,6 +269,11 @@ require("blink.cmp").setup({
     ["<CR>"]      = { function(cmp) return cmp.accept({ callback = function() cmp.hide() end }) end, "fallback" },
   },
   sources = { default = { "lsp", "path", "snippets", "buffer" } },
+  completion = {
+    menu = {
+      auto_show = function(ctx) return ctx.line:match("%S") ~= nil end,
+    }
+  }
 })
 
 -- =========== telescope ===========
