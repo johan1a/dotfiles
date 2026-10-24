@@ -96,6 +96,7 @@
                "age"
                "nss-mdns"
                "avahi"
+               "xbacklight"
         ;  udiskie
                ])
 
