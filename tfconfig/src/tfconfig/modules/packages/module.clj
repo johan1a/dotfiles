@@ -97,6 +97,8 @@
                "nss-mdns"
                "avahi"
                "xbacklight"
+               "wireguard-tools"
+               "qrencode"
         ;  udiskie
                ])
 
