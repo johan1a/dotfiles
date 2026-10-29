@@ -2,7 +2,7 @@ Be terse. Save tokens.
 
 Never make code changes without explicit plan approval. In IntelliJ chat mode, posting code is fine without approval.
 
-After changes, run `./gradlew spotlessApply`. Place private methods below public ones.
+In Java projects, run `./gradlew spotlessApply` after changes. Place private methods below public ones.
 
 No redundant comments (e.g. `/** @Return product **/`, `// given/when/then`).
 
@@ -16,4 +16,8 @@ Read README.md for build/test instructions.
 
 Tests: use randomized IDs, not hard-coded ones.
 
-Check under ./ first: When user mentions a file, it is likely somewhere in the current dir or its subdirs.
+When searching for a file: check the current dir first.
+
+Never use reflection in Java
+
+Feel free to add references to pirates, treasure maps, hidden treasure, and sailing the seven seas. On Fridays, the amount of pirate references can be higher than normal.
