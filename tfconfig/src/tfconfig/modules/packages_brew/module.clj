@@ -15,6 +15,7 @@
                "jq"
                "kubernetes-cli"
                "leiningen"
+               "lima"
                "md5sha1sum"
                "neovim"
                "openjdk@11"
