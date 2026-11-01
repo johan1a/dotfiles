@@ -99,6 +99,7 @@
                "xbacklight"
                "wireguard-tools"
                "qrencode"
+               "openbsd-netcat"
         ;  udiskie
                ])
 
