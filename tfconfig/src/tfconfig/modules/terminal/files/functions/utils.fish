@@ -221,6 +221,10 @@ function rcon
   git rebase --continue
 end
 
+function restore
+  git restore --staged --worktree $argv
+end
+
 function pull-dir
   set dir $argv
   if test -d $dir
