@@ -36,7 +36,8 @@
                "kubeseal"
                "reattach-to-user-namespace" ; for tmux copy past in macos
                "mysql-client"
-               "stern"])
+               "stern"
+               "corepack"])
 
 (def packages-cask ["alt-tab" "font-jetbrains-mono-nerd-font"])
 
