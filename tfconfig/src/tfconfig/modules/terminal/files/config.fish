@@ -50,8 +50,13 @@ if status is-login
 end
 
 # pnpm
-set -gx PNPM_HOME "/home/johan/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+switch (uname)
+   case Darwin
+       set -gx PNPM_HOME "$HOME/Library/pnpm"
+   case '*'
+       set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+end
+if not contains -- $PNPM_HOME $PATH
+   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
